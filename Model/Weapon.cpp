@@ -35,19 +35,3 @@ void Weapon::setLevel(void int level) {
 void Weapon::use() {
 
 }
-/**
- * Sword implementation
- */
-
-/**
- * Catalyst implementation
- */
-
-/**
- * Shield implementation
- */
-
-
-void Weapon::Shield::reduceDamage() {
-
-}

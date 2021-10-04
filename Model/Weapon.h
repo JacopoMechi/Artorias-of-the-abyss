@@ -24,16 +24,6 @@ void getLevel();
 void setLevel(void int level);
     
 void use();
-    class Sword: public Weapon {
-    };
-    class Catalyst: public Weapon {
-    };
-    class Shield: public Weapon {
-    public: 
-        void defence;
-        
-void reduceDamage();
-    };
 protected: 
     int damage;
     int level;
