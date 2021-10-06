@@ -1,76 +1,52 @@
-/**
- * Project Untitled
- */
-
-
 #ifndef _GAMECHARACTER_H
 #define _GAMECHARACTER_H
 
 #include "MapElements.h"
+#include "Weapon.h"
 
-
+//TODO finish GameCharacter
 class GameCharacter: public MapElements {
-public: 
+public:
+    //GameCharacter();
+    GameCharacter(int hp, int a, int c, int d, int s);//hp: HP, a: armor, c: cash, d: dashCount, s: speed
+    ~GameCharacter();
     
-void getHp();
+    int getHp() const;//TODO is it necessary const?
+    void setHp(int hp);
     
-/**
- * @param int hp
- */
-void setHp(void int hp);
+    int getArmor() const;//TODO is it necessary const?
+    void setArmor(int armor);
     
-void getArmor();
+    int getCash();
+    void setCash(int cash);
     
-/**
- * @param int defence
- */
-void setArmor(void int defence);
+    int getDash();
+    void setDash(int dashCount);
     
-void getCash();
+    int getMovementSpeed(); const //TODO is it necessary const?
+    void setMovementSpeed(int speed);
     
-/**
- * @param int cash
- */
-void setCash(void int cash);
+    Weapon* getWeapon();
+    void setWeapon(Weapon* weapon);
     
-void getDash();
+    void receiveDamage();
     
-/**
- * @param int dashCount
- */
-void setDash(void int dashCount);
+    Weapon* getShield();
+    void setShield(Weapon* weapon);
     
-void getMovementSpeed();
+    void isUnkillable();
     
-/**
- * @param int speed
- */
-void setMovementSpeed(void int speed);
+    void isDialogue();
     
-void getWeapon();
+    virtual void movement();
     
-/**
- * @param Weapon* weapon
- */
-void setWeapon(void Weapon* weapon);
+    void attack();
     
-void receiveDamage();
+    void isChasing();
     
-void getShield();
-    
-void setShield();
-    
-void isUnkillable();
-    
-void isDialogue();
-    
-void movement();
-    
-void attack();
-    
-void isChasing();
-    
-void respawn();
+    void respawn();
+
+
 protected: 
     int HP;
     int armor;
@@ -78,6 +54,7 @@ protected:
     int dashCount;
     int speed;
     Weapon* weapon;
+    Weapon* leftWeapon;
 };
 
 #endif //_GAMECHARACTER_H
