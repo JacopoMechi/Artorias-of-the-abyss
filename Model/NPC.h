@@ -10,8 +10,8 @@
 
 
 class NPC: public GameCharacter {
-public: 
-    
+public:
+
 void sellItems();
 };
 

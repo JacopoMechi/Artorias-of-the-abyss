@@ -11,12 +11,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f5e779d-727f-412d-92cd-0e887b0d85ca" name="Default Changelist" comment="Added Cmake. Needs to be edited">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+    <list default="true" id="8f5e779d-727f-412d-92cd-0e887b0d85ca" name="Default Changelist" comment="Finished GameCharacter, removed isUnkillable and respawn. Edited use() in Weapon">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/GameCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/GameCharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/GameCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/GameCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/NPC.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/NPC.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Weapon.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Weapon.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +47,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/University/CLion projects/programming_course/E2_class_exercise" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -88,7 +89,15 @@
       <workItem from="1633366924249" duration="233000" />
       <workItem from="1633509079863" duration="6008000" />
       <workItem from="1633537690078" duration="2663000" />
-      <workItem from="1633777533987" duration="7832000" />
+      <workItem from="1633777533987" duration="8031000" />
+      <workItem from="1633796382720" duration="1876000" />
+      <workItem from="1633973282821" duration="1202000" />
+      <workItem from="1634051923150" duration="3724000" />
+      <workItem from="1634081192597" duration="5000" />
+      <workItem from="1634139864129" duration="5175000" />
+      <workItem from="1634194691080" duration="1193000" />
+      <workItem from="1634290880168" duration="6515000" />
+      <workItem from="1634379789352" duration="5251000" />
     </task>
     <task id="LOCAL-00001" summary="Uploaded project UML">
       <created>1632474658858</created>
@@ -118,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633537271497</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="finished getter and setter of GameCharacter: isDialogue must be finished. Added CMake in branch">
+      <created>1633785570815</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1633785570815</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,7 +151,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="Assioma" />
                       </list>
                     </value>
                   </entry>
@@ -154,6 +170,8 @@
     <MESSAGE value="corrected UML and fixed classes" />
     <MESSAGE value="Added Cmake. Needs to be edited" />
     <MESSAGE value="commit .idea and cmake-build-debug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Cmake. Needs to be edited" />
+    <MESSAGE value="finished getter and setter of GameCharacter: isDialogue must be finished (Added Manus and Artorias dialogues). Added CMake in branch" />
+    <MESSAGE value="Finished GameCharacter, removed isUnkillable and respawn. Edited use() in Weapon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished GameCharacter, removed isUnkillable and respawn. Edited use() in Weapon" />
   </component>
 </project>

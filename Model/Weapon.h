@@ -23,7 +23,8 @@ void getLevel();
  */
 void setLevel(void int level);
     
-void use();
+virtual int use() = 0;
+
 protected: 
     int damage;
     int level;
