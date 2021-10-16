@@ -1,7 +1,7 @@
 #include "GameCharacter.h"
 
-GameCharacter::GameCharacter(int hp, int a, int c, int d, int s, std::string& t): HP(hp), armor(a), cash(c), dashCount(d),
-speed(s), weapon(nullptr), leftWeapon(nullptr), textPool(t){
+GameCharacter::GameCharacter(int hp, int a, int c, int s, std::string& t): HP(hp), armor(a), cash(c),speed(s),
+weapon(nullptr), leftWeapon(nullptr), textPool(t){
 }
 
 GameCharacter::~GameCharacter() {
@@ -35,13 +35,14 @@ void GameCharacter::setCash( int cash) {
     this->cash = cash;
 }
 
+/*NEEDS TO BE ADDED IN HERO
 int GameCharacter::getDash() const{
     return dashCount;
 }
 
 void GameCharacter::setDash(int dashCount) {
     this->dashCount = dashCount;
-}
+}*/
 
 int GameCharacter::getMovementSpeed() const{
     return speed;
@@ -79,13 +80,13 @@ void GameCharacter::movement() {
     //will be overrided in Hero and Enemy
 }
 
-void GameCharacter::attack(GameCharacter &enemy) {
+void GameCharacter::attack(GameCharacter &opponent) {//its virtual, needs to be overrided in enemy
     //TODO with SFML library type if (sf::Keyboard::isPressed(sf::Keyboard::E){}
     int hit = 1;
     if(weapon){//and something else
         hit = weapon -> use();//edited in weapon -> from void use to int use
     }
-    enemy.receiveDamage(hit);
+    opponent.receiveDamage(hit);
 }
 
 bool GameCharacter::isChasing(int aggroDistance, const GameCharacter &enemy) {

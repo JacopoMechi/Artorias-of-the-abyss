@@ -8,12 +8,11 @@
 #include "MapElements.h"
 #include "Weapon.h"
 
-//TODO finish GameCharacter
-class GameCharacter: public MapElements {
+
+class GameCharacter:  public MapElements{
 
 public:
-    GameCharacter(int hp, int a, int c, int d, int s, std::string& t);//hp: HP, a: armor, c: cash, d: dashCount, s: speed,
-                                                                      //t: textPool
+    GameCharacter(int hp, int a, int c, int s, std::string& t);//hp: HP, a: armor, c: cash, s: speed, t: textPool
     ~GameCharacter();
     
     int getHp() const;
@@ -25,8 +24,8 @@ public:
     int getCash() const;
     void setCash(int cash);
     
-    int getDash() const;
-    void setDash(int dashCount);
+    /*int getDash() const; NEEDS TO BE ADDED IN HERO
+    void setDash(int dashCount);*/
     
     int getMovementSpeed()const;
     void setMovementSpeed(int speed);
@@ -45,18 +44,16 @@ public:
     
     virtual void movement();
     
-    void attack(GameCharacter &enemy);
+    virtual void attack(GameCharacter &opponent);
     
     bool isChasing(int aggroDistance, const GameCharacter &enemy);
-    
-    void respawn();
 
 
 protected: 
     int HP;
     int armor;
     int cash;
-    int dashCount;
+    //int dashCount;
     int speed;
     int dialogueTracker = 0;
     Weapon* weapon;

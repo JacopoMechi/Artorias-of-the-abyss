@@ -14,7 +14,7 @@ void getPos();
 /**
  * @param float pos[2]
  */
-void setPos(void float pos[2]);
+void setPos(float pos[2]);
     
 void draw();
 protected: 

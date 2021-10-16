@@ -14,14 +14,14 @@ void getDamage();
 /**
  * @param int damage
  */
-void setDamage(void int damage);
+void setDamage(int damage);
     
 void getLevel();
     
 /**
  * @param int level
  */
-void setLevel(void int level);
+void setLevel(int level);
     
 virtual int use() = 0;
 
