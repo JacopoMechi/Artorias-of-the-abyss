@@ -5,9 +5,15 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(Model)
 
-add_executable(Artorias_of_the_abyss
+#[[add_executable(Artorias_of_the_abyss
         Model/GameCharacter.cpp
-        Model/GameCharacter.h)
+        Model/GameCharacter.h)]]
+add_executable(Artorias_of_the_abyss
+        Model/Inventory.cpp
+        Model/Inventory.h
+        Model/Item.h
+        Model/Item.cpp
+        )
 #[[add_executable(Artorias_of_the_abyss
         Model/Bonfire.cpp
         Model/Bonfire.h
@@ -52,4 +58,4 @@ add_executable(Artorias_of_the_abyss
         Model/Wall.cpp
         Model/Wall.h
         Model/Weapon.cpp
-        Model/Weapon.h)]]#
+        Model/Weapon.h)]]

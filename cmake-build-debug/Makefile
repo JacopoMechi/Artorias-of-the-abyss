@@ -143,32 +143,59 @@ Artorias_of_the_abyss/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/build
 .PHONY : Artorias_of_the_abyss/fast
 
-Model/GameCharacter.o: Model/GameCharacter.cpp.o
+Model/Inventory.o: Model/Inventory.cpp.o
 
-.PHONY : Model/GameCharacter.o
+.PHONY : Model/Inventory.o
 
 # target to build an object file
-Model/GameCharacter.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o
-.PHONY : Model/GameCharacter.cpp.o
+Model/Inventory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.o
+.PHONY : Model/Inventory.cpp.o
 
-Model/GameCharacter.i: Model/GameCharacter.cpp.i
+Model/Inventory.i: Model/Inventory.cpp.i
 
-.PHONY : Model/GameCharacter.i
+.PHONY : Model/Inventory.i
 
 # target to preprocess a source file
-Model/GameCharacter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.i
-.PHONY : Model/GameCharacter.cpp.i
+Model/Inventory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.i
+.PHONY : Model/Inventory.cpp.i
 
-Model/GameCharacter.s: Model/GameCharacter.cpp.s
+Model/Inventory.s: Model/Inventory.cpp.s
 
-.PHONY : Model/GameCharacter.s
+.PHONY : Model/Inventory.s
 
 # target to generate assembly for a file
-Model/GameCharacter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.s
-.PHONY : Model/GameCharacter.cpp.s
+Model/Inventory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.s
+.PHONY : Model/Inventory.cpp.s
+
+Model/Item.o: Model/Item.cpp.o
+
+.PHONY : Model/Item.o
+
+# target to build an object file
+Model/Item.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.o
+.PHONY : Model/Item.cpp.o
+
+Model/Item.i: Model/Item.cpp.i
+
+.PHONY : Model/Item.i
+
+# target to preprocess a source file
+Model/Item.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.i
+.PHONY : Model/Item.cpp.i
+
+Model/Item.s: Model/Item.cpp.s
+
+.PHONY : Model/Item.s
+
+# target to generate assembly for a file
+Model/Item.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.s
+.PHONY : Model/Item.cpp.s
 
 # Help Target
 help:
@@ -179,9 +206,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Artorias_of_the_abyss"
-	@echo "... Model/GameCharacter.o"
-	@echo "... Model/GameCharacter.i"
-	@echo "... Model/GameCharacter.s"
+	@echo "... Model/Inventory.o"
+	@echo "... Model/Inventory.i"
+	@echo "... Model/Inventory.s"
+	@echo "... Model/Item.o"
+	@echo "... Model/Item.i"
+	@echo "... Model/Item.s"
 .PHONY : help
 
 

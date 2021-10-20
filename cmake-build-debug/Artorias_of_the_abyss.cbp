@@ -84,10 +84,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GameCharacter.cpp">
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Inventory.cpp">
 			<Option target="Artorias_of_the_abyss"/>
 		</Unit>
-		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GameCharacter.h">
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Inventory.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Item.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Item.h">
 			<Option target="Artorias_of_the_abyss"/>
 		</Unit>
 		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/CMakeLists.txt">

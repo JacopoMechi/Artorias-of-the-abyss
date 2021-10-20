@@ -4,7 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GameCharacter.cpp" "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o"
+  "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Inventory.cpp" "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.o"
+  "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Item.cpp" "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

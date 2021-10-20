@@ -14,18 +14,17 @@
     <list default="true" id="8f5e779d-727f-412d-92cd-0e887b0d85ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/GameCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/GameCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/GameCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/GameCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Inventory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Inventory.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Inventory.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Inventory.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Item.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Item.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Item.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Item.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Artorias_of_the_abyss.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Artorias_of_the_abyss.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
@@ -66,7 +65,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="com.github.johnthagen.cppcheck.Configuration" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -85,9 +84,9 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -113,7 +112,9 @@
       <workItem from="1634139864129" duration="5175000" />
       <workItem from="1634194691080" duration="1193000" />
       <workItem from="1634290880168" duration="6515000" />
-      <workItem from="1634379789352" duration="6643000" />
+      <workItem from="1634379789352" duration="9542000" />
+      <workItem from="1634638416532" duration="1843000" />
+      <workItem from="1634724587559" duration="5321000" />
     </task>
     <task id="LOCAL-00001" summary="Uploaded project UML">
       <created>1632474658858</created>
@@ -157,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634396059894</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updated GameCharacter, removed dashed. Edited CMake. Fixed MapElements and Weapon">
+      <created>1634397691302</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1634397691302</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +203,7 @@
     <MESSAGE value="commit .idea and cmake-build-debug" />
     <MESSAGE value="finished getter and setter of GameCharacter: isDialogue must be finished (Added Manus and Artorias dialogues). Added CMake in branch" />
     <MESSAGE value="Finished GameCharacter, removed isUnkillable and respawn. Edited use() in Weapon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished GameCharacter, removed isUnkillable and respawn. Edited use() in Weapon" />
+    <MESSAGE value="Updated GameCharacter, removed dashed. Edited CMake. Fixed MapElements and Weapon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated GameCharacter, removed dashed. Edited CMake. Fixed MapElements and Weapon" />
   </component>
 </project>

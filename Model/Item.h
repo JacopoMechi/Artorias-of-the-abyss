@@ -1,26 +1,18 @@
-/**
- * Project Untitled
- */
-
-
 #ifndef _ITEM_H
 #define _ITEM_H
 
+#include <string>
+
 class Item {
-public: 
-    
-/**
- * @param string itemName
- * @param int itemPrice
- * @param int itemCount
- * @param string itemDescription
- */
-void showDescription(void string itemName, void int itemPrice, void int itemCount, void string itemDescription);
+public:
+    Item(std::string n, int p, int c, std::string d, int M); // n: itemName, p: itemPrice, c: itemCount, d: itemDescription
+                                                     // M:maxItemCount
+    ~Item();
 protected: 
-    string itemName;
+    std::string itemName;
     int itemPrice;
     int itemCount;
-    string itemDescription;
+    std::string itemDescription;
     int maxItemCount;
 };
 

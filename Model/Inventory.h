@@ -1,18 +1,15 @@
-/**
- * Project Untitled
- */
-
-
 #ifndef _INVENTORY_H
 #define _INVENTORY_H
+
+#include "Item.h"
 
 class Inventory {
 public: 
     
-void open();
-    
-void close();
-protected: 
+void use();
+
+protected:
+    int itemTracker = 0;
     Item& itemList;
 };
 

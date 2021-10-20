@@ -94,12 +94,12 @@ clean: CMakeFiles/Artorias_of_the_abyss.dir/clean
 CMakeFiles/Artorias_of_the_abyss.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target Artorias_of_the_abyss"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target Artorias_of_the_abyss"
 .PHONY : CMakeFiles/Artorias_of_the_abyss.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Artorias_of_the_abyss.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Artorias_of_the_abyss.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Artorias_of_the_abyss.dir/rule

@@ -77,30 +77,45 @@ include CMakeFiles/Artorias_of_the_abyss.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Artorias_of_the_abyss.dir/flags.make
 
-CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o: CMakeFiles/Artorias_of_the_abyss.dir/flags.make
-CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o: ../Model/GameCharacter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o -c /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GameCharacter.cpp
+CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.o: CMakeFiles/Artorias_of_the_abyss.dir/flags.make
+CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.o: ../Model/Inventory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.o -c /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Inventory.cpp
 
-CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GameCharacter.cpp > CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.i
+CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Inventory.cpp > CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.i
 
-CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GameCharacter.cpp -o CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.s
+CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Inventory.cpp -o CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.s
+
+CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.o: CMakeFiles/Artorias_of_the_abyss.dir/flags.make
+CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.o: ../Model/Item.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.o -c /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Item.cpp
+
+CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Item.cpp > CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.i
+
+CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Item.cpp -o CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.s
 
 # Object files for target Artorias_of_the_abyss
 Artorias_of_the_abyss_OBJECTS = \
-"CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o"
+"CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.o" \
+"CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.o"
 
 # External object files for target Artorias_of_the_abyss
 Artorias_of_the_abyss_EXTERNAL_OBJECTS =
 
-Artorias_of_the_abyss: CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o
+Artorias_of_the_abyss: CMakeFiles/Artorias_of_the_abyss.dir/Model/Inventory.cpp.o
+Artorias_of_the_abyss: CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.o
 Artorias_of_the_abyss: CMakeFiles/Artorias_of_the_abyss.dir/build.make
 Artorias_of_the_abyss: CMakeFiles/Artorias_of_the_abyss.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Artorias_of_the_abyss"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Artorias_of_the_abyss"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Artorias_of_the_abyss.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
