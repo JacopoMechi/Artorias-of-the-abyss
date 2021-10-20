@@ -22,6 +22,8 @@ void useItem();
 void switchZone();
     
 void useBonfire();
+
+void restoreHp(int amount);
     
 /**
  * @param bool isKnight
@@ -43,6 +45,7 @@ protected:
     bool isKnight;
     void cooldown;
     Bonfire* bonfire ;
+    int amount;
 };
 
 #endif //_HERO_H

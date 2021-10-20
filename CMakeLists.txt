@@ -13,6 +13,14 @@ add_executable(Artorias_of_the_abyss
         Model/Inventory.h
         Model/Item.h
         Model/Item.cpp
+        Model/EstusFlask.cpp
+        Model/EstusFlask.h
+        Model/GreenBlossom.cpp
+        Model/GreenBlossom.h
+        Model/Pendant.cpp
+        Model/Pendant.h
+        Model/HomewardBone.cpp
+        Model/HomewardBone.h
         )
 #[[add_executable(Artorias_of_the_abyss
         Model/Bonfire.cpp

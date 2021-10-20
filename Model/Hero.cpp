@@ -13,6 +13,10 @@
 /**
  * per drop e shop
  */
+void Hero::restoreHp(int amount){
+    GameCharacter::setHp(GameCharacter::getHp+amount);
+}
+
 void Hero::addItem() {
 
 }

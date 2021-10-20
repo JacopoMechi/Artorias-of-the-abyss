@@ -14,10 +14,12 @@
     <list default="true" id="8f5e779d-727f-412d-92cd-0e887b0d85ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Inventory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Inventory.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Inventory.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Inventory.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Item.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Item.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Item.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Item.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/EstusFlask.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/EstusFlask.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/EstusFlask.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/EstusFlask.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Hero.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Hero.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Hero.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Hero.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Pendant.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Pendant.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/Pendant.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Pendant.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Artorias_of_the_abyss.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Artorias_of_the_abyss.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/build.make" afterDir="false" />
@@ -114,7 +116,7 @@
       <workItem from="1634290880168" duration="6515000" />
       <workItem from="1634379789352" duration="9542000" />
       <workItem from="1634638416532" duration="1843000" />
-      <workItem from="1634724587559" duration="5321000" />
+      <workItem from="1634724587559" duration="16723000" />
     </task>
     <task id="LOCAL-00001" summary="Uploaded project UML">
       <created>1632474658858</created>
@@ -165,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634397691302</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Finished Inventory and Item, for the moment (SFML needed, and something in main too).">
+      <created>1634733296611</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1634733296611</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +213,17 @@
     <MESSAGE value="finished getter and setter of GameCharacter: isDialogue must be finished (Added Manus and Artorias dialogues). Added CMake in branch" />
     <MESSAGE value="Finished GameCharacter, removed isUnkillable and respawn. Edited use() in Weapon" />
     <MESSAGE value="Updated GameCharacter, removed dashed. Edited CMake. Fixed MapElements and Weapon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated GameCharacter, removed dashed. Edited CMake. Fixed MapElements and Weapon" />
+    <MESSAGE value="Finished Inventory and Item, for the moment (SFML needed, and something in main too)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished Inventory and Item, for the moment (SFML needed, and something in main too)." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Model/EstusFlask.h</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

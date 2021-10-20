@@ -84,6 +84,24 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/EstusFlask.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/EstusFlask.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GreenBlossom.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GreenBlossom.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/HomewardBone.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/HomewardBone.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
 		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Inventory.cpp">
 			<Option target="Artorias_of_the_abyss"/>
 		</Unit>
@@ -94,6 +112,12 @@
 			<Option target="Artorias_of_the_abyss"/>
 		</Unit>
 		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Item.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Pendant.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Pendant.h">
 			<Option target="Artorias_of_the_abyss"/>
 		</Unit>
 		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/CMakeLists.txt">

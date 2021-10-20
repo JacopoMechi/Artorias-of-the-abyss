@@ -143,6 +143,87 @@ Artorias_of_the_abyss/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/build
 .PHONY : Artorias_of_the_abyss/fast
 
+Model/EstusFlask.o: Model/EstusFlask.cpp.o
+
+.PHONY : Model/EstusFlask.o
+
+# target to build an object file
+Model/EstusFlask.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/EstusFlask.cpp.o
+.PHONY : Model/EstusFlask.cpp.o
+
+Model/EstusFlask.i: Model/EstusFlask.cpp.i
+
+.PHONY : Model/EstusFlask.i
+
+# target to preprocess a source file
+Model/EstusFlask.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/EstusFlask.cpp.i
+.PHONY : Model/EstusFlask.cpp.i
+
+Model/EstusFlask.s: Model/EstusFlask.cpp.s
+
+.PHONY : Model/EstusFlask.s
+
+# target to generate assembly for a file
+Model/EstusFlask.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/EstusFlask.cpp.s
+.PHONY : Model/EstusFlask.cpp.s
+
+Model/GreenBlossom.o: Model/GreenBlossom.cpp.o
+
+.PHONY : Model/GreenBlossom.o
+
+# target to build an object file
+Model/GreenBlossom.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/GreenBlossom.cpp.o
+.PHONY : Model/GreenBlossom.cpp.o
+
+Model/GreenBlossom.i: Model/GreenBlossom.cpp.i
+
+.PHONY : Model/GreenBlossom.i
+
+# target to preprocess a source file
+Model/GreenBlossom.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/GreenBlossom.cpp.i
+.PHONY : Model/GreenBlossom.cpp.i
+
+Model/GreenBlossom.s: Model/GreenBlossom.cpp.s
+
+.PHONY : Model/GreenBlossom.s
+
+# target to generate assembly for a file
+Model/GreenBlossom.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/GreenBlossom.cpp.s
+.PHONY : Model/GreenBlossom.cpp.s
+
+Model/HomewardBone.o: Model/HomewardBone.cpp.o
+
+.PHONY : Model/HomewardBone.o
+
+# target to build an object file
+Model/HomewardBone.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/HomewardBone.cpp.o
+.PHONY : Model/HomewardBone.cpp.o
+
+Model/HomewardBone.i: Model/HomewardBone.cpp.i
+
+.PHONY : Model/HomewardBone.i
+
+# target to preprocess a source file
+Model/HomewardBone.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/HomewardBone.cpp.i
+.PHONY : Model/HomewardBone.cpp.i
+
+Model/HomewardBone.s: Model/HomewardBone.cpp.s
+
+.PHONY : Model/HomewardBone.s
+
+# target to generate assembly for a file
+Model/HomewardBone.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/HomewardBone.cpp.s
+.PHONY : Model/HomewardBone.cpp.s
+
 Model/Inventory.o: Model/Inventory.cpp.o
 
 .PHONY : Model/Inventory.o
@@ -197,6 +278,33 @@ Model/Item.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.s
 .PHONY : Model/Item.cpp.s
 
+Model/Pendant.o: Model/Pendant.cpp.o
+
+.PHONY : Model/Pendant.o
+
+# target to build an object file
+Model/Pendant.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/Pendant.cpp.o
+.PHONY : Model/Pendant.cpp.o
+
+Model/Pendant.i: Model/Pendant.cpp.i
+
+.PHONY : Model/Pendant.i
+
+# target to preprocess a source file
+Model/Pendant.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/Pendant.cpp.i
+.PHONY : Model/Pendant.cpp.i
+
+Model/Pendant.s: Model/Pendant.cpp.s
+
+.PHONY : Model/Pendant.s
+
+# target to generate assembly for a file
+Model/Pendant.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/Pendant.cpp.s
+.PHONY : Model/Pendant.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -206,12 +314,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Artorias_of_the_abyss"
+	@echo "... Model/EstusFlask.o"
+	@echo "... Model/EstusFlask.i"
+	@echo "... Model/EstusFlask.s"
+	@echo "... Model/GreenBlossom.o"
+	@echo "... Model/GreenBlossom.i"
+	@echo "... Model/GreenBlossom.s"
+	@echo "... Model/HomewardBone.o"
+	@echo "... Model/HomewardBone.i"
+	@echo "... Model/HomewardBone.s"
 	@echo "... Model/Inventory.o"
 	@echo "... Model/Inventory.i"
 	@echo "... Model/Inventory.s"
 	@echo "... Model/Item.o"
 	@echo "... Model/Item.i"
 	@echo "... Model/Item.s"
+	@echo "... Model/Pendant.o"
+	@echo "... Model/Pendant.i"
+	@echo "... Model/Pendant.s"
 .PHONY : help
 
 
