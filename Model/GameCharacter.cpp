@@ -35,15 +35,6 @@ void GameCharacter::setCash( int cash) {
     this->cash = cash;
 }
 
-/*NEEDS TO BE ADDED IN HERO
-int GameCharacter::getDash() const{
-    return dashCount;
-}
-
-void GameCharacter::setDash(int dashCount) {
-    this->dashCount = dashCount;
-}*/
-
 int GameCharacter::getMovementSpeed() const{
     return speed;
 }

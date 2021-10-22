@@ -24,9 +24,6 @@ public:
     int getCash() const;
     void setCash(int cash);
     
-    /*int getDash() const; NEEDS TO BE ADDED IN HERO
-    void setDash(int dashCount);*/
-    
     int getMovementSpeed()const;
     void setMovementSpeed(int speed);
     
@@ -53,7 +50,6 @@ protected:
     int HP;
     int armor;
     int cash;
-    //int dashCount;
     int speed;
     int dialogueTracker = 0;
     Weapon* weapon;

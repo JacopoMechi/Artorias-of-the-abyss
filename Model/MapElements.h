@@ -9,16 +9,16 @@
 class MapElements {
 public: 
     
-void getPos();
-    
-/**
- * @param float pos[2]
- */
-void setPos(float pos[2]);
+float getPosX();
+void setPosX(float posX);
+
+float getPosY();
+void setPosY(float posY);
     
 void draw();
 protected: 
-    float pos[2];
+    float posX;
+    float posY;
     int dim[2];
 };
 
