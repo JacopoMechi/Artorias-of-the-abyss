@@ -6,8 +6,8 @@
 
 class Pendant: public Item {
 public://is it correct the override like this?
-    explicit Pendant(std::string n = "Pendente", int p = 10000, int c = 100000,
-                     std::string d = "Permette la deviazione delle spells", int M = 100000);
+    explicit Pendant(std::string n = "Pendente", int p = 10000,
+                     std::string d = "Permette la deviazione delle spells", int M = 100000, int c = 0);
     ~Pendant();
     void use(GameCharacter& hero);
 private:

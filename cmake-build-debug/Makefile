@@ -143,6 +143,195 @@ Artorias_of_the_abyss/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/build
 .PHONY : Artorias_of_the_abyss/fast
 
+Model/CollectibleItems/ArtoriasSoul.o: Model/CollectibleItems/ArtoriasSoul.cpp.o
+
+.PHONY : Model/CollectibleItems/ArtoriasSoul.o
+
+# target to build an object file
+Model/CollectibleItems/ArtoriasSoul.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/ArtoriasSoul.cpp.o
+.PHONY : Model/CollectibleItems/ArtoriasSoul.cpp.o
+
+Model/CollectibleItems/ArtoriasSoul.i: Model/CollectibleItems/ArtoriasSoul.cpp.i
+
+.PHONY : Model/CollectibleItems/ArtoriasSoul.i
+
+# target to preprocess a source file
+Model/CollectibleItems/ArtoriasSoul.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/ArtoriasSoul.cpp.i
+.PHONY : Model/CollectibleItems/ArtoriasSoul.cpp.i
+
+Model/CollectibleItems/ArtoriasSoul.s: Model/CollectibleItems/ArtoriasSoul.cpp.s
+
+.PHONY : Model/CollectibleItems/ArtoriasSoul.s
+
+# target to generate assembly for a file
+Model/CollectibleItems/ArtoriasSoul.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/ArtoriasSoul.cpp.s
+.PHONY : Model/CollectibleItems/ArtoriasSoul.cpp.s
+
+Model/CollectibleItems/GuardianSoul.o: Model/CollectibleItems/GuardianSoul.cpp.o
+
+.PHONY : Model/CollectibleItems/GuardianSoul.o
+
+# target to build an object file
+Model/CollectibleItems/GuardianSoul.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/GuardianSoul.cpp.o
+.PHONY : Model/CollectibleItems/GuardianSoul.cpp.o
+
+Model/CollectibleItems/GuardianSoul.i: Model/CollectibleItems/GuardianSoul.cpp.i
+
+.PHONY : Model/CollectibleItems/GuardianSoul.i
+
+# target to preprocess a source file
+Model/CollectibleItems/GuardianSoul.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/GuardianSoul.cpp.i
+.PHONY : Model/CollectibleItems/GuardianSoul.cpp.i
+
+Model/CollectibleItems/GuardianSoul.s: Model/CollectibleItems/GuardianSoul.cpp.s
+
+.PHONY : Model/CollectibleItems/GuardianSoul.s
+
+# target to generate assembly for a file
+Model/CollectibleItems/GuardianSoul.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/GuardianSoul.cpp.s
+.PHONY : Model/CollectibleItems/GuardianSoul.cpp.s
+
+Model/CollectibleItems/Humanity.o: Model/CollectibleItems/Humanity.cpp.o
+
+.PHONY : Model/CollectibleItems/Humanity.o
+
+# target to build an object file
+Model/CollectibleItems/Humanity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/Humanity.cpp.o
+.PHONY : Model/CollectibleItems/Humanity.cpp.o
+
+Model/CollectibleItems/Humanity.i: Model/CollectibleItems/Humanity.cpp.i
+
+.PHONY : Model/CollectibleItems/Humanity.i
+
+# target to preprocess a source file
+Model/CollectibleItems/Humanity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/Humanity.cpp.i
+.PHONY : Model/CollectibleItems/Humanity.cpp.i
+
+Model/CollectibleItems/Humanity.s: Model/CollectibleItems/Humanity.cpp.s
+
+.PHONY : Model/CollectibleItems/Humanity.s
+
+# target to generate assembly for a file
+Model/CollectibleItems/Humanity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/Humanity.cpp.s
+.PHONY : Model/CollectibleItems/Humanity.cpp.s
+
+Model/CollectibleItems/ManusSoul.o: Model/CollectibleItems/ManusSoul.cpp.o
+
+.PHONY : Model/CollectibleItems/ManusSoul.o
+
+# target to build an object file
+Model/CollectibleItems/ManusSoul.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/ManusSoul.cpp.o
+.PHONY : Model/CollectibleItems/ManusSoul.cpp.o
+
+Model/CollectibleItems/ManusSoul.i: Model/CollectibleItems/ManusSoul.cpp.i
+
+.PHONY : Model/CollectibleItems/ManusSoul.i
+
+# target to preprocess a source file
+Model/CollectibleItems/ManusSoul.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/ManusSoul.cpp.i
+.PHONY : Model/CollectibleItems/ManusSoul.cpp.i
+
+Model/CollectibleItems/ManusSoul.s: Model/CollectibleItems/ManusSoul.cpp.s
+
+.PHONY : Model/CollectibleItems/ManusSoul.s
+
+# target to generate assembly for a file
+Model/CollectibleItems/ManusSoul.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/ManusSoul.cpp.s
+.PHONY : Model/CollectibleItems/ManusSoul.cpp.s
+
+Model/CollectibleItems/OolacileResidentHead.o: Model/CollectibleItems/OolacileResidentHead.cpp.o
+
+.PHONY : Model/CollectibleItems/OolacileResidentHead.o
+
+# target to build an object file
+Model/CollectibleItems/OolacileResidentHead.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/OolacileResidentHead.cpp.o
+.PHONY : Model/CollectibleItems/OolacileResidentHead.cpp.o
+
+Model/CollectibleItems/OolacileResidentHead.i: Model/CollectibleItems/OolacileResidentHead.cpp.i
+
+.PHONY : Model/CollectibleItems/OolacileResidentHead.i
+
+# target to preprocess a source file
+Model/CollectibleItems/OolacileResidentHead.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/OolacileResidentHead.cpp.i
+.PHONY : Model/CollectibleItems/OolacileResidentHead.cpp.i
+
+Model/CollectibleItems/OolacileResidentHead.s: Model/CollectibleItems/OolacileResidentHead.cpp.s
+
+.PHONY : Model/CollectibleItems/OolacileResidentHead.s
+
+# target to generate assembly for a file
+Model/CollectibleItems/OolacileResidentHead.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/OolacileResidentHead.cpp.s
+.PHONY : Model/CollectibleItems/OolacileResidentHead.cpp.s
+
+Model/CollectibleItems/OolacileSorcererHead.o: Model/CollectibleItems/OolacileSorcererHead.cpp.o
+
+.PHONY : Model/CollectibleItems/OolacileSorcererHead.o
+
+# target to build an object file
+Model/CollectibleItems/OolacileSorcererHead.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/OolacileSorcererHead.cpp.o
+.PHONY : Model/CollectibleItems/OolacileSorcererHead.cpp.o
+
+Model/CollectibleItems/OolacileSorcererHead.i: Model/CollectibleItems/OolacileSorcererHead.cpp.i
+
+.PHONY : Model/CollectibleItems/OolacileSorcererHead.i
+
+# target to preprocess a source file
+Model/CollectibleItems/OolacileSorcererHead.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/OolacileSorcererHead.cpp.i
+.PHONY : Model/CollectibleItems/OolacileSorcererHead.cpp.i
+
+Model/CollectibleItems/OolacileSorcererHead.s: Model/CollectibleItems/OolacileSorcererHead.cpp.s
+
+.PHONY : Model/CollectibleItems/OolacileSorcererHead.s
+
+# target to generate assembly for a file
+Model/CollectibleItems/OolacileSorcererHead.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/OolacileSorcererHead.cpp.s
+.PHONY : Model/CollectibleItems/OolacileSorcererHead.cpp.s
+
+Model/CollectibleItems/StoneGuardianHelm.o: Model/CollectibleItems/StoneGuardianHelm.cpp.o
+
+.PHONY : Model/CollectibleItems/StoneGuardianHelm.o
+
+# target to build an object file
+Model/CollectibleItems/StoneGuardianHelm.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/StoneGuardianHelm.cpp.o
+.PHONY : Model/CollectibleItems/StoneGuardianHelm.cpp.o
+
+Model/CollectibleItems/StoneGuardianHelm.i: Model/CollectibleItems/StoneGuardianHelm.cpp.i
+
+.PHONY : Model/CollectibleItems/StoneGuardianHelm.i
+
+# target to preprocess a source file
+Model/CollectibleItems/StoneGuardianHelm.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/StoneGuardianHelm.cpp.i
+.PHONY : Model/CollectibleItems/StoneGuardianHelm.cpp.i
+
+Model/CollectibleItems/StoneGuardianHelm.s: Model/CollectibleItems/StoneGuardianHelm.cpp.s
+
+.PHONY : Model/CollectibleItems/StoneGuardianHelm.s
+
+# target to generate assembly for a file
+Model/CollectibleItems/StoneGuardianHelm.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/CollectibleItems/StoneGuardianHelm.cpp.s
+.PHONY : Model/CollectibleItems/StoneGuardianHelm.cpp.s
+
 Model/EstusFlask.o: Model/EstusFlask.cpp.o
 
 .PHONY : Model/EstusFlask.o
@@ -278,6 +467,33 @@ Model/Item.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.s
 .PHONY : Model/Item.cpp.s
 
+Model/ItemFactory.o: Model/ItemFactory.cpp.o
+
+.PHONY : Model/ItemFactory.o
+
+# target to build an object file
+Model/ItemFactory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/ItemFactory.cpp.o
+.PHONY : Model/ItemFactory.cpp.o
+
+Model/ItemFactory.i: Model/ItemFactory.cpp.i
+
+.PHONY : Model/ItemFactory.i
+
+# target to preprocess a source file
+Model/ItemFactory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/ItemFactory.cpp.i
+.PHONY : Model/ItemFactory.cpp.i
+
+Model/ItemFactory.s: Model/ItemFactory.cpp.s
+
+.PHONY : Model/ItemFactory.s
+
+# target to generate assembly for a file
+Model/ItemFactory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Artorias_of_the_abyss.dir/build.make CMakeFiles/Artorias_of_the_abyss.dir/Model/ItemFactory.cpp.s
+.PHONY : Model/ItemFactory.cpp.s
+
 Model/Pendant.o: Model/Pendant.cpp.o
 
 .PHONY : Model/Pendant.o
@@ -314,6 +530,27 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Artorias_of_the_abyss"
+	@echo "... Model/CollectibleItems/ArtoriasSoul.o"
+	@echo "... Model/CollectibleItems/ArtoriasSoul.i"
+	@echo "... Model/CollectibleItems/ArtoriasSoul.s"
+	@echo "... Model/CollectibleItems/GuardianSoul.o"
+	@echo "... Model/CollectibleItems/GuardianSoul.i"
+	@echo "... Model/CollectibleItems/GuardianSoul.s"
+	@echo "... Model/CollectibleItems/Humanity.o"
+	@echo "... Model/CollectibleItems/Humanity.i"
+	@echo "... Model/CollectibleItems/Humanity.s"
+	@echo "... Model/CollectibleItems/ManusSoul.o"
+	@echo "... Model/CollectibleItems/ManusSoul.i"
+	@echo "... Model/CollectibleItems/ManusSoul.s"
+	@echo "... Model/CollectibleItems/OolacileResidentHead.o"
+	@echo "... Model/CollectibleItems/OolacileResidentHead.i"
+	@echo "... Model/CollectibleItems/OolacileResidentHead.s"
+	@echo "... Model/CollectibleItems/OolacileSorcererHead.o"
+	@echo "... Model/CollectibleItems/OolacileSorcererHead.i"
+	@echo "... Model/CollectibleItems/OolacileSorcererHead.s"
+	@echo "... Model/CollectibleItems/StoneGuardianHelm.o"
+	@echo "... Model/CollectibleItems/StoneGuardianHelm.i"
+	@echo "... Model/CollectibleItems/StoneGuardianHelm.s"
 	@echo "... Model/EstusFlask.o"
 	@echo "... Model/EstusFlask.i"
 	@echo "... Model/EstusFlask.s"
@@ -329,6 +566,9 @@ help:
 	@echo "... Model/Item.o"
 	@echo "... Model/Item.i"
 	@echo "... Model/Item.s"
+	@echo "... Model/ItemFactory.o"
+	@echo "... Model/ItemFactory.i"
+	@echo "... Model/ItemFactory.s"
 	@echo "... Model/Pendant.o"
 	@echo "... Model/Pendant.i"
 	@echo "... Model/Pendant.s"

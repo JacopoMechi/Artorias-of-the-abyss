@@ -1,10 +1,18 @@
 #include "Item.h"
 
-Item::Item(std::string n, int p, int c, std::string d, int M) : itemName(n), itemPrice(p), itemCount(c),
-    itemDescription(d), maxItemCount(M){
+Item::Item(std::string n, int p, std::string d, int M, int c) : itemName(n), itemPrice(p),
+    itemDescription(d), maxItemCount(M), itemCount(c){
 
 }
 
 Item::~Item(){
 
+}
+
+int Item::getItemCount() {
+    return itemCount;
+}
+
+void Item::setItemCount(int itemCount){
+    this -> itemCount = itemCount;
 }

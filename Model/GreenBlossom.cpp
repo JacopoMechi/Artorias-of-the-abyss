@@ -1,6 +1,6 @@
 #include "GreenBlossom.h"
 
-GreenBlossom::GreenBlossom(std::string n, int p, int c, std::string d, int M): Item(n, p, c, d, M){
+GreenBlossom::GreenBlossom(std::string n, int p, std::string d, int M, int c): Item(n, p, d, M, c){
 
 }
 

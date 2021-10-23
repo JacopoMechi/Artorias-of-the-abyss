@@ -6,8 +6,8 @@
 
 class EstusFlask: public Item {
 public:
-    explicit EstusFlask(std::string n = "Fiaschetta di Cura",int p = 0, int c = 5,
-                        std::string d = "Fiaschette che curano 30hp", int M = 5);
+    explicit EstusFlask(std::string n = "Fiaschetta di Cura",int p = 0,
+                        std::string d = "Fiaschette che curano 30hp", int M = 5, int c = 5);
     ~EstusFlask();
     int getItemCount ();
     void setItemCount(int itemCount);

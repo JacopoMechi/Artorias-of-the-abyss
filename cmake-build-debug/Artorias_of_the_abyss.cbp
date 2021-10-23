@@ -84,6 +84,48 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/ArtoriasSoul.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/ArtoriasSoul.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/GuardianSoul.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/GuardianSoul.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/Humanity.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/Humanity.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/ManusSoul.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/ManusSoul.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/OolacileResidentHead.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/OolacileResidentHead.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/OolacileSorcererHead.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/OolacileSorcererHead.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/StoneGuardianHelm.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/StoneGuardianHelm.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
 		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/EstusFlask.cpp">
 			<Option target="Artorias_of_the_abyss"/>
 		</Unit>
@@ -112,6 +154,12 @@
 			<Option target="Artorias_of_the_abyss"/>
 		</Unit>
 		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Item.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/ItemFactory.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/ItemFactory.h">
 			<Option target="Artorias_of_the_abyss"/>
 		</Unit>
 		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Pendant.cpp">

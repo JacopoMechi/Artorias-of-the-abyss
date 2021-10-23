@@ -7,9 +7,10 @@
 
 class HomewardBone: public Item {
 public: 
-    HomewardBone(std::string n = "Osso del Ritorno", int p = 2000, int c = 0,
-                 std::string d = "Permette il teletrasporto all'ultimo falo' interagito", int M = 3);
+    explicit HomewardBone(std::string n = "Osso del Ritorno", int p = 2000,
+                 std::string d = "Permette il teletrasporto all'ultimo falo' interagito", int M = 3, int c = 0);
     ~HomewardBone();
+
     void use(Hero& hero, MapElements& bonfire);
 };
 
