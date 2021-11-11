@@ -1,21 +1,18 @@
-/**
- * Project Untitled
- */
-
-
 #include "Item.h"
 
-/**
- * Item implementation
- */
+Item::Item(std::string n, int p, std::string d, int M, int c) : itemName(n), itemPrice(p),
+    itemDescription(d), maxItemCount(M), itemCount(c){
 
+}
 
-/**
- * @param string itemName
- * @param int itemPrice
- * @param int itemCount
- * @param string itemDescription
- */
-void Item::showDescription(void string itemName, void int itemPrice, void int itemCount, void string itemDescription) {
+Item::~Item(){
 
+}
+
+int Item::getItemCount() {
+    return itemCount;
+}
+
+void Item::setItemCount(int itemCount){
+    this -> itemCount = itemCount;
 }

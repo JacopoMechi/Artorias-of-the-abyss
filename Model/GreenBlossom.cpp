@@ -1,15 +1,17 @@
-/**
- * Project Untitled
- */
-
-
 #include "GreenBlossom.h"
 
-/**
- * GreenBlossom implementation
- */
+GreenBlossom::GreenBlossom(std::string n, int p, std::string d, int M, int c): Item(n, p, d, M, c){
 
+}
 
-void GreenBlossom::use() {
+GreenBlossom::~GreenBlossom(){
 
+}
+
+void GreenBlossom::use(Hero& hero, int newCooldown, int timeEffect) {
+    int tmp = hero.getCooldown();
+    // for time = timeEffect in seconds
+    hero.setCooldown(newCooldown);
+    //end time
+    hero.setCooldown(tmp);
 }

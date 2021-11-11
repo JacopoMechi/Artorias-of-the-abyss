@@ -10,15 +10,18 @@
  */
 
 
-void MapElements::getPos() {
-
+float MapElements::getPosX() {
+    return posX;
+}
+void MapElements::setPosX(float posX) {
+    this -> posX = posX;
 }
 
-/**
- * @param float pos[2]
- */
-void MapElements::setPos(void float pos[2]) {
-
+float MapElements::getPosY(){
+    return posY;
+}
+void MapElements::setPosY(float posY){
+    this -> posY = posY;
 }
 
 void MapElements::draw() {

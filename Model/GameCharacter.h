@@ -1,83 +1,60 @@
-/**
- * Project Untitled
- */
-
-
 #ifndef _GAMECHARACTER_H
 #define _GAMECHARACTER_H
 
+#include <string>
+#include <iostream>
+#include <complex> //for norm
+
 #include "MapElements.h"
+#include "Weapon.h"
 
 
-class GameCharacter: public MapElements {
-public: 
+class GameCharacter:  public MapElements{
+
+public:
+    GameCharacter(int hp, int a, int c, int s, std::string& t);//hp: HP, a: armor, c: cash, s: speed, t: textPool
+    ~GameCharacter();
     
-void getHp();
+    int getHp() const;
+    void setHp(int hp);
     
-/**
- * @param int hp
- */
-void setHp(void int hp);
+    int getArmor() const;
+    void setArmor(int armor);
     
-void getArmor();
+    int getCash() const;
+    void setCash(int cash);
     
-/**
- * @param int defence
- */
-void setArmor(void int defence);
+    int getMovementSpeed()const;
+    void setMovementSpeed(int speed);
     
-void getCash();
+    Weapon* getWeapon();
+    void setWeapon(Weapon* weapon);
+
+    //removed isUnkillable. In NPC use virtual void receiveDamage() override{};
+    //removed respawn. I think its useless here. Better in Hero
+    virtual void receiveDamage(int points);
+
+    Weapon* getShield();
+    void setShield(Weapon* weapon);
     
-/**
- * @param int cash
- */
-void setCash(void int cash);
+    void isDialogue();
     
-void getDash();
+    virtual void movement();
     
-/**
- * @param int dashCount
- */
-void setDash(void int dashCount);
+    virtual void attack(GameCharacter &opponent);
     
-void getMovementSpeed();
-    
-/**
- * @param int speed
- */
-void setMovementSpeed(void int speed);
-    
-void getWeapon();
-    
-/**
- * @param Weapon* weapon
- */
-void setWeapon(void Weapon* weapon);
-    
-void receiveDamage();
-    
-void getShield();
-    
-void setShield();
-    
-void isUnkillable();
-    
-void isDialogue();
-    
-void movement();
-    
-void attack();
-    
-void isChasing();
-    
-void respawn();
+    bool isChasing(int aggroDistance, const GameCharacter &enemy);
+
+
 protected: 
     int HP;
     int armor;
     int cash;
-    int dashCount;
     int speed;
+    int dialogueTracker = 0;
     Weapon* weapon;
+    Weapon* leftWeapon;
+    std::string& textPool;
 };
 
 #endif //_GAMECHARACTER_H

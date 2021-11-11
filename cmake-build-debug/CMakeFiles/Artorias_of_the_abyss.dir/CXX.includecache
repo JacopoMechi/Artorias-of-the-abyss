@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GameCharacter.cpp
+GameCharacter.h
+/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GameCharacter.h
+
+/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GameCharacter.h
+string
+-
+iostream
+-
+complex
+-
+MapElements.h
+/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/MapElements.h
+Weapon.h
+/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Weapon.h
+
+/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/MapElements.h
+
+/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Weapon.h
+
