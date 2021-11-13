@@ -1,37 +1,21 @@
-/**
- * Project Untitled
- */
-
-
 #include "Weapon.h"
 
-/**
- * Weapon implementation
- */
-
-
-void Weapon::getDamage() {
-
+int Weapon::getDamage()
+{
+    return damage;
 }
 
-/**
- * @param int damage
- */
-void Weapon::setDamage(void int damage) {
-
+void Weapon::setDamage(int damage)
+{
+    this->damage = damage;
 }
 
-void Weapon::getLevel() {
-
+int Weapon::getLevel()
+{
+    return level;
 }
 
-/**
- * @param int level
- */
-void Weapon::setLevel(void int level) {
-
-}
-
-void Weapon::use() {
-
+void Weapon::setLevel(int level)
+{
+    this->level = level;
 }
