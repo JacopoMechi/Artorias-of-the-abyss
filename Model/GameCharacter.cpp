@@ -16,6 +16,8 @@ int GameCharacter::getHp() const{
 }
 
 void GameCharacter::setHp(int hp) {
+    if (hp < 0)
+        hp = 0;
     this->HP = hp;
 }
 
@@ -53,9 +55,7 @@ void GameCharacter::setWeapon(Weapon* weapon) {
 
 void GameCharacter::receiveDamage(int points) {
     points = points*armor/100;
-    HP-=points;
-    if (HP < 0)
-        HP = 0;
+    setHp(HP-points);
 }
 
 Weapon* GameCharacter::getShield() {
