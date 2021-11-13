@@ -1,5 +1,9 @@
 #include "Weapon.h"
 
+Weapon::Weapon(int damage, int level) : damage(damage), level(level) {}
+
+Weapon::~Weapon() {}
+
 int Weapon::getDamage()
 {
     return damage;
