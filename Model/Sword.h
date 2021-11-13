@@ -4,9 +4,13 @@
 #include "Weapon.h"
 class Sword : public Weapon
 {
-    explicit Sword(int damage = 1, int level = 1); //TODO choose default damage value
+public:
+    virtual void setLevel(int level) override;
+
+protected:
+    Sword(int level = 1);
+
     ~Sword();
-    virtual int use() override;
 };
 
 #endif //_SWORD_H
