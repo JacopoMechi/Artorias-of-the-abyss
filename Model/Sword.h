@@ -6,6 +6,7 @@ class Sword : public Weapon
 {
     explicit Sword(int damage = 1, int level = 1); //TODO choose default damage value
     ~Sword();
+    virtual int use() override;
 };
 
 #endif //_SWORD_H
