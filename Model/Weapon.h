@@ -4,19 +4,15 @@
 class Weapon
 {
 public:
-    Weapon(int damage, int level);
+    explicit Weapon(int level = 1);
 
     ~Weapon();
 
     int getDamage();
 
-    void setDamage(int damage);
-
     int getLevel();
 
-    void setLevel(int level);
-
-    virtual int use() = 0;
+    virtual void setLevel(int level) = 0;
 
 protected:
     int damage;
