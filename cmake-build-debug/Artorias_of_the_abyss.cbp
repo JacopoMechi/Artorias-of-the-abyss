@@ -45,6 +45,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model"/>
+					<Add directory="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/ExtraLibraries/SFML"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -68,6 +69,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model"/>
+					<Add directory="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/ExtraLibraries/SFML"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -166,6 +168,9 @@
 			<Option target="Artorias_of_the_abyss"/>
 		</Unit>
 		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Pendant.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/main.cpp">
 			<Option target="Artorias_of_the_abyss"/>
 		</Unit>
 		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/CMakeLists.txt">

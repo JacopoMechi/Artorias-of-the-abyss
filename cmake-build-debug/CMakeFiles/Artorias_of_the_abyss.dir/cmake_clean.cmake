@@ -15,6 +15,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.o"
   "CMakeFiles/Artorias_of_the_abyss.dir/Model/ItemFactory.cpp.o"
   "CMakeFiles/Artorias_of_the_abyss.dir/Model/Pendant.cpp.o"
+  "CMakeFiles/Artorias_of_the_abyss.dir/main.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

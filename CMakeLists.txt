@@ -3,9 +3,11 @@ project(Artorias_of_the_abyss)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(Model)
+include_directories(Model
+                    ExtraLibraries/SFML)
 
 add_executable(Artorias_of_the_abyss
+        main.cpp
         Model/Inventory.cpp
         Model/Inventory.h
         Model/Item.h

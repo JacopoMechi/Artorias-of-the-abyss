@@ -12,80 +12,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f5e779d-727f-412d-92cd-0e887b0d85ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/ArtoriasSoul.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/ArtoriasSoul.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/GuardianSoul.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/GuardianSoul.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/Humanity.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/Humanity.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/ManusSoul.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/ManusSoul.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/OolacileResidentHead.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/OolacileResidentHead.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/OolacileSorcererHead.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/OolacileSorcererHead.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/StoneGuardianHelm.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CollectibleItems/StoneGuardianHelm.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/Artorias_of_the_abyss.cbp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.5/CMakeCCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.5/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.5/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.5/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.5/CMakeSystem.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.5/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.5/CompilerIdC/a.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.5/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.17.5/CompilerIdCXX/a.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/CXX.includecache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/DependInfo.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/build.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/cmake_clean.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/depend.internal" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/depend.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/flags.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/link.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/progress.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Progress/count.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/EstusFlask.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/EstusFlask.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/EstusFlask.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/EstusFlask.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/GameCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/GameCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/GameCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/GameCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/GreenBlossom.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/GreenBlossom.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/GreenBlossom.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/GreenBlossom.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Hero.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Hero.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Hero.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Hero.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/HomewardBone.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/HomewardBone.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/HomewardBone.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/HomewardBone.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Inventory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Inventory.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Inventory.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Inventory.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Item.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Item.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Item.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Item.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/ItemFactory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/ItemFactory.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/ItemFactory.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/ItemFactory.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/MapElements.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/MapElements.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/MapElements.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/MapElements.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/NPC.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/NPC.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Pendant.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Pendant.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Pendant.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Pendant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Weapon.h" beforeDir="false" afterPath="$PROJECT_DIR$/Model/Weapon.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Artorias_of_the_abyss.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Artorias_of_the_abyss.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="test" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -111,6 +50,31 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1636813509" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="test" />
+                    <option name="lastUsedInstant" value="1636813508" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="ProjectId" id="1yZzk1GQHEWBpmkG3YPZzzUJAsG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -132,7 +96,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="com.github.johnthagen.cppcheck.Configuration" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -141,12 +105,12 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Artorias_of_the_abyss" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Artorias_of_the_abyss" TARGET_NAME="Artorias_of_the_abyss" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Artorias_of_the_abyss" RUN_TARGET_NAME="Artorias_of_the_abyss">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Artorias_of_the_abyss" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Artorias_of_the_abyss" TARGET_NAME="Artorias_of_the_abyss" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Artorias_of_the_abyss" RUN_TARGET_NAME="Artorias_of_the_abyss">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -186,6 +150,11 @@
       <workItem from="1634797128198" duration="13872000" />
       <workItem from="1634885539772" duration="18219000" />
       <workItem from="1635009023937" duration="2316000" />
+      <workItem from="1636809610633" duration="1312000" />
+      <workItem from="1636810930287" duration="5498000" />
+      <workItem from="1636817325190" duration="2055000" />
+      <workItem from="1636879769423" duration="6000" />
+      <workItem from="1636903737819" duration="615000" />
     </task>
     <task id="LOCAL-00001" summary="Uploaded project UML">
       <created>1632474658858</created>
@@ -257,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634895437594</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Merge remote-tracking branch 'origin/Assioma' into main&#10;&#10;# Conflicts:&#10;#&#9;CMakeLists.txt">
+      <created>1636644188635</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1636644188635</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,7 +250,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Assioma" />
+                        <option value="test" />
                       </list>
                     </value>
                   </entry>
@@ -299,7 +275,8 @@
     <MESSAGE value="Finished Inventory and Item, for the moment (SFML needed, and something in main too)." />
     <MESSAGE value="Finished Pendant and EstusFlask, for the moment (SFML needed). Added restoreHp method in Hero" />
     <MESSAGE value="Finished GreenBlossom and HomewardBone, for the moment (SFML needed and time). Edited MapElements (added posX posY, getters and setters) and Hero (dash, dashes' getter and setter, cooldown, cooldowns' getter and setter,dash method, posX, posY and getters and setters)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished GreenBlossom and HomewardBone, for the moment (SFML needed and time). Edited MapElements (added posX posY, getters and setters) and Hero (dash, dashes' getter and setter, cooldown, cooldowns' getter and setter,dash method, posX, posY and getters and setters)" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/Assioma' into main&#10;&#10;# Conflicts:&#10;#&#9;CMakeLists.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/Assioma' into main&#10;&#10;# Conflicts:&#10;#&#9;CMakeLists.txt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

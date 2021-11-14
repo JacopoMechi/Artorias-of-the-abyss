@@ -18,12 +18,14 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Item.cpp" "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/Model/Item.cpp.o"
   "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/ItemFactory.cpp" "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/Model/ItemFactory.cpp.o"
   "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Pendant.cpp" "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/Model/Pendant.cpp.o"
+  "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/main.cpp" "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/CMakeFiles/Artorias_of_the_abyss.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../Model"
+  "../ExtraLibraries/SFML"
   )
 
 # Targets to which this target links.

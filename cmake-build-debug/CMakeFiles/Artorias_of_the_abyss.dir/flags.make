@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model 
+CXX_INCLUDES = -I/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model -I/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/ExtraLibraries/SFML 
 
