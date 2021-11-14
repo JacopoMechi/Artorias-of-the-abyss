@@ -2,6 +2,7 @@
 
 #include "GameCharacter.h"
 #include "Inventory.h"
+#include "Animation.h"
 
 int main(){
     //textPool
