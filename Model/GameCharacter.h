@@ -7,12 +7,13 @@
 
 #include "MapElements.h"
 #include "Weapon.h"
-
+#include "Animation.h"
 
 class GameCharacter:  public MapElements{
 
 public:
     GameCharacter(int hp, int a, int c, int s, std::string& t);//hp: HP, a: armor, c: cash, s: speed, t: textPool
+    GameCharacter(const sf::Vector2f& pos);
     ~GameCharacter();
     
     int getHp() const;
@@ -46,6 +47,13 @@ public:
     bool isChasing(int aggroDistance, const GameCharacter &enemy);
 
 
+    void draw(sf::RenderTarget& rt) const;
+
+    void setDirection(const sf::Vector2f& dir);
+
+    void update(float dt);
+
+
 protected: 
     int HP;
     int armor;
@@ -55,6 +63,21 @@ protected:
     Weapon* weapon;
     Weapon* leftWeapon;
     std::string& textPool;
+
+    enum class AnimationIndex{
+        WalkingUp,
+        WalkingDown,
+        WalkingLeft,
+        WalkingRight,
+        Idle,
+        Count
+    };
+    static constexpr float speed = 100.0f;
+    sf::Vector2f pos;
+    sf::Vector2f vel = {0.0f, 0.0f};
+    sf::Sprite sprite;
+    Animation animations[int(AnimationIndex::Count)];
+    AnimationIndex curAniamtion = AnimationIndex::Idle;
 };
 
 #endif //_GAMECHARACTER_H
