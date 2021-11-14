@@ -1,25 +1,11 @@
-#include "Graphics.hpp"
+#include "Graphic.hpp"
 
 class Animation{
 public:
     Animation() = default; //TODO check meaning
-    Animation(int x, int y, int width, int height){
-        texture.loadFromFile();//TODO add sprite
-        for (int i = 0; i < nFrames; i++){
-            frames[i] = {x+i*width, y, width, height};//TODO what is rectleft? i think is the image swap
-        }
-    }
-    void applyToSprite(sf::Sprite& s) const{
-        s.setTexture(texture);
-        s.setTextureRect(frames[iFrame]);
-    }
-    void update(float dt){
-        time += dt;
-        while(time >= holdTime){
-            time -= holdTime;
-            advance();
-        }
-    }
+    Animation(int x, int y, int width, int height);
+    void applyToSprite(sf::Sprite& s) const;
+    void update(float dt);
 private:
     void advance(){
         if (++iFrame >= nFrames)//TODO check meaning
