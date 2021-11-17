@@ -10,11 +10,11 @@ public:
 
     virtual void setLevel(int level) = 0;
 
-protected:
     explicit Weapon(int level = 1);
 
     ~Weapon();
 
+protected:
     int damage;
     int level;
 };
