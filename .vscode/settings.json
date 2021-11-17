@@ -1,4 +1,8 @@
 {
     "glassit.alpha": 150,
-    "glassit.step": 80
+    "glassit.step": 80,
+    "C_Cpp.errorSquiggles": "Enabled",
+    "files.associations": {
+        "string": "cpp"
+    }
 }

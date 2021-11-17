@@ -3,8 +3,9 @@ project(Artorias_of_the_abyss)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(Model
-                    ExtraLibraries/SFML)
+include_directories(Model)
+
+link_directories(SFML)
 
 add_executable(Artorias_of_the_abyss
         main.cpp
