@@ -1,9 +1,36 @@
 #include "GameCharacter.h"
 
-GameCharacter::GameCharacter(int hp, int a, int c, int s, std::string& t): HP(hp), armor(a), cash(c),speed(s),
+GameCharacter::GameCharacter(int hp, int a, int c, int mS, std::string& t): HP(hp), armor(a), cash(c), movementSpeed(mS),
 weapon(nullptr), leftWeapon(nullptr), textPool(t){
 }
+GameCharacter::GameCharacter(const sf::Vector2f& pos,float rectPosX, float rectPosY, float rectWidth, float rectHeight): 
+                        pos(pos), rectPosX(rectPosX), rectPosY(rectPosY), rectWidth(rectWidth), rectHeight(rectHeight){
+    sprite.setTextureRect({rectPosX, rectPosY, rectWidth, rectHeight});
+    animations[int(AnimationIndex::WalkingUp)] = Animation();//TODO needs to be adjusted
+    animations[int(AnimationIndex::WalkingDown)] = Animation();
+    animations[int(AnimationIndex::WalkingLeft)] = Animation();
+    animations[int(AnimationIndex::WalkingRight)] = Animation();
+    animations[int(AnimationIndex::Idle)] = Animation();
+}
 
+void GameCharacter::draw(sf::RenderTarget& rt) const{
+    rt.draw(sprite);
+}
+
+void GameCharacter::setDirection(const sf::Vector2f& dir){
+    vel = dir*speed;
+    if(dir.x > 0.0f){
+        curAnimation = AnimationIndex::WalkingRight;
+    }else if(dir.x < 0.0f){
+        curAnimation = AnimationIndex::WalkingLeft;
+    }else if(dir.y < 0.0f){
+        curAnimation = AnimationIndex::WalkingUp;
+    }else if(dir.y > 0.0f){
+        curAnimation = AnimationIndex::WalkingDown;
+    }else
+        curAnimation = AnimationIndex::Idle;
+
+}
 GameCharacter::~GameCharacter() {
     if (weapon != nullptr)
         delete weapon;
@@ -38,11 +65,11 @@ void GameCharacter::setCash( int cash) {
 }
 
 int GameCharacter::getMovementSpeed() const{
-    return speed;
+    return movementSpeed;
 }
 
-void GameCharacter::setMovementSpeed(int speed) {
-    this->speed = speed;
+void GameCharacter::setMovementSpeed(int movementSpeed) {
+    this->movementSpeed = movementSpeed;
 }
 
 Weapon* GameCharacter::getWeapon() {
@@ -75,13 +102,13 @@ void GameCharacter::attack(GameCharacter &opponent) {//its virtual, needs to be 
     //TODO with SFML library type if (sf::Keyboard::isPressed(sf::Keyboard::E){}
     int hit = 1;
     if(weapon){//and something else
-        hit = weapon -> use();//edited in weapon -> from void use to int use
+        hit = weapon -> getDamage();//edited in weapon -> from void use to int use
     }
     opponent.receiveDamage(hit);
 }
 
-bool GameCharacter::isChasing(int aggroDistance, const GameCharacter &enemy) {
-    if (std::norm(pos-enemy.pos) > aggroDistance) //is it ok?
+bool GameCharacter::isChasing(int aggroDistance, const GameCharacter &enemy) {//FIXME position
+    if (sf::norm(pos-enemy.pos) > aggroDistance) //is it ok?
         return false;
     return true;
 }
