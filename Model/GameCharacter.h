@@ -5,6 +5,7 @@
 #include <iostream>
 #include <complex> //for norm
 
+#include "Graphics.hpp"
 #include "MapElements.h"
 #include "Weapon.h"
 #include "Animation.h"
@@ -12,8 +13,8 @@
 class GameCharacter:  public MapElements{
 
 public:
-    GameCharacter(int hp, int a, int c, int s, std::string& t);//hp: HP, a: armor, c: cash, s: speed, t: textPool
-    GameCharacter(const sf::Vector2f& pos);
+    GameCharacter(int hp, int a, int c, int mS);//hp: HP, a: armor, c: cash, mS: movementSpeed, t: textPool
+    GameCharacter(const sf::Vector2f& pos,sf::Texture texture, float rectPosX, float rectPosY, float rectWidth, float rectHeight);
     ~GameCharacter();
     
     int getHp() const;
@@ -38,32 +39,34 @@ public:
     Weapon* getShield();
     void setShield(Weapon* weapon);
     
-    void isDialogue();
-    
     virtual void movement();
     
     virtual void attack(GameCharacter &opponent);
     
     bool isChasing(int aggroDistance, const GameCharacter &enemy);
 
-
     void draw(sf::RenderTarget& rt) const;
 
     void setDirection(const sf::Vector2f& dir);
-
+    
+    void applyToSprite(sf::Sprite& s) const;
+    
     void update(float dt);
-
 
 protected: 
     int HP;
     int armor;
     int cash;
-    int speed;
+    int movementSpeed;
     int dialogueTracker = 0;
+    float rectPosX;
+    float rectPosY;
+    float rectWidth;
+    float rectHeight;
     Weapon* weapon;
     Weapon* leftWeapon;
-    std::string& textPool;
 
+    sf::Texture texture;
     enum class AnimationIndex{
         WalkingUp,
         WalkingDown,
@@ -77,7 +80,17 @@ protected:
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;
     Animation animations[int(AnimationIndex::Count)];
-    AnimationIndex curAniamtion = AnimationIndex::Idle;
+    AnimationIndex curAnimation = AnimationIndex::Idle;
+    void advance(){
+        if (++iFrame >= nFrames)
+            iFrame = 0;
+    }
+    static constexpr int nFrames = 5;
+    static constexpr float holdTime = 0.01f;
+    sf::IntRect frames[nFrames];
+    int iFrame = 0;
+    float time = 0.0f;
+
 };
 
 #endif //_GAMECHARACTER_H

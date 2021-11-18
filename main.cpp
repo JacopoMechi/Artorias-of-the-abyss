@@ -1,4 +1,5 @@
 #include "Graphics.hpp"
+#include <chrono>
 
 #include "GameCharacter.h"
 #include "Inventory.h"
@@ -69,8 +70,62 @@ int main(){
     //create window
     sf::RenderWindow window {sf::VideoMode(800, 600), "Map"};
     sf::Texture t;
-    sf::Sprite st(t);
+    sf::Sprite s(t);
 
     //creating GameCharacter
-    GameCharacter hero(100, 20, 0, 1, elizabethPool[0]);//...
+    GameCharacter test(100, 20, 0, 1);//...
+
+    //timepoint for delta time measurement //TODO check meaning
+    auto tp = std::chrono::steady_clock::now();
+
+    //starting the game loop
+    while (window.isOpen()){
+        //process event
+        sf::Event event;
+        while(window.pollEvent(event)){
+            //close window
+            if (event.type == sf::Event::Closed)
+            window.close();
+        }
+
+        //get dt
+        float dt;
+        {
+            const auto new_tp = std::chrono::steady_clock::now();//TODO check what is it
+            dt = std::chrono::duration<float>(new_tp - tp).count();
+            tp = new_tp;
+        }
+
+        //handel input
+        sf::Vector2f dir = {0.0f, 0.0f};
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+            dir.y -= 1.0f;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+            dir.y += 1.0f;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+            dir.x -= 1.0f;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            dir.x += 1.0f;
+        }
+        test.setDirection(dir);
+
+        //update model
+        test.update(dt);
+
+        //clear screen
+        window.clear();
+
+        //draw background
+        window.draw(s);
+
+        //draw the sprite
+        test.draw(window);
+
+        //update the window
+        window.display();
+    }
+    return EXIT_SUCCESS;//TODO find meaning
 }
