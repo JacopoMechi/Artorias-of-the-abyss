@@ -1,22 +1,21 @@
-/**
- * Project Untitled
- */
-
-
 #ifndef _BONFIRE_H
 #define _BONFIRE_H
 
-#include "MapElements.h"
+#include "MapElement.h"
 
+class Bonfire : public MapElement
+{
+public:
+    void resetHp();
 
-class Bonfire: public MapElements {
-public: 
-    
-void resetHp();
-    
-void setSpawnPoint();
-    
-void respawnEnemies();
+    void setSpawnPoint();
+
+    void respawnEnemies();
+
+protected:
+    Bonfire(float posX, float posY);
+
+    ~Bonfire();
 };
 
 #endif //_BONFIRE_H

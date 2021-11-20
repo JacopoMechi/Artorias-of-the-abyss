@@ -1,23 +1,16 @@
-/**
- * Project Untitled
- */
-
-
 #include "Bonfire.h"
 
-/**
- * Bonfire implementation
- */
-
-
-void Bonfire::resetHp() {
-
+void Bonfire::resetHp()
+{
 }
 
-void Bonfire::setSpawnPoint() {
-
+void Bonfire::setSpawnPoint()
+{
 }
 
-void Bonfire::respawnEnemies() {
-
+void Bonfire::respawnEnemies()
+{
 }
+
+Bonfire::Bonfire(float posX, float posY) : MapElement(posX, posY) {}
+Bonfire::~Bonfire() {}
