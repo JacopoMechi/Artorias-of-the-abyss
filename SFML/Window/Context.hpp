@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -41,15 +41,13 @@ namespace priv
     class GlContext;
 }
 
-typedef void (*GlFunctionPointer)();
-
 ////////////////////////////////////////////////////////////
 /// \brief Class holding a valid drawing context
 ///
 ////////////////////////////////////////////////////////////
 class SFML_WINDOW_API Context : GlResource, NonCopyable
 {
-public:
+public :
 
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
@@ -62,13 +60,13 @@ public:
     ////////////////////////////////////////////////////////////
     /// \brief Destructor
     ///
-    /// The destructor deactivates and destroys the context
+    /// The desctructor deactivates and destroys the context
     ///
     ////////////////////////////////////////////////////////////
     ~Context();
 
     ////////////////////////////////////////////////////////////
-    /// \brief Activate or deactivate explicitly the context
+    /// \brief Activate or deactivate explicitely the context
     ///
     /// \param active True to activate, false to deactivate
     ///
@@ -77,60 +75,7 @@ public:
     ////////////////////////////////////////////////////////////
     bool setActive(bool active);
 
-    ////////////////////////////////////////////////////////////
-    /// \brief Get the settings of the context
-    ///
-    /// Note that these settings may be different than the ones
-    /// passed to the constructor; they are indeed adjusted if the
-    /// original settings are not directly supported by the system.
-    ///
-    /// \return Structure containing the settings
-    ///
-    ////////////////////////////////////////////////////////////
-    const ContextSettings& getSettings() const;
-
-    ////////////////////////////////////////////////////////////
-    /// \brief Check whether a given OpenGL extension is available
-    ///
-    /// \param name Name of the extension to check for
-    ///
-    /// \return True if available, false if unavailable
-    ///
-    ////////////////////////////////////////////////////////////
-    static bool isExtensionAvailable(const char* name);
-
-    ////////////////////////////////////////////////////////////
-    /// \brief Get the address of an OpenGL function
-    ///
-    /// \param name Name of the function to get the address of
-    ///
-    /// \return Address of the OpenGL function, 0 on failure
-    ///
-    ////////////////////////////////////////////////////////////
-    static GlFunctionPointer getFunction(const char* name);
-
-    ////////////////////////////////////////////////////////////
-    /// \brief Get the currently active context
-    ///
-    /// This function will only return sf::Context objects.
-    /// Contexts created e.g. by RenderTargets or for internal
-    /// use will not be returned by this function.
-    ///
-    /// \return The currently active context or NULL if none is active
-    ///
-    ////////////////////////////////////////////////////////////
-    static const Context* getActiveContext();
-
-    ////////////////////////////////////////////////////////////
-    /// \brief Get the currently active context's ID
-    ///
-    /// The context ID is used to identify contexts when
-    /// managing unshareable OpenGL resources.
-    ///
-    /// \return The active context's ID or 0 if no context is currently active
-    ///
-    ////////////////////////////////////////////////////////////
-    static Uint64 getActiveContextId();
+public :
 
     ////////////////////////////////////////////////////////////
     /// \brief Construct a in-memory context
@@ -145,7 +90,7 @@ public:
     ////////////////////////////////////////////////////////////
     Context(const ContextSettings& settings, unsigned int width, unsigned int height);
 
-private:
+private :
 
     ////////////////////////////////////////////////////////////
     // Member data

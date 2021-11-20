@@ -1,31 +1,30 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.16)
 project(Artorias_of_the_abyss)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(Model)
-
-link_directories(SFML)
+include_directories(Model
+                    SFML)
 
 add_executable(Artorias_of_the_abyss
         main.cpp
-        Model/Inventory.cpp
-        Model/Inventory.h
-        Model/Item.h
-        Model/Item.cpp
-        Model/EstusFlask.cpp
-        Model/EstusFlask.h
-        Model/GreenBlossom.cpp
-        Model/GreenBlossom.h
-        Model/Pendant.cpp
-        Model/Pendant.h
-        Model/HomewardBone.cpp
-        Model/HomewardBone.h
-        Model/ItemFactory.cpp
-        Model/ItemFactory.h
-        Model/Animation.h
-        Model/Animation.cpp
-        Model/CollectibleItems/GuardianSoul.h Model/CollectibleItems/ArtoriasSoul.h Model/CollectibleItems/ManusSoul.h Model/CollectibleItems/Humanity.h Model/CollectibleItems/StoneGuardianHelm.h Model/CollectibleItems/OolacileResidentHead.h Model/CollectibleItems/OolacileSorcererHead.h Model/CollectibleItems/ArtoriasSoul.cpp Model/CollectibleItems/GuardianSoul.cpp Model/CollectibleItems/Humanity.cpp Model/CollectibleItems/ManusSoul.cpp Model/CollectibleItems/OolacileResidentHead.cpp Model/CollectibleItems/OolacileSorcererHead.cpp Model/CollectibleItems/StoneGuardianHelm.cpp)
+        Model/GameCharacter.cpp
+        Model/GameCharacter.h
+        ##Model/Inventory.cpp
+        ##Model/Inventory.h
+        ##Model/Item.h
+        ##Model/Item.cpp
+        ##Model/EstusFlask.cpp
+        ##Model/EstusFlask.h
+        ##Model/GreenBlossom.cpp
+        ##Model/GreenBlossom.h
+        ##Model/Pendant.cpp
+        ##Model/Pendant.h
+        ##Model/HomewardBone.cpp
+        ##Model/HomewardBone.h
+        ##Model/ItemFactory.cpp
+        ##Model/ItemFactory.h
+        )
 #[[add_executable(Artorias_of_the_abyss
         origin/Assioma
         Model/Bonfire.cpp

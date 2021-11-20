@@ -1,0 +1,13 @@
+[
+{
+  "directory": "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I../Model -I../SFML  -g   -std=gnu++14 -o CMakeFiles/Artorias_of_the_abyss.dir/main.cpp.o -c /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/main.cpp",
+  "file": "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/main.cpp"
+},
+
+{
+  "directory": "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I../Model -I../SFML  -g   -std=gnu++14 -o CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o -c /home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GameCharacter.cpp",
+  "file": "/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GameCharacter.cpp"
+}
+]

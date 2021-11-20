@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -39,7 +39,7 @@ namespace sf
 ////////////////////////////////////////////////////////////
 class SFML_WINDOW_API Keyboard
 {
-public:
+public :
 
     ////////////////////////////////////////////////////////////
     /// \brief Key codes
@@ -96,18 +96,18 @@ public:
         Menu,         ///< The Menu key
         LBracket,     ///< The [ key
         RBracket,     ///< The ] key
-        Semicolon,    ///< The ; key
+        SemiColon,    ///< The ; key
         Comma,        ///< The , key
         Period,       ///< The . key
         Quote,        ///< The ' key
         Slash,        ///< The / key
-        Backslash,    ///< The \ key
+        BackSlash,    ///< The \ key
         Tilde,        ///< The ~ key
         Equal,        ///< The = key
-        Hyphen,       ///< The - key (hyphen)
+        Dash,         ///< The - key
         Space,        ///< The Space key
-        Enter,        ///< The Enter/Return keys
-        Backspace,    ///< The Backspace key
+        Return,       ///< The Return key
+        BackSpace,    ///< The Backspace key
         Tab,          ///< The Tabulation key
         PageUp,       ///< The Page up key
         PageDown,     ///< The Page down key
@@ -116,7 +116,7 @@ public:
         Insert,       ///< The Insert key
         Delete,       ///< The Delete key
         Add,          ///< The + key
-        Subtract,     ///< The - key (minus, usually from numpad)
+        Subtract,     ///< The - key
         Multiply,     ///< The * key
         Divide,       ///< The / key
         Left,         ///< Left arrow
@@ -150,15 +150,7 @@ public:
         F15,          ///< The F15 key
         Pause,        ///< The Pause key
 
-        KeyCount,     ///< Keep last -- the total number of keyboard keys
-
-        // Deprecated values:
-
-        Dash      = Hyphen,       ///< \deprecated Use Hyphen instead
-        BackSpace = Backspace,    ///< \deprecated Use Backspace instead
-        BackSlash = Backslash,    ///< \deprecated Use Backslash instead
-        SemiColon = Semicolon,    ///< \deprecated Use Semicolon instead
-        Return    = Enter         ///< \deprecated Use Enter instead
+        KeyCount      ///< Keep last -- the total number of keyboard keys
     };
 
     ////////////////////////////////////////////////////////////
@@ -170,21 +162,6 @@ public:
     ///
     ////////////////////////////////////////////////////////////
     static bool isKeyPressed(Key key);
-
-    ////////////////////////////////////////////////////////////
-    /// \brief Show or hide the virtual keyboard
-    ///
-    /// Warning: the virtual keyboard is not supported on all
-    /// systems. It will typically be implemented on mobile OSes
-    /// (Android, iOS) but not on desktop OSes (Windows, Linux, ...).
-    ///
-    /// If the virtual keyboard is not available, this function does
-    /// nothing.
-    ///
-    /// \param visible True to show, false to hide
-    ///
-    ////////////////////////////////////////////////////////////
-    static void setVirtualKeyboardVisible(bool visible);
 };
 
 } // namespace sf
@@ -199,7 +176,7 @@ public:
 ///
 /// sf::Keyboard provides an interface to the state of the
 /// keyboard. It only contains static functions (a single
-/// keyboard is assumed), so it's not meant to be instantiated.
+/// keyboard is assumed), so it's not meant to be instanciated.
 ///
 /// This class allows users to query the keyboard state at any
 /// time and directly, without having to deal with a window and
@@ -227,6 +204,6 @@ public:
 /// }
 /// \endcode
 ///
-/// \see sf::Joystick, sf::Mouse, sf::Touch
+/// \see sf::Joystick, sf::Mouse
 ///
 ////////////////////////////////////////////////////////////
