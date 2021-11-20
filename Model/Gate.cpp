@@ -1,19 +1,15 @@
-/**
- * Project Untitled
- */
-
-
 #include "Gate.h"
 
-/**
- * Gate implementation
- */
-
-
-void Gate::isFightFinished() {
-
+bool Gate::getisOpen()
+{
+    return isOpen;
 }
 
-void Gate::isFightStarted() {
-
+void Gate::setisOpen(bool isOpen)
+{
+    this->isOpen = isOpen;
 }
+
+Gate::Gate(float posX, float posY, bool isOpen) : MapElement(posX, posY), isOpen(isOpen) {}
+
+Gate::~Gate() {}

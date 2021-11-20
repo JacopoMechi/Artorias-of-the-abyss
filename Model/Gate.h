@@ -1,20 +1,21 @@
-/**
- * Project Untitled
- */
-
-
 #ifndef _GATE_H
 #define _GATE_H
 
-#include "MapElements.h"
+#include "MapElement.h"
 
+class Gate : public MapElement
+{
+public:
+    bool getisOpen();
 
-class Gate: public MapElements {
-public: 
-    
-void isFightFinished();
-    
-void isFightStarted();
+    void setisOpen(bool isOpen);
+
+protected:
+    Gate(float posX, float posY, bool isOpen = false);
+
+    ~Gate();
+
+    bool isOpen;
 };
 
 #endif //_GATE_H
