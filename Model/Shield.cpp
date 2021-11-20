@@ -21,8 +21,6 @@ void Shield::setLevel(int level)
         defence = 15;
 }
 
-Shield::Shield(int level)
-{
-    Shield::setLevel(level);
-}
+Shield::Shield(int level) : level(level) {}
+
 Shield::~Shield() {}

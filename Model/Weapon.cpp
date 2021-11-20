@@ -10,8 +10,6 @@ int Weapon::getLevel()
     return level;
 }
 
-Weapon::Weapon(int level)
-{
-    Weapon::setLevel(level);
-}
+Weapon::Weapon(int level) : level(level) {}
+
 Weapon::~Weapon() {}

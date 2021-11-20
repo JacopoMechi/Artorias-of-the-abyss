@@ -11,12 +11,10 @@ public:
     void setPosY(float posY);
 
 protected:
-    explicit MapElement(float posX, float posY);
+    MapElement(float posX, float posY);
 
     ~MapElement();
-
     float posX;
     float posY;
 };
-
 #endif //_MAPELEMENT_H

@@ -17,10 +17,6 @@ void MapElement::setPosY(float posY)
 {
     this->posY = posY;
 }
-MapElement::MapElement(float posX, float posY)
-{
-    MapElement::setPosX(posX);
+MapElement::MapElement(float posX, float posY) : posX(posX), posY(posY) {}
 
-    MapElement::setPosY(posY);
-}
 MapElement::~MapElement() {}
