@@ -1,13 +1,13 @@
 #include "Map.h"
 #include <iostream>
 
-void Map::spawnEntities(const std::vector<MapElements> &mapElementsVector)
+void Map::spawnEntities(const std::vector<MapElement> &mapElementsVector)
 {
     for (int i = 0; i < mapElementsVector.size(); i++)
     //TODO add function to spawn elements
 }
 
-Map::Map(const std::vector<MapElements> &mapElementsVector, int dimX, int dimY)
+Map::Map(const std::vector<MapElement> &mapElementsVector, int dimX, int dimY)
 {
     this->dimX = dimX;
     this->dimY = dimY;

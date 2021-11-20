@@ -1,19 +1,19 @@
 #ifndef _MAP_H
 #define _MAP_H
-#include "MapElements.h"
+#include "MapElement.h"
 #include <vector>
 
 class Map
 {
 public:
-    void spawnEntities(const std::vector<MapElements> &mapElementsVector);
+    void spawnEntities(const std::vector<MapElement> &mapElementsVector);
 
 protected:
-    Map(const std::vector<MapElements> &mapElementsVector, int dimX, int dimY);
+    Map(const std::vector<MapElement> &mapElementsVector, int dimX, int dimY);
     ~Map();
-    int dimX;
+    int dimX; //TODO I'm not sure that dimX and dimY are really useful
     int dimY;
-    std::vector<MapElements> mapElementsVector;
+    std::vector<MapElement> mapElementsVector;
 };
 
 #endif //_MAP_H
