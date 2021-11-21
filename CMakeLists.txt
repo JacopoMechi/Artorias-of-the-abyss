@@ -3,13 +3,16 @@ project(Artorias_of_the_abyss)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(Model
-                    SFML)
+include_directories(Model)
 
 add_executable(Artorias_of_the_abyss
         main.cpp
         Model/GameCharacter.cpp
-        Model/GameCharacter.h
+        Model/GameCharacter.h)
+
+find_package(SFML 2 COMPONENTS system window graphics network audio REQUIRED)
+target_link_libraries(Artorias_of_the_abyss sfml-system sfml-window sfml-graphics sfml-network sfml-audio)
+
         ##Model/Inventory.cpp
         ##Model/Inventory.h
         ##Model/Item.h
@@ -24,7 +27,6 @@ add_executable(Artorias_of_the_abyss
         ##Model/HomewardBone.h
         ##Model/ItemFactory.cpp
         ##Model/ItemFactory.h
-        )
 #[[add_executable(Artorias_of_the_abyss
         origin/Assioma
         Model/Bonfire.cpp

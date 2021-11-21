@@ -5,16 +5,16 @@
 #include <iostream>
 #include <complex> //for norm
 
-#include "Graphics.hpp"
+#include <SFML/Graphics.hpp>
 #include "MapElements.h"
 #include "Weapon.h"
-#include "Animation.h"
 
 class GameCharacter:  public MapElements{
 
 public:
-    GameCharacter(int hp, int a, int c, int mS);//hp: HP, a: armor, c: cash, mS: movementSpeed, t: textPool
-    GameCharacter(const sf::Vector2f& pos,sf::Texture texture, float rectPosX, float rectPosY, float rectWidth, float rectHeight);
+    
+    GameCharacter(int hp, int a, int c, int mS, const sf::Vector2f& pos);
+    //hp: HP, a: armor, c: cash, mS: movementSpeed, t: textPool               
     ~GameCharacter();
     
     int getHp() const;
@@ -53,20 +53,23 @@ public:
     
     void update(float dt);
 
+   void animation(int x, int y, int width, int height, bool isLeft);
+
+   void adjourn(float dt);
+
 protected: 
     int HP;
     int armor;
     int cash;
     int movementSpeed;
     int dialogueTracker = 0;
-    float rectPosX;
-    float rectPosY;
-    float rectWidth;
-    float rectHeight;
+    int x;
+    int y;
+    int width;
+    int height;
+    bool isLeft;
     Weapon* weapon;
     Weapon* leftWeapon;
-
-    sf::Texture texture;
     enum class AnimationIndex{
         WalkingUp,
         WalkingDown,
@@ -75,22 +78,22 @@ protected:
         Idle,
         Count
     };
-    static constexpr float speed = 100.0f;
+    static constexpr float speed = 1.0f;
     sf::Vector2f pos;
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;
-    Animation animations[int(AnimationIndex::Count)];
-    AnimationIndex curAnimation = AnimationIndex::Idle;
+    sf::Texture texture;
+    AnimationIndex curAnimation = AnimationIndex::WalkingRight;
     void advance(){
         if (++iFrame >= nFrames)
             iFrame = 0;
     }
-    static constexpr int nFrames = 5;
+    static constexpr int nFrames = 9;
     static constexpr float holdTime = 0.01f;
     sf::IntRect frames[nFrames];
     int iFrame = 0;
     float time = 0.0f;
-
+    bool isL;
 };
 
 #endif //_GAMECHARACTER_H

@@ -1,9 +1,8 @@
-#include "Graphics.hpp"
+#include <SFML/Graphics.hpp>
 #include <chrono>
 
 #include "GameCharacter.h"
 #include "Inventory.h"
-#include "Animation.h"
 
 int main(){
     //textPool
@@ -72,12 +71,21 @@ int main(){
     sf::Texture t;
     sf::Sprite s(t);
 
-    //creating GameCharacter
-    GameCharacter test(100, 20, 0, 1);//...
+    GameCharacter test(100, 20, 0, 1, {150.f,3.0f});
 
     //timepoint for delta time measurement //TODO check meaning
     auto tp = std::chrono::steady_clock::now();
 
+
+    //creating GameCharacter
+    sf::Texture texture;
+    if(!texture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png"))
+        return EXIT_FAILURE;
+    sf::Sprite sprite(texture);
+    sprite.setTextureRect({128, 75, 17, 28});    
+
+
+    
     //starting the game loop
     while (window.isOpen()){
         //process event

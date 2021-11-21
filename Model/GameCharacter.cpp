@@ -1,20 +1,24 @@
 #include "GameCharacter.h"
 
-GameCharacter::GameCharacter(int hp, int a, int c, int mS): HP(hp), armor(a), cash(c), movementSpeed(mS),
-weapon(nullptr), leftWeapon(nullptr){
+GameCharacter::GameCharacter(int hp, int a, int c, int mS, const sf::Vector2f& pos): HP(hp), armor(a), cash(c),
+ movementSpeed(mS), pos(pos), weapon(nullptr), leftWeapon(nullptr){
+    //need to add a character identifier
+    if (curAnimation == AnimationIndex::WalkingRight)
+        this -> animation(125, 75, 17, 28, false);
+    else if (curAnimation == AnimationIndex::WalkingLeft)
+        this -> animation(125, 75, 17, 28, true);    
 }
-GameCharacter::GameCharacter(const sf::Vector2f& pos, sf::Texture texture, float rectPosX, float rectPosY, float rectWidth, 
-        float rectHeight):  pos(pos), texture(texture),  rectPosX(rectPosX), rectPosY(rectPosY), rectWidth(rectWidth), 
-        rectHeight(rectHeight){
-    for (int i = 0; i < nFrames; i++){
-        frames[i] = {rectPosX+i*rectWidth, rectPosY, rectWidth, rectHeight};
-    }
-    sprite.setTextureRect({rectPosX, rectPosY, rectWidth, rectHeight});//TODO FINISH
-    animations[int(AnimationIndex::WalkingUp)] = Animation();//TODO needs to be adjusted
-    animations[int(AnimationIndex::WalkingDown)] = Animation();
-    animations[int(AnimationIndex::WalkingLeft)] = Animation();
-    animations[int(AnimationIndex::WalkingRight)] = Animation();
-    animations[int(AnimationIndex::Idle)] = Animation();
+void GameCharacter::animation( int x, int y, int width, int height, bool isLeft){
+        texture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png");
+        if(isLeft){
+            for (int i = 0; i < nFrames; i++){
+                frames[i] = {x+i*width, y, -width, height};
+            }
+        }else {
+            for (int i = 0; i < nFrames; i++){
+                frames[i] = {x+i*width, y, width, height};
+            }
+        }
 }
 
 void GameCharacter::draw(sf::RenderTarget& rt) const{
@@ -36,12 +40,26 @@ void GameCharacter::setDirection(const sf::Vector2f& dir){
 
 }
 
+void GameCharacter::adjourn(float dt){
+    time += dt;
+    while (time >= holdTime){
+        time -=holdTime;
+        advance();
+    }
+}
+
+
 void GameCharacter::update(float dt){
     pos += vel*dt;
-    animations[int(curAnimation)].update(dt);
-    animations[int(curAnimation)].applyToSprite(sprite);
-    sprite.setScale(0.3f, 0.3f);
+    this -> adjourn(dt);
+    this -> applyToSprite(sprite);
+    sprite.setScale(5.0f, 5.0f);
     sprite.setPosition(pos);
+}
+
+void GameCharacter::applyToSprite(sf::Sprite& s) const {
+    s.setTexture(texture);
+    s.setTextureRect(frames[iFrame]);
 }
 
 GameCharacter::~GameCharacter() {
@@ -115,7 +133,7 @@ void GameCharacter::attack(GameCharacter &opponent) {//its virtual, needs to be 
     //TODO with SFML library type if (sf::Keyboard::isPressed(sf::Keyboard::E){}
     int hit = 1;
     if(weapon){//and something else
-        hit = weapon -> getDamage();//edited in weapon -> from void use to int use
+        //FIXME hit = weapon->getDamage();//edited in weapon -> from void use to int use
     }
     opponent.receiveDamage(hit);
 }
