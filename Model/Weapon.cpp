@@ -14,4 +14,4 @@ Weapon::Weapon(int level)
 {
     Weapon::setLevel(level);
 }
-Weapon::~Weapon() {}
+//Weapon::~Weapon() { }//check if this is fixed

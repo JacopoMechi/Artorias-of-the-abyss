@@ -12,7 +12,7 @@ public:
 
     explicit Weapon(int level = 1);
 
-    ~Weapon();
+    //~Weapon();
 
 protected:
     int damage;
