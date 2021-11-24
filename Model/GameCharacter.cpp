@@ -28,19 +28,12 @@ void GameCharacter::setDirection(const sf::Vector2f& dir){
         curAnimation = AnimationIndex::WalkingRight;
     }else if(dir.x < 0.0f){
         curAnimation = AnimationIndex::WalkingLeft;
-    }else if(dir.y < 0.0f){
-        curAnimation = AnimationIndex::WalkingUp;
-    }else if(dir.y > 0.0f){
-        curAnimation = AnimationIndex::WalkingDown;
-    }else
-        curAnimation = AnimationIndex::Idle;
-
+    }
+    
     if (curAnimation == AnimationIndex::WalkingRight)
         this -> animation(127, 75, 16, 26, false);//best rect area
     else if (curAnimation == AnimationIndex::WalkingLeft)
-        this -> animation(127, 75, 16, 26, true);    
-    else if (curAnimation == AnimationIndex::Idle)
-        this -> animation(127, 75, 16, 26, false);
+        this -> animation(127, 75, 16, 26, true);   
 }
 
 void GameCharacter::adjourn(float dt){

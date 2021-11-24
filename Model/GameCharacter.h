@@ -71,11 +71,8 @@ protected:
     Weapon* weapon;
     Weapon* leftWeapon;
     enum class AnimationIndex{
-        WalkingUp,
-        WalkingDown,
         WalkingLeft,
         WalkingRight,
-        Idle,
         Count
     };
     static constexpr float speed = 100.0f;
@@ -83,7 +80,7 @@ protected:
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;
     sf::Texture texture;
-    AnimationIndex curAnimation = AnimationIndex::Idle;
+    AnimationIndex curAnimation = AnimationIndex::WalkingRight;
     void advance(){
         if (++iFrame >= nFrames)
             iFrame = 0;
@@ -93,7 +90,6 @@ protected:
     sf::IntRect frames[nFrames];
     int iFrame = 0;
     float time = 0.0f;
-    bool isL;
 };
 
 #endif //_GAMECHARACTER_H
