@@ -78,7 +78,7 @@ protected:
         Idle,
         Count
     };
-    static constexpr float speed = 1.0f;
+    static constexpr float speed = 100.0f;
     sf::Vector2f pos;
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;
@@ -88,8 +88,8 @@ protected:
         if (++iFrame >= nFrames)
             iFrame = 0;
     }
-    static constexpr int nFrames = 9;
-    static constexpr float holdTime = 0.01f;
+    static constexpr int nFrames = 8;
+    static constexpr float holdTime = 0.1f;
     sf::IntRect frames[nFrames];
     int iFrame = 0;
     float time = 0.0f;

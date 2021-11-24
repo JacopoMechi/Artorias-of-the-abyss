@@ -82,7 +82,7 @@ int main(){
     if(!texture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png"))
         return EXIT_FAILURE;
     sf::Sprite sprite(texture);
-    sprite.setTextureRect({128, 75, 17, 28});    
+    sprite.setTextureRect({127, 75, 16, 26});//    128, 75, 17, 28
 
 
     

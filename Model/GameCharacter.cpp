@@ -4,9 +4,9 @@ GameCharacter::GameCharacter(int hp, int a, int c, int mS, const sf::Vector2f& p
  movementSpeed(mS), pos(pos), weapon(nullptr), leftWeapon(nullptr){
     //need to add a character identifier
     if (curAnimation == AnimationIndex::WalkingRight)
-        this -> animation(125, 75, 17, 28, false);
+        this -> animation(127, 75, 16, 26, false);//best rect area
     else if (curAnimation == AnimationIndex::WalkingLeft)
-        this -> animation(125, 75, 17, 28, true);    
+        this -> animation(126, 75, 17, 24, true);    
 }
 void GameCharacter::animation( int x, int y, int width, int height, bool isLeft){
         texture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png");
@@ -53,7 +53,7 @@ void GameCharacter::update(float dt){
     pos += vel*dt;
     this -> adjourn(dt);
     this -> applyToSprite(sprite);
-    sprite.setScale(5.0f, 5.0f);
+    sprite.setScale(2.0f, 2.0f);
     sprite.setPosition(pos);
 }
 
