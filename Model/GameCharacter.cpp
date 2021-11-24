@@ -2,20 +2,17 @@
 
 GameCharacter::GameCharacter(int hp, int a, int c, int mS, const sf::Vector2f& pos): HP(hp), armor(a), cash(c),
  movementSpeed(mS), pos(pos), weapon(nullptr), leftWeapon(nullptr){
-    //need to add a character identifier
-    if (curAnimation == AnimationIndex::WalkingRight)
-        this -> animation(127, 75, 16, 26, false);//best rect area
-    else if (curAnimation == AnimationIndex::WalkingLeft)
-        this -> animation(126, 75, 17, 24, true);    
 }
 void GameCharacter::animation( int x, int y, int width, int height, bool isLeft){
         texture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png");
         if(isLeft){
             for (int i = 0; i < nFrames; i++){
-                frames[i] = {x+i*width, y, -width, height};
+                sprite.setScale(-2.0f, 2.0f);
+                frames[i] = {x+i*width, y, width, height};
             }
         }else {
             for (int i = 0; i < nFrames; i++){
+                sprite.setScale(2.0f, 2.0f);
                 frames[i] = {x+i*width, y, width, height};
             }
         }
@@ -38,6 +35,12 @@ void GameCharacter::setDirection(const sf::Vector2f& dir){
     }else
         curAnimation = AnimationIndex::Idle;
 
+    if (curAnimation == AnimationIndex::WalkingRight)
+        this -> animation(127, 75, 16, 26, false);//best rect area
+    else if (curAnimation == AnimationIndex::WalkingLeft)
+        this -> animation(127, 75, 16, 26, true);    
+    else if (curAnimation == AnimationIndex::Idle)
+        this -> animation(127, 75, 16, 26, false);
 }
 
 void GameCharacter::adjourn(float dt){
@@ -53,7 +56,7 @@ void GameCharacter::update(float dt){
     pos += vel*dt;
     this -> adjourn(dt);
     this -> applyToSprite(sprite);
-    sprite.setScale(2.0f, 2.0f);
+    //sprite.setScale(2.0f, 2.0f);
     sprite.setPosition(pos);
 }
 

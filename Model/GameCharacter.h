@@ -83,7 +83,7 @@ protected:
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;
     sf::Texture texture;
-    AnimationIndex curAnimation = AnimationIndex::WalkingRight;
+    AnimationIndex curAnimation = AnimationIndex::Idle;
     void advance(){
         if (++iFrame >= nFrames)
             iFrame = 0;
