@@ -4,6 +4,10 @@
 class MapElement
 {
 public:
+    MapElement(float posX, float posY);
+
+    ~MapElement();
+
     float getPosX();
     void setPosX(float posX);
 
@@ -11,9 +15,6 @@ public:
     void setPosY(float posY);
 
 protected:
-    MapElement(float posX, float posY);
-
-    ~MapElement();
     float posX;
     float posY;
 };
