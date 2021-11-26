@@ -8,6 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/Model/Map.cpp" "CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o" "gcc" "CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o.d"
+  "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/Model/MapElement.cpp" "CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o" "gcc" "CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o.d"
   "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/main.cpp" "CMakeFiles/ArtoriasOfTheAbyss.dir/main.cpp.o" "gcc" "CMakeFiles/ArtoriasOfTheAbyss.dir/main.cpp.o.d"
   )
 

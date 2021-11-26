@@ -3,5 +3,15 @@
   "directory": "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/build",
   "command": "/usr/bin/clang++  -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.0.sdk -std=gnu++11 -o CMakeFiles/ArtoriasOfTheAbyss.dir/main.cpp.o -c \"/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/main.cpp\"",
   "file": "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/main.cpp"
+},
+{
+  "directory": "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/build",
+  "command": "/usr/bin/clang++  -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.0.sdk -std=gnu++11 -o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o -c \"/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/Model/Map.cpp\"",
+  "file": "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/Model/Map.cpp"
+},
+{
+  "directory": "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/build",
+  "command": "/usr/bin/clang++  -isystem /opt/homebrew/include -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.0.sdk -std=gnu++11 -o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o -c \"/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/Model/MapElement.cpp\"",
+  "file": "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/Model/MapElement.cpp"
 }
 ]

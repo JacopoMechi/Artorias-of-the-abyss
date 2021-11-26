@@ -837,12 +837,12 @@ CMakeFiles/ContinuousSubmit.dir/clean:
 CMakeFiles/ArtoriasOfTheAbyss.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ArtoriasOfTheAbyss.dir/build.make CMakeFiles/ArtoriasOfTheAbyss.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ArtoriasOfTheAbyss.dir/build.make CMakeFiles/ArtoriasOfTheAbyss.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/build/CMakeFiles" --progress-num=1,2 "Built target ArtoriasOfTheAbyss"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/build/CMakeFiles" --progress-num=1,2,3,4 "Built target ArtoriasOfTheAbyss"
 .PHONY : CMakeFiles/ArtoriasOfTheAbyss.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ArtoriasOfTheAbyss.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/build/CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/build/CMakeFiles" 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ArtoriasOfTheAbyss.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/build/CMakeFiles" 0
 .PHONY : CMakeFiles/ArtoriasOfTheAbyss.dir/rule

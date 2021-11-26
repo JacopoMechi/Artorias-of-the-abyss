@@ -523,6 +523,54 @@ ArtoriasOfTheAbyss/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ArtoriasOfTheAbyss.dir/build.make CMakeFiles/ArtoriasOfTheAbyss.dir/build
 .PHONY : ArtoriasOfTheAbyss/fast
 
+Model/Map.o: Model/Map.cpp.o
+.PHONY : Model/Map.o
+
+# target to build an object file
+Model/Map.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ArtoriasOfTheAbyss.dir/build.make CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o
+.PHONY : Model/Map.cpp.o
+
+Model/Map.i: Model/Map.cpp.i
+.PHONY : Model/Map.i
+
+# target to preprocess a source file
+Model/Map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ArtoriasOfTheAbyss.dir/build.make CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.i
+.PHONY : Model/Map.cpp.i
+
+Model/Map.s: Model/Map.cpp.s
+.PHONY : Model/Map.s
+
+# target to generate assembly for a file
+Model/Map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ArtoriasOfTheAbyss.dir/build.make CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.s
+.PHONY : Model/Map.cpp.s
+
+Model/MapElement.o: Model/MapElement.cpp.o
+.PHONY : Model/MapElement.o
+
+# target to build an object file
+Model/MapElement.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ArtoriasOfTheAbyss.dir/build.make CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o
+.PHONY : Model/MapElement.cpp.o
+
+Model/MapElement.i: Model/MapElement.cpp.i
+.PHONY : Model/MapElement.i
+
+# target to preprocess a source file
+Model/MapElement.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ArtoriasOfTheAbyss.dir/build.make CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.i
+.PHONY : Model/MapElement.cpp.i
+
+Model/MapElement.s: Model/MapElement.cpp.s
+.PHONY : Model/MapElement.s
+
+# target to generate assembly for a file
+Model/MapElement.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ArtoriasOfTheAbyss.dir/build.make CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.s
+.PHONY : Model/MapElement.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -587,6 +635,12 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... ArtoriasOfTheAbyss"
+	@echo "... Model/Map.o"
+	@echo "... Model/Map.i"
+	@echo "... Model/Map.s"
+	@echo "... Model/MapElement.o"
+	@echo "... Model/MapElement.i"
+	@echo "... Model/MapElement.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

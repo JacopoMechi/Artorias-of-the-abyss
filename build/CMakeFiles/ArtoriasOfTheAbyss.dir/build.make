@@ -83,20 +83,52 @@ CMakeFiles/ArtoriasOfTheAbyss.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ArtoriasOfTheAbyss.dir/main.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/main.cpp" -o CMakeFiles/ArtoriasOfTheAbyss.dir/main.cpp.s
 
+CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o: CMakeFiles/ArtoriasOfTheAbyss.dir/flags.make
+CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o: ../Model/Map.cpp
+CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o: CMakeFiles/ArtoriasOfTheAbyss.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o -MF CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o.d -o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o -c "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/Model/Map.cpp"
+
+CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/Model/Map.cpp" > CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.i
+
+CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/Model/Map.cpp" -o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.s
+
+CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o: CMakeFiles/ArtoriasOfTheAbyss.dir/flags.make
+CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o: ../Model/MapElement.cpp
+CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o: CMakeFiles/ArtoriasOfTheAbyss.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o -MF CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o.d -o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o -c "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/Model/MapElement.cpp"
+
+CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/Model/MapElement.cpp" > CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.i
+
+CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/Model/MapElement.cpp" -o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.s
+
 # Object files for target ArtoriasOfTheAbyss
 ArtoriasOfTheAbyss_OBJECTS = \
-"CMakeFiles/ArtoriasOfTheAbyss.dir/main.cpp.o"
+"CMakeFiles/ArtoriasOfTheAbyss.dir/main.cpp.o" \
+"CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o" \
+"CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o"
 
 # External object files for target ArtoriasOfTheAbyss
 ArtoriasOfTheAbyss_EXTERNAL_OBJECTS =
 
 ArtoriasOfTheAbyss: CMakeFiles/ArtoriasOfTheAbyss.dir/main.cpp.o
+ArtoriasOfTheAbyss: CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o
+ArtoriasOfTheAbyss: CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o
 ArtoriasOfTheAbyss: CMakeFiles/ArtoriasOfTheAbyss.dir/build.make
 ArtoriasOfTheAbyss: /opt/homebrew/lib/libsfml-graphics.2.5.1.dylib
 ArtoriasOfTheAbyss: /opt/homebrew/lib/libsfml-window.2.5.1.dylib
 ArtoriasOfTheAbyss: /opt/homebrew/lib/libsfml-system.2.5.1.dylib
 ArtoriasOfTheAbyss: CMakeFiles/ArtoriasOfTheAbyss.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ArtoriasOfTheAbyss"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/jacopown/Documents/Universita'/Artorias-of-the-abyss/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ArtoriasOfTheAbyss"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ArtoriasOfTheAbyss.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
