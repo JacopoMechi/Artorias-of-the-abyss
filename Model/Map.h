@@ -2,18 +2,20 @@
 #define _MAP_H
 #include "MapElement.h"
 #include <vector>
+#include <SFML/Graphics.hpp>
 
 class Map
 {
 public:
+    Map(const std::vector<MapElement> &mapElementsVector, std::string &mapFilePath);
+    ~Map();
     void spawnEntities(const std::vector<MapElement> &mapElementsVector);
+    void drawMap(sf::RenderWindow &window);
 
 protected:
-    Map(const std::vector<MapElement> &mapElementsVector, int dimX, int dimY);
-    ~Map();
-    int dimX; //TODO I'm not sure that dimX and dimY are really useful
-    int dimY;
     std::vector<MapElement> mapElementsVector;
+    sf::Texture mapTexture;
+    sf::Sprite mapSprite;
+    std::string mapFilePath;
 };
-
-#endif //_MAP_H
+#endif
