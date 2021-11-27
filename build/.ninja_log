@@ -1,12 +1,9 @@
 # ninja log v5
+446	510	1638030883064577740	Artorias_of_the_abyss	2f63b925db7af353
+1	445	1638030883000578515	CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o	fd3adb462e0734ce
+1	529	1638030050952302528	CMakeFiles/Artorias_of_the_abyss.dir/main.cpp.o	cea39eb085e5dd07
 0	19	1637438802782783816	build.ninja	e57da69038c3548b
-0	534	1637765326982372306	CMakeFiles/Artorias_of_the_abyss.dir/main.cpp.o	cea39eb085e5dd07
-1	463	1637765392281409938	CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o	fd3adb462e0734ce
-463	543	1637765392361408747	Artorias_of_the_abyss	2f63b925db7af353
-1	480	1637765471152223960	CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o	fd3adb462e0734ce
-1	510	1637765471192223353	CMakeFiles/Artorias_of_the_abyss.dir/main.cpp.o	cea39eb085e5dd07
-510	593	1637765471272222138	Artorias_of_the_abyss	2f63b925db7af353
-1	489	1637765526451378914	CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o	fd3adb462e0734ce
-489	562	1637765526523377807	Artorias_of_the_abyss	2f63b925db7af353
-0	442	1637766024831421127	CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o	fd3adb462e0734ce
-442	512	1637766024899420012	Artorias_of_the_abyss	2f63b925db7af353
+1	430	1638031132189321145	CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o	fd3adb462e0734ce
+430	492	1638031132249320311	Artorias_of_the_abyss	2f63b925db7af353
+0	425	1638031531115416338	CMakeFiles/Artorias_of_the_abyss.dir/Model/GameCharacter.cpp.o	fd3adb462e0734ce
+425	487	1638031531175415408	Artorias_of_the_abyss	2f63b925db7af353

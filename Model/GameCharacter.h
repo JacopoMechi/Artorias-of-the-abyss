@@ -53,9 +53,9 @@ public:
     
     void update(float dt);
 
-   void animation(int x, int y, int width, int height, bool isLeft);
+    void animation(int x, int y, int width, int height, bool isLeft, bool isIdle);
 
-   void adjourn(float dt);
+    void adjourn(float dt);
 
 protected: 
     int HP;
@@ -68,11 +68,14 @@ protected:
     int width;
     int height;
     bool isLeft;
+    bool isIdle;
     Weapon* weapon;
     Weapon* leftWeapon;
     enum class AnimationIndex{
         WalkingLeft,
         WalkingRight,
+        IdleLeft,
+        IdleRight,
         Count
     };
     static constexpr float speed = 100.0f;
@@ -80,7 +83,7 @@ protected:
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;
     sf::Texture texture;
-    AnimationIndex curAnimation = AnimationIndex::WalkingRight;
+    AnimationIndex lastAnimation = AnimationIndex::IdleRight;
     void advance(){
         if (++iFrame >= nFrames)
             iFrame = 0;

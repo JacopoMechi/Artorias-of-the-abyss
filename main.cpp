@@ -106,7 +106,7 @@ int main(){
 
         //handel input
         sf::Vector2f dir = {0.0f, 0.0f};
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){//TODO add in movements of gamecharacter
             dir.y -= 1.0f;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
