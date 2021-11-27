@@ -13,6 +13,8 @@ find_package(SFML 2 COMPONENTS network audio graphics window system REQUIRED)
 add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/Bonfire.h
                                     Model/Bonfire.cpp
+                                    Model/Gate.h
+                                    Model/Gate.cpp
                                     Model/Map.h
                                     Model/Map.cpp
                                     Model/MapElement.h
