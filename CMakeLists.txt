@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.0.0)
-project(Artorias-Of-The_Abyss VERSION 0.1.0)
+cmake_minimum_required(VERSION 3.0)
+project(Artorias-Of-The-Abyss VERSION 0.1.0)
 
 include(CTest)
 enable_testing()
@@ -10,7 +10,11 @@ set(EXECUTABLE_NAME ArtoriasOfTheAbyss)
 
 find_package(SFML 2 COMPONENTS network audio graphics window system REQUIRED)
 
+include_directories(Model)
+
 add_executable(${EXECUTABLE_NAME}   main.cpp
+                                    Model/GameCharacter.h
+                                    Model/GameCharacter.cpp
                                     Model/Bonfire.h
                                     Model/Bonfire.cpp
                                     Model/Gate.h
@@ -19,8 +23,8 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/Map.cpp
                                     Model/MapElement.h
                                     Model/MapElement.cpp
-                                    Model/GameCharacter.cpp
-                                    Model/GameCharacter.h)
+                                    Model/Weapon.h
+                                    Model/Weapon)
 
 if(SFML_FOUND)
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-window sfml-system)

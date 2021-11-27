@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: Artorias-Of-The_Abyss
+# Project: Artorias-Of-The-Abyss
 # Configuration: Debug
 # =============================================================================
 
@@ -268,36 +268,42 @@ build cmake_object_order_depends_target_ArtoriasOfTheAbyss: phony || CMakeFiles/
 build CMakeFiles/ArtoriasOfTheAbyss.dir/main.cpp.o: CXX_COMPILER__ArtoriasOfTheAbyss ../main.cpp || cmake_object_order_depends_target_ArtoriasOfTheAbyss
   DEP_FILE = CMakeFiles/ArtoriasOfTheAbyss.dir/main.cpp.o.d
   FLAGS = -g   -std=gnu++11
+  INCLUDES = -I../Model
   OBJECT_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir
   OBJECT_FILE_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir
+
+build CMakeFiles/ArtoriasOfTheAbyss.dir/Model/GameCharacter.cpp.o: CXX_COMPILER__ArtoriasOfTheAbyss ../Model/GameCharacter.cpp || cmake_object_order_depends_target_ArtoriasOfTheAbyss
+  DEP_FILE = CMakeFiles/ArtoriasOfTheAbyss.dir/Model/GameCharacter.cpp.o.d
+  FLAGS = -g   -std=gnu++11
+  INCLUDES = -I../Model
+  OBJECT_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir
+  OBJECT_FILE_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir/Model
 
 build CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Bonfire.cpp.o: CXX_COMPILER__ArtoriasOfTheAbyss ../Model/Bonfire.cpp || cmake_object_order_depends_target_ArtoriasOfTheAbyss
   DEP_FILE = CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Bonfire.cpp.o.d
   FLAGS = -g   -std=gnu++11
+  INCLUDES = -I../Model
   OBJECT_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir
   OBJECT_FILE_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir/Model
 
 build CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Gate.cpp.o: CXX_COMPILER__ArtoriasOfTheAbyss ../Model/Gate.cpp || cmake_object_order_depends_target_ArtoriasOfTheAbyss
   DEP_FILE = CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Gate.cpp.o.d
   FLAGS = -g   -std=gnu++11
+  INCLUDES = -I../Model
   OBJECT_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir
   OBJECT_FILE_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir/Model
 
 build CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o: CXX_COMPILER__ArtoriasOfTheAbyss ../Model/Map.cpp || cmake_object_order_depends_target_ArtoriasOfTheAbyss
   DEP_FILE = CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o.d
   FLAGS = -g   -std=gnu++11
+  INCLUDES = -I../Model
   OBJECT_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir
   OBJECT_FILE_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir/Model
 
 build CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o: CXX_COMPILER__ArtoriasOfTheAbyss ../Model/MapElement.cpp || cmake_object_order_depends_target_ArtoriasOfTheAbyss
   DEP_FILE = CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o.d
   FLAGS = -g   -std=gnu++11
-  OBJECT_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir
-  OBJECT_FILE_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir/Model
-
-build CMakeFiles/ArtoriasOfTheAbyss.dir/Model/GameCharacter.cpp.o: CXX_COMPILER__ArtoriasOfTheAbyss ../Model/GameCharacter.cpp || cmake_object_order_depends_target_ArtoriasOfTheAbyss
-  DEP_FILE = CMakeFiles/ArtoriasOfTheAbyss.dir/Model/GameCharacter.cpp.o.d
-  FLAGS = -g   -std=gnu++11
+  INCLUDES = -I../Model
   OBJECT_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir
   OBJECT_FILE_DIR = CMakeFiles/ArtoriasOfTheAbyss.dir/Model
 
@@ -309,7 +315,7 @@ build CMakeFiles/ArtoriasOfTheAbyss.dir/Model/GameCharacter.cpp.o: CXX_COMPILER_
 #############################################
 # Link the executable ArtoriasOfTheAbyss
 
-build ArtoriasOfTheAbyss: CXX_EXECUTABLE_LINKER__ArtoriasOfTheAbyss CMakeFiles/ArtoriasOfTheAbyss.dir/main.cpp.o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Bonfire.cpp.o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Gate.cpp.o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/GameCharacter.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
+build ArtoriasOfTheAbyss: CXX_EXECUTABLE_LINKER__ArtoriasOfTheAbyss CMakeFiles/ArtoriasOfTheAbyss.dir/main.cpp.o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/GameCharacter.cpp.o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Bonfire.cpp.o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Gate.cpp.o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/Map.cpp.o CMakeFiles/ArtoriasOfTheAbyss.dir/Model/MapElement.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
   FLAGS = -g
   LINK_FLAGS = -rdynamic
   LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1

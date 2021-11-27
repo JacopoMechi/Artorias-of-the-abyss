@@ -9,7 +9,7 @@
 #include "MapElement.h"
 #include "Weapon.h"
 
-class GameCharacter:  public MapElement{
+class GameCharacter{//:  public MapElement
 
 public:
     

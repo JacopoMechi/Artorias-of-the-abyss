@@ -2,7 +2,6 @@
 #include <chrono>
 
 #include "GameCharacter.h"
-#include "Inventory.h"
 
 int main(){
     //textPool

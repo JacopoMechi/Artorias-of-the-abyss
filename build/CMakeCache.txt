@@ -15,10 +15,22 @@
 ########################
 
 //Value Computed by CMake
+Artorias-Of-The-Abyss_BINARY_DIR:STATIC=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/build
+
+//Value Computed by CMake
+Artorias-Of-The-Abyss_SOURCE_DIR:STATIC=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss
+
+//Value Computed by CMake
 Artorias-Of-The_Abyss_BINARY_DIR:STATIC=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/build
 
 //Value Computed by CMake
 Artorias-Of-The_Abyss_SOURCE_DIR:STATIC=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss
+
+//Value Computed by CMake
+Artorias-of-the-abyss_BINARY_DIR:STATIC=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/build
+
+//Value Computed by CMake
+Artorias-of-the-abyss_SOURCE_DIR:STATIC=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss
 
 //Value Computed by CMake
 Artorias_of_the_abyss_BINARY_DIR:STATIC=/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/build
@@ -159,7 +171,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Artorias-Of-The_Abyss
+CMAKE_PROJECT_NAME:STATIC=Artorias-Of-The-Abyss
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=0.1.0
