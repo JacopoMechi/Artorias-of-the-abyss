@@ -1,22 +1,33 @@
 #include "MapElement.h"
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <string>
+#include <vector>
+#include <iostream>
 
-float MapElement::getPosX()
+void MapElement::draw(sf::RenderWindow &window)
 {
-    return posX;
-}
-void MapElement::setPosX(float posX)
-{
-    this->posX = posX;
+    window.draw(mapElementSprite);
 }
 
-float MapElement::getPosY()
+sf::Vector2f MapElement::getPos()
 {
-    return posY;
+    return mapElementSprite.getPosition();
 }
-void MapElement::setPosY(float posY)
-{
-    this->posY = posY;
-}
-MapElement::MapElement(float posX, float posY) : posX(posX), posY(posY) {}
 
+void MapElement::setPos(sf::Vector2f &newPos)
+{
+    mapElementSprite.setPosition(newPos);
+}
+
+MapElement::MapElement(std::vector<int> &spriteDimension, sf::Vector2f &position, std::string &mapElementFilePath)
+{
+    if (!mapElementTexture.loadFromFile(mapElementFilePath))
+    {
+        std::cout << "Error while setting MapElement texture" << std::endl;
+    }
+    mapElementSprite.setTexture(this->mapElementTexture);
+    mapElementSprite.setTextureRect(sf::IntRect(spriteDimension[0], spriteDimension[1], spriteDimension[2], spriteDimension[3]));
+    mapElementSprite.setPosition(position);
+}
 MapElement::~MapElement() {}
