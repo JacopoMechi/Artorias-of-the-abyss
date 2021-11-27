@@ -10,7 +10,7 @@ int Shield::getLevel()
     return level;
 }
 
-void Shield::setLevel(int level)
+void Shield::setLevel(int level) //TODO Choode defence levels for each level
 {
     this->level = level;
     if (level == 1)
