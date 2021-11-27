@@ -2,6 +2,9 @@
 #define _GATE_H
 
 #include "MapElement.h"
+#include <SFML/System.hpp>
+#include <string>
+#include <vector>
 
 class Gate : public MapElement
 {
@@ -10,11 +13,11 @@ public:
 
     void setisOpen(bool isOpen);
 
-protected:
-    Gate(float posX, float posY, bool isOpen = false);
+    Gate(std::vector<int> &spriteDimension, sf::Vector2f &position, std::string &mapElementFilePath, bool isOpen = false);
 
     ~Gate();
 
+protected:
     bool isOpen;
 };
 
