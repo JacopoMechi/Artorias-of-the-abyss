@@ -2,18 +2,21 @@
 #define _BONFIRE_H
 
 #include "MapElement.h"
+#include <SFML/System.hpp>
+#include <string>
+#include <vector>
 
 class Bonfire : public MapElement
 {
 public:
-    void resetHp();
+    void resetHp(); //TODO to be implemented
 
-    void setSpawnPoint();
+    void setSpawnPoint(); //TODO to be implemented
 
-    void respawnEnemies();
+    void respawnEnemies(); //TODO to be implemented
 
 protected:
-    Bonfire(float posX, float posY);
+    Bonfire(std::vector<int> &spriteDimension, sf::Vector2f &position, std::string &mapElementFilePath);
 
     ~Bonfire();
 };
