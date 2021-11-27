@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Artorias_of_the_abyss"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Artorias_of_the_abyss">
+				<Option output="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Artorias_of_the_abyss" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model"/>
+					<Add directory="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/ExtraLibraries/SFML"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 Artorias_of_the_abyss"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Artorias_of_the_abyss/fast">
+				<Option output="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Artorias_of_the_abyss" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model"/>
+					<Add directory="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/ExtraLibraries/SFML"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 Artorias_of_the_abyss/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/ArtoriasSoul.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/ArtoriasSoul.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/GuardianSoul.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/GuardianSoul.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/Humanity.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/Humanity.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/ManusSoul.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/ManusSoul.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/OolacileResidentHead.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/OolacileResidentHead.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/OolacileSorcererHead.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/OolacileSorcererHead.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/StoneGuardianHelm.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/CollectibleItems/StoneGuardianHelm.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/EstusFlask.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/EstusFlask.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GreenBlossom.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/GreenBlossom.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/HomewardBone.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/HomewardBone.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Inventory.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Inventory.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Item.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Item.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/ItemFactory.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/ItemFactory.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Pendant.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/Model/Pendant.h">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/main.cpp">
+			<Option target="Artorias_of_the_abyss"/>
+		</Unit>
+		<Unit filename="/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

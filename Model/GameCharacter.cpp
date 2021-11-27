@@ -1,7 +1,83 @@
 #include "GameCharacter.h"
 
-GameCharacter::GameCharacter(int hp, int a, int c, int s, std::string& t): HP(hp), armor(a), cash(c),speed(s),
-weapon(nullptr), leftWeapon(nullptr), textPool(t){
+GameCharacter::GameCharacter(int hp, int a, int c, int mS, const sf::Vector2f& pos): HP(hp), armor(a), cash(c),
+ movementSpeed(mS), pos(pos), weapon(nullptr), leftWeapon(nullptr){
+}
+void GameCharacter::animation( int x, int y, int width, int height, bool isLeft, bool isIdle){
+        texture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png");
+        if (isIdle){
+            if(isLeft){
+                for (int i = nFrames-1; i >= 0; i--){
+                frames[i] = {x+(nFrames-1)*width, y, width, height};
+                }
+            }else {
+                for (int i = 0; i < nFrames; i++){
+                    frames[i] = {x, y, width, height};
+                }
+            }
+        }else{
+            if(isLeft){
+                for (int i = nFrames-1; i >= 0; i--){
+                    frames[i] = {x+i*width, y, width, height};
+                }
+            }else {
+                for (int i = 0; i < nFrames; i++){
+                    frames[i] = {x+i*width, y, width, height};
+                }
+            }
+        }
+}
+
+void GameCharacter::draw(sf::RenderTarget& rt) const{
+    rt.draw(sprite);
+}
+
+void GameCharacter::setDirection(const sf::Vector2f& dir){
+    vel = dir*speed;
+    if(dir.x > 0.0f){//walking right
+        this -> animation(127, 75, 16, 28, false, false);
+        lastAnimation = AnimationIndex::WalkingRight;
+    }else if(dir.x < 0.0f){//walking left
+        this -> animation(128, 106, 16, 28, true, false);
+        lastAnimation = AnimationIndex::WalkingLeft;
+    }else if(dir.y > 0.0f){
+        if (lastAnimation == AnimationIndex::WalkingLeft)
+            this -> animation(128, 106, 16, 28, true, false);
+        else
+            this ->animation(128, 75, 16, 28, false, false);
+    }else if(dir.y < 0.0f){
+        if (lastAnimation == AnimationIndex::WalkingLeft)
+            this -> animation(128, 106, 16, 28, true, false);
+        else
+            this ->animation(128, 75, 16, 28, false, false);
+    }else if(lastAnimation == AnimationIndex::WalkingLeft)
+        this -> animation(128, 106, 16, 28, true, true);
+    else if(lastAnimation == AnimationIndex::WalkingRight)
+        this -> animation(128, 75, 16, 28, false, true);
+    else if (lastAnimation == AnimationIndex::IdleRight)
+        this -> animation(128, 75, 16, 28, false, true);
+}
+
+void GameCharacter::adjourn(float dt){
+    time += dt;
+    while (time >= holdTime){
+        time -=holdTime;
+        advance();
+    }
+}
+
+
+void GameCharacter::update(float dt){
+    pos += vel*dt;
+    this -> adjourn(dt);
+    this -> applyToSprite(sprite);
+    sprite.setScale(2.0f, 2.0f);
+    sprite.setPosition(pos);
+}
+
+void GameCharacter::applyToSprite(sf::Sprite& s) const {
+    s.setTexture(texture);
+    s.setTextureRect(frames[iFrame]);
 }
 
 GameCharacter::~GameCharacter() {
@@ -38,11 +114,11 @@ void GameCharacter::setCash( int cash) {
 }
 
 int GameCharacter::getMovementSpeed() const{
-    return speed;
+    return movementSpeed;
 }
 
-void GameCharacter::setMovementSpeed(int speed) {
-    this->speed = speed;
+void GameCharacter::setMovementSpeed(int movementSpeed) {
+    this->movementSpeed = movementSpeed;
 }
 
 Weapon* GameCharacter::getWeapon() {
@@ -67,95 +143,33 @@ void GameCharacter::setShield(Weapon* leftWeapon) {
 }
 
 
-void GameCharacter::movement() {
-    //will be overrided in Hero and Enemy
+void GameCharacter::movement(sf::Vector2f dir) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+            dir.y -= 1.0f;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+            dir.y += 1.0f;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+            dir.x -= 1.0f;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            dir.x += 1.0f;
+        }
+        this -> setDirection(dir);
 }
 
 void GameCharacter::attack(GameCharacter &opponent) {//its virtual, needs to be overrided in enemy
     //TODO with SFML library type if (sf::Keyboard::isPressed(sf::Keyboard::E){}
     int hit = 1;
     if(weapon){//and something else
-        hit = weapon -> use();//edited in weapon -> from void use to int use
+        //FIXME hit = weapon->getDamage();//edited in weapon -> from void use to int use
     }
     opponent.receiveDamage(hit);
 }
 
-bool GameCharacter::isChasing(int aggroDistance, const GameCharacter &enemy) {
-    if (std::norm(pos-enemy.pos) > aggroDistance) //is it ok?
+/*bool GameCharacter::isChasing(int aggroDistance, const GameCharacter &enemy) {//TODO needs to be edited
+    if (sf::norm(pos-enemy.pos) > aggroDistance) //is it ok?
         return false;
     return true;
-}
-
-
-//for npcs and bosses voicelines
-void GameCharacter::isDialogue() {
-    std::cout << textPool[dialogueTracker] << std::endl;
-    //at the bottom
-    if (dialogueTracker < textPool.size())
-        dialogueTracker ++;
-    //TODO add dialogues in main in a array of arrays
-    //TODO add extra dialogues after beating a boss
-    /*NPC
-    Elizabeth
-    "Bene bene, abbiamo un nuovo ospite. Da quale lontana era provieni?"
-    "Ci sono molte cose che vorrei chiederti, ma so che non devo."
-    "Ahh, capisco. Non sai cosa sia successo..."
-    "Vedrai più avanti. Un antica bestia è stata risvegliata
-     e ha generato l’Abisso, minacciando di corrompere tutta Oolacile."
-    "Il cavaliere Artorias è venuto per fermare tutto questo,
-     ma un tale eroe non è abbastanza coraggioso da affrontare tale potere."
-    "Senza dubbio è stato sconfitto, travolto dall’oscurità,
-     ma spero ancora che la Principessa Dusk venga salvata."
-    "Non molto tempo fa, ho avuto un altro visitatore, un essere umano come te,
-     da un tempo lontano."
-    "Solo che era terribilmente odioso… e tempo che sia ancora tra noi."
-    "Indossava un cappello e un lungo cappotto nero…"
-    "Che le fiamme possano guidarti."
-    "Ti ringrazio per aver salvato la principessa Dusk, te ne sarò debitrice e
-     ti ricorderò per sempre."
-    "Ma terrò per me la tua storia perché una leggenda rimarrà sempre una leggenda…"
-    //Sif
-    "(Ulula)"
-    //Chester
-    "Oh… Fammi indovinare"
-    "Sei stato catapultato nel passato di un’era differente?"
-    "Come avevo sospettato. È successo anche a me: siamo entrambi degli estranea
-     in una terra sconosciuta."
-    "Ma almeno adesso, siamo in due."
-    "Beh… Errore mio."
-    "Ma siamo entrambi avventurieri e, per questo, dobbiamo aiutarci a vicenda."
-    "Ti è capitato di incontrare Artorias? Il leggendario camminatore degli Abissi,
-     secondo gli antichi racconti."
-    "Se ancora non è successo, meglio così. Se me lo stai chiedendo, sì, è ormai corrotto."
-    "Ahahah ah ahah !"
-    "Allora, cosa ti ha fare quel fungo gigante? Non che mi interessi.
-     Non fa parte del mio business."
-    "Eheheheh  eheh…"
-    "Hm? Non ho molto da dire…"
-    "Hai veramente ucciso Artorias?"
-    "Ho sentito dire che l’Abisso lo ha trasformato in qualcosa di veramente pericoloso."
-    "È assolutamente insidioso."
-    "Ahahahahaha ahha!"
-    "Che tu ci creda o no, Oolacile ha portato l’Abisso con se."
-    "Ti sei mai chiesto: Vale veramente la pena?"
-    "Eheheheh eheh eh…"
-    //Principessa Dusk
-    "...Mmn...ahh…"
-    "…Aah...mmn…"
-    "Salve avventuriero. Anche tu da queste parti, non è vero? Da quale era provieni?"
-    "Sai… può sembrare strano, ma…"
-    "Sono stata assalita da una creatura dell’Abisso e ci sarei
-     morta se non fosse stato per il Grande Cavaliere Artorias."
-    "In realtà, ho visto poco di quanto è accaduto durante lo scontro. Ero stordita."
-    "Nonostante ciò, Artorias emanava un’aura particolare… In lui traspirava
-     un equilibrio interiore…"
-    "Che ritrovo tale e quale in te."
-    "..."
-    //Artorias
-    "Chiunque tu sia, stai lontano!"
-    "Presto... Sarò consumato... da loro, dall'Oscurità"
-    "REEEUUUUGHHHHHHHH!"; //deve essere ripetuta anche dopo "ti prego, la..."
-    "Ti prego, la propagazione dell'Abisso... deve essere fermata"
-    //Manus
-    "Restituiscimi ciò che mi appartiene!"*/
-}
+}*/
