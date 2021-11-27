@@ -3,28 +3,26 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-void Map::spawnEntities(const std::vector<MapElement> &mapElementsVector)
+void Map::spawnEntity(const MapElement &mapElement) //TODO currently not working
 {
-    //for (int i = 0; i < mapElementsVector.size(); i++)
-    //TODO add function to spawn elements
+    mapElementsVector.push_back(mapElement);
 }
-void Map::drawMap(sf::RenderWindow &window)
+void Map::draw(sf::RenderWindow &window)
 {
     mapSprite.setTextureRect(sf::IntRect(0, 0, 1920, 1080));
     window.draw(mapSprite);
+    for (auto &mapElement : mapElementsVector)
+        mapElement.draw(window);
 }
 
-Map::Map(const std::vector<MapElement> &mapElementsVector, std::string &mapFilePath) : mapFilePath(mapFilePath)
+Map::Map(const std::vector<MapElement> &mapElementsVector, const std::string &mapFilePath)
 {
     if (!mapTexture.loadFromFile(mapFilePath))
-    {
-        std::cout << "Error while displaying map" << std::endl;
-    }
+        std::cout << "Error while setting map texture" << std::endl;
+
     mapSprite.setTexture(this->mapTexture);
 
     for (int i = 0; i < mapElementsVector.size(); i++)
-    {
-        this->mapElementsVector[i] = mapElementsVector[i];
-    }
+        this->mapElementsVector.push_back(mapElementsVector[i]);
 }
 Map::~Map() {}
