@@ -73,7 +73,7 @@ int main(){
 
     GameCharacter test(100, 20, 0, 1, {150.f,3.0f});
 
-    //timepoint for delta time measurement //TODO check meaning
+    //timepoint for delta time measurement
     auto tp = std::chrono::steady_clock::now();
 
 
@@ -99,7 +99,7 @@ int main(){
         //get dt
         float dt;
         {
-            const auto new_tp = std::chrono::steady_clock::now();//TODO check what is it
+            const auto new_tp = std::chrono::steady_clock::now();
             dt = std::chrono::duration<float>(new_tp - tp).count();
             tp = new_tp;
         }
@@ -135,5 +135,5 @@ int main(){
         //update the window
         window.display();
     }
-    return EXIT_SUCCESS;//TODO find meaning
+    return EXIT_SUCCESS;
 }
