@@ -15,7 +15,6 @@ public:
 
     void respawnEnemies(); //TODO to be implemented
 
-protected:
     Bonfire(std::vector<int> &spriteDimension, sf::Vector2f &position, std::string &mapElementFilePath);
 
     ~Bonfire();
