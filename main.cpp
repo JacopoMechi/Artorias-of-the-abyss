@@ -104,21 +104,9 @@ int main(){
             tp = new_tp;
         }
 
-        //handel input
+        //handle input
         sf::Vector2f dir = {0.0f, 0.0f};
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){//TODO add in movements of gamecharacter
-            dir.y -= 1.0f;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-            dir.y += 1.0f;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-            dir.x -= 1.0f;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            dir.x += 1.0f;
-        }
-        test.setDirection(dir);
+        test.movement(dir);
 
         //update model
         test.update(dt);

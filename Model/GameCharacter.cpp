@@ -143,8 +143,20 @@ void GameCharacter::setShield(Weapon* leftWeapon) {
 }
 
 
-void GameCharacter::movement() {
-    //will be overrided in Hero and Enemy
+void GameCharacter::movement(sf::Vector2f dir) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+            dir.y -= 1.0f;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+            dir.y += 1.0f;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+            dir.x -= 1.0f;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            dir.x += 1.0f;
+        }
+        this -> setDirection(dir);
 }
 
 void GameCharacter::attack(GameCharacter &opponent) {//its virtual, needs to be overrided in enemy
