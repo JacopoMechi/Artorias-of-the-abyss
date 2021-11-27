@@ -7,15 +7,14 @@
 class Map
 {
 public:
-    Map(const std::vector<MapElement> &mapElementsVector, std::string &mapFilePath);
+    Map(const std::vector<MapElement> &mapElementsVector, const std::string &mapFilePath);
     ~Map();
-    void spawnEntities(const std::vector<MapElement> &mapElementsVector);
-    void drawMap(sf::RenderWindow &window);
+    void spawnEntity(const MapElement &mapElement);
+    void draw(sf::RenderWindow &window);
 
-protected:
+private:
     std::vector<MapElement> mapElementsVector;
     sf::Texture mapTexture;
     sf::Sprite mapSprite;
-    std::string mapFilePath;
 };
 #endif
