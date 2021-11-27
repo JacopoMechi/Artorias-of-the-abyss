@@ -1,5 +1,7 @@
+/.idea/
 /.vscode/
 /build/
+/cmake-build-debug/
 /1098024.png
 /0x72_DungeonTilesetII_v1.4.png
 /2175410.png
