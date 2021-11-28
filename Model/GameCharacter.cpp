@@ -1,6 +1,6 @@
 #include "GameCharacter.h"
 
-GameCharacter::GameCharacter(int hp, int a, int c, int mS, const sf::Vector2f& pos): HP(hp), armor(a), cash(c),
+GameCharacter::GameCharacter(int hp, int a, int c, float mS, const sf::Vector2f& pos): HP(hp), armor(a), cash(c),
  movementSpeed(mS), pos(pos), weapon(nullptr), leftWeapon(nullptr){
 }
 void GameCharacter::animation( int x, int y, int width, int height, bool isLeft, bool isIdle){
@@ -33,7 +33,7 @@ void GameCharacter::draw(sf::RenderTarget& rt) const{
 }
 
 void GameCharacter::setDirection(const sf::Vector2f& dir){
-    vel = dir*speed;
+    vel = dir*movementSpeed;//speed
     if(dir.x > 0.0f){//walking right
         this -> animation(127, 75, 16, 28, false, false);
         lastAnimation = AnimationIndex::WalkingRight;

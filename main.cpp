@@ -70,7 +70,7 @@ int main(){
     sf::Texture t;
     sf::Sprite s(t);
 
-    GameCharacter test(100, 20, 0, 1, {150.f,3.0f});
+    GameCharacter test(100, 20, 0, 100.0f, {150.f,3.0f});
 
     //timepoint for delta time measurement
     auto tp = std::chrono::steady_clock::now();

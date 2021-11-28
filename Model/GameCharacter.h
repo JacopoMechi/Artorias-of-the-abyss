@@ -13,7 +13,7 @@ class GameCharacter{//:  public MapElement
 
 public:
     
-    GameCharacter(int hp, int a, int c, int mS, const sf::Vector2f& pos);
+    GameCharacter(int hp, int a, int c, float mS, const sf::Vector2f& pos);
     //hp: HP, a: armor, c: cash, mS: movementSpeed, t: textPool               
     ~GameCharacter();
     
@@ -57,7 +57,7 @@ protected:
     int HP;
     int armor;
     int cash;
-    int movementSpeed;
+    float movementSpeed;
     int dialogueTracker = 0;
     int x;
     int y;
@@ -74,7 +74,6 @@ protected:
         IdleRight,
         Count
     };
-    static constexpr float speed = 100.0f;
     sf::Vector2f pos;
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;
