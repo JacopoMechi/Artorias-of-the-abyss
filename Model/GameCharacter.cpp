@@ -65,14 +65,10 @@ void GameCharacter::update(float dt){
         time -=holdTime;
         advance();
     }
-    this -> applyToSprite(sprite);
+    sprite.setTexture(texture);
+    sprite.setTextureRect(frames[iFrame]);
     sprite.setScale(2.0f, 2.0f);
     sprite.setPosition(pos);
-}
-
-void GameCharacter::applyToSprite(sf::Sprite& s) const {
-    s.setTexture(texture);
-    s.setTextureRect(frames[iFrame]);
 }
 
 GameCharacter::~GameCharacter() {

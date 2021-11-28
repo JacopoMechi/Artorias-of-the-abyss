@@ -49,8 +49,6 @@ public:
 
     void setDirection(const sf::Vector2f& dir);
     
-    void applyToSprite(sf::Sprite& s) const;
-    
     void update(float dt);
 
     void animation(int x, int y, int width, int height, bool isLeft, bool isIdle);
