@@ -20,6 +20,9 @@ public:
     int getHp() const;
     void setHp(int hp);
     
+    sf::Vector2f getPos() const;
+    void setPos (sf::Vector2f pos);
+    
     int getArmor() const;
     void setArmor(int armor);
     
@@ -65,6 +68,7 @@ protected:
     int height;
     bool isLeft;
     bool isIdle;
+    int aggroDistance;
     Weapon* weapon;
     Weapon* leftWeapon;
     enum class AnimationIndex{
