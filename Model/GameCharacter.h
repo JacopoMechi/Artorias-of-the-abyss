@@ -39,7 +39,7 @@ public:
     Weapon* getShield();
     void setShield(Weapon* weapon);
     
-    virtual void movement(sf::Vector2f dir);
+    virtual void movement();
     
     virtual void attack(GameCharacter &opponent);
     

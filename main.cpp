@@ -104,8 +104,7 @@ int main(){
         }
 
         //handle input
-        sf::Vector2f dir = {0.0f, 0.0f};
-        test.movement(dir);
+        test.movement();
 
         //update model
         test.update(dt);
