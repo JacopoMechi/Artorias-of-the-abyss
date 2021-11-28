@@ -55,8 +55,6 @@ public:
 
     void animation(int x, int y, int width, int height, bool isLeft, bool isIdle);
 
-    void adjourn(float dt);
-
 protected: 
     int HP;
     int armor;

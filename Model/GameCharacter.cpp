@@ -58,18 +58,13 @@ void GameCharacter::setDirection(const sf::Vector2f& dir){
         this -> animation(128, 75, 16, 28, false, true);
 }
 
-void GameCharacter::adjourn(float dt){
+void GameCharacter::update(float dt){
+    pos += vel*dt;
     time += dt;
     while (time >= holdTime){
         time -=holdTime;
         advance();
     }
-}
-
-
-void GameCharacter::update(float dt){
-    pos += vel*dt;
-    this -> adjourn(dt);
     this -> applyToSprite(sprite);
     sprite.setScale(2.0f, 2.0f);
     sprite.setPosition(pos);
