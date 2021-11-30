@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-#include <complex> //for norm
+#include <cmath>
 
 #include <SFML/Graphics.hpp>
 #include "MapElement.h"
@@ -46,7 +46,7 @@ public:
     
     virtual void attack(GameCharacter &opponent);
     
-    bool isChasing(int aggroDistance, const GameCharacter &enemy);
+    bool isChasing(float aggroDistance, GameCharacter &enemy);
 
     void draw(sf::RenderTarget& rt) const;
 
@@ -68,7 +68,7 @@ protected:
     int height;
     bool isLeft;
     bool isIdle;
-    int aggroDistance;
+    float aggroDistance;
     Weapon* weapon;
     Weapon* leftWeapon;
     enum class AnimationIndex{

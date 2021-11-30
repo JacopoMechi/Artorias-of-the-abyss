@@ -70,7 +70,8 @@ int main(){
     sf::Texture t;
     sf::Sprite s(t);
 
-    GameCharacter test(100, 20, 0, 100.0f, {150.f,3.0f});
+    GameCharacter test(100, 20, 0, 100.0f, {150.0f,3.0f});
+    GameCharacter test1(100, 20, 0, 100.0f, {400.f,3.0f});//TODO remove
 
     //timepoint for delta time measurement
     auto tp = std::chrono::steady_clock::now();
@@ -82,9 +83,15 @@ int main(){
         return EXIT_FAILURE;
     sf::Sprite sprite(texture);
     sprite.setTextureRect({127, 75, 16, 26});//    128, 75, 17, 28
+    //creating GameCharacter//TODO remove
+    sf::Texture texture1;
+    if(!texture1.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png"))
+        return EXIT_FAILURE;
+    sf::Sprite sprite1(texture1);
+    sprite1.setTextureRect({127, 75, 16, 26});//    128, 75, 17, 28
 
 
-    
+    //TODO why I cant spawn another character?
     //starting the game loop
     while (window.isOpen()){
         //process event
@@ -105,9 +112,13 @@ int main(){
 
         //handle input
         test.movement();
+        test1.animation(128, 75, 16, 28, false, true);
+        if (test.isChasing(30, test1))
+            std::cout<<"Success!"<<std::endl;
 
         //update model
         test.update(dt);
+        test1.update(dt);//TODO remove
 
         //clear screen
         window.clear();
@@ -117,6 +128,7 @@ int main(){
 
         //draw the sprite
         test.draw(window);
+        test1.draw(window);//TODO remove
 
         //update the window
         window.display();

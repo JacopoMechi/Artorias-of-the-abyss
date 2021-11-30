@@ -101,11 +101,13 @@ void GameCharacter::attack(GameCharacter &opponent) {//its virtual, needs to be 
     opponent.receiveDamage(hit);
 }
 
-/*bool GameCharacter::isChasing(int aggroDistance, const GameCharacter &enemy) {//TODO needs to be edited
-    if (sf::norm(pos-enemy.pos) > aggroDistance) //is it ok?
+bool GameCharacter::isChasing(float aggroDistance, GameCharacter &enemy) {
+    sf::Vector2f enemyPos = enemy.getPos();
+    if(sqrt(pow((enemyPos.x - pos.x), 2)+pow((enemyPos.y - pos.y), 2)) < aggroDistance)
+        return true;
+    else
         return false;
-    return true;
-}*/
+}
 
 void GameCharacter::draw(sf::RenderTarget& rt) const{
     rt.draw(sprite);
