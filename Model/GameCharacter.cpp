@@ -103,7 +103,7 @@ void GameCharacter::attack(GameCharacter &opponent) {//its virtual, needs to be 
 
 bool GameCharacter::isChasing(float aggroDistance, GameCharacter &enemy) {
     sf::Vector2f enemyPos = enemy.getPos();
-    if(sqrt(pow((enemyPos.x - pos.x), 2)+pow((enemyPos.y - pos.y), 2)) < aggroDistance)
+    if(sqrt((enemyPos.x - pos.x)*(enemyPos.x - pos.x)+(enemyPos.y - pos.y)*(enemyPos.y - pos.y)) < aggroDistance)
         return true;
     else
         return false;

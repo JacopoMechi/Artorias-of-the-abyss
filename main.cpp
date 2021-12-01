@@ -79,7 +79,8 @@ int main(){
 
     //creating GameCharacter
     sf::Texture texture;
-    if(!texture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png"))
+    if(!texture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png"))//TODO move in GameCharacter's
+    //constructor
         return EXIT_FAILURE;
     sf::Sprite sprite(texture);
     sprite.setTextureRect({127, 75, 16, 26});//    128, 75, 17, 28
@@ -88,10 +89,9 @@ int main(){
     if(!texture1.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png"))
         return EXIT_FAILURE;
     sf::Sprite sprite1(texture1);
-    sprite1.setTextureRect({127, 75, 16, 26});//    128, 75, 17, 28
+    sprite1.setTextureRect({127, 75, 16, 26});//    128, 75, 17, 28*/
 
 
-    //TODO why I cant spawn another character?
     //starting the game loop
     while (window.isOpen()){
         //process event
@@ -113,7 +113,7 @@ int main(){
         //handle input
         test.movement();
         test1.animation(128, 75, 16, 28, false, true);
-        if (test.isChasing(30, test1))
+        if (test.isChasing(100, test1))
             std::cout<<"Success!"<<std::endl;
 
         //update model
