@@ -2,6 +2,9 @@
 
 GameCharacter::GameCharacter(int hp, int a, int c, float mS, const sf::Vector2f& pos): HP(hp), armor(a), cash(c),
  movementSpeed(mS), pos(pos), weapon(nullptr), leftWeapon(nullptr){
+    sf::Texture texture;
+     sf::Sprite sprite(texture);
+    sprite.setTextureRect({127, 75, 16, 28});//    128, 75, 17, 28
 }
 
 GameCharacter::~GameCharacter() {

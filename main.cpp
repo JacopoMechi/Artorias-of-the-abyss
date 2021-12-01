@@ -76,20 +76,16 @@ int main(){
     //timepoint for delta time measurement
     auto tp = std::chrono::steady_clock::now();
 
-
-    //creating GameCharacter
-    sf::Texture texture;
-    if(!texture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png"))//TODO move in GameCharacter's
-    //constructor
-        return EXIT_FAILURE;
-    sf::Sprite sprite(texture);
-    sprite.setTextureRect({127, 75, 16, 26});//    128, 75, 17, 28
-    //creating GameCharacter//TODO remove
+    
+    /*if(!texture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png"))
+        return EXIT_FAILURE;*/
+   
+    /*//creating GameCharacter//TODO remove
     sf::Texture texture1;
     if(!texture1.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png"))
         return EXIT_FAILURE;
     sf::Sprite sprite1(texture1);
-    sprite1.setTextureRect({127, 75, 16, 26});//    128, 75, 17, 28*/
+    sprite1.setTextureRect({127, 75, 16, 28});//    128, 75, 17, 28*/
 
 
     //starting the game loop
