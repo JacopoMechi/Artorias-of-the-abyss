@@ -8,14 +8,6 @@ EstusFlask::~EstusFlask(){
 
 }
 
-int EstusFlask::getItemCount() {
-    return itemCount;
-}
-
-void EstusFlask::setItemCount(int itemCount) {
-    this -> itemCount = itemCount;
-}
-
 void EstusFlask::use(Hero& hero) {//TODO reset usage in Bonfire
     if (EstusFlask::getItemCount() > 0)
         hero.restoreHp(healthRestored);
