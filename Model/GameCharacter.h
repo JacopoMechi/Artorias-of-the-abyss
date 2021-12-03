@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include "MapElement.h"
 #include "Weapon.h"
+#include "Inventory.h"
 
 class GameCharacter{//:  public MapElement
 
@@ -35,14 +36,12 @@ public:
     Weapon* getWeapon();
     void setWeapon(Weapon* weapon);
 
-    //removed isUnkillable. In NPC use virtual void receiveDamage() override{};
-    //removed respawn. I think its useless here. Better in Hero
     virtual void receiveDamage(int points);
 
     Weapon* getShield();
     void setShield(Weapon* weapon);
     
-    virtual void movement();
+    virtual void movement(Inventory& inventory);
     
     virtual void attack(GameCharacter &opponent);
     

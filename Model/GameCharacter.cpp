@@ -2,8 +2,6 @@
 
 GameCharacter::GameCharacter(int hp, int a, int c, float mS, const sf::Vector2f& pos): HP(hp), armor(a), cash(c),
  movementSpeed(mS), pos(pos), weapon(nullptr), leftWeapon(nullptr){
-    sf::Texture texture;
-     sf::Sprite sprite(texture);
     sprite.setTextureRect({127, 75, 16, 28});//    128, 75, 17, 28
 }
 
@@ -78,8 +76,16 @@ void GameCharacter::setShield(Weapon* leftWeapon) {
 }
 
 
-void GameCharacter::movement() {
+void GameCharacter::movement(Inventory& inventory) {
     sf::Vector2f dir = {0.0f, 0.0f};
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)){//FIXME character moving if pressed E and arrow key at the same time
+        inventory.use();
+        this -> setDirection({0,0});
+    }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
+        inventory.setIsOpen(false);
+    }
+    else if(!inventory.getIsOpen()){
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
             dir.y -= 1.0f;
     }
@@ -93,6 +99,7 @@ void GameCharacter::movement() {
             dir.x += 1.0f;
     }
     this -> setDirection(dir);
+    }
 }
 
 void GameCharacter::attack(GameCharacter &opponent) {//its virtual, needs to be overrided in enemy

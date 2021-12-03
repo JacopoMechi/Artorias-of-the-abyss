@@ -66,12 +66,13 @@ int main(){
                             };
 
     //create window
-    sf::RenderWindow window {sf::VideoMode(800, 600), "Map"};
+    sf::RenderWindow window {sf::VideoMode(1152, 673), "Map"};
     sf::Texture t;
     sf::Sprite s(t);
 
     GameCharacter test(100, 20, 0, 100.0f, {150.0f,3.0f});
-    GameCharacter test1(100, 20, 0, 100.0f, {400.f,3.0f});//TODO remove
+    Inventory inventory(false);
+    //GameCharacter test1(100, 20, 0, 100.0f, {400.f,3.0f});//TODO remove
 
     //timepoint for delta time measurement
     auto tp = std::chrono::steady_clock::now();
@@ -107,14 +108,14 @@ int main(){
         }
 
         //handle input
-        test.movement();
-        test1.animation(128, 75, 16, 28, false, true);
+        test.movement(inventory);
+        /*test1.animation(128, 75, 16, 28, false, true);
         if (test.isChasing(100, test1))
-            std::cout<<"Success!"<<std::endl;
+            std::cout<<"Success!"<<std::endl;*/
 
         //update model
         test.update(dt);
-        test1.update(dt);//TODO remove
+        //test1.update(dt);//TODO remove
 
         //clear screen
         window.clear();
@@ -124,7 +125,9 @@ int main(){
 
         //draw the sprite
         test.draw(window);
-        test1.draw(window);//TODO remove
+        if (inventory.getIsOpen())
+            inventory.draw(window);
+        //test1.draw(window);//TODO remove
 
         //update the window
         window.display();
