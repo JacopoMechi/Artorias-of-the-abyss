@@ -1,7 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <chrono>
 
-#include "GameCharacter.h"
+#include "GameCharacter.h"//inventory included in here
+#include "HUD.h"
 
 int main(){
     //textPool
@@ -72,6 +73,7 @@ int main(){
 
     GameCharacter test(100, 20, 0, 100.0f, {150.0f,3.0f});
     Inventory inventory(false);
+    HUD hud;
     //GameCharacter test1(100, 20, 0, 100.0f, {400.f,3.0f});//TODO remove
 
     //timepoint for delta time measurement
@@ -127,6 +129,7 @@ int main(){
         test.draw(window);
         if (inventory.getIsOpen())
             inventory.draw(window);
+        hud.draw(window);    
         //test1.draw(window);//TODO remove
 
         //update the window
