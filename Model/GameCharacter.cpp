@@ -78,7 +78,7 @@ void GameCharacter::setShield(Weapon* leftWeapon) {
 
 void GameCharacter::movement(Inventory& inventory) {
     sf::Vector2f dir = {0.0f, 0.0f};
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)){//FIXME character moving if pressed E and arrow key at the same time
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
         inventory.use();
         this -> setDirection({0,0});
     }

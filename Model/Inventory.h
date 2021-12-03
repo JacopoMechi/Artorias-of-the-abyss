@@ -6,7 +6,7 @@
 
 #include "Item.h"
 
-class Inventory {//FIXME
+class Inventory {
 public:
     Inventory(bool isOpen);
 
