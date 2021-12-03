@@ -1,7 +1,6 @@
 #include "Inventory.h"
 
 Inventory::Inventory(bool isOpen): isOpen(isOpen){
-    sf::Sprite inventorySprite(inventoryTexture);
     inventoryTexture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/PlayerHUD.png");
 }
 
