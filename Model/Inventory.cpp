@@ -20,6 +20,7 @@ void Inventory::use() {
     inventorySprite.setTexture(inventoryTexture);
     inventorySprite.setTextureRect({71, 10, 356, 500});//414
     inventorySprite.setPosition(71,10);
+    inventorySprite.setScale(0.9f, 0.9f);
     this -> setIsOpen(true);
 }
 
