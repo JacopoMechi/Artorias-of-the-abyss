@@ -8,7 +8,6 @@
 #include <SFML/Graphics.hpp>
 #include "MapElement.h"
 #include "Weapon.h"
-#include "Inventory.h"
 
 class GameCharacter{//:  public MapElement
 
@@ -41,15 +40,15 @@ public:
     Weapon* getShield();
     void setShield(Weapon* weapon);
     
-    virtual void movement(Inventory& inventory);
+    virtual void movement(bool isInventoryOpen);
     
     virtual void attack(GameCharacter &opponent);
     
     bool isChasing(float aggroDistance, GameCharacter &enemy);
 
-    void draw(sf::RenderTarget& rt) const;
+    void draw(sf::RenderTarget &rt) const;
 
-    void setDirection(const sf::Vector2f& dir);
+    void setDirection(const sf::Vector2f &dir);
     
     void update(float dt);
 
@@ -67,6 +66,7 @@ protected:
     int height;
     bool isLeft;
     bool isIdle;
+    bool isInventoryOpen;
     float aggroDistance;
     Weapon* weapon;
     Weapon* leftWeapon;

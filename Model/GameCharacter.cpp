@@ -76,16 +76,9 @@ void GameCharacter::setShield(Weapon* leftWeapon) {
 }
 
 
-void GameCharacter::movement(Inventory& inventory) {
+void GameCharacter::movement(bool isInventoryOpen){
     sf::Vector2f dir = {0.0f, 0.0f};
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
-        inventory.use();
-        this -> setDirection({0,0});
-    }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
-        inventory.setIsOpen(false);
-    }
-    else if(!inventory.getIsOpen()){
+    if (!isInventoryOpen){
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
             dir.y -= 1.0f;
     }
@@ -99,7 +92,8 @@ void GameCharacter::movement(Inventory& inventory) {
             dir.x += 1.0f;
     }
     this -> setDirection(dir);
-    }
+    }else
+        this ->setDirection({0,0});
 }
 
 void GameCharacter::attack(GameCharacter &opponent) {//its virtual, needs to be overrided in enemy
@@ -119,11 +113,11 @@ bool GameCharacter::isChasing(float aggroDistance, GameCharacter &enemy) {
         return false;
 }
 
-void GameCharacter::draw(sf::RenderTarget& rt) const{
+void GameCharacter::draw(sf::RenderTarget &rt) const{
     rt.draw(sprite);
 }
 
-void GameCharacter::setDirection(const sf::Vector2f& dir){
+void GameCharacter::setDirection(const sf::Vector2f &dir){
     vel = dir*movementSpeed;
     if(dir.x > 0.0f){//walking right
         this -> animation(127, 75, 16, 28, false, false);

@@ -72,8 +72,8 @@ int main(){
     sf::Sprite s(t);
 
     GameCharacter test(100, 20, 0, 100.0f, {150.0f,3.0f});
-    Inventory inventory(false);
-    HUD hud;
+    //Inventory inventory(false);
+    HUD hud(false);
     //GameCharacter test1(100, 20, 0, 100.0f, {400.f,3.0f});//TODO remove
 
     //timepoint for delta time measurement
@@ -110,7 +110,8 @@ int main(){
         }
 
         //handle input
-        test.movement(inventory);
+        test.movement(hud.getInvIsOpen());
+        hud.openCloseInv();
         /*test1.animation(128, 75, 16, 28, false, true);
         if (test.isChasing(100, test1))
             std::cout<<"Success!"<<std::endl;*/
@@ -126,9 +127,10 @@ int main(){
         window.draw(s);
 
         //draw the sprite
+        if (hud.getInvIsOpen()){
+            hud.drawInventory(window);
+        }
         test.draw(window);
-        if (inventory.getIsOpen())
-            inventory.draw(window);
         hud.draw(window); 
         hud.displayHealth(test, window);   
         //test1.draw(window);//TODO remove
