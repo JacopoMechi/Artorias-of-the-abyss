@@ -1,7 +1,7 @@
 #include "HUD.h"
 
 HUD::HUD(){
-    font.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/yoster.ttf");
+    font.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/orangekid.ttf");
     text.setFont(font);
     hudTexture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/PlayerHUD.png");
     healthSprite.setTexture(hudTexture);
@@ -26,7 +26,7 @@ void HUD::draw(sf::RenderTarget& rt) const{
 
 void HUD::displayHealth(GameCharacter& character, sf::RenderTarget &rt){ 
     std::string bar = std::string("HP: ") + std::to_string(character.getHp()) + std::string("/100");
-    text.setPosition(900, 20);
+    text.setPosition(950, 18);
     text.setString(bar);
     rt.draw(text);
 }
