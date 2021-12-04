@@ -13,11 +13,14 @@ public:
 
     void draw(sf::RenderTarget& rt) const;
 
+    void displayHealth(GameCharacter& character, sf::RenderTarget &rt);
+
 protected:
     sf::Texture hudTexture;
     sf::Sprite healthSprite;
     sf::Sprite quickslotSprite;
     sf::Sprite actionsSprite;
-
+    sf::Text text;
+    sf::Font font;
 };
 #endif

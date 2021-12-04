@@ -129,7 +129,8 @@ int main(){
         test.draw(window);
         if (inventory.getIsOpen())
             inventory.draw(window);
-        hud.draw(window);    
+        hud.draw(window); 
+        hud.displayHealth(test, window);   
         //test1.draw(window);//TODO remove
 
         //update the window

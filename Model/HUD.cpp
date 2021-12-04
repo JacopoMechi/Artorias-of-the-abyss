@@ -1,6 +1,8 @@
 #include "HUD.h"
 
 HUD::HUD(){
+    font.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/yoster.ttf");
+    text.setFont(font);
     hudTexture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/PlayerHUD.png");
     healthSprite.setTexture(hudTexture);
     quickslotSprite.setTexture(hudTexture);
@@ -20,4 +22,11 @@ void HUD::draw(sf::RenderTarget& rt) const{
     rt.draw(healthSprite);
     rt.draw(quickslotSprite);
     rt.draw(actionsSprite);
+}
+
+void HUD::displayHealth(GameCharacter& character, sf::RenderTarget &rt){ 
+    std::string bar = std::string("HP: ") + std::to_string(character.getHp()) + std::string("/100");
+    text.setPosition(900, 20);
+    text.setString(bar);
+    rt.draw(text);
 }
