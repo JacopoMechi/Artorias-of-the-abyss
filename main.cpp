@@ -73,7 +73,7 @@ int main(){
 
     GameCharacter test(100, 20, 0, 100.0f, {150.0f,3.0f});
     //Inventory inventory(false);
-    HUD hud(false);
+    HUD hud(false, true);
     //GameCharacter test1(100, 20, 0, 100.0f, {400.f,3.0f});//TODO remove
 
     //timepoint for delta time measurement
@@ -127,10 +127,10 @@ int main(){
         window.draw(s);
 
         //draw the sprite
+        test.draw(window);
         if (hud.getInvIsOpen()){
             hud.drawInventory(window);
         }
-        test.draw(window);
         hud.draw(window); 
         hud.displayHealth(test, window);   
         //test1.draw(window);//TODO remove

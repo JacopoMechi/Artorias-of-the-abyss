@@ -1,6 +1,6 @@
 #include "HUD.h"
 
-HUD::HUD(bool isInvOpen): isInvOpen(isInvOpen){
+HUD::HUD(bool isInvOpen, bool firstTab): isInvOpen(isInvOpen), firstTab(firstTab){
     font.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/orangekid.ttf");
     text.setFont(font);
 
@@ -32,6 +32,14 @@ void HUD::setInvIsOpen(bool isInvOpen){
     this -> isInvOpen = isInvOpen;
 }
 
+bool HUD::getFirstTab(){
+    return firstTab;
+}
+
+void HUD::setFirstTab(bool firstTab){
+    this -> firstTab = firstTab;
+}
+
 void HUD::draw(sf::RenderTarget &rt) const{
     rt.draw(healthSprite);
     rt.draw(quickslotSprite);
@@ -45,18 +53,45 @@ void HUD::displayHealth(GameCharacter &character, sf::RenderTarget &rt){
     rt.draw(text);
 }
 
-void HUD::useInventory(){
-    
+void HUD::diplayInventoryTabs(sf::RenderTarget &rt){
+    /*if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)){
+        text.setPosition(132, 114);
+        //text.setTextureRect(132,114,196,64);
+        if(swap){
+            text.setString("Consumabili. <tab> cambia categoria, <q> esci dall'inventario,  <ArrUp, Arrdown> scorri items, <invio> seleziona");
+            swap = false;
+        }else{
+
+            swap = true;
+        }
+    }
+    rt.draw(text);*/
 }
 
-void HUD::drawInventory(sf::RenderTarget &rt) const{
+void HUD::drawInventory(sf::RenderTarget &rt){
     rt.draw(inventorySprite);
+    sf::Text tabText;
+    tabText.setFont(font);
+    tabText.setPosition(160, 120);
+    tabText.setCharacterSize(24);
+    std::string tab;
+    bool first = this -> getFirstTab();  
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            this -> setFirstTab(true);
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            this -> setFirstTab(false);
+    if (first){
+        tab = "Consumabili >";//<tab> cambia categoria, <q> esci dall'inventario, <ArrowUp,ArrDown> scorri items
+    }else if(!first){
+        tab = "< Collezionabili";    
+    }
+    tabText.setString(tab);
+    rt.draw(tabText);
 }
 
 void HUD::openCloseInv(){
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
         this -> setInvIsOpen(true);
-        //TODO move this in main: this -> setDirection({0,0});
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
         this -> setInvIsOpen(false);

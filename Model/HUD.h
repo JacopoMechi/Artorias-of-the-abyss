@@ -10,19 +10,23 @@ class HUD{
 
 public:
 
-    HUD(bool isInvOpen);
+    HUD(bool isInvOpen, bool firstTab);
 
     bool getInvIsOpen();
 
     void setInvIsOpen(bool isInvOpen);
 
+    bool getFirstTab();
+
+    void setFirstTab(bool firstTab);
+
     void draw(sf::RenderTarget &rt) const;
 
     void displayHealth(GameCharacter &character, sf::RenderTarget &rt);
 
-    void useInventory();
+    void diplayInventoryTabs(sf::RenderTarget &rt);
 
-    void drawInventory(sf::RenderTarget &rt) const;
+    void drawInventory(sf::RenderTarget &rt);
 
     void openCloseInv();
 
@@ -35,5 +39,7 @@ protected:
     sf::Text text;
     sf::Font font;
     bool isInvOpen;
+    bool firstTab;
+    //bool swap = true;
 };
 #endif
