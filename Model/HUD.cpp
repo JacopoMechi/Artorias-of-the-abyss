@@ -53,20 +53,6 @@ void HUD::displayHealth(GameCharacter &character, sf::RenderTarget &rt){
     rt.draw(text);
 }
 
-void HUD::diplayInventoryTabs(sf::RenderTarget &rt){
-    /*if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)){
-        text.setPosition(132, 114);
-        //text.setTextureRect(132,114,196,64);
-        if(swap){
-            text.setString("Consumabili. <tab> cambia categoria, <q> esci dall'inventario,  <ArrUp, Arrdown> scorri items, <invio> seleziona");
-            swap = false;
-        }else{
-
-            swap = true;
-        }
-    }
-    rt.draw(text);*/
-}
 
 void HUD::drawInventory(sf::RenderTarget &rt){
     rt.draw(inventorySprite);

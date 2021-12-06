@@ -24,8 +24,6 @@ public:
 
     void displayHealth(GameCharacter &character, sf::RenderTarget &rt);
 
-    void diplayInventoryTabs(sf::RenderTarget &rt);
-
     void drawInventory(sf::RenderTarget &rt);
 
     void openCloseInv();
