@@ -38,6 +38,12 @@ protected:
     sf::Font font;
     bool isInvOpen;
     bool firstTab;
-    //bool swap = true;
+    Item guardianSoul{"Anima del Guardiano", 0, 
+        "Anima del leone alato bianco, protettore del Santuario, che temeva la diffusione dell'abisso", 1, 0, 289, 273, 6, 7};//change > 0  to be displayed
+    /*Item firCollRaw[1] = {Item("Anima del Guardiano", 0, 
+        "Anima del leone alato bianco, protettore del Santuario, che temeva la diffusione dell'abisso", 1, 0, 289, 273, 6, 7)};
+    Item secCollRaw[1];
+    Item thirCollRaw[1];
+    Item fourCollRaw[1];*///FIXME danno fastidio
 };
 #endif

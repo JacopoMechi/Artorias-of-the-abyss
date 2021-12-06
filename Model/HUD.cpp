@@ -60,16 +60,16 @@ void HUD::drawInventory(sf::RenderTarget &rt){
     tabText.setFont(font);
     tabText.setPosition(160, 120);
     tabText.setCharacterSize(24);
-    std::string tab;
-    bool first = this -> getFirstTab();  
+    std::string tab;  
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             this -> setFirstTab(true);
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             this -> setFirstTab(false);
-    if (first){
+    if (this -> getFirstTab()){
         tab = "Consumabili >";//<tab> cambia categoria, <q> esci dall'inventario, <ArrowUp,ArrDown> scorri items
-    }else if(!first){
-        tab = "< Collezionabili";    
+    }else if(!this -> getFirstTab()){
+        tab = "< Collezionabili";
+        guardianSoul.displayItem(101, 226, rt);    
     }
     tabText.setString(tab);
     rt.draw(tabText);

@@ -25,8 +25,8 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/MapElement.cpp
                                     ##Model/Weapon.h
                                     ##Model/Weapon.cpp
-                                    ##Model/Inventory.cpp
-                                    ##Model/Inventory.h
+                                    Model/Item.cpp
+                                    Model/Item.h
                                     Model/HUD.h
                                     Model/HUD.cpp)
 

@@ -2,20 +2,32 @@
 #define _ITEM_H
 
 #include <string>
+#include <SFML/Graphics.hpp>
 
 class Item {
 public:
-    Item(std::string n, int p, std::string d, int M, int c); // n: itemName, p: itemPrice, c: itemCount,
-                                                             // d: itemDescription, M:maxItemCount
+    Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height); 
+
     ~Item();
+
     int getItemCount();
+
     void setItemCount(int itemCount);
+
+    void displayItem(int posX, int posY, sf::RenderTarget &rt);
+
 protected: 
     std::string itemName;
     int itemPrice;
     int itemCount;
     std::string itemDescription;
     int maxItemCount;
+    int x;
+    int y;
+    int width;
+    int height;
+    sf::Texture texture;
+    sf::Sprite sprite;
 };
 
 #endif //_ITEM_H
