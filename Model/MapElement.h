@@ -13,11 +13,12 @@ public:
     sf::Vector2f getPos();
     void setPos(sf::Vector2f &newPos);
 
-    MapElement(std::vector<int> &spriteDimension, sf::Vector2f &position, std::string &mapElementFilePath);
+    MapElement(std::vector<int> &spriteDimension, sf::Vector2f &position, const std::string &mapElementFilePath);
     ~MapElement();
 
 protected:
     sf::Texture mapElementTexture;
     sf::Sprite mapElementSprite;
+    sf::IntRect spriteDimension;
 };
 #endif
