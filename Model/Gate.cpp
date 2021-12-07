@@ -1,7 +1,7 @@
-#include "Gate.h"
-
 #include <iostream>
 #include <cmath>
+
+#include "Gate.h"
 
 bool Gate::getisOpen()
 {
