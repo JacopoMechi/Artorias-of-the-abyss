@@ -1,8 +1,10 @@
 #ifndef _MAP_H
 #define _MAP_H
-#include "MapElement.h"
+
 #include <vector>
 #include <SFML/Graphics.hpp>
+
+#include "MapElement.h"
 
 class Map
 {

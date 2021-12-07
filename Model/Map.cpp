@@ -1,9 +1,10 @@
-#include "Map.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <string>
 
-void Map::spawnEntity(const MapElement &mapElement) //TODO currently not working
+#include "Map.h"
+
+void Map::spawnEntity(const MapElement &mapElement) // TODO currently not working
 {
     mapElementsVector.push_back(mapElement);
 }
