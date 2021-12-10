@@ -2,7 +2,6 @@
 #define _BONFIRE_H
 
 #include <SFML/System.hpp>
-#include <string>
 #include <vector>
 
 #include "MapElement.h"
@@ -18,7 +17,9 @@ public:
 
     void respawnEnemies(); // TODO to be implemented
 
-    Bonfire(std::vector<int> spriteDimension, sf::Vector2f position, std::string mapElementFilePath);
+    Bonfire(sf::Vector2f position,
+            std::vector<sf::IntRect> spriteFrames = {{250, 0, 189, 298}, {439, 0, 189, 298}, {628, 0, 189, 298}},
+            const std::string mapElementFilePath = "../Textures/Textures.png");
 
     ~Bonfire();
 };

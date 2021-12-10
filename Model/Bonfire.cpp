@@ -1,13 +1,7 @@
 #include <SFML/System.hpp>
-#include <string>
 #include <vector>
 
 #include "Bonfire.h"
-
-void Bonfire::draw(sf::RenderWindow &window)
-{
-    window.draw(mapElementSprite);
-}
 
 void Bonfire::resetHp() // TODO to be implemented
 {
@@ -21,5 +15,7 @@ void Bonfire::respawnEnemies() // TODO to be implemented
 {
 }
 
-Bonfire::Bonfire(std::vector<int> spriteDimension, sf::Vector2f position, const std::string mapElementFilePath) : MapElement(spriteDimension, position, mapElementFilePath) {}
+Bonfire::Bonfire(sf::Vector2f position,
+                 std::vector<sf::IntRect> spriteFrames,
+                 const std::string mapElementFilePath) : MapElement(position, spriteFrames, mapElementFilePath) {}
 Bonfire::~Bonfire() {}
