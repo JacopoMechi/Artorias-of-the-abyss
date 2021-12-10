@@ -14,7 +14,11 @@ public:
 
     void setItemCount(int itemCount);
 
-    void displayItem(int posX, int posY, sf::RenderTarget &rt);
+    void displayItem(int posX, int posY, sf::RenderTarget &rt, int nameX, int nameY, int descrX, int descrY);
+
+    std::string getItemName();
+
+    std::string getItemDescription();
 
 protected: 
     std::string itemName;
@@ -24,10 +28,17 @@ protected:
     int maxItemCount;
     int x;
     int y;
+    int nameX;
+    int nameY;
+    int descrX;
+    int descrY;
     int width;
     int height;
     sf::Texture texture;
     sf::Sprite sprite;
+    sf::Font font;
+    sf::Text name;
+    sf::Text textDescription;
 };
 
 #endif //_ITEM_H

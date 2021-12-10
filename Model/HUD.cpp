@@ -1,10 +1,10 @@
 #include "HUD.h"
 
-HUD::HUD(bool isInvOpen, bool firstTab): isInvOpen(isInvOpen), firstTab(firstTab){
-    font.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/orangekid.ttf");
+HUD::HUD(bool isInvOpen, bool firstTab, int nScroll): isInvOpen(isInvOpen), firstTab(firstTab), nScroll(nScroll){
+    font.loadFromFile("../orangekid.ttf");
     text.setFont(font);
 
-    hudTexture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/PlayerHUD.png");
+    hudTexture.loadFromFile("../PlayerHUD.png");
     healthSprite.setTexture(hudTexture);
     quickslotSprite.setTexture(hudTexture);
     actionsSprite.setTexture(hudTexture);
@@ -30,10 +30,6 @@ bool HUD::getInvIsOpen(){
 
 void HUD::setInvIsOpen(bool isInvOpen){
     this -> isInvOpen = isInvOpen;
-}
-
-bool HUD::getFirstTab(){
-    return firstTab;
 }
 
 void HUD::setFirstTab(bool firstTab){
@@ -65,11 +61,12 @@ void HUD::drawInventory(sf::RenderTarget &rt){
             this -> setFirstTab(true);
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             this -> setFirstTab(false);
-    if (this -> getFirstTab()){
+    if (this -> firstTab){
         tab = "Consumabili >";//<tab> cambia categoria, <q> esci dall'inventario, <ArrowUp,ArrDown> scorri items
-    }else if(!this -> getFirstTab()){
+    }else{
         tab = "< Collezionabili";
-        guardianSoul.displayItem(101, 226, rt);    
+        this -> scrollList();
+        this -> firstCollRaw[this -> nScroll].displayItem(101, 226, rt, 152, 207, 152, 223);   
     }
     tabText.setString(tab);
     rt.draw(tabText);
@@ -82,4 +79,11 @@ void HUD::openCloseInv(){
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
         this -> setInvIsOpen(false);
     }
+}
+
+void HUD::scrollList(){//FIXME
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        this -> nScroll = 0;
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        this -> nScroll = 1;    
 }

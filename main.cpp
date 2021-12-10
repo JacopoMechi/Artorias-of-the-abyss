@@ -73,7 +73,7 @@ int main(){
 
     GameCharacter test(100, 20, 0, 100.0f, {150.0f,3.0f});
     //Inventory inventory(false);
-    HUD hud(false, true);
+    HUD hud(false, true, 0);
     //GameCharacter test1(100, 20, 0, 100.0f, {400.f,3.0f});//TODO remove
 
     //timepoint for delta time measurement
