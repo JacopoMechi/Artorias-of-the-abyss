@@ -14,7 +14,8 @@ public:
 
     void setisOpen(bool isOpen);
 
-    Gate(std::vector<int> spriteDimension, sf::Vector2f position, const std::string mapElementFilePath, bool isOpen = false);
+    Gate(sf::Vector2f position, std::vector<sf::IntRect> spriteFrames = {{0, 0, 113, 196}},
+         const std::string mapElementFilePath = "../Textures/Textures.png", bool isOpen = false);
 
     ~Gate();
 

@@ -13,22 +13,23 @@ void Gate::setisOpen(bool isOpen)
     this->isOpen = isOpen;
     if (isOpen)
     {
-        spriteDimension.left = spriteDimension.left + abs(spriteDimension.width);
+        spriteFrames[0].left = spriteFrames[0].left + abs(spriteFrames[0].width);
     }
     else
     {
-        spriteDimension.left = spriteDimension.left - abs(spriteDimension.width);
+        spriteFrames[0].left = spriteFrames[0].left - abs(spriteFrames[0].width);
     }
-    mapElementSprite.setTextureRect(spriteDimension);
+    mapElementSprite.setTextureRect(spriteFrames[0]);
 }
 
-Gate::Gate(std::vector<int> spriteDimension, sf::Vector2f position, const std::string mapElementFilePath, bool isOpen) : MapElement(spriteDimension, position, mapElementFilePath), isOpen(isOpen)
+Gate::Gate(sf::Vector2f position, std::vector<sf::IntRect> spriteFrames,
+           const std::string mapElementFilePath, bool isOpen) : MapElement(position, spriteFrames, mapElementFilePath), isOpen(isOpen)
 {
     if (isOpen)
     {
-        this->spriteDimension.left = this->spriteDimension.left + abs(this->spriteDimension.width);
+        this->spriteFrames[0].left = this->spriteFrames[0].left + abs(this->spriteFrames[0].width);
     }
-    mapElementSprite.setTextureRect(this->spriteDimension);
+    mapElementSprite.setTextureRect(this->spriteFrames[0]);
     mapElementSprite.setPosition(position);
 }
 
