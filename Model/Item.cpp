@@ -1,6 +1,6 @@
 #include "Item.h"
 
-Item::Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height) : 
+Item::Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, float x, float y, int width, int height) : 
     itemName(itemName), itemPrice(itemPrice), itemDescription(itemDescription), maxItemCount(maxItemCount), itemCount(itemCount), 
     x(x), width(width), height(height){
         texture.loadFromFile("../sprites.png");
@@ -9,7 +9,6 @@ Item::Item(std::string itemName, int itemPrice, std::string itemDescription, int
 
         font.loadFromFile("../orangekid.ttf");
         name.setFont(font);
-        textDescription.setFont(font);
 }
 
 Item::~Item(){
@@ -24,18 +23,14 @@ void Item::setItemCount(int itemCount){
     this -> itemCount = itemCount;
 }
 
-void Item::displayItem(int posX, int posY, sf::RenderTarget &rt, int nameX, int nameY, int descrX, int descrY){
-    sprite.setPosition({posX, posY});
+void Item::displayItem(float posX, float posY, sf::RenderTarget &rt, float nameX, float nameY){
+    sprite.setPosition({posX, posY});//TODO item description in a pop-up
     if(this -> getItemCount() > 0){
         //display colored sprite
         name.setPosition(nameX, nameY);
         name.setString(this -> getItemName());
         name.setCharacterSize(20);
-        textDescription.setPosition(descrX, descrY);
-        textDescription.setString(this -> getItemDescription());
-        textDescription.setCharacterSize(20);
         rt.draw(name);
-        rt.draw(textDescription);
         rt.draw(sprite);
     }else{
         //display gray sprite

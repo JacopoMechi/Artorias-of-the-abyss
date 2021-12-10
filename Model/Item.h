@@ -6,7 +6,7 @@
 
 class Item {
 public:
-    Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height); 
+    Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, float x, float y, int width, int height); 
 
     ~Item();
 
@@ -14,7 +14,7 @@ public:
 
     void setItemCount(int itemCount);
 
-    void displayItem(int posX, int posY, sf::RenderTarget &rt, int nameX, int nameY, int descrX, int descrY);
+    void displayItem(float posX, float posY, sf::RenderTarget &rt, float nameX, float nameY);
 
     std::string getItemName();
 
@@ -26,19 +26,16 @@ protected:
     int itemCount;
     std::string itemDescription;
     int maxItemCount;
-    int x;
-    int y;
-    int nameX;
-    int nameY;
-    int descrX;
-    int descrY;
+    float x;
+    float y;
+    float nameX;
+    float nameY;
     int width;
     int height;
     sf::Texture texture;
     sf::Sprite sprite;
     sf::Font font;
     sf::Text name;
-    sf::Text textDescription;
 };
 
 #endif //_ITEM_H
