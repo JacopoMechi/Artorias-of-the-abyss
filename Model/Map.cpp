@@ -4,10 +4,11 @@
 
 #include "Map.h"
 
-void Map::spawnEntity(const MapElement &mapElement) // TODO currently not working
+void Map::spawnEntity(const MapElement &mapElement)
 {
     mapElementsVector.push_back(mapElement);
 }
+
 void Map::draw(sf::RenderWindow &window)
 {
     mapSprite.setTextureRect(sf::IntRect(0, 0, 1920, 1080));
