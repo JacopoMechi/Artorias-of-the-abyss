@@ -8,6 +8,16 @@
 
 void MapElement::draw(sf::RenderWindow &window)
 {
+    mapElementSprite.setTextureRect(MapElement::spriteFrames[frame]);
+    window.draw(mapElementSprite);
+    if (spriteFrames.size() > 1)
+    {
+        if (frame < spriteFrames.size() - 1)
+            frame++;
+        else
+            frame = 0;
+    }
+
     window.draw(mapElementSprite);
 }
 
@@ -21,18 +31,15 @@ void MapElement::setPos(sf::Vector2f &newPos)
     mapElementSprite.setPosition(newPos);
 }
 
-MapElement::MapElement(std::vector<int> &spriteDimension, sf::Vector2f &position, const std::string &mapElementFilePath)
+MapElement::MapElement(sf::Vector2f &position, std::vector<sf::IntRect> &spriteFrames, const std::string &mapElementFilePath)
 {
-    this->spriteDimension.left = spriteDimension[0];
-    this->spriteDimension.top = spriteDimension[1];
-    this->spriteDimension.width = spriteDimension[2];
-    this->spriteDimension.height = spriteDimension[3];
+    for (int i = 0; i < spriteFrames.size(); i++)
+        MapElement::spriteFrames.push_back(spriteFrames[i]);
     if (!mapElementTexture.loadFromFile(mapElementFilePath))
     {
         std::cout << "Error while setting MapElement texture" << std::endl;
     }
     mapElementSprite.setTexture(this->mapElementTexture);
-    mapElementSprite.setTextureRect(MapElement::spriteDimension);
     mapElementSprite.setPosition(position);
 }
 MapElement::~MapElement() {}
