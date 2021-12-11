@@ -23,8 +23,12 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/Map.cpp
                                     Model/MapElement.h
                                     Model/MapElement.cpp
-                                    Model/Weapon.h
-                                    Model/Weapon)
+                                    ##Model/Weapon.h
+                                    ##Model/Weapon.cpp
+                                    Model/Item.cpp
+                                    Model/Item.h
+                                    Model/HUD.h
+                                    Model/HUD.cpp)
 
 if(SFML_FOUND)
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-window sfml-system)

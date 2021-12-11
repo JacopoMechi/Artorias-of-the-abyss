@@ -1,8 +1,14 @@
 #include "Item.h"
 
-Item::Item(std::string n, int p, std::string d, int M, int c) : itemName(n), itemPrice(p),
-    itemDescription(d), maxItemCount(M), itemCount(c){
+Item::Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, float x, float y, int width, int height) : 
+    itemName(itemName), itemPrice(itemPrice), itemDescription(itemDescription), maxItemCount(maxItemCount), itemCount(itemCount), 
+    x(x), width(width), height(height){
+        texture.loadFromFile("../sprites.png");
+        sprite.setTexture(texture);
+        sprite.setTextureRect({x, y, width, height});
 
+        font.loadFromFile("../orangekid.ttf");
+        name.setFont(font);
 }
 
 Item::~Item(){
@@ -15,4 +21,26 @@ int Item::getItemCount() {
 
 void Item::setItemCount(int itemCount){
     this -> itemCount = itemCount;
+}
+
+void Item::displayItem(float posX, float posY, sf::RenderTarget &rt, float nameX, float nameY){
+    sprite.setPosition({posX, posY});//TODO item description in a pop-up
+    if(this -> getItemCount() > 0){
+        //display colored sprite
+        name.setPosition(nameX, nameY);
+        name.setString(this -> getItemName());
+        name.setCharacterSize(20);
+        rt.draw(name);
+        rt.draw(sprite);
+    }else{
+        //display gray sprite
+    }
+}
+
+std::string Item::getItemName() {
+    return itemName;
+}
+
+std::string Item::getItemDescription() {
+    return itemDescription;
 }

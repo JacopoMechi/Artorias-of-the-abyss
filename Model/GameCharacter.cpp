@@ -1,83 +1,10 @@
 #include "GameCharacter.h"
 
-GameCharacter::GameCharacter(int hp, int a, int c, int mS, const sf::Vector2f& pos): HP(hp), armor(a), cash(c),
+GameCharacter::GameCharacter(int hp, int a, int c, float mS, const sf::Vector2f& pos): HP(hp), armor(a), cash(c),
  movementSpeed(mS), pos(pos), weapon(nullptr), leftWeapon(nullptr){
-}
-void GameCharacter::animation( int x, int y, int width, int height, bool isLeft, bool isIdle){
-        texture.loadFromFile("/home/andrea/Documents/Exam_project/code/Artorias-of-the-abyss/0x72_DungeonTilesetII_v1.4.png");
-        if (isIdle){
-            if(isLeft){
-                for (int i = nFrames-1; i >= 0; i--){
-                frames[i] = {x+(nFrames-1)*width, y, width, height};
-                }
-            }else {
-                for (int i = 0; i < nFrames; i++){
-                    frames[i] = {x, y, width, height};
-                }
-            }
-        }else{
-            if(isLeft){
-                for (int i = nFrames-1; i >= 0; i--){
-                    frames[i] = {x+i*width, y, width, height};
-                }
-            }else {
-                for (int i = 0; i < nFrames; i++){
-                    frames[i] = {x+i*width, y, width, height};
-                }
-            }
-        }
-}
-
-void GameCharacter::draw(sf::RenderTarget& rt) const{
-    rt.draw(sprite);
-}
-
-void GameCharacter::setDirection(const sf::Vector2f& dir){
-    vel = dir*speed;
-    if(dir.x > 0.0f){//walking right
-        this -> animation(127, 75, 16, 28, false, false);
-        lastAnimation = AnimationIndex::WalkingRight;
-    }else if(dir.x < 0.0f){//walking left
-        this -> animation(128, 106, 16, 28, true, false);
-        lastAnimation = AnimationIndex::WalkingLeft;
-    }else if(dir.y > 0.0f){
-        if (lastAnimation == AnimationIndex::WalkingLeft)
-            this -> animation(128, 106, 16, 28, true, false);
-        else
-            this ->animation(128, 75, 16, 28, false, false);
-    }else if(dir.y < 0.0f){
-        if (lastAnimation == AnimationIndex::WalkingLeft)
-            this -> animation(128, 106, 16, 28, true, false);
-        else
-            this ->animation(128, 75, 16, 28, false, false);
-    }else if(lastAnimation == AnimationIndex::WalkingLeft)
-        this -> animation(128, 106, 16, 28, true, true);
-    else if(lastAnimation == AnimationIndex::WalkingRight)
-        this -> animation(128, 75, 16, 28, false, true);
-    else if (lastAnimation == AnimationIndex::IdleRight)
-        this -> animation(128, 75, 16, 28, false, true);
-}
-
-void GameCharacter::adjourn(float dt){
-    time += dt;
-    while (time >= holdTime){
-        time -=holdTime;
-        advance();
-    }
-}
-
-
-void GameCharacter::update(float dt){
-    pos += vel*dt;
-    this -> adjourn(dt);
-    this -> applyToSprite(sprite);
-    sprite.setScale(2.0f, 2.0f);
-    sprite.setPosition(pos);
-}
-
-void GameCharacter::applyToSprite(sf::Sprite& s) const {
-    s.setTexture(texture);
-    s.setTextureRect(frames[iFrame]);
+    sprite.setTextureRect({127, 75, 16, 28});//    128, 75, 17, 28
+    texture.loadFromFile("../sprites.png");
+    sprite.setTexture(texture);
 }
 
 GameCharacter::~GameCharacter() {
@@ -95,6 +22,14 @@ void GameCharacter::setHp(int hp) {
     if (hp < 0)
         hp = 0;
     this->HP = hp;
+}
+
+sf::Vector2f GameCharacter::getPos() const{
+    return pos;
+}
+
+void GameCharacter::setPos(sf::Vector2f pos){
+    this -> pos = pos;
 }
 
 int GameCharacter::getArmor() const{
@@ -143,20 +78,20 @@ void GameCharacter::setShield(Weapon* leftWeapon) {
 }
 
 
-void GameCharacter::movement(sf::Vector2f dir) {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-            dir.y -= 1.0f;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-            dir.y += 1.0f;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-            dir.x -= 1.0f;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            dir.x += 1.0f;
-        }
-        this -> setDirection(dir);
+void GameCharacter::movement(bool isInventoryOpen){
+    if (!isInventoryOpen){
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+            dir.y = -1.0f;
+    }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+            dir.y = 1.0f;
+    }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+            dir.x = -1.0f;
+    }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            dir.x = 1.0f;
+    }else
+        dir = {0,0};
+    }else
+        dir = {0,0};
 }
 
 void GameCharacter::attack(GameCharacter &opponent) {//its virtual, needs to be overrided in enemy
@@ -168,8 +103,39 @@ void GameCharacter::attack(GameCharacter &opponent) {//its virtual, needs to be 
     opponent.receiveDamage(hit);
 }
 
-/*bool GameCharacter::isChasing(int aggroDistance, const GameCharacter &enemy) {//TODO needs to be edited
-    if (sf::norm(pos-enemy.pos) > aggroDistance) //is it ok?
+bool GameCharacter::isChasing(float aggroDistance, GameCharacter &enemy) {
+    sf::Vector2f enemyPos = enemy.getPos();
+    if(sqrt((enemyPos.x - pos.x)*(enemyPos.x - pos.x)+(enemyPos.y - pos.y)*(enemyPos.y - pos.y)) < aggroDistance)
+        return true;
+    else
         return false;
-    return true;
-}*/
+}
+
+void GameCharacter::draw(sf::RenderTarget &rt) const{
+    rt.draw(sprite);
+}
+
+void GameCharacter::update(float dt){
+    vel = dir*movementSpeed;
+    pos += vel*dt;
+    time += dt;
+    
+    int nFrames = 8;
+    if (dir.x > 0.0f){
+        frameRect = {0, 0, 16, 22};
+    }else if (dir.x < 0.0f){
+        frameRect = {16, 0, -16, 22};
+    }else if(dir.y == 0){
+        nFrames = 1;
+    }
+
+    while (time >= holdTime){
+        time -=holdTime;
+        if (++iFrame >= nFrames)
+            iFrame = 0;
+    }
+
+    sprite.setTextureRect({frameRect.left+iFrame*abs(frameRect.width), frameRect.top, frameRect.width, frameRect.height});
+    sprite.setScale(2.0f, 2.0f);
+    sprite.setPosition(pos);
+}
