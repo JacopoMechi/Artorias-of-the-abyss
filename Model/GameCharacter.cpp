@@ -3,7 +3,7 @@
 GameCharacter::GameCharacter(int hp, int a, int c, float mS, const sf::Vector2f& pos): HP(hp), armor(a), cash(c),
  movementSpeed(mS), pos(pos), weapon(nullptr), leftWeapon(nullptr){
     sprite.setTextureRect({127, 75, 16, 28});//    128, 75, 17, 28
-    texture.loadFromFile("../sprites.png");
+    texture.loadFromFile("../Textures/Textures.png");
     sprite.setTexture(texture);
 }
 

@@ -4,7 +4,7 @@ HUD::HUD(bool isInvOpen, bool firstTab, int nScroll): isInvOpen(isInvOpen), firs
     font.loadFromFile("../orangekid.ttf");
     text.setFont(font);
 
-    hudTexture.loadFromFile("../PlayerHUD.png");
+    hudTexture.loadFromFile("../Textures/PlayerHUD.png");
     healthSprite.setTexture(hudTexture);
     quickslotSprite.setTexture(hudTexture);
     actionsSprite.setTexture(hudTexture);
