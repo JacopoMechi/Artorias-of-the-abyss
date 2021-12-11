@@ -68,6 +68,7 @@ int main(){
 
     //create window
     sf::RenderWindow window {sf::VideoMode(1152, 673), "Map"};
+    window.setFramerateLimit(60);
     sf::Texture t;
     sf::Sprite s(t);
 

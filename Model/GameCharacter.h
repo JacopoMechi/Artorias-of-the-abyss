@@ -47,12 +47,8 @@ public:
     bool isChasing(float aggroDistance, GameCharacter &enemy);
 
     void draw(sf::RenderTarget &rt) const;
-
-    void setDirection(const sf::Vector2f &dir);
     
     void update(float dt);
-
-    void animation(int x, int y, int width, int height, bool isLeft, bool isIdle);
 
 protected: 
     int HP;
@@ -60,37 +56,19 @@ protected:
     int cash;
     float movementSpeed;
     int dialogueTracker = 0;
-    int x;
-    int y;
-    int width;
-    int height;
-    bool isLeft;
-    bool isIdle;
     bool isInventoryOpen;
     float aggroDistance;
     Weapon* weapon;
     Weapon* leftWeapon;
-    enum class AnimationIndex{
-        WalkingLeft,
-        WalkingRight,
-        IdleLeft,
-        IdleRight,
-        Count
-    };
     sf::Vector2f pos;
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;
     sf::Texture texture;
-    AnimationIndex lastAnimation = AnimationIndex::IdleRight;
-    void advance(){
-        if (++iFrame >= nFrames)
-            iFrame = 0;
-    }
-    static constexpr int nFrames = 8;
+    sf::IntRect frameRect = {0, 0, 16, 22};
     static constexpr float holdTime = 0.1f;
-    sf::IntRect frames[nFrames];
     int iFrame = 0;
     float time = 0.0f;
+    sf::Vector2f dir = {0.0f, 0.0f};
 };
 
 #endif //_GAMECHARACTER_H
