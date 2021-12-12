@@ -21,7 +21,7 @@ HUD::HUD(bool isInvOpen, bool firstTab, int nScroll): isInvOpen(isInvOpen), firs
     inventorySprite.setTexture(hudTexture);
     inventorySprite.setTextureRect({89, 259, 352, 500});
     inventorySprite.setPosition(89, 259);
-    inventorySprite.setScale(0.9f, 0.9f);
+    inventorySprite.setScale(1.5f, 1.5f);
 }
 
 bool HUD::getInvIsOpen(){
@@ -54,8 +54,8 @@ void HUD::drawInventory(sf::RenderTarget &rt){
     rt.draw(inventorySprite);
     sf::Text tabText;
     tabText.setFont(font);
-    tabText.setPosition(175, 285);
-    tabText.setCharacterSize(24);
+    tabText.setPosition(245, 310);
+    tabText.setCharacterSize(35);
     std::string tab;  
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             this -> setFirstTab(true);
@@ -66,10 +66,10 @@ void HUD::drawInventory(sf::RenderTarget &rt){
     }else{
         tab = "< Collezionabili";
         this -> scrollList();
-        //TODOthis -> firstCollRaw[this -> nScroll].displayItem(101, 226, rt, 152, 207, 152, 223);
-        //this -> secCollRaw[this -> nScroll].displayItem(...)
-        //this -> thirCollRaw[this -> nScroll].displayItem(...)
-        //this -> fourCollRaw[this -> nScroll].displayItem(...)   
+        this -> firstCollRaw[this -> nScroll].displayItem(150, 450, rt, 235, 460);
+        this -> secCollRaw[this -> nScroll].displayItem(150, 555, rt, 235, 565);
+        this -> thirCollRaw[this -> nScroll].displayItem(150, 660, rt, 235, 670);
+        this -> fourCollRaw[this -> nScroll].displayItem(155, 775, rt, 235, 770);   
     }
     tabText.setString(tab);
     rt.draw(tabText);

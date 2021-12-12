@@ -6,6 +6,7 @@ Item::Item(std::string itemName, int itemPrice, std::string itemDescription, int
         texture.loadFromFile("../Textures/Textures.png");
         sprite.setTexture(texture);
         sprite.setTextureRect({x, y, width, height});
+        sprite.setScale(2.5f, 2.5f);
 
         font.loadFromFile("../orangekid.ttf");
         name.setFont(font);
@@ -24,12 +25,13 @@ void Item::setItemCount(int itemCount){
 }
 
 void Item::displayItem(float posX, float posY, sf::RenderTarget &rt, float nameX, float nameY){
-    sprite.setPosition({posX, posY});//TODO item description in a pop-up
+    //TODO item description in a pop-up
+    sprite.setPosition({posX, posY});
     if(this -> getItemCount() > 0){
         //display colored sprite
         name.setPosition(nameX, nameY);
         name.setString(this -> getItemName());
-        name.setCharacterSize(20);
+        name.setCharacterSize(30);
         rt.draw(name);
         rt.draw(sprite);
     }else{
