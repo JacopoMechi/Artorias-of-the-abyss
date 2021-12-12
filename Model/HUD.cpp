@@ -66,10 +66,10 @@ void HUD::drawInventory(sf::RenderTarget &rt){
     }else{
         tab = "< Collezionabili";
         this -> scrollList();
-        this -> firstCollRaw[this -> nScroll].displayItem(150, 450, rt, 235, 460);
-        this -> secCollRaw[this -> nScroll].displayItem(150, 555, rt, 235, 565);
-        this -> thirCollRaw[this -> nScroll].displayItem(150, 660, rt, 235, 670);
-        this -> fourCollRaw[this -> nScroll].displayItem(155, 775, rt, 235, 770);   
+        this -> firstCollRaw[this -> nScroll].displayItem(145, 450, rt, 235, 460);
+        this -> secCollRaw[this -> nScroll].displayItem(145, 555, rt, 235, 565);
+        this -> thirCollRaw[this -> nScroll].displayItem(145, 660, rt, 235, 670);
+        this -> fourCollRaw[this -> nScroll].displayItem(145, 775, rt, 235, 770);   
     }
     tabText.setString(tab);
     rt.draw(tabText);
