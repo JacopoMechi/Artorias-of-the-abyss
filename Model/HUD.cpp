@@ -10,10 +10,10 @@ HUD::HUD(bool isInvOpen, bool firstTab, int nScroll): isInvOpen(isInvOpen), firs
     actionsSprite.setTexture(hudTexture);
     healthSprite.setTextureRect({1531, 0, 389, 95});
     quickslotSprite.setTextureRect({810, 960, 300, 77});
-    actionsSprite.setTextureRect({1026, 159, 86, 352});
+    actionsSprite.setTextureRect({1743, 363, 85, 351});
     healthSprite.setPosition(1610, 0);
     quickslotSprite.setPosition(810, 960);
-    actionsSprite.setPosition(1026, 159);
+    actionsSprite.setPosition(1743, 363);
     healthSprite.setScale(0.8f, 0.8f);
     quickslotSprite.setScale(0.8f, 0.8f);
     actionsSprite.setScale(0.8f, 0.8f);
