@@ -19,8 +19,8 @@ HUD::HUD(bool isInvOpen, bool firstTab, int nScroll): isInvOpen(isInvOpen), firs
     actionsSprite.setScale(0.8f, 0.8f);
 
     inventorySprite.setTexture(hudTexture);
-    inventorySprite.setTextureRect({71, 10, 356, 500});
-    inventorySprite.setPosition(71, 10);
+    inventorySprite.setTextureRect({89, 259, 352, 500});
+    inventorySprite.setPosition(89, 259);
     inventorySprite.setScale(0.9f, 0.9f);
 }
 
