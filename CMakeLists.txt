@@ -23,6 +23,8 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/Map.cpp
                                     Model/MapElement.h
                                     Model/MapElement.cpp
+                                    Model/Menu.h
+                                    Model/Menu.cpp
                                     ##Model/Weapon.h
                                     ##Model/Weapon.cpp
                                     Model/Item.cpp
