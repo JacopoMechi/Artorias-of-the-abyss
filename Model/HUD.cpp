@@ -54,7 +54,7 @@ void HUD::drawInventory(sf::RenderTarget &rt){
     rt.draw(inventorySprite);
     sf::Text tabText;
     tabText.setFont(font);
-    tabText.setPosition(160, 120);
+    tabText.setPosition(175, 285);
     tabText.setCharacterSize(24);
     std::string tab;  
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
