@@ -4,9 +4,10 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
-class Item {
+class Item
+{
 public:
-    Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, float x, float y, int width, int height); 
+    Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height);
 
     ~Item();
 
@@ -20,7 +21,7 @@ public:
 
     std::string getItemDescription();
 
-protected: 
+protected:
     std::string itemName;
     int itemPrice;
     int itemCount;
