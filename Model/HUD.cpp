@@ -44,7 +44,7 @@ void HUD::draw(sf::RenderTarget &rt) const{
 
 void HUD::displayHealth(GameCharacter &character, sf::RenderTarget &rt){ 
     std::string bar = std::string("HP: ") + std::to_string(character.getHp()) + std::string("/100");
-    text.setPosition(950, 18);
+    text.setPosition(1700, 15);
     text.setString(bar);
     rt.draw(text);
 }
