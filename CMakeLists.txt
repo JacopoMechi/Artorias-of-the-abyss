@@ -34,7 +34,9 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/GreenBlossom.h
                                     Model/GreenBlossom.cpp
                                     Model/HomewardBone.h
-                                    Model/HomewardBone.cpp)
+                                    Model/HomewardBone.cpp
+                                    Model/Pendant.h
+                                    Model/Pendant.cpp)
 
 if(SFML_FOUND)
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-window sfml-system)
