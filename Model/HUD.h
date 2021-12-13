@@ -7,6 +7,7 @@
 #include "Item.h"
 #include "EstusFlask.h"
 #include "GreenBlossom.h"
+#include "HomewardBone.h"
 
 class HUD{
 
@@ -61,5 +62,6 @@ protected:
         "danneggiano solo attraverso il contatto fisico", 1, 0, 497, 0, 22, 20} };
     EstusFlask flask;
     GreenBlossom blossom;
+    HomewardBone homeward;
 };
 #endif
