@@ -63,6 +63,7 @@ void HUD::drawInventory(sf::RenderTarget &rt){
             this -> setFirstTab(false);
     if (this -> firstTab){
         tab = "Consumabili >";//<tab> cambia categoria, <q> esci dall'inventario, <ArrowUp,ArrDown> scorri items
+        flask.displayItem(148, 455, rt, 235, 460);
     }else{
         tab = "< Collezionabili";
         this -> scrollList();

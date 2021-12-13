@@ -5,6 +5,7 @@
 
 #include "GameCharacter.h"
 #include "Item.h"
+#include "EstusFlask.h"
 
 class HUD{
 
@@ -57,5 +58,6 @@ protected:
         " animato, armati di un'ascia di pietra, ma senza uno scudo", 1 , 0, 497, 24, 21, 21}, {"Disumanità", 0, "Queste creature sono una "
         "rappresentazione dell'umanità come un'entità non ancora formatasi. A differenza degli altri nemici, non hanno alcun attacco e "
         "danneggiano solo attraverso il contatto fisico", 1, 0, 497, 0, 22, 20} };
+    EstusFlask flask;
 };
 #endif
