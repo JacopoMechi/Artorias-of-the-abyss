@@ -8,6 +8,7 @@
 #include "EstusFlask.h"
 #include "GreenBlossom.h"
 #include "HomewardBone.h"
+#include "Pendant.h"
 
 class HUD{
 
@@ -63,5 +64,6 @@ protected:
     EstusFlask flask;
     GreenBlossom blossom;
     HomewardBone homeward;
+    Pendant pendant;
 };
 #endif

@@ -66,6 +66,7 @@ void HUD::drawInventory(sf::RenderTarget &rt){
         flask.displayItem(148, 455, rt, 235, 460);
         blossom.displayItem(148, 560, rt, 235, 565);
         homeward.displayItem(142, 665, rt, 235, 670);
+        pendant.displayItem(142, 780, rt, 235, 770);
     }else{
         tab = "< Collezionabili";
         this -> scrollList();
