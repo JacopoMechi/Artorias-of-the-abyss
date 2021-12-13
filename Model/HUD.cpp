@@ -84,7 +84,7 @@ void HUD::openCloseInv(){
     }
 }
 
-void HUD::scrollList(){//FIXME
+void HUD::scrollList(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         this -> nScroll = 0;
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))

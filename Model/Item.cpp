@@ -6,6 +6,10 @@ Item::Item(std::string itemName, int itemPrice, std::string itemDescription, int
         texture.loadFromFile("../Textures/Textures.png");
         sprite.setTexture(texture);
         sprite.setTextureRect({x, y, width, height});
+        this -> x = x;
+        this -> y = y;
+        this -> width = width;
+        this -> height = height;
         sprite.setScale(2.5f, 2.5f);
 
         font.loadFromFile("../orangekid.ttf");
@@ -33,10 +37,11 @@ void Item::displayItem(float posX, float posY, sf::RenderTarget &rt, float nameX
         name.setString(this -> getItemName());
         name.setCharacterSize(30);
         rt.draw(name);
-        rt.draw(sprite);
     }else{
         //display gray sprite
+        sprite.setTextureRect({x+width, y, width, height});
     }
+    rt.draw(sprite);
 }
 
 std::string Item::getItemName() {
