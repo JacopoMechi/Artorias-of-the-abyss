@@ -1,6 +1,6 @@
 #include "Item.h"
 
-Item::Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, float x, float y, int width, int height) : 
+Item::Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height) : 
     itemName(itemName), itemPrice(itemPrice), itemDescription(itemDescription), maxItemCount(maxItemCount), itemCount(itemCount), 
     x(x), width(width), height(height){
         texture.loadFromFile("../Textures/Textures.png");

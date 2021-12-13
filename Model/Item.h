@@ -6,7 +6,7 @@
 
 class Item {
 public:
-    Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, float x, float y, int width, int height); 
+    Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height); 
 
     ~Item();
 
@@ -26,8 +26,8 @@ protected:
     int itemCount;
     std::string itemDescription;
     int maxItemCount;
-    float x;
-    float y;
+    int x;
+    int y;
     float nameX;
     float nameY;
     int width;

@@ -1,7 +1,7 @@
 #include "EstusFlask.h"
 
 EstusFlask::EstusFlask(std::string itemName, int itemPrice, std::string itemDescription,
-                       int maxItemCount, int itemCount, float x, float y, int width, int height): 
+                       int maxItemCount, int itemCount, int x, int y, int width, int height): 
                        Item(itemName, itemPrice, itemDescription, maxItemCount, itemCount, x, y, width, height){
 
 }
