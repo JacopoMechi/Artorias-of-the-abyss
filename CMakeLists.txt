@@ -30,7 +30,9 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/HUD.h
                                     Model/HUD.cpp
                                     Model/EstusFlask.h
-                                    Model/EstusFlask.cpp)
+                                    Model/EstusFlask.cpp
+                                    Model/GreenBlossom.h
+                                    Model/GreenBlossom.cpp)
 
 if(SFML_FOUND)
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-window sfml-system)
