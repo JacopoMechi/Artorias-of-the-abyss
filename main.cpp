@@ -1,6 +1,5 @@
 #include <SFML/Graphics.hpp>
 #include <string>
-#include <chrono>
 
 #include "GameCharacter.h"
 #include "Gate.h"
@@ -28,8 +27,11 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Hallway of the abyss");
     window.setFramerateLimit(60);
 
-    //timepoint for delta time measurement
-    auto tp = std::chrono::steady_clock::now();
+    //creating clock for dt
+    sf::Clock clock;
+
+    //creating dt
+    float dt = 0.0f;
 
     // starting the game loop
     while (window.isOpen())
@@ -43,19 +45,15 @@ int main()
                 window.close();
         }
 
-        //get dt
-        float dt;
-        {
-            const auto new_tp = std::chrono::steady_clock::now();
-            dt = std::chrono::duration<float>( new_tp - tp).count();
-            tp = new_tp;
-        }
-
         // clear screen
         window.clear(sf::Color::Black);
 
+        //start clock
+
+
         // draw map
         map.draw(window);
+
         //handle player input
         test.movement(hud.getInvIsOpen());
         hud.openCloseInv();
@@ -73,6 +71,9 @@ int main()
 
         // update the window
         window.display();
+
+        dt = clock.getElapsedTime().asSeconds();
+        clock.restart();
     }
     return EXIT_SUCCESS;
 }

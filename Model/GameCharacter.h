@@ -65,9 +65,10 @@ protected:
     sf::Sprite sprite;
     sf::Texture texture;
     sf::IntRect frameRect = {0, 0, 16, 22};
-    static constexpr float holdTime = 0.1f;
+    const float animationHolding = 0.08f;// for max time cap
+    int nFrames;
     int iFrame = 0;
-    float time = 0.0f;
+    float animationTime = 0.0f;
     sf::Vector2f dir = {0.0f, 0.0f};
 };
 

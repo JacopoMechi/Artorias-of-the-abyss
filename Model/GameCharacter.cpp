@@ -5,6 +5,7 @@ GameCharacter::GameCharacter(int hp, int a, int c, float mS, const sf::Vector2f&
     sprite.setTextureRect({127, 75, 16, 28});//    128, 75, 17, 28
     texture.loadFromFile("../Textures/Textures.png");
     sprite.setTexture(texture);
+    sprite.setScale(7.5f, 7.5f);
 }
 
 GameCharacter::~GameCharacter() {
@@ -80,16 +81,21 @@ void GameCharacter::setShield(Weapon* leftWeapon) {
 
 void GameCharacter::movement(bool isInventoryOpen){
     if (!isInventoryOpen){
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-            dir.y = -1.0f;
-    }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-            dir.y = 1.0f;
-    }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-            dir.x = -1.0f;
-    }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            dir.x = 1.0f;
-    }else
-        dir = {0,0};
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+                dir.y = -1.0f;
+        }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+                dir.y = 1.0f;
+        }else
+            dir.y = 0;
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+                dir.x = -1.0f;
+        }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+                dir.x = 1.0f;
+        }else
+            dir.x = 0;
+
     }else
         dir = {0,0};
 }
@@ -118,9 +124,8 @@ void GameCharacter::draw(sf::RenderTarget &rt) const{
 void GameCharacter::update(float dt){
     vel = dir*movementSpeed;
     pos += vel*dt;
-    time += dt;
     
-    int nFrames = 8;
+    nFrames = 8;
     if (dir.x > 0.0f){
         frameRect = {0, 0, 16, 22};
     }else if (dir.x < 0.0f){
@@ -129,13 +134,13 @@ void GameCharacter::update(float dt){
         nFrames = 1;
     }
 
-    while (time >= holdTime){
-        time -=holdTime;
-        if (++iFrame >= nFrames)
-            iFrame = 0;
+    //check when animationTime reaches max gap (animationHolding): this means that is time to change sprite rect
+    animationTime += dt;
+    if(animationTime >= animationHolding){
+        iFrame = (++iFrame)%nFrames;
+        animationTime = 0.0f;
     }
-
+    
     sprite.setTextureRect({frameRect.left+iFrame*abs(frameRect.width), frameRect.top, frameRect.width, frameRect.height});
-    sprite.setScale(2.0f, 2.0f);
     sprite.setPosition(pos);
 }
