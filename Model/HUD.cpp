@@ -54,8 +54,8 @@ void HUD::displayHealth(GameCharacter &character, sf::RenderTarget &rt){
 }
 
 
-void HUD::drawInventory(sf::RenderTarget &rt){
-    rt.draw(inventorySprite);
+void HUD::drawInventory(){
+    window.draw(inventorySprite);
     
     sf::Text tabText;
     tabText.setFont(font);
@@ -76,13 +76,13 @@ void HUD::drawInventory(sf::RenderTarget &rt){
         //list of consumables
         tab = "Consumabili >";//<tab> cambia categoria, <q> esci dall'inventario, <ArrowUp,ArrDown> scorri items
         //first slot
-        flask.displayItem(148, 455, rt, 235, 460);
+        flask.displayItem(148, 455, window, 235, 460);
         //second slot
-        blossom.displayItem(148, 560, rt, 235, 565);
+        blossom.displayItem(148, 560, window, 235, 565);
         //third slot
-        homeward.displayItem(142, 665, rt, 235, 670);
+        homeward.displayItem(142, 665, window, 235, 670);
         //fourth slot
-        pendant.displayItem(142, 780, rt, 235, 770);
+        pendant.displayItem(142, 780, window, 235, 770);
 
     }else{    
         //second category
@@ -91,18 +91,18 @@ void HUD::drawInventory(sf::RenderTarget &rt){
         //for scrolling between pages
         this -> scrollList();
         //first slot
-        collectibles[1*this -> nScroll].displayItem(145, 450, rt, 235, 460);
+        collectibles[1*this -> nScroll].displayItem(145, 450, window, 235, 460);
         //second slot
-        collectibles[2*this -> nScroll].displayItem(145, 555, rt, 235, 565);
+        collectibles[2*this -> nScroll].displayItem(145, 555, window, 235, 565);
         //third slot
-        collectibles[3*this -> nScroll].displayItem(145, 660, rt, 235, 670);
+        collectibles[3*this -> nScroll].displayItem(145, 660, window, 235, 670);
         //fourth slot
-        collectibles[4*this -> nScroll].displayItem(145, 775, rt, 235, 770); 
+        collectibles[4*this -> nScroll].displayItem(145, 775, window, 235, 770); 
         //for detailed items description
         //also handling input with delaytime
         this -> displayDescription();    
         tabText.setString(tab);
-        rt.draw(tabText);
+        window.draw(tabText);
     }    
     
 }
@@ -123,17 +123,16 @@ void HUD::scrollList(){//TODO same here
         this -> nScroll = 2;    
 }
 
-void HUD::displayDescription(){//TODO must be finished and make the code more readable
-    if(switching)
-        window.draw(descriptionSprite);//example
+void HUD::displayDescription(){
+    if(switching){
+        window.draw(descriptionSprite);
+        collectibles[nScroll].displayItem(730, 400, window, 145, 143);
+    }
 }
 
 void HUD::updateEvent(sf::Event keyInput){
-    //this -> keyInput = keyInput;
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter){
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
             switching = !switching;
-            std::cout << switching << std::endl;
-        } 
 }
 
 /*//TODO complete later

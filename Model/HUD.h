@@ -29,7 +29,7 @@ public:
 
     void displayDescription();
 
-    void drawInventory(sf::RenderTarget &rt);
+    void drawInventory();
 
     void openCloseInv();
 
@@ -54,11 +54,7 @@ protected:
     bool isInvOpen;
     bool firstTab;
     int nScroll;
-
-    //extra
     bool switching = false;
-    //handling input
-    sf::Event keyInput;//for one key press only
 
     //Collectible items
     Item collectibles[8] = {

@@ -19,9 +19,13 @@ int main()
     //map
     Map map({}, MAPPATH);
 
+    //creating event
+    sf::Event event;
+
     // create window
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Hallway of the abyss");
     window.setFramerateLimit(60);
+
     //disable multiple input from a single key
     window.setKeyRepeatEnabled(false);
 
@@ -38,9 +42,7 @@ int main()
 
     // starting the game loop
     while (window.isOpen())
-    {
-        //creating event
-        sf::Event event;    
+    {    
 
         // process event
         while (window.pollEvent(event))
@@ -69,7 +71,7 @@ int main()
         //draw the sprite
         test.draw(window);
         if (hud.getInvIsOpen()){
-            hud.drawInventory(window);
+            hud.drawInventory();
         }
         hud.draw(window); 
         hud.displayHealth(test, window);
