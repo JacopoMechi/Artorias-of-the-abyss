@@ -18,14 +18,17 @@ int main()
 
     //map
     Map map({}, MAPPATH);
-    //hud
-    HUD hud(false, true, 0);
-    //gamecharacter
-    GameCharacter test(100, 20, 0, 100.0f, {150.0f,3.0f});
 
     // create window
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Hallway of the abyss");
     window.setFramerateLimit(60);
+    //disable multiple input from a single key
+    window.setKeyRepeatEnabled(false);
+
+    //hud
+    HUD hud(false, true, 0, window);
+    //gamecharacter
+    GameCharacter test(100, 20, 0, 100.0f, {150.0f,3.0f});
 
     //creating clock for dt
     sf::Clock clock;
@@ -36,10 +39,15 @@ int main()
     // starting the game loop
     while (window.isOpen())
     {
+        //creating event
+        sf::Event event;    
+
         // process event
-        sf::Event event;
         while (window.pollEvent(event))
         {
+            //update inputs event in HUD
+            hud.updateEvent(event);
+
             // close window
             if (event.type == sf::Event::Closed)
                 window.close();
@@ -47,9 +55,6 @@ int main()
 
         // clear screen
         window.clear(sf::Color::Black);
-
-        //start clock
-
 
         // draw map
         map.draw(window);
@@ -74,6 +79,7 @@ int main()
 
         dt = clock.getElapsedTime().asSeconds();
         clock.restart();
+        //TODO can be useful later:hud.updateDelayTime(dt);
     }
     return EXIT_SUCCESS;
 }

@@ -1,6 +1,7 @@
 #include "HUD.h"
 
-HUD::HUD(bool isInvOpen, bool firstTab, int nScroll): isInvOpen(isInvOpen), firstTab(firstTab), nScroll(nScroll){
+HUD::HUD(bool isInvOpen, bool firstTab, int nScroll, sf::RenderWindow &window): 
+        isInvOpen(isInvOpen), firstTab(firstTab), nScroll(nScroll), window(window){
     font.loadFromFile("../orangekid.ttf");
     text.setFont(font);
 
@@ -8,12 +9,15 @@ HUD::HUD(bool isInvOpen, bool firstTab, int nScroll): isInvOpen(isInvOpen), firs
     healthSprite.setTexture(hudTexture);
     quickslotSprite.setTexture(hudTexture);
     actionsSprite.setTexture(hudTexture);
+    descriptionSprite.setTexture(hudTexture);
     healthSprite.setTextureRect({1531, 0, 389, 95});
     quickslotSprite.setTextureRect({810, 960, 300, 77});
     actionsSprite.setTextureRect({1743, 363, 85, 351});
+    descriptionSprite.setTextureRect({528, 293, 430, 233});
     healthSprite.setPosition(1610, 0);
     quickslotSprite.setPosition(810, 960);
     actionsSprite.setPosition(1743, 363);
+    descriptionSprite.setPosition(650, 296);
     healthSprite.setScale(0.8f, 0.8f);
     quickslotSprite.setScale(0.8f, 0.8f);
     actionsSprite.setScale(0.8f, 0.8f);
@@ -52,34 +56,58 @@ void HUD::displayHealth(GameCharacter &character, sf::RenderTarget &rt){
 
 void HUD::drawInventory(sf::RenderTarget &rt){
     rt.draw(inventorySprite);
+    
     sf::Text tabText;
     tabText.setFont(font);
     tabText.setPosition(245, 310);
     tabText.setCharacterSize(35);
-    std::string tab;  
+    std::string tab;
+
+    //manages switch between tabs  
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             this -> setFirstTab(true);
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             this -> setFirstTab(false);
+
+    //inventory interface        
     if (this -> firstTab){
+
+        //first category    
+        //list of consumables
         tab = "Consumabili >";//<tab> cambia categoria, <q> esci dall'inventario, <ArrowUp,ArrDown> scorri items
+        //first slot
         flask.displayItem(148, 455, rt, 235, 460);
+        //second slot
         blossom.displayItem(148, 560, rt, 235, 565);
+        //third slot
         homeward.displayItem(142, 665, rt, 235, 670);
+        //fourth slot
         pendant.displayItem(142, 780, rt, 235, 770);
-    }else{
+
+    }else{    
+        //second category
+        //scrolling between collectibles
         tab = "< Collezionabili";
+        //for scrolling between pages
         this -> scrollList();
-        this -> firstCollRaw[this -> nScroll].displayItem(145, 450, rt, 235, 460);
-        this -> secCollRaw[this -> nScroll].displayItem(145, 555, rt, 235, 565);
-        this -> thirCollRaw[this -> nScroll].displayItem(145, 660, rt, 235, 670);
-        this -> fourCollRaw[this -> nScroll].displayItem(145, 775, rt, 235, 770);   
-    }
-    tabText.setString(tab);
-    rt.draw(tabText);
+        //first slot
+        collectibles[1*this -> nScroll].displayItem(145, 450, rt, 235, 460);
+        //second slot
+        collectibles[2*this -> nScroll].displayItem(145, 555, rt, 235, 565);
+        //third slot
+        collectibles[3*this -> nScroll].displayItem(145, 660, rt, 235, 670);
+        //fourth slot
+        collectibles[4*this -> nScroll].displayItem(145, 775, rt, 235, 770); 
+        //for detailed items description
+        //also handling input with delaytime
+        this -> displayDescription();    
+        tabText.setString(tab);
+        rt.draw(tabText);
+    }    
+    
 }
 
-void HUD::openCloseInv(){
+void HUD::openCloseInv(){//TODO adjust inputs with dt
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
         this -> setInvIsOpen(true);
     }
@@ -88,9 +116,28 @@ void HUD::openCloseInv(){
     }
 }
 
-void HUD::scrollList(){
+void HUD::scrollList(){//TODO same here
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        this -> nScroll = 0;
+        this -> nScroll = 1;
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        this -> nScroll = 1;    
+        this -> nScroll = 2;    
 }
+
+void HUD::displayDescription(){//TODO must be finished and make the code more readable
+    if(switching)
+        window.draw(descriptionSprite);//example
+}
+
+void HUD::updateEvent(sf::Event keyInput){
+    //this -> keyInput = keyInput;
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter){
+            switching = !switching;
+            std::cout << switching << std::endl;
+        } 
+}
+
+/*//TODO complete later
+//updating dt in class
+void HUD::updateDelayTime(float dt){
+    delayTime = dt;
+}*/
