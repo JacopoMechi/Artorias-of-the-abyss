@@ -72,8 +72,8 @@ int main()
         if (hud.getInvIsOpen()){
             hud.drawInventory();
         }
-        hud.draw(window); 
-        hud.displayHealth(test, window);
+        hud.draw(); 
+        hud.displayHealth(test);
 
         // update the window
         window.display();

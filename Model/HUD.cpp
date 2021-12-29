@@ -42,17 +42,17 @@ void HUD::setFirstTab(bool firstTab){
     this -> firstTab = firstTab;
 }
 
-void HUD::draw(sf::RenderTarget &rt) const{
-    rt.draw(healthSprite);
-    rt.draw(quickslotSprite);
-    rt.draw(actionsSprite);
+void HUD::draw() const{
+    window.draw(healthSprite);
+    window.draw(quickslotSprite);
+    window.draw(actionsSprite);
 }
 
-void HUD::displayHealth(GameCharacter &character, sf::RenderTarget &rt){ 
+void HUD::displayHealth(GameCharacter &character){ 
     std::string bar = std::string("HP: ") + std::to_string(character.getHp()) + std::string("/100");
     text.setPosition(1700, 15);
     text.setString(bar);
-    rt.draw(text);
+    window.draw(text);
 }
 
 
@@ -107,13 +107,6 @@ void HUD::drawInventory(){
     }
     tabText.setString(tab);
     window.draw(tabText);    
-}
-
-void HUD::scrollList(){//TODO same here
-    /*if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        this -> nScroll = 0;
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        this -> nScroll = 1;*/    
 }
 
 void HUD::displayDescription(){

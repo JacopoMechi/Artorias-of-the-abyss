@@ -20,9 +20,9 @@ public:
 
     void setFirstTab(bool firstTab);
 
-    void draw(sf::RenderTarget &rt) const;
+    void draw() const;
 
-    void displayHealth(GameCharacter &character, sf::RenderTarget &rt);
+    void displayHealth(GameCharacter &character);
 
     void displayDescription();
 
@@ -34,7 +34,7 @@ public:
 
 protected:
     //for functions of sprites
-    sf::RenderWindow &window;//TODO adjust in other methos
+    sf::RenderWindow &window;
     //texture and sprites for hud
     sf::Texture hudTexture;
     sf::Sprite healthSprite;
