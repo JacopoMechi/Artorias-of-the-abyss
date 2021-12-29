@@ -2,7 +2,6 @@
 #define _HUD_H
 
 #include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Glyph.hpp>
 
 #include "GameCharacter.h"
 #include "Item.h"
@@ -15,11 +14,9 @@ class HUD{
 
 public:
 
-    HUD(bool isInvOpen, bool firstTab, int nScroll, sf::RenderWindow &window);
+    HUD(sf::RenderWindow &window);
 
     bool getInvIsOpen();
-
-    void setInvIsOpen(bool isInvOpen);
 
     void setFirstTab(bool firstTab);
 
@@ -30,10 +27,6 @@ public:
     void displayDescription();
 
     void drawInventory();
-
-    void openCloseInv();
-
-    void scrollList();
 
     void updateEvent(sf::Event keyInput);
 
@@ -51,15 +44,18 @@ protected:
     sf::Sprite descriptionSprite;
     sf::Text text;
     sf::Font font;
-    bool isInvOpen;
-    bool firstTab;
-    int nScroll;
+    //switch for some sprites like inventory, healthsprite,...
+    bool isInvOpen = false;
+    bool firstTab = true;
+    int inventoryScroll = 0;
+    int descriptionScroll = 0;
     bool switching = false;
 
     //Collectible items
     Item collectibles[8] = {
         //guardiano
-        {"Anima del Guardiano", 0,"Anima del leone alato bianco, protettore del Santuario, che temeva la diffusione dell'abisso", 1, 0, 396, 73, 18, 22},
+        {"Anima del Guardiano", 0,"Anima del leone alato bianco, \nprotettore del Santuario, \nche temeva la diffusione \ndell'abisso",
+         1, 2, 396, 73, 18, 22},
 
         //Artorias
         {"Anima di Artorias", 0, "Anima di un cavaliere valoroso, che è stato consumato dall'Abiosso. "
@@ -73,7 +69,8 @@ protected:
 
         //cittadino di Oolacile
         {"Testa Cittadino di Oolacile", 0, "Creature umanoidi \
-        corrotte dall'Abisso. Sono caratterizzati da un busto di cavallo e una folta barba, con occhi di colore rosso", 1, 0, 440, 96, 23, 26},  
+        corrotte dall'Abisso. Sono caratterizzati da un busto di cavallo e una folta barba, con occhi di colore rosso", 
+        1, 0, 440, 96, 23, 26},  
         
         //stregone di Oolacile
         {"Testa Stregone di Oolacile", 0, "Creature che somigliano "

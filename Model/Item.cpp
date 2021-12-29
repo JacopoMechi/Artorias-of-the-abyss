@@ -28,20 +28,19 @@ void Item::setItemCount(int itemCount){
     this -> itemCount = itemCount;
 }
 
-void Item::displayItem(float posX, float posY, sf::RenderTarget &rt, float nameX, float nameY){
-    //TODO item description in a pop-up
+void Item::displayItem(float posX, float posY, sf::RenderTarget &window, float nameX, float nameY){
     sprite.setPosition({posX, posY});
     if(this -> getItemCount() > 0){
         //display colored sprite
         name.setPosition(nameX, nameY);
         name.setString(this -> getItemName());
         name.setCharacterSize(30);
-        rt.draw(name);
+        window.draw(name);
     }else{
         //display gray sprite
         sprite.setTextureRect({x+width, y, width, height});
     }
-    rt.draw(sprite);
+    window.draw(sprite);
 }
 
 std::string Item::getItemName() {
@@ -49,5 +48,8 @@ std::string Item::getItemName() {
 }
 
 std::string Item::getItemDescription() {
-    return itemDescription;
+    if(this -> getItemCount() > 0)
+        return itemDescription;
+    else
+        return "...";    
 }

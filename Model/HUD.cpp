@@ -1,27 +1,33 @@
 #include "HUD.h"
 
-HUD::HUD(bool isInvOpen, bool firstTab, int nScroll, sf::RenderWindow &window): 
-        isInvOpen(isInvOpen), firstTab(firstTab), nScroll(nScroll), window(window){
+HUD::HUD(sf::RenderWindow &window): window(window){
+
+    //setting the font for the text      
     font.loadFromFile("../orangekid.ttf");
     text.setFont(font);
 
+    //adding texture for the hud
     hudTexture.loadFromFile("../Textures/PlayerHUD.png");
+    //health
     healthSprite.setTexture(hudTexture);
-    quickslotSprite.setTexture(hudTexture);
-    actionsSprite.setTexture(hudTexture);
-    descriptionSprite.setTexture(hudTexture);
     healthSprite.setTextureRect({1531, 0, 389, 95});
-    quickslotSprite.setTextureRect({810, 960, 300, 77});
-    actionsSprite.setTextureRect({1743, 363, 85, 351});
-    descriptionSprite.setTextureRect({528, 293, 430, 233});
     healthSprite.setPosition(1610, 0);
-    quickslotSprite.setPosition(810, 960);
-    actionsSprite.setPosition(1743, 363);
-    descriptionSprite.setPosition(650, 296);
     healthSprite.setScale(0.8f, 0.8f);
+    //quickslot
+    quickslotSprite.setTexture(hudTexture);
+    quickslotSprite.setTextureRect({810, 960, 300, 77});
+    quickslotSprite.setPosition(810, 960);
     quickslotSprite.setScale(0.8f, 0.8f);
+    //actions
+    actionsSprite.setTexture(hudTexture);
+    actionsSprite.setTextureRect({1743, 363, 85, 351});
+    actionsSprite.setPosition(1743, 363);
     actionsSprite.setScale(0.8f, 0.8f);
-
+    //items description
+    descriptionSprite.setTexture(hudTexture);
+    descriptionSprite.setTextureRect({528, 293, 430, 233});
+    descriptionSprite.setPosition(650, 296);
+    //inventory
     inventorySprite.setTexture(hudTexture);
     inventorySprite.setTextureRect({89, 259, 352, 500});
     inventorySprite.setPosition(89, 259);
@@ -30,10 +36,6 @@ HUD::HUD(bool isInvOpen, bool firstTab, int nScroll, sf::RenderWindow &window):
 
 bool HUD::getInvIsOpen(){
     return isInvOpen;
-}
-
-void HUD::setInvIsOpen(bool isInvOpen){
-    this -> isInvOpen = isInvOpen;
 }
 
 void HUD::setFirstTab(bool firstTab){
@@ -70,7 +72,7 @@ void HUD::drawInventory(){
             this -> setFirstTab(false);
 
     //inventory interface        
-    if (this -> firstTab){
+    if (firstTab){
 
         //first category    
         //list of consumables
@@ -89,50 +91,74 @@ void HUD::drawInventory(){
         //scrolling between collectibles
         tab = "< Collezionabili";
         //for scrolling between pages
-        this -> scrollList();
+        /*if(!switching)
+            this -> scrollList();*/
         //first slot
-        collectibles[1*this -> nScroll].displayItem(145, 450, window, 235, 460);
+        collectibles[0+(4*inventoryScroll)].displayItem(145, 450, window, 235, 460);
         //second slot
-        collectibles[2*this -> nScroll].displayItem(145, 555, window, 235, 565);
+        collectibles[1+(4*inventoryScroll)].displayItem(145, 555, window, 235, 565);
         //third slot
-        collectibles[3*this -> nScroll].displayItem(145, 660, window, 235, 670);
+        collectibles[2+(4*inventoryScroll)].displayItem(145, 660, window, 235, 670);
         //fourth slot
-        collectibles[4*this -> nScroll].displayItem(145, 775, window, 235, 770); 
+        collectibles[3+(4*inventoryScroll)].displayItem(145, 775, window, 235, 770); 
         //for detailed items description
-        //also handling input with delaytime
-        this -> displayDescription();    
-        tabText.setString(tab);
-        window.draw(tabText);
-    }    
-    
-}
-
-void HUD::openCloseInv(){//TODO adjust inputs with dt
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
-        this -> setInvIsOpen(true);
+        //also handling input with delaytime  
+        this -> displayDescription();  
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
-        this -> setInvIsOpen(false);
-    }
+    tabText.setString(tab);
+    window.draw(tabText);    
 }
 
 void HUD::scrollList(){//TODO same here
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        this -> nScroll = 1;
+    /*if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        this -> nScroll = 0;
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        this -> nScroll = 2;    
+        this -> nScroll = 1;*/    
 }
 
 void HUD::displayDescription(){
+    //setting the description
+    text.setPosition(840, 355);
+    text.setCharacterSize(20);
+    text.setString(collectibles[descriptionScroll].getItemDescription());
     if(switching){
+        //drawing description sprite, item sprite (and name) and drawing description text
         window.draw(descriptionSprite);
-        collectibles[nScroll].displayItem(730, 400, window, 145, 143);
+        collectibles[descriptionScroll].displayItem(730, 400, window, 745, 305);
+        window.draw(text);
     }
 }
 
 void HUD::updateEvent(sf::Event keyInput){
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
+    //handling inputs
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E){
+        isInvOpen = !isInvOpen;
+        if (!isInvOpen)
+            switching = false;
+    }
+    if (isInvOpen){
+        //opens items descriptions
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
             switching = !switching;
+
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up){
+            //scrolling for description(up)
+            if(switching)
+                descriptionScroll = (descriptionScroll+7)%8;
+            //scrolling for items (up)
+            else
+                inventoryScroll = (++inventoryScroll)%2;      
+        }
+
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Down){
+            //scrolling for description (down)
+            if(switching)
+                descriptionScroll = (++descriptionScroll)%8;
+            //scrolling for items 
+            else
+                inventoryScroll = (++inventoryScroll)%2;
+        }        
+    }         
 }
 
 /*//TODO complete later

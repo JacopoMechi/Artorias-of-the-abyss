@@ -30,7 +30,7 @@ int main()
     window.setKeyRepeatEnabled(false);
 
     //hud
-    HUD hud(false, true, 0, window);
+    HUD hud(window);
     //gamecharacter
     GameCharacter test(100, 20, 0, 100.0f, {150.0f,3.0f});
 
@@ -63,7 +63,6 @@ int main()
 
         //handle player input
         test.movement(hud.getInvIsOpen());
-        hud.openCloseInv();
 
         //update character model
         test.update(dt);
