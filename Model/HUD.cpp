@@ -27,6 +27,7 @@ HUD::HUD(sf::RenderWindow &window): window(window){
     descriptionSprite.setTexture(hudTexture);
     descriptionSprite.setTextureRect({528, 293, 430, 233});
     descriptionSprite.setPosition(650, 296);
+    descriptionSprite.setScale(1.3f,1.3f);
     //inventory
     inventorySprite.setTexture(hudTexture);
     inventorySprite.setTextureRect({89, 259, 352, 500});
@@ -111,13 +112,13 @@ void HUD::drawInventory(){
 
 void HUD::displayDescription(){
     //setting the description
-    text.setPosition(840, 355);
+    text.setPosition(890, 375);
     text.setCharacterSize(20);
     text.setString(collectibles[descriptionScroll].getItemDescription());
     if(switching){
         //drawing description sprite, item sprite (and name) and drawing description text
         window.draw(descriptionSprite);
-        collectibles[descriptionScroll].displayItem(730, 400, window, 745, 305);
+        collectibles[descriptionScroll].displayItem(760, 450, window, 780, 315);
         window.draw(text);
     }
 }
