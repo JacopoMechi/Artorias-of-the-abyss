@@ -103,9 +103,9 @@ void HUD::drawInventory(){
         //fourth slot
         collectibles[3+(4*inventoryScroll)].displayItem(145, 775, window, 235, 770); 
         //for detailed items description
-        //also handling input with delaytime  
-        this -> displayDescription();  
+        //also handling input with delaytime   
     }
+    this -> displayDescription();
     tabText.setString(tab);
     window.draw(tabText);    
 }
@@ -114,11 +114,38 @@ void HUD::displayDescription(){
     //setting the description
     text.setPosition(890, 375);
     text.setCharacterSize(20);
-    text.setString(collectibles[descriptionScroll].getItemDescription());
     if(switching){
-        //drawing description sprite, item sprite (and name) and drawing description text
+        //drawing description sprite
         window.draw(descriptionSprite);
-        collectibles[descriptionScroll].displayItem(760, 450, window, 780, 315);
+
+        //drawing item sprite (and name) and description text
+        if(firstTab){
+            //shows description of first category
+            //EstusFlask
+            if(descriptionScroll == 0){
+                text.setString(flask.getItemDescription());
+                flask.displayItem(760, 450, window, 780, 315);
+            }
+            //GreenBlossom
+            if(descriptionScroll == 1){
+                text.setString(blossom.getItemDescription());
+                blossom.displayItem(760, 450, window, 780, 315);
+            }
+            //HomewardBone
+            if(descriptionScroll == 2){
+                text.setString(homeward.getItemDescription());
+                homeward.displayItem(760, 450, window, 780, 315);
+            }
+            //Pendant
+            if(descriptionScroll == 3){
+                text.setString(pendant.getItemDescription());
+                pendant.displayItem(760, 450, window, 780, 315);
+            }
+        }else{
+            //shows description of second category
+            collectibles[descriptionScroll].displayItem(760, 450, window, 780, 315);
+            text.setString(collectibles[descriptionScroll].getItemDescription());
+        }
         window.draw(text);
     }
 }
@@ -137,8 +164,12 @@ void HUD::updateEvent(sf::Event keyInput){
 
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up){
             //scrolling for description(up)
-            if(switching)
-                descriptionScroll = (descriptionScroll+7)%8;
+            if(switching){
+                if(firstTab)
+                    descriptionScroll = (descriptionScroll + 3)%4;
+                else    
+                    descriptionScroll = (descriptionScroll+7)%8;
+            }
             //scrolling for items (up)
             else
                 inventoryScroll = (++inventoryScroll)%2;      
@@ -146,8 +177,12 @@ void HUD::updateEvent(sf::Event keyInput){
 
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Down){
             //scrolling for description (down)
-            if(switching)
-                descriptionScroll = (++descriptionScroll)%8;
+            if(switching){
+                if(firstTab)
+                    descriptionScroll = (++descriptionScroll)%4;
+                else    
+                    descriptionScroll = (++descriptionScroll)%8;
+            }
             //scrolling for items 
             else
                 inventoryScroll = (++inventoryScroll)%2;
