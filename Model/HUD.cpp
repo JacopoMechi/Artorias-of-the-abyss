@@ -156,11 +156,14 @@ void HUD::updateEvent(sf::Event keyInput){
         isInvOpen = !isInvOpen;
         if (!isInvOpen)
             switching = false;
+        inventoryScroll = 0;    
     }
     if (isInvOpen){
         //opens items descriptions
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter){
             switching = !switching;
+            descriptionScroll = 0;
+        }
 
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up){
             //scrolling for description(up)
