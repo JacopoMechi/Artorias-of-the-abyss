@@ -1,14 +1,19 @@
 #include "Item.h"
 
-Item::Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height) : itemName(itemName), itemPrice(itemPrice), itemDescription(itemDescription), maxItemCount(maxItemCount), itemCount(itemCount),
-                                                                                                                                                     x(x), width(width), height(height)
-{
-    texture.loadFromFile("../Textures/Textures.png");
-    sprite.setTexture(texture);
-    sprite.setTextureRect({x, y, width, height});
+Item::Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height) : 
+    itemName(itemName), itemPrice(itemPrice), itemDescription(itemDescription), maxItemCount(maxItemCount), itemCount(itemCount), 
+    x(x), width(width), height(height){
+        texture.loadFromFile("../Textures/Textures.png");
+        sprite.setTexture(texture);
+        sprite.setTextureRect({x, y, width, height});
+        this -> x = x;
+        this -> y = y;
+        this -> width = width;
+        this -> height = height;
+        sprite.setScale(2.5f, 2.5f);
 
-    font.loadFromFile("../orangekid.ttf");
-    name.setFont(font);
+        font.loadFromFile("../orangekid.ttf");
+        name.setFont(font);
 }
 
 Item::~Item()
@@ -25,22 +30,19 @@ void Item::setItemCount(int itemCount)
     this->itemCount = itemCount;
 }
 
-void Item::displayItem(float posX, float posY, sf::RenderTarget &rt, float nameX, float nameY)
-{
-    sprite.setPosition({posX, posY}); // TODO item description in a pop-up
-    if (this->getItemCount() > 0)
-    {
-        // display colored sprite
+void Item::displayItem(float posX, float posY, sf::RenderTarget &window, float nameX, float nameY){
+    sprite.setPosition({posX, posY});
+    if(this -> getItemCount() > 0){
+        //display colored sprite
         name.setPosition(nameX, nameY);
-        name.setString(this->getItemName());
-        name.setCharacterSize(20);
-        rt.draw(name);
-        rt.draw(sprite);
+        name.setString(this -> getItemName());
+        name.setCharacterSize(30);
+        window.draw(name);
+    }else{
+        //display gray sprite
+        sprite.setTextureRect({x+width, y, width, height});
     }
-    else
-    {
-        // display gray sprite
-    }
+    window.draw(sprite);
 }
 
 std::string Item::getItemName()
@@ -48,7 +50,9 @@ std::string Item::getItemName()
     return itemName;
 }
 
-std::string Item::getItemDescription()
-{
-    return itemDescription;
+std::string Item::getItemDescription() {
+    if(this -> getItemCount() > 0)
+        return itemDescription;
+    else
+        return "...";    
 }

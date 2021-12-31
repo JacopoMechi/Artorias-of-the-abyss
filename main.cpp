@@ -1,6 +1,5 @@
 #include <SFML/Graphics.hpp>
 #include <string>
-#include <chrono>
 
 #include "Bonfire.h"
 #include "GameCharacter.h"
@@ -22,38 +21,44 @@ int main()
 
     // map
     Map map({}, MAPPATH);
-    // hud
-    HUD hud(false, true, 0);
-    // menu
+
+    //menu
     Menu menu;
-    // gamecharacter
-    GameCharacter test(100, 20, 0, 100.0f, {150.0f, 3.0f});
+
+    //creating event
+    sf::Event event;
 
     // create window
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Hallway of the abyss");
     window.setFramerateLimit(60);
 
-    // timepoint for delta time measurement
-    auto tp = std::chrono::steady_clock::now();
+    //disable multiple input from a single key
+    window.setKeyRepeatEnabled(false);
+
+    //hud
+    HUD hud(window);
+    //gamecharacter
+    GameCharacter test(100, 20, 0, 100.0f, {150.0f,3.0f});
+
+    //creating clock for dt
+    sf::Clock clock;
+
+    //creating dt
+    float dt = 0.0f;
 
     // starting the game loop
     while (window.isOpen())
-    {
+    {    
+
         // process event
-        sf::Event event;
         while (window.pollEvent(event))
         {
+            //update inputs event in HUD
+            hud.updateEvent(event);
+
             // close window
             if (event.type == sf::Event::Closed)
                 window.close();
-        }
-
-        // get dt
-        float dt;
-        {
-            const auto new_tp = std::chrono::steady_clock::now();
-            dt = std::chrono::duration<float>(new_tp - tp).count();
-            tp = new_tp;
         }
 
         // clear screen
@@ -63,26 +68,31 @@ int main()
             menu.launch(window);
         else
         {
+
             // draw map
             map.draw(window);
-            // handle player input
+
+            //handle player input
             test.movement(hud.getInvIsOpen());
-            hud.openCloseInv();
 
             // update character model
             test.update(dt);
 
-            // draw the sprite
+            //draw the sprite
             test.draw(window);
-            if (hud.getInvIsOpen())
-            {
-                hud.drawInventory(window);
+            if (hud.getInvIsOpen()){
+                hud.drawInventory();
             }
-            hud.draw(window);
-            hud.displayHealth(test, window);
+            hud.draw(); 
+            hud.displayHealth(test);
         }
+
         // update the window
         window.display();
+
+        dt = clock.getElapsedTime().asSeconds();
+        clock.restart();
+        //TODO can be useful later:hud.updateDelayTime(dt);
     }
     return EXIT_SUCCESS;
 }

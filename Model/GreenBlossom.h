@@ -2,15 +2,16 @@
 #define _GREENBLOSSOM_H
 
 #include "Item.h"
-#include "Hero.h"
+//#include "Hero.h"
 
 
 class GreenBlossom: public Item {
 public:
-    explicit GreenBlossom(std::string n = "Fiore verde", int p = 1000,
-                          std::string d = "Riduce il cooldown dei dash per 60 secondi", int M = 10, int c = 0);
+    explicit GreenBlossom(std::string itemName = "Estratto di Fiore verde", int itemPrice = 1000,
+                          std::string itemDescription = "Riduce il cooldown dei dash per 60 secondi", int maxItemCount = 10, 
+                          int itemCount = 0, int x = 453, int y = 2, int width = 20, int height = 20);
     ~GreenBlossom();
-    void use(Hero &hero, int newCooldown, int timeEffect);
+    //void use(Hero &hero, int newCooldown, int timeEffect);
 private:
     int newCooldwon;// needs a value
     int timeEffect = 60;

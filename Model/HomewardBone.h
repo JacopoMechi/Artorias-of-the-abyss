@@ -2,16 +2,17 @@
 #define _HOMEWARDBONE_H
 
 #include "Item.h"
-#include "MapElements.h"
-#include "Hero.h"
+//#include "MapElements.h"
+//#include "Hero.h"
 
 class HomewardBone: public Item {
 public: 
-    explicit HomewardBone(std::string n = "Osso del Ritorno", int p = 2000,
-                 std::string d = "Permette il teletrasporto all'ultimo falo' interagito", int M = 3, int c = 0);
+    explicit HomewardBone(std::string itemName = "Osso del Ritorno", int itemPrice = 2000,
+                 std::string itemDescription = "Permette il teletrasporto all'ultimo falo' interagito", int maxItemCount = 3, int itemCount = 0,
+                 int x = 497, int y = 71, int width = 23, int height = 22);
     ~HomewardBone();
 
-    void use(Hero& hero, MapElements& bonfire);
+    //void use(Hero& hero, MapElements& bonfire);
 };
 
 #endif //_HOMEWARDBONE_H
