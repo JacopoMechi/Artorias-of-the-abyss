@@ -31,6 +31,8 @@ public:
 
     void updateEvent(sf::Event keyInput);
 
+
+
     //TODO for later: void updateDelayTime(float dt);
 
 protected:
@@ -92,6 +94,9 @@ protected:
         "danneggiano solo\nattraverso il contatto fisico.", 1, 1, 497, 0, 22, 20} 
         
     };
+
+    //creating consumable 
+    Item consumables[4] = {EstusFlask(), GreenBlossom(), HomewardBone(), Pendant()};
 
     //Consumable items
     EstusFlask flask;
