@@ -4,7 +4,7 @@
 
 #include "Menu.h"
 
-void Menu::launch(sf::RenderWindow &window)
+void Menu::launch()
 {
     window.draw(menuSprite);
     // Start Game button check
@@ -17,6 +17,7 @@ void Menu::launch(sf::RenderWindow &window)
             shadowSprite.setPosition({764.f, 375.f});
             window.draw(shadowSprite);
             startGame = true;
+            menuIsOpen = false;
         }
     }
     // Settings button check
@@ -45,17 +46,42 @@ void Menu::launch(sf::RenderWindow &window)
     }
 }
 
+void Menu::updateEvent(sf::Event keyInput)
+{
+    // handling inputs
+    if (keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Escape && !menuIsOpen)
+    {
+        menuIsOpen = true;
+        launch();
+    }
+}
+
 bool Menu::getStartGame()
 {
     return startGame;
 }
 
-Menu::Menu(const std::string &menuFilePath, const std::string &buttonEffectsFilePath)
+bool Menu::getMenuIsOpen()
 {
-    if (!menuTexture.loadFromFile(menuFilePath))
-        std::cout << "Error while setting menu texture" << std::endl;
-    menuSprite.setTexture(this->menuTexture);
-    menuSprite.setTextureRect(sf::IntRect(0, 0, 1920, 1080));
+    return menuIsOpen;
+}
+
+Menu::Menu(sf::RenderWindow &window, bool mainMenu, const std::string &buttonEffectsFilePath) : window(window), mainMenu(mainMenu), menuIsOpen(false)
+{
+    if (mainMenu)
+    {
+        if (!menuTexture.loadFromFile("../Textures/mainMenu.png"))
+            std::cout << "Error while setting menu texture" << std::endl;
+        menuSprite.setTexture(this->menuTexture);
+        menuSprite.setTextureRect(sf::IntRect(0, 0, 1920, 1080));
+    }
+    else
+    {
+        if (!menuTexture.loadFromFile("../Textures/Menu.png"))
+            std::cout << "Error while setting menu texture" << std::endl;
+        menuSprite.setTexture(this->menuTexture);
+        menuSprite.setTextureRect(sf::IntRect(0, 0, 1920, 1080));
+    }
 
     if (!shadowTexture.loadFromFile(buttonEffectsFilePath))
         std::cout << "Error while setting menu shadow texture" << std::endl;
@@ -63,7 +89,7 @@ Menu::Menu(const std::string &menuFilePath, const std::string &buttonEffectsFile
     shadowSprite.setTextureRect(sf::IntRect(8, 825, 390, 92));
 
     if (!higlightTexture.loadFromFile(buttonEffectsFilePath))
-        std::cout << "Error while setting menu shadow texture" << std::endl;
+        std::cout << "Error while setting menu highlight texture" << std::endl;
     higlightSprite.setTexture(this->higlightTexture);
     higlightSprite.setTextureRect(sf::IntRect(401, 827, 390, 92));
 }
