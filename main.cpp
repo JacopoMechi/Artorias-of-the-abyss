@@ -22,39 +22,41 @@ int main()
     // map
     Map map({}, MAPPATH);
 
-    //menu
-    Menu menu;
-
-    //creating event
+    // creating event
     sf::Event event;
 
     // create window
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Hallway of the abyss");
     window.setFramerateLimit(60);
 
-    //disable multiple input from a single key
+    // disable multiple input from a single key
     window.setKeyRepeatEnabled(false);
 
-    //hud
-    HUD hud(window);
-    //gamecharacter
-    GameCharacter test(100, 20, 0, 100.0f, {150.0f,3.0f});
+    // menu
+    Menu mainMenu(window, 1);
+    Menu inGameMenu(window, 0);
 
-    //creating clock for dt
+    // hud
+    HUD hud(window);
+    // gamecharacter
+    GameCharacter test(100, 20, 0, 100.0f, {150.0f, 3.0f});
+
+    // creating clock for dt
     sf::Clock clock;
 
-    //creating dt
+    // creating dt
     float dt = 0.0f;
 
     // starting the game loop
     while (window.isOpen())
-    {    
+    {
 
         // process event
         while (window.pollEvent(event))
         {
-            //update inputs event in HUD
+            // update inputs event in HUD
             hud.updateEvent(event);
+            inGameMenu.updateEvent(event);
 
             // close window
             if (event.type == sf::Event::Closed)
@@ -64,27 +66,35 @@ int main()
         // clear screen
         window.clear(sf::Color::Black);
 
-        if (!menu.getStartGame())
-            menu.launch(window);
+        // draw map
+        map.draw(window);
+
+        if (!mainMenu.getStartGame())
+            mainMenu.launch();
         else
         {
-
-            // draw map
-            map.draw(window);
-
-            //handle player input
+            // handle player input
             test.movement(hud.getInvIsOpen());
 
             // update character model
             test.update(dt);
 
-            //draw the sprite
+            // draw the sprite
             test.draw(window);
-            if (hud.getInvIsOpen()){
+
+            // hud handling
+            if (hud.getInvIsOpen())
+            {
                 hud.drawInventory();
             }
-            hud.draw(); 
+            hud.draw();
             hud.displayHealth(test);
+
+            // in game menu handling
+            if (inGameMenu.getMenuIsOpen())
+            {
+                inGameMenu.launch();
+            }
         }
 
         // update the window
@@ -92,7 +102,7 @@ int main()
 
         dt = clock.getElapsedTime().asSeconds();
         clock.restart();
-        //TODO can be useful later:hud.updateDelayTime(dt);
+        // TODO can be useful later:hud.updateDelayTime(dt);
     }
     return EXIT_SUCCESS;
 }
