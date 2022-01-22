@@ -74,7 +74,7 @@ int main()
         else
         {
             // handle player input
-            test.movement(hud.getInvIsOpen());
+            test.movement(hud.getInvIsOpen(), inGameMenu.getMenuIsOpen());
 
             // update character model
             test.update(dt);

@@ -49,10 +49,9 @@ void Menu::launch()
 void Menu::updateEvent(sf::Event keyInput)
 {
     // handling inputs
-    if (keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Escape && !menuIsOpen)
+    if (keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Escape)
     {
-        menuIsOpen = true;
-        launch();
+        menuIsOpen = !menuIsOpen;
     }
 }
 
