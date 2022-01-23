@@ -53,6 +53,7 @@ protected:
     int inventoryScroll = 0;
     int descriptionScroll = 0;
     bool switching = false;
+    bool quickAssign = false;
 
     //Collectible items
     Item collectibles[8] = {

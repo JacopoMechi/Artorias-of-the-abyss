@@ -130,11 +130,13 @@ void HUD::displayDescription(){
             text.setString(collectibles[descriptionScroll].getItemDescription());
         }
         window.draw(text);
+        drawQuickSlot();
     }
 }
 
 void HUD::updateEvent(sf::Event keyInput){
     //handling inputs
+    //opens inventory
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E){
         isInvOpen = !isInvOpen;
         if (!isInvOpen)
@@ -148,6 +150,7 @@ void HUD::updateEvent(sf::Event keyInput){
             descriptionScroll = 0;
         }
 
+        //inputs for scrolling in inventory
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up){
             //scrolling for description(up)
             if(switching){
@@ -169,15 +172,35 @@ void HUD::updateEvent(sf::Event keyInput){
                 else    
                     descriptionScroll = (++descriptionScroll)%8;
             }
-            //scrolling for items 
+            //scrolling for items (down)
             else
                 inventoryScroll = (++inventoryScroll)%2;
+        }
+
+        //input for changing quickslot items. It opens a dialogue box
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U){
+            quickAssign = !quickAssign;
         }        
+
+        //handling slot assign
+        if(quickAssign){
+            if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
+                //TODO assign consumable to n slot and close sprite by setting quickAssign to false 
+            else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2)
+                //same here
+            else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3)
+                //same here
+            else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num4)
+                //same here        
+        }
     }         
 }
 
 void HUD::drawQuickSlot(){
-    
+    if(quickAssign){
+        //draw the sprite
+        //add some text
+    }
 }
 
 /*//TODO complete later
