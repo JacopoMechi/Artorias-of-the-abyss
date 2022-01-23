@@ -96,12 +96,6 @@ protected:
     };
 
     //creating consumable 
-    Item consumables[4] = {EstusFlask(), GreenBlossom(), HomewardBone(), Pendant()};
-
-    //Consumable items
-    EstusFlask flask;
-    GreenBlossom blossom;
-    HomewardBone homeward;
-    Pendant pendant;  
+    Item* consumables[4] = {new EstusFlask(), new GreenBlossom(), new HomewardBone(), new Pendant()}; 
 };
 #endif

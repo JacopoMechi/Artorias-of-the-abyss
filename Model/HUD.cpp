@@ -80,13 +80,13 @@ void HUD::drawInventory(){
         //list of consumables
         tab = "Consumabili >";//<tab> cambia categoria, <q> esci dall'inventario, <ArrowUp,ArrDown> scorri items
         //first slot
-        flask.displayItem(148, 455, window, 235, 460);
+        consumables[0]->displayItem(148, 455, window, 235, 460);
         //second slot
-        blossom.displayItem(148, 560, window, 235, 565);
+        consumables[1]->displayItem(148, 560, window, 235, 565);
         //third slot
-        homeward.displayItem(142, 665, window, 235, 670);
+        consumables[2]->displayItem(142, 665, window, 235, 670);
         //fourth slot
-        pendant.displayItem(142, 780, window, 235, 770);
+        consumables[3]->displayItem(142, 780, window, 235, 770);
 
     }else{    
         //second category
@@ -122,26 +122,8 @@ void HUD::displayDescription(){
         //drawing item sprite (and name) and description text
         if(firstTab){
             //shows description of first category
-            //EstusFlask
-            if(descriptionScroll == 0){
-                text.setString(flask.getItemDescription());
-                flask.displayItem(760, 450, window, 780, 315);
-            }
-            //GreenBlossom
-            if(descriptionScroll == 1){
-                text.setString(blossom.getItemDescription());
-                blossom.displayItem(760, 450, window, 780, 315);
-            }
-            //HomewardBone
-            if(descriptionScroll == 2){
-                text.setString(homeward.getItemDescription());
-                homeward.displayItem(760, 450, window, 780, 315);
-            }
-            //Pendant
-            if(descriptionScroll == 3){
-                text.setString(pendant.getItemDescription());
-                pendant.displayItem(760, 450, window, 780, 315);
-            }
+            text.setString(consumables[descriptionScroll]->getItemDescription());
+            consumables[descriptionScroll]->displayItem(760, 450, window, 780, 315);
         }else{
             //shows description of second category
             collectibles[descriptionScroll].displayItem(760, 450, window, 780, 315);
