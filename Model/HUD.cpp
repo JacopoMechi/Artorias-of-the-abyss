@@ -176,6 +176,10 @@ void HUD::updateEvent(sf::Event keyInput){
     }         
 }
 
+void HUD::drawQuickSlot(){
+    
+}
+
 /*//TODO complete later
 //updating dt in class
 void HUD::updateDelayTime(float dt){

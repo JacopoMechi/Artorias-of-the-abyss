@@ -31,7 +31,7 @@ public:
 
     void updateEvent(sf::Event keyInput);
 
-
+    void drawQuickSlot();
 
     //TODO for later: void updateDelayTime(float dt);
 
