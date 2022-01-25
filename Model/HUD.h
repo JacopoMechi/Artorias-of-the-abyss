@@ -33,6 +33,8 @@ public:
 
     void drawQuickSlot();
 
+    void assignItem(Item *consumable, int slot);
+
     //TODO for later: void updateDelayTime(float dt);
 
 protected:
@@ -45,6 +47,7 @@ protected:
     sf::Sprite actionsSprite;
     sf::Sprite inventorySprite;
     sf::Sprite descriptionSprite;
+    sf::Sprite assignSprite;
     sf::Text text;
     sf::Font font;
     //switch for some sprites like inventory, healthsprite,...
@@ -54,6 +57,9 @@ protected:
     int descriptionScroll = 0;
     bool switching = false;
     bool quickAssign = false;
+
+    //for displaying items in quickslot
+    Item *quickSlot[3] = {NULL, NULL, NULL};
 
     //Collectible items
     Item collectibles[8] = {
