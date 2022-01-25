@@ -15,7 +15,9 @@ public:
 
     void setItemCount(int itemCount);
 
-    void displayItem(float posX, float posY, sf::RenderTarget &window, float nameX, float nameY);
+    void displayItem(float posX, float posY, sf::RenderTarget &window);
+
+    void displayName(sf::RenderTarget &window, float nameX, float nameY);
 
     std::string getItemName();
 

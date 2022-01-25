@@ -30,19 +30,21 @@ void Item::setItemCount(int itemCount)
     this->itemCount = itemCount;
 }
 
-void Item::displayItem(float posX, float posY, sf::RenderTarget &window, float nameX, float nameY){
+void Item::displayItem(float posX, float posY, sf::RenderTarget &window){
     sprite.setPosition({posX, posY});
+    if(this -> getItemCount() <= 0)
+        //display gray sprite
+        sprite.setTextureRect({x+width, y, width, height});
+    window.draw(sprite);
+}
+
+void Item::displayName(sf::RenderTarget &window, float nameX, float nameY){
     if(this -> getItemCount() > 0){
-        //display colored sprite
         name.setPosition(nameX, nameY);
         name.setString(this -> getItemName());
         name.setCharacterSize(30);
         window.draw(name);
-    }else{
-        //display gray sprite
-        sprite.setTextureRect({x+width, y, width, height});
     }
-    window.draw(sprite);
 }
 
 std::string Item::getItemName()
