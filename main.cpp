@@ -3,6 +3,7 @@
 
 #include "Bonfire.h"
 #include "GameCharacter.h"
+#include "Hero.h"
 #include "Gate.h"
 #include "HUD.h"
 #include "MapElement.h"
@@ -38,7 +39,7 @@ int main()
     //hud
     HUD hud(window);
     //gamecharacter
-    GameCharacter test(100, 20, 0, 100.0f, {150.0f,3.0f});
+    Hero test(100, 20, 0, 100.0f, {150.0f,3.0f});
 
     //creating clock for dt
     sf::Clock clock;
