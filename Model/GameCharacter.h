@@ -13,8 +13,7 @@ class GameCharacter{//:  public MapElement
 
 public:
     
-    GameCharacter(int hp, int a, int c, float mS, const sf::Vector2f& pos);
-    //hp: HP, a: armor, c: cash, mS: movementSpeed, t: textPool               
+    GameCharacter(int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos);           
     ~GameCharacter();
     
     int getHp() const;
@@ -40,7 +39,7 @@ public:
     Weapon* getShield();
     void setShield(Weapon* weapon);
     
-    virtual void movement(bool isInventoryOpen);
+    virtual void movement();
     
     virtual void attack(GameCharacter &opponent);
     
@@ -55,8 +54,6 @@ protected:
     int armor;
     int cash;
     float movementSpeed;
-    int dialogueTracker = 0;
-    bool isInventoryOpen;
     float aggroDistance;
     Weapon* weapon;
     Weapon* leftWeapon;

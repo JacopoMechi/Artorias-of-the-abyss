@@ -1,7 +1,7 @@
 #include "GameCharacter.h"
 
-GameCharacter::GameCharacter(int hp, int a, int c, float mS, const sf::Vector2f& pos): HP(hp), armor(a), cash(c),
- movementSpeed(mS), pos(pos), weapon(nullptr), leftWeapon(nullptr){
+GameCharacter::GameCharacter(int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos): HP(hp), armor(armor), cash(cash),
+ movementSpeed(movementSpeed), pos(pos), weapon(nullptr), leftWeapon(nullptr){
     sprite.setTextureRect({127, 75, 16, 28});//    128, 75, 17, 28
     texture.loadFromFile("../Textures/Textures.png");
     sprite.setTexture(texture);
@@ -79,25 +79,8 @@ void GameCharacter::setShield(Weapon* leftWeapon) {
 }
 
 
-void GameCharacter::movement(bool isInventoryOpen){
-    if (!isInventoryOpen){
+void GameCharacter::movement(){
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-                dir.y = -1.0f;
-        }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-                dir.y = 1.0f;
-        }else
-            dir.y = 0;
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-                dir.x = -1.0f;
-        }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-                dir.x = 1.0f;
-        }else
-            dir.x = 0;
-
-    }else
-        dir = {0,0};
 }
 
 void GameCharacter::attack(GameCharacter &opponent) {//its virtual, needs to be overrided in enemy
