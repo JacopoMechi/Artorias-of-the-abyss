@@ -13,7 +13,7 @@
 class Hero: public GameCharacter {
 public: 
 
-    Hero(int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos, int dashCount, int cooldown);
+    Hero(int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos);
 
     int getDash();
     void setDash(int dashCount);
@@ -46,13 +46,18 @@ public:
 
 protected: 
 
+
+    int dialogueTracker = 0;
+    bool isInventoryOpen;
+
+    
     
     bool isMage;
     bool isKnight;
-    int cooldown;
+    int cooldown = 5;
     Bonfire* bonfire ;
     int amount;
-    int dashCount;
+    int dashCount = 3;
 };
 
 #endif //_HERO_H
