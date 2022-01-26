@@ -36,16 +36,9 @@ public:
     void useBonfire();
 
     void restoreHp(int amount);
-    
-/**
- * @param bool isKnight
- */
+
     void raiseShield(void bool isKnight);
     
-/**
- * @param bool isMage
- * @param int cooldown
- */
     override attack(void bool isMage, void int cooldown);
     
     override movement();
