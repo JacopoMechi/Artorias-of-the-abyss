@@ -1,27 +1,8 @@
 #include "Hero.h"
 
-Hero::Hero(int hp, int a, int c, int s, std::string& t, int d, int cd, float hPosX, float hPosY):
-GameCharacter(hp, a, c, s, t), dashCount(d), cooldown(cd), heroPosX(hPosX), heroPosY(hPosY){
+Hero::Hero(int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos, int dashCount, int cooldown):
+GameCharacter(hp, armor, cash, movementSpeed, pos), dashCount(dashCount), cooldown(cooldown){
 
-}
-
-Hero::~Hero(){
-
-}
-
-float Hero::getHeroPosX(){
-    return heroPosX;
-}
-void Hero::setHeroPosX(float heroPosX){
-    this -> heroPosX = posX;
-}
-
-float Hero::getHeroPosY(){
-    return heroPosY;
-}
-
-void Hero::setHeroPosY(float heroPosY) {
-    this -> heroPosY = posY;
 }
 
 int Hero::getDash(){
@@ -43,18 +24,14 @@ void Hero::dash(int dashCount, int cooldown){
 }
 
 void Hero::restoreHp(int amount){
-    GameCharacter::setHp(GameCharacter::getHp+amount);
+    //GameCharacter::setHp(GameCharacter::getHp+amount);
 }
 
-void Hero::addItem() {
+/*void Hero::useItem() {//TODO may be useful later
 
-}
+}*/
 
-void Hero::useItem() {
-
-}
-
-void Hero::switchZone() {
+void Hero::switchZone() {//TODO useful later maybe
 
 }
 
@@ -63,18 +40,35 @@ void Hero::useBonfire() {
 }
 
 
-void Hero::raiseShield(void bool isKnight) {
+void Hero::raiseShield(bool isKnight) {
 
 }
 
 
-override Hero::attack(void bool isMage, void int cooldown) {
-    return null;
-}
+/*void Hero::attack(bool isMage, int cooldown) {
+    
+}*/
 
 
-override Hero::movement() {
-    return null;
+void Hero::movement(bool isInventoryOpen){
+    if (!isInventoryOpen){
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+            dir.y = -1.0f;
+        }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+            dir.y = 1.0f;
+        }else
+        dir.y = 0;
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+            dir.x = -1.0f;
+        }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            dir.x = 1.0f;
+        }else
+            dir.x = 0;
+
+    }else
+        dir = {0,0};
 }
 
 
