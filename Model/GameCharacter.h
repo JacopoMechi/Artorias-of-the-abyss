@@ -36,8 +36,6 @@ public:
 
     virtual void receiveDamage(int points);
 
-    Weapon* getShield();
-    void setShield(Weapon* weapon);
     
     virtual void movement();
     
@@ -56,7 +54,6 @@ protected:
     float movementSpeed;
     float aggroDistance;
     Weapon* weapon;
-    Weapon* leftWeapon;
     sf::Vector2f pos;
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;

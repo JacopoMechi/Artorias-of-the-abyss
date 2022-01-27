@@ -1,8 +1,13 @@
 #include "Hero.h"
 
 Hero::Hero(int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos):
-    GameCharacter(hp, armor, cash, movementSpeed, pos){
+    GameCharacter(hp, armor, cash, movementSpeed, pos), leftWeapon(nullptr){
     //TODO implement a something that switch between mage and knight
+}
+
+Hero::~Hero(){
+    if (leftWeapon != nullptr)
+        delete leftWeapon;
 }
 
 int Hero::getDash(){
@@ -74,4 +79,12 @@ void Hero::movement(bool isInventoryOpen){
 
 void Hero::respawn(float posX,float posY) {
     //finish hero
+}
+
+Weapon* Hero::getShield() {
+    return leftWeapon;
+}
+
+void Hero::setShield(Weapon* leftWeapon) {
+    this->leftWeapon = leftWeapon;
 }

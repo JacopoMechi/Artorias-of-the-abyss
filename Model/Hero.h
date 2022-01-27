@@ -14,6 +14,7 @@ class Hero: public GameCharacter {
 public: 
 
     Hero(int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos);
+    ~Hero();
 
     int getDash();
     void setDash(int dashCount);
@@ -44,20 +45,21 @@ public:
     
     void respawn(float posX, float posY);
 
-protected: 
+    Weapon* getShield();
+    void setShield(Weapon* weapon);
 
+protected: 
 
     int dialogueTracker = 0;
     bool isInventoryOpen;
-
-    
-    
+    Weapon* leftWeapon;
     bool isMage;
     bool isKnight;
+    int dashCount = 3;
+
     int cooldown = 5;
     Bonfire* bonfire ;
     int amount;
-    int dashCount = 3;
 };
 
 #endif //_HERO_H

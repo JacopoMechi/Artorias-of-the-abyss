@@ -1,7 +1,7 @@
 #include "GameCharacter.h"
 
 GameCharacter::GameCharacter(int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos): HP(hp), armor(armor), cash(cash),
- movementSpeed(movementSpeed), pos(pos), weapon(nullptr), leftWeapon(nullptr){
+ movementSpeed(movementSpeed), pos(pos), weapon(nullptr){
     sprite.setTextureRect({127, 75, 16, 28});//    128, 75, 17, 28
     texture.loadFromFile("../Textures/Textures.png");
     sprite.setTexture(texture);
@@ -11,8 +11,6 @@ GameCharacter::GameCharacter(int hp, int armor, int cash, float movementSpeed, c
 GameCharacter::~GameCharacter() {
     if (weapon != nullptr)
         delete weapon;
-    if (leftWeapon != nullptr)
-        delete leftWeapon;
 }
 
 int GameCharacter::getHp() const{
@@ -70,13 +68,6 @@ void GameCharacter::receiveDamage(int points) {
     setHp(HP-points);
 }
 
-Weapon* GameCharacter::getShield() {
-    return leftWeapon;
-}
-
-void GameCharacter::setShield(Weapon* leftWeapon) {
-    this->leftWeapon = leftWeapon;
-}
 
 
 void GameCharacter::movement(){
