@@ -1,8 +1,8 @@
 #include "Hero.h"
 
 Hero::Hero(int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos):
-    GameCharacter(hp, armor, cash, movementSpeed, pos), leftWeapon(nullptr){
-    //TODO implement a something that switch between mage and knight
+    isKnight(isKnight), GameCharacter(hp, armor, cash, movementSpeed, pos){
+    
 }
 
 Hero::~Hero(){
