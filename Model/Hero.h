@@ -37,9 +37,14 @@ public:
 
     void restoreHp(int amount);
 
-    void raiseShield(bool isKnight);
+    void raiseShield();
     
-    //override attack(void bool isMage, void int cooldown);
+    void attack();
+
+    void updateInputs(sf::Event keyInput);
+    
+    //to stop the current animation to make another one like using an item, attacking
+    void characterAction(float dt);
     
     void movement(bool isInventoryOpen);
     
@@ -53,9 +58,10 @@ protected:
     int dialogueTracker = 0;
     bool isInventoryOpen;
     Weapon* leftWeapon;
-    bool isMage;
     bool isKnight;
     int dashCount = 3;
+
+    bool animationStarting = false;
 
     int cooldown = 5;
     Bonfire* bonfire ;

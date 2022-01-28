@@ -2,7 +2,7 @@
 
 Hero::Hero(bool isKnight, int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos):
     isKnight(isKnight), GameCharacter(hp, armor, cash, movementSpeed, pos){
-    
+    //TODO switch between mage and knight by checking isKnight
 }
 
 Hero::~Hero(){
@@ -45,15 +45,48 @@ void Hero::useBonfire() {
 }
 
 
-void Hero::raiseShield(bool isKnight) {
+void Hero::raiseShield() {
 
 }
 
 
-/*void Hero::attack(bool isMage, int cooldown) {
-    
-}*/
+void Hero::attack() {
+    if(isKnight){
+        //create texture rect and set nFrames
+    }else{
+        //same here but for the mage
+    }
+    animationStarting = true;
+}
 
+//handling character action inputs like attack, roll, interact
+void Hero::updateInputs(sf::Event keyInput) {
+    //for attacking
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F)
+        this -> attack();
+    //for rolls
+    //for using items in quickslot
+}
+
+void Hero::characterAction(float dt){
+    //TODO implement cooldown
+    if(animationStarting){
+
+        //to hold the character's position
+        dir = {0,0};
+
+        //check when animationTime reaches max gap (animationHolding): this means that is time to change sprite rect
+        animationTime += dt;
+        if(animationTime >= animationHolding){
+            iFrame++;
+            animationTime = 0.0f;
+            if(iFrame == nFrames){
+                animationStarting = false;// to stop the animation
+                iFrame = 0;
+            }
+        }
+    }
+}
 
 void Hero::movement(bool isInventoryOpen){
     if (!isInventoryOpen){
