@@ -39,7 +39,7 @@ int main()
     //hud
     HUD hud(window);
     //gamecharacter
-    Hero test(100, 20, 0, 100.0f, {150.0f,3.0f});
+    Hero test(true, 100, 20, 0, 100.0f, {150.0f,3.0f});
 
     //creating clock for dt
     sf::Clock clock;
