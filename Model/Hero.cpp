@@ -1,6 +1,6 @@
 #include "Hero.h"
 
-Hero::Hero(int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos):
+Hero::Hero(bool isKnight, int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos):
     isKnight(isKnight), GameCharacter(hp, armor, cash, movementSpeed, pos){
     
 }

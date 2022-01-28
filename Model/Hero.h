@@ -13,7 +13,7 @@
 class Hero: public GameCharacter {
 public: 
 
-    Hero(int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos);
+    Hero(bool isKnight, int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos);
     ~Hero();
 
     int getDash();
