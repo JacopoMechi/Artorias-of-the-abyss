@@ -68,15 +68,6 @@ void GameCharacter::receiveDamage(int points) {
     setHp(HP-points);
 }
 
-
-
-void GameCharacter::movement(){
-
-}
-
-void GameCharacter::attack() {
-}
-
 bool GameCharacter::isChasing(float aggroDistance, GameCharacter &enemy) {
     sf::Vector2f enemyPos = enemy.getPos();
     if(sqrt((enemyPos.x - pos.x)*(enemyPos.x - pos.x)+(enemyPos.y - pos.y)*(enemyPos.y - pos.y)) < aggroDistance)
