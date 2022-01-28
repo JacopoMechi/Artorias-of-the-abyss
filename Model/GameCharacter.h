@@ -39,7 +39,7 @@ public:
     
     virtual void movement();
     
-    virtual void attack(GameCharacter &opponent);
+    virtual void attack();
     
     bool isChasing(float aggroDistance, GameCharacter &enemy);
 

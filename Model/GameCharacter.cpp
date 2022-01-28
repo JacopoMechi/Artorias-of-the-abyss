@@ -74,13 +74,7 @@ void GameCharacter::movement(){
 
 }
 
-void GameCharacter::attack(GameCharacter &opponent) {//its virtual, needs to be overrided in enemy
-    //TODO with SFML library type if (sf::Keyboard::isPressed(sf::Keyboard::E){}
-    int hit = 1;
-    if(weapon){//and something else
-        //FIXME hit = weapon->getDamage();//edited in weapon -> from void use to int use
-    }
-    opponent.receiveDamage(hit);
+void GameCharacter::attack() {
 }
 
 bool GameCharacter::isChasing(float aggroDistance, GameCharacter &enemy) {
