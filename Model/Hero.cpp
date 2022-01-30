@@ -53,10 +53,13 @@ void Hero::raiseShield() {
 void Hero::attack() {
     if(isKnight){
         //create texture rect and set nFrames
+        //nFrames = 3;
+        //frameRect = {0, 154, 36, 26};
+        //animationHolding = 0.2f;
     }else{
         //same here but for the mage
     }
-    animationStarting = true;
+    actionStarting = true;
 }
 
 //handling character action inputs like attack, roll, interact
@@ -68,13 +71,10 @@ void Hero::updateInputs(sf::Event keyInput) {
     //for using items in quickslot
 }
 
-void Hero::characterAction(float dt){
+/*void Hero::characterAction(float dt){
     //TODO implement cooldown
-    if(animationStarting){
-
-        //to hold the character's position
-        dir = {0,0};
-
+    if(actionStarting){
+        //FIXME
         //check when animationTime reaches max gap (animationHolding): this means that is time to change sprite rect
         animationTime += dt;
         if(animationTime >= animationHolding){
@@ -85,11 +85,13 @@ void Hero::characterAction(float dt){
                 iFrame = 0;
             }
         }
+        sprite.setTextureRect({frameRect.left+iFrame*abs(frameRect.width), frameRect.top, frameRect.width, frameRect.height});
+        sprite.setPosition(pos);
     }
-}
+}*/
 
 void Hero::movement(bool isInventoryOpen){
-    if (!isInventoryOpen){
+    if (!isInventoryOpen && !animationStarting){
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
             dir.y = -1.0f;

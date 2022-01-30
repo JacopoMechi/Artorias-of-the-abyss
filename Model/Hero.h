@@ -5,6 +5,7 @@
 #include <cmath>
 #include <iostream>
 
+#include <SFML/Graphics.hpp>
 #include "GameCharacter.h"
 #include "Bonfire.h"
 
@@ -42,9 +43,7 @@ public:
     void attack();
 
     void updateInputs(sf::Event keyInput);
-    
-    //to stop the current animation to make another one like using an item, attacking
-    void characterAction(float dt);
+
     
     void movement(bool isInventoryOpen);
     
