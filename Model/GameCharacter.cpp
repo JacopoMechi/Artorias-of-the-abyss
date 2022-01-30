@@ -85,7 +85,10 @@ void GameCharacter::update(float dt){
     pos += vel*dt;
     
     nFrames = 8;
-    if (dir.x > 0.0f){
+    if(actionStarting){
+        nFrames = 3;
+        frameRect = {0, 158, 31, 22};
+    }else if (dir.x > 0.0f){
         frameRect = {0, 0, 16, 22};
     }else if (dir.x < 0.0f){
         frameRect = {16, 0, -16, 22};
@@ -98,6 +101,8 @@ void GameCharacter::update(float dt){
     if(animationTime >= animationHolding){
         iFrame = (++iFrame)%nFrames;
         animationTime = 0.0f;
+        if(iFrame == nFrames - 1)
+            actionStarting = false;
     }
     
     sprite.setTextureRect({frameRect.left+iFrame*abs(frameRect.width), frameRect.top, frameRect.width, frameRect.height});

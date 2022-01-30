@@ -36,10 +36,9 @@ public:
 
     virtual void receiveDamage(int points);
 
+    //virtual void movement() = 0;//in commit add "movement and attack, in gamecharacter class, are now base methods"
     
-    virtual void movement();
-    
-    virtual void attack();
+    //virtual void attack() = 0;//FIXME
     
     bool isChasing(float aggroDistance, GameCharacter &enemy);
 
@@ -53,13 +52,14 @@ protected:
     int cash;
     float movementSpeed;
     float aggroDistance;
+    bool actionStarting = false;
     Weapon* weapon;
     sf::Vector2f pos;
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;
     sf::Texture texture;
     sf::IntRect frameRect = {0, 0, 16, 22};
-    const float animationHolding = 0.08f;// for max time cap
+    float animationHolding = 0.08f;// for max time cap
     int nFrames;
     int iFrame = 0;
     float animationTime = 0.0f;
