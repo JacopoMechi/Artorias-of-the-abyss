@@ -43,7 +43,6 @@ public:
     void attack();
 
     void updateInputs(sf::Event keyInput);
-
     
     void movement(bool isInventoryOpen);
     
