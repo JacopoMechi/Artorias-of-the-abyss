@@ -71,25 +71,6 @@ void Hero::updateInputs(sf::Event keyInput) {
     //for using items in quickslot
 }
 
-/*void Hero::characterAction(float dt){
-    //TODO implement cooldown
-    if(actionStarting){
-        //FIXME
-        //check when animationTime reaches max gap (animationHolding): this means that is time to change sprite rect
-        animationTime += dt;
-        if(animationTime >= animationHolding){
-            iFrame++;
-            animationTime = 0.0f;
-            if(iFrame == nFrames){
-                animationStarting = false;// to stop the animation
-                iFrame = 0;
-            }
-        }
-        sprite.setTextureRect({frameRect.left+iFrame*abs(frameRect.width), frameRect.top, frameRect.width, frameRect.height});
-        sprite.setPosition(pos);
-    }
-}*/
-
 void Hero::movement(bool isInventoryOpen){
     if (!isInventoryOpen && !animationStarting){
 

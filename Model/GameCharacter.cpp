@@ -85,7 +85,7 @@ void GameCharacter::update(float dt){
     pos += vel*dt;
     
     nFrames = 8;
-    if(actionStarting){
+    if(actionStarting){//TODO adjust here
         nFrames = 3;
         frameRect = {0, 158, 31, 22};
     }else if (dir.x > 0.0f){
