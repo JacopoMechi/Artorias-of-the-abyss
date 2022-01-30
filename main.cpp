@@ -57,6 +57,9 @@ int main()
             //update inputs event in HUD
             hud.updateEvent(event);
 
+            //update inputs event for Hero
+            test.updateInputs(event);
+
             // close window
             if (event.type == sf::Event::Closed)
                 window.close();
