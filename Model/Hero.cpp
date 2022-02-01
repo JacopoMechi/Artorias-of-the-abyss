@@ -54,12 +54,16 @@ void Hero::attack() {
     if(isKnight){
         //create texture rect and set nFrames
         //nFrames = 3;
-        //frameRect = {0, 154, 36, 26};
+        if(dir.x > 0)
+            frameRect = {0, 158, 31, 22};
+        else if(dir.x < 0)    
+            frameRect = {31, 158, -31, 22};
         //animationHolding = 0.2f;
     }else{
         //same here but for the mage
     }
     actionStarting = true;
+    iFrame = 0;
 }
 
 //handling character action inputs like attack, roll, interact
@@ -70,9 +74,8 @@ void Hero::updateInputs(sf::Event keyInput) {
     //for rolls
     //for using items in quickslot
 }
-
 void Hero::movement(bool isInventoryOpen){
-    if (!isInventoryOpen && !animationStarting){
+    if (!isInventoryOpen && !actionStarting){
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
             dir.y = -1.0f;

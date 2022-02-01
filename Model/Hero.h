@@ -59,7 +59,8 @@ protected:
     bool isKnight;
     int dashCount = 3;
 
-    bool animationStarting = false;
+    float actionTime = 0.0f;
+    int actionFrame = 0;
 
     int cooldown = 5;
     Bonfire* bonfire ;
