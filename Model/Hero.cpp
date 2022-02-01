@@ -53,12 +53,10 @@ void Hero::raiseShield() {
 void Hero::attack() {
     if(isKnight){
         //create texture rect and set nFrames
-        //nFrames = 3;
-        if(dir.x > 0)
+        if(dir.x > 0.0f)
             frameRect = {0, 158, 31, 22};
-        else if(dir.x < 0)    
+        else if(dir.x < 0.0f)    
             frameRect = {31, 158, -31, 22};
-        //animationHolding = 0.2f;
     }else{
         //same here but for the mage
     }

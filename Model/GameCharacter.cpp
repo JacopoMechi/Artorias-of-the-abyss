@@ -86,13 +86,14 @@ void GameCharacter::update(float dt){
     
     nFrames = 8;
     if(actionStarting){
-        nFrames = 3;
-        //frameRect = {0, 158, 31, 22};//frameRect = {31, 158, -31, 22};
+        nFrames = 4;
         animationHolding = 0.15f;
     }else if (dir.x > 0.0f){
         frameRect = {0, 0, 16, 22};
+        lastFrameRect = frameRect;
     }else if (dir.x < 0.0f){
         frameRect = {16, 0, -16, 22};
+        lastFrameRect = frameRect;
     }else if(dir.y == 0){
         nFrames = 1;
     }
@@ -103,7 +104,11 @@ void GameCharacter::update(float dt){
         iFrame = (++iFrame)%nFrames;
         animationTime = 0.0f;
         if(iFrame == nFrames - 1){
-            actionStarting = false;
+            if(actionStarting){
+                actionStarting = false;
+                frameRect = lastFrameRect;
+                iFrame = 1;
+            }
             animationHolding = 0.08f;
         }
     }
