@@ -24,8 +24,10 @@ void Hero::setCooldown(int cooldown) {
     this -> cooldown = cooldown;
 }
 
-void Hero::dash(int dashCount, int cooldown){
+void Hero::dash(){
     //SFML if key is pressed reduce dashCount. When it reaches 0, start the cooldown
+    dashing = dashDistance*dir;
+    pos += dashing; 
 }
 
 void Hero::restoreHp(int amount){
@@ -73,7 +75,9 @@ void Hero::updateInputs(sf::Event keyInput) {
     //for attacking
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F)
         this -> attack();
-    //for rolls
+    //for dashes
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
+        this -> dash();
     //for using items in quickslot
 }
 void Hero::movement(bool isInventoryOpen){

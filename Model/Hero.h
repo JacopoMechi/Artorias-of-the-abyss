@@ -26,7 +26,7 @@ public:
     float getHeroPosY();
     void setHeroPosY(float heroPosY);
 
-    void dash(int dashCount, int cooldown);
+    void dash();
 
     void addItem();
     
@@ -66,6 +66,9 @@ protected:
     int cooldown = 5;
     Bonfire* bonfire ;
     int amount;
+
+    sf::Vector2f dashing;
+    float dashDistance = 100.0f;
 };
 
 #endif //_HERO_H
