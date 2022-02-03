@@ -17,17 +17,20 @@ void Hero::setDash(int dashCount) {
     this -> dashCount = dashCount;
 }
 
-int Hero::getCooldown(){
-    return cooldown;
-}
-void Hero::setCooldown(int cooldown) {
-    this -> cooldown = cooldown;
-}
-
 void Hero::dash(){
-    //SFML if key is pressed reduce dashCount. When it reaches 0, start the cooldown
+    //for dashing, we just need to move the character position farther only in the moment that we press Space key
     dashing = dashDistance*dir;
-    pos += dashing; 
+    dashCount --;
+    //handling dash cooldowns
+    if(dashCount < 3){
+        dashTime += delayTime;
+        if(dashTime >= dashTimeHolding){
+            dashTime = 0;
+            dashCount ++;
+        }
+    }
+    if(dashCount > 0)
+        pos += dashing; 
 }
 
 void Hero::restoreHp(int amount){
@@ -71,7 +74,9 @@ void Hero::attack() {
 }
 
 //handling character action inputs like attack, roll, interact
-void Hero::updateInputs(sf::Event keyInput) {
+void Hero::updateDelayAndInputs(sf::Event keyInput, float dt) {
+    //updating delay time
+    delayTime = dt;
     //for attacking
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F)
         this -> attack();

@@ -58,7 +58,7 @@ int main()
             hud.updateEvent(event);
 
             //update inputs event for Hero
-            test.updateInputs(event);
+            test.updateDelayAndInputs(event, dt);
 
             // close window
             if (event.type == sf::Event::Closed)

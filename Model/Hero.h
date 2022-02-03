@@ -20,8 +20,8 @@ public:
     int getDash();
     void setDash(int dashCount);
 
-    int getCooldown();
-    void setCooldown(int cooldown);
+    /*int getCooldown(); maybe they are not required
+    void setCooldown(int cooldown);*/
 
     float getHeroPosY();
     void setHeroPosY(float heroPosY);
@@ -42,7 +42,7 @@ public:
     
     void attack();
 
-    void updateInputs(sf::Event keyInput);
+    void updateDelayAndInputs(sf::Event keyInput, float dt);
     
     void movement(bool isInventoryOpen);
     
@@ -57,13 +57,20 @@ protected:
     bool isInventoryOpen;
     Weapon* leftWeapon;
     bool isKnight;
+    float delayTime;
+
+    //handling dashes
     int dashCount = 3;
+    int maxDashes = 3;
+    float dashTimeHolding = 5.0f;
+    float dashTime = 0.0f;
+ 
 
     float actionTime = 0.0f;
     int actionFrame = 0;
     sf::IntRect lastActionFrame = {0, 158, 31, 22};
 
-    int cooldown = 5;
+    //int cooldown = 5;
     Bonfire* bonfire ;
     int amount;
 
