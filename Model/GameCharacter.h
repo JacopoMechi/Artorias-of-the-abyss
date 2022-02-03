@@ -59,7 +59,7 @@ protected:
     sf::Sprite sprite;
     sf::Texture texture;
     sf::IntRect frameRect = {0, 0, 16, 22};
-    sf::IntRect lastFrameRect;
+    sf::IntRect lastFrameRect = {0, 0, 16, 22};
     float animationHolding = 0.08f;// for max time cap
     int nFrames;
     int iFrame = 0;

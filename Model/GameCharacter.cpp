@@ -90,7 +90,7 @@ void GameCharacter::update(float dt){
         animationHolding = 0.15f;
     }else if (dir.x > 0.0f){
         frameRect = {0, 0, 16, 22};
-        lastFrameRect = frameRect;
+        lastFrameRect = frameRect;// to set the right position of the caracter when the action animation is over
     }else if (dir.x < 0.0f){
         frameRect = {16, 0, -16, 22};
         lastFrameRect = frameRect;
