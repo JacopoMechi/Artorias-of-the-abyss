@@ -20,17 +20,10 @@ void Hero::setDash(int dashCount) {
 void Hero::dash(){
     //for dashing, we just need to move the character position farther only in the moment that we press Space key
     dashing = dashDistance*dir;
-    dashCount --;
-    //handling dash cooldowns
-    if(dashCount < 3){
-        dashTime += delayTime;
-        if(dashTime >= dashTimeHolding){
-            dashTime = 0;
-            dashCount ++;
-        }
-    }
-    if(dashCount > 0)
+    if(dashCount > 0){
+        dashCount --;
         pos += dashing; 
+    }
 }
 
 void Hero::restoreHp(int amount){
@@ -84,6 +77,17 @@ void Hero::updateDelayAndInputs(sf::Event keyInput, float dt) {
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
         this -> dash();
     //for using items in quickslot
+    //for dash cooldown
+    
+    //handling dash cooldowns
+    if(dashCount < maxDashes){
+        dashTime += dt;
+        std::cout << dashCount << std::endl;
+        if(dashTime >= dashTimeHolding){
+            dashTime = 0;
+            dashCount++;
+        }
+    }
 }
 void Hero::movement(bool isInventoryOpen){
     if (!isInventoryOpen && !actionStarting){

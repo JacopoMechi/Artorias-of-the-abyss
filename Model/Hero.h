@@ -62,7 +62,7 @@ protected:
     //handling dashes
     int dashCount = 3;
     int maxDashes = 3;
-    float dashTimeHolding = 5.0f;
+    float dashTimeHolding = 1.0f;
     float dashTime = 0.0f;
  
 
