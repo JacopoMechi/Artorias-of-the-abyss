@@ -1,8 +1,3 @@
-/**
- * Project Untitled
- */
-
-
 #ifndef _NPC_H
 #define _NPC_H
 
@@ -12,7 +7,9 @@
 class NPC: public GameCharacter {
 public:
 
+virtual void receiveDamage(int points) = 0;
+
 void sellItems();
 };
 
-#endif //_NPC_H
+#endif
