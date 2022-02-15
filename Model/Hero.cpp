@@ -1,7 +1,7 @@
 #include "Hero.h"
 
-Hero::Hero(bool isKnight, int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos):
-    isKnight(isKnight), GameCharacter(hp, armor, cash, movementSpeed, pos){
+Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed):
+    isKnight(isKnight), GameCharacter(pos, hp, armor, cash, movementSpeed){
     //TODO switch between mage and knight by checking isKnight
 }
 

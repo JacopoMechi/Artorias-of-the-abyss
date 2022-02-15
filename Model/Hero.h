@@ -14,7 +14,7 @@
 class Hero: public GameCharacter {
 public: 
 
-    Hero(bool isKnight, int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos);
+    Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed);
     ~Hero();
 
     int getDash();

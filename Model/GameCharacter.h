@@ -13,7 +13,7 @@ class GameCharacter{//:  public MapElement
 
 public:
     
-    GameCharacter(int hp, int armor, int cash, float movementSpeed, const sf::Vector2f& pos);           
+    GameCharacter(const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed);           
     ~GameCharacter();
     
     int getHp() const;
