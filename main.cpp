@@ -9,6 +9,7 @@
 #include "MapElement.h"
 #include "Map.h"
 #include "Menu.h"
+#include "NPC.h"
 
 #define MAPPATH "../Textures/Lvl1.png"
 #define TEXTURESPATH "../Textures/Textures.png"
@@ -40,6 +41,8 @@ int main()
     HUD hud(window);
     //gamecharacter
     Hero test(true, {150.0f,3.0f}, 100, 20, 0, 100.0f);
+    //npc
+    NPC test1(0, {300.0f, 3.0f});
 
     //creating clock for dt
     sf::Clock clock;
@@ -81,6 +84,9 @@ int main()
 
             // update character model
             test.update(dt);
+            
+            // draw npc model
+            test1.draw(window);
 
             //draw the sprite
             test.draw(window);
