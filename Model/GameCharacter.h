@@ -40,7 +40,7 @@ public:
     
     //virtual void attack() = 0;//FIXME
     
-    bool isChasing(float aggroDistance, GameCharacter &enemy);
+    bool isAggro(float aggroDistance, GameCharacter &enemy);
 
     void draw(sf::RenderTarget &rt) const;
     
