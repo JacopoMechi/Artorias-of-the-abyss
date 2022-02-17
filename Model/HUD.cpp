@@ -230,9 +230,3 @@ void HUD::assignItem(Item *consumable, int slot){
     quickSlot[slot] = consumable;
     quickAssign = false;
 }
-
-/*//TODO complete later
-//updating dt in class
-void HUD::updateDelayTime(float dt){
-    delayTime = dt;
-}*/

@@ -35,8 +35,6 @@ public:
 
     void assignItem(Item *consumable, int slot);
 
-    //TODO for later: void updateDelayTime(float dt);
-
 protected:
     //for functions of sprites
     sf::RenderWindow &window;
