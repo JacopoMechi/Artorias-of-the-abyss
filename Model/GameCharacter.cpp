@@ -68,8 +68,8 @@ void GameCharacter::receiveDamage(int points) {
     setHp(HP-points);
 }
 
-bool GameCharacter::isAggro(float aggroDistance, GameCharacter &enemy) {
-    if(sqrt((enemy.getPos().x - pos.x)*(enemy.getPos().x - pos.x)+(enemy.getPos().y - pos.y)*(enemy.getPos().y - pos.y)) < aggroDistance)
+bool GameCharacter::isAggro(float aggroDistance, GameCharacter &entity) {
+    if(abs(sqrt(((entity.getPos().x - pos .x)*(entity.getPos().x - pos.x))+((entity.getPos().y - pos.y)*(entity.getPos().y - pos.y)))) < aggroDistance)
         return true;
     else
         return false;

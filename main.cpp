@@ -42,7 +42,7 @@ int main()
     //gamecharacter
     Hero test(true, {150.0f,3.0f}, 100, 20, 0, 100.0f);
     //npc
-    NPC test1(0, {300.0f, 3.0f});
+    NPC test1(window, 0, {300.0f, 3.0f});
 
     //creating clock for dt
     sf::Clock clock;
@@ -62,6 +62,9 @@ int main()
 
             //update inputs event for Hero
             test.updateDelayAndInputs(event, dt);
+
+            //handling the inputs for the npc
+            test1.updateInputs(event);
 
             // close window
             if (event.type == sf::Event::Closed)
@@ -88,6 +91,9 @@ int main()
             // draw npc model
             test1.draw(window);
 
+            // player interact with npc
+            test1.sellItems(test);
+
             //draw the sprite
             test.draw(window);
             if (hud.getInvIsOpen()){
@@ -102,7 +108,6 @@ int main()
 
         dt = clock.getElapsedTime().asSeconds();
         clock.restart();
-        //TODO can be useful later:hud.updateDelayTime(dt);
     }
     return EXIT_SUCCESS;
 }
