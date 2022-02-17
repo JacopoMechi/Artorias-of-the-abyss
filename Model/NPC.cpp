@@ -28,7 +28,13 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         //interaction box sprite
         interactionBoxSprite.setTexture(hudTexture);
         interactionBoxSprite.setTextureRect({993, 317, 289, 96});
-        interactionBoxSprite.setPosition({812, 862});
+        interactionBoxSprite.setPosition({815, 862});
+
+        //text for ineteracting box
+        interactFont.loadFromFile("../orangekid.ttf");
+        interactText.setFont(interactFont);
+        interactText.setString("Premi Q per interagire");
+        interactText.setPosition(855, 889);
 }
 
 NPC::~NPC(){
@@ -40,8 +46,10 @@ void NPC::sellItems(Hero &hero) {
     //if true, it will pop-up a box like "Press to interact"
     //and it will be possible to press the interaction button
     if(this -> isAggro(190, hero)){
-        if(!openShop)
+        if(!openShop){
            window.draw(interactionBoxSprite);//for the interaction box trigger
+           window.draw(interactText);//for displaying message
+        }
         aggro = true;   
     }else
         aggro = false;

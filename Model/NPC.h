@@ -39,6 +39,10 @@ private:
     //interaction sprite declaration
     sf::Sprite interactionBoxSprite;
 
+    //text for "press Q to interact" box 
+    sf::Text interactText;
+    sf::Font interactFont;
+
     //switch for open shop
     bool openShop = false;
 
