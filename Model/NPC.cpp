@@ -16,14 +16,12 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         else if(type == 3)
             sprite.setTextureRect({452, 38, 25, 27});    
 
-        //loading shop sprite file
-        texture.loadFromFile("../Textures/Textures.png");
-        sprite.setTexture(texture);    
 
         //loading shop sprite
         hudTexture.loadFromFile("../Textures/PlayerHUD.png");
-        shopSprite.setTexture(texture);
+        shopSprite.setTexture(hudTexture);
         shopSprite.setTextureRect({91, 357, 317, 312});
+        shopSprite.setPosition(805, 303);
 
         //interaction box sprite
         interactionBoxSprite.setTexture(hudTexture);
@@ -57,7 +55,7 @@ void NPC::sellItems(Hero &hero) {
     //handling npc shop  
     if(openShop){
         //displaying shop
-        window.draw(sprite);
+        window.draw(shopSprite);
 
         //setting up shop for 
         //chester
