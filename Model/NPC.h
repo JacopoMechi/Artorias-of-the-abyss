@@ -28,6 +28,9 @@ public:
     //drawing text for all menus 
     void drawText(std::string text, sf::Vector2f textPos);
 
+    //drawing interaction box
+    void drawInteractBox(sf::Vector2f pos);
+
 private:
 
     //getting window from main
