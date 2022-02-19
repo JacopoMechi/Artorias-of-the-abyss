@@ -25,6 +25,9 @@ public:
     //handling inputs
     void updateInputs(sf::Event keyInput);
 
+    //drawing text for all menus 
+    void drawText(std::string text, sf::Vector2f textPos);
+
 private:
 
     //getting window from main

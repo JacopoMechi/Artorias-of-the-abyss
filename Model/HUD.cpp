@@ -39,8 +39,7 @@ HUD::HUD(sf::RenderWindow &window): window(window){
     assignSprite.setPosition({994, 318});
 }
 
-bool HUD::getInvIsOpen()
-{
+bool HUD::getInvIsOpen(){
     return isInvOpen;
 }
 

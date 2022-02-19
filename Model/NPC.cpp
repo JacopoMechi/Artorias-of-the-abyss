@@ -31,8 +31,7 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         //text for ineteracting box
         interactFont.loadFromFile("../orangekid.ttf");
         interactText.setFont(interactFont);
-        interactText.setString("Premi Q per interagire");
-        interactText.setPosition(855, 889);
+        
 }
 
 NPC::~NPC(){
@@ -46,7 +45,7 @@ void NPC::sellItems(Hero &hero) {
     if(this -> isAggro(190, hero)){
         if(!openShop){
            window.draw(interactionBoxSprite);//for the interaction box trigger
-           window.draw(interactText);//for displaying message
+           this -> drawText("Premi Q per interagire", {855, 889});//for displaying message
         }
         aggro = true;   
     }else
@@ -73,4 +72,10 @@ void NPC::updateInputs(sf::Event keyInput){
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q)
         openShop = !openShop;//open/close shop
     }
+}
+
+void NPC::drawText(std::string text, sf::Vector2f textPos){
+    interactText.setPosition(textPos);
+    interactText.setString(text);
+    window.draw(interactText);
 }
