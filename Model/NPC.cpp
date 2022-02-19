@@ -21,12 +21,11 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         hudTexture.loadFromFile("../Textures/PlayerHUD.png");
         shopSprite.setTexture(hudTexture);
         shopSprite.setTextureRect({91, 357, 317, 312});
-        shopSprite.setPosition(805, 303);
+        //shopSprite.setPosition(805, 303);
 
         //interaction box sprite
         interactionBoxSprite.setTexture(hudTexture);
         interactionBoxSprite.setTextureRect({993, 317, 289, 96});
-        //interactionBoxSprite.setPosition({815, 862});
 
         //text for ineteracting box
         interactFont.loadFromFile("../orangekid.ttf");
@@ -42,7 +41,7 @@ void NPC::sellItems(Hero &hero) {
     //if true, it will pop-up a box like "Press to interact"
     //and it will be possible to press the interaction button
     if(this -> isAggro(190, hero)){
-        if(!openShop){
+        if(!isInteraction){
            this -> drawInteractBox({815,862});//for the interaction box trigger
            this -> drawText("Premi Q per interagire", {855, 889});//for displaying message
         }
@@ -51,12 +50,12 @@ void NPC::sellItems(Hero &hero) {
         aggro = false;
 
     //handling npc shop  
-    if(openShop){
+    if(isInteraction){
         //displaying interaction box
-        window.draw(shopSprite);
+        this -> drawInteractBox({810, 303});
 
         //diplaying text for interaction box
-
+        this -> drawText("[1] Parla       [2] Interagisci\n[Q] Esci",{825, 305});
 
         //setting up shop for 
         //chester
@@ -72,7 +71,7 @@ void NPC::sellItems(Hero &hero) {
 void NPC::updateInputs(sf::Event keyInput){
     if(aggro){
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q)
-        openShop = !openShop;//open/close shop
+        isInteraction = !isInteraction;//open/close shop
     }
 }
 

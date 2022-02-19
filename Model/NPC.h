@@ -50,7 +50,7 @@ private:
     sf::Font interactFont;
 
     //switch for open shop
-    bool openShop = false;
+    bool isInteraction = false;
 
     //switch for interaction menu
     bool aggro = false;
