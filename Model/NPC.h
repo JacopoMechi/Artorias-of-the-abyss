@@ -20,7 +20,7 @@ public:
 
     void receiveDamage() = delete;//to be unkillable
 
-    void sellItems(Hero &hero);
+    void interact(Hero &hero);
 
     //handling inputs
     void updateInputs(sf::Event keyInput);
@@ -30,6 +30,13 @@ public:
 
     //drawing interaction box
     void drawInteractBox(sf::Vector2f pos);
+
+    //drawing shop box
+    void drawShop(Item item1, Item item2);
+    void drawShop(Item item1);
+
+    //TODO for later
+    bool getIsInteraction();
 
 private:
 
@@ -55,11 +62,17 @@ private:
     //switch for interaction menu
     bool aggro = false;
 
+    //switch for shop menu
+    bool isShop = false;
+
+    //switch for talking
+    bool isTalking = false;
+
     //for tracking character type
     int type;
 
     //items selling list
-    Item* merch[3] = {new GreenBlossom(), new HomewardBone(), new Pendant()};
+    Item merch[3] = {GreenBlossom(), HomewardBone(), Pendant()};//TODO correct array declaration in other classes
 };
 
 #endif

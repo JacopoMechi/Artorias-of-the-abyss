@@ -21,7 +21,7 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         hudTexture.loadFromFile("../Textures/PlayerHUD.png");
         shopSprite.setTexture(hudTexture);
         shopSprite.setTextureRect({91, 357, 317, 312});
-        //shopSprite.setPosition(805, 303);
+        shopSprite.setPosition(805, 303);
 
         //interaction box sprite
         interactionBoxSprite.setTexture(hudTexture);
@@ -36,7 +36,7 @@ NPC::~NPC(){
 
 }
 
-void NPC::sellItems(Hero &hero) {
+void NPC::interact(Hero &hero) {
     //checking if player is close enough to npc and
     //if true, it will pop-up a box like "Press to interact"
     //and it will be possible to press the interaction button
@@ -49,21 +49,28 @@ void NPC::sellItems(Hero &hero) {
     }else
         aggro = false;
 
-    //handling npc shop  
+    //handling npc interaction menu 
     if(isInteraction){
-        //displaying interaction box
-        this -> drawInteractBox({810, 303});
+        if(!isShop && !isTalking){
+            //displaying interaction box
+            this -> drawInteractBox({810, 303});
 
-        //diplaying text for interaction box
-        this -> drawText("[1] Parla       [2] Interagisci\n[Q] Esci",{825, 305});
+            //diplaying text for interaction box
+            this -> drawText("[1] Parla       [2] Acquista\n[Q] Esci",{825, 305});
 
-        //setting up shop for 
-        //chester
-        if(type == 0){
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+                isShop = !isShop;
 
-        //eliszabeth
-        }else if (type == 1){
 
+        //setting up npc shop    
+        }else if(isShop){
+            //chester which sells homeward bones
+            if(type == 0){
+                this -> drawShop(merch[1]);
+            //eliszabeth which sells green blossoms and the pendant
+            }else if (type == 1){
+                this -> drawShop(merch[0], merch[2]);
+            }
         }
     }
 }
@@ -84,4 +91,15 @@ void NPC::drawText(std::string text, sf::Vector2f textPos){
 void NPC::drawInteractBox(sf::Vector2f pos){
     interactionBoxSprite.setPosition(pos);
     window.draw(interactionBoxSprite);
+}
+
+void NPC::drawShop(Item item1){
+    window.draw(shopSprite);
+    item1.displayItem(820, 813, window);//FIXME
+}
+
+void NPC::drawShop(Item item1, Item item2){
+    window.draw(shopSprite);
+    item1.displayItem(820, 813, window);
+    item2.displayItem(860, 853, window);
 }
