@@ -38,6 +38,9 @@ public:
     void drawShop(Item* item1, Item* item2);
     void drawShop(Item* item1);
 
+    //drawing tracker for selecting an item to buy
+    void drawTracker(sf::Vector2f pos);
+
     //TODO for later
     bool getIsInteraction();
 
@@ -58,6 +61,12 @@ private:
     //text for "press Q to interact" box 
     sf::Text interactText;
     sf::Font interactFont;
+
+    //tracker sprite
+    sf::Sprite trackerSprite;
+
+    //initial tracker pos
+    sf::Vector2f trackerPos = {773, 340};
 
     //switch for open shop
     bool isInteraction = false;

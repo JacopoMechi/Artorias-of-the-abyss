@@ -39,10 +39,16 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         //text for ineteracting box
         interactFont.loadFromFile("../orangekid.ttf");
         interactText.setFont(interactFont);
+
+        //tracker for buying a specific item
+        trackerSprite.setTexture(hudTexture);
+        trackerSprite.setTextureRect({118, 738, 264, 55});
+        trackerSprite.setScale(1.5f, 1.5f);
+        trackerSprite.setColor({255,255, 255, 80});
 }
 
 NPC::~NPC(){
-    delete merch;
+    delete merch[3];
 }
 
 void NPC::interact(Hero &hero) {
@@ -70,17 +76,28 @@ void NPC::interact(Hero &hero) {
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
                 isShop = !isShop;
 
-
         //setting up npc shop    
         }else if(isShop){
+            //drawing shop sprite
+            window.draw(shopSprite);
             //chester which sells homeward bones
             if(type == 0){
+
+                //drawing tracker for scrolling items in the shop
+                this -> drawTracker(trackerPos);
+
                 this -> drawShop(merch[1]);
             //eliszabeth which sells green blossoms and the pendant
             }else if (type == 1){
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                    trackerPos = {773, 340};
+                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                    trackerPos = {773, 445};   
+                this -> drawTracker(trackerPos);
                 this -> drawShop(merch[0], merch[2]);
             }
-        }
+        }else
+            trackerPos = {773, 340};
     }
 }
 
@@ -103,15 +120,18 @@ void NPC::drawInteractBox(sf::Vector2f pos){
 }
 
 void NPC::drawShop(Item* item1){
-    window.draw(shopSprite);
     item1 -> displayItem(780, 355, window);
     item1 -> displayName(window, 900, 360);
 }
 
 void NPC::drawShop(Item* item1, Item* item2){
-    window.draw(shopSprite);
     item1 -> displayItem(785, 358, window);
     item1 -> displayName(window, 900, 360);
     item2 -> displayItem(780, 463, window);
     item2 -> displayName(window, 900, 470);
+}
+
+void NPC::drawTracker(sf::Vector2f pos){
+    trackerSprite.setPosition(pos);
+    window.draw(trackerSprite);
 }
