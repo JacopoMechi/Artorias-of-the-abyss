@@ -3,6 +3,9 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <vector>
+#include <memory>
+
 #include "GameCharacter.h"
 #include "Item.h"
 #include "Hero.h"
@@ -32,8 +35,8 @@ public:
     void drawInteractBox(sf::Vector2f pos);
 
     //drawing shop box
-    void drawShop(Item item1, Item item2);
-    void drawShop(Item item1);
+    void drawShop(Item* item1, Item* item2);
+    void drawShop(Item* item1);
 
     //TODO for later
     bool getIsInteraction();
@@ -72,7 +75,7 @@ private:
     int type;
 
     //items selling list
-    Item merch[3] = {GreenBlossom(), HomewardBone(), Pendant()};//TODO correct array declaration in other classes
+    Item* merch[3] = {new GreenBlossom(), new HomewardBone(), new Pendant()};//TODO correct array declaration in other classes
 };
 
 #endif

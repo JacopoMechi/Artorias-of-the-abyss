@@ -21,7 +21,8 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         hudTexture.loadFromFile("../Textures/PlayerHUD.png");
         shopSprite.setTexture(hudTexture);
         shopSprite.setTextureRect({91, 357, 317, 312});
-        shopSprite.setPosition(805, 303);
+        shopSprite.setPosition(730, 303);
+        shopSprite.setScale(1.5f, 1.5f);
 
         //interaction box sprite
         interactionBoxSprite.setTexture(hudTexture);
@@ -33,7 +34,7 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
 }
 
 NPC::~NPC(){
-
+    delete merch;
 }
 
 void NPC::interact(Hero &hero) {
@@ -93,13 +94,13 @@ void NPC::drawInteractBox(sf::Vector2f pos){
     window.draw(interactionBoxSprite);
 }
 
-void NPC::drawShop(Item item1){
+void NPC::drawShop(Item* item1){
     window.draw(shopSprite);
-    item1.displayItem(820, 813, window);//FIXME
+    item1 -> displayItem(780, 355, window);
 }
 
-void NPC::drawShop(Item item1, Item item2){
+void NPC::drawShop(Item* item1, Item* item2){
     window.draw(shopSprite);
-    item1.displayItem(820, 813, window);
-    item2.displayItem(860, 853, window);
+    item1 -> displayItem(785, 358, window);
+    item2 -> displayItem(780, 463, window);
 }

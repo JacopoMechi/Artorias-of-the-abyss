@@ -42,7 +42,7 @@ int main()
     //gamecharacter
     Hero test(true, {150.0f,3.0f}, 100, 20, 0, 100.0f);
     //npc
-    NPC test1(window, 1, {300.0f, 3.0f});
+    NPC test1(window, 0, {300.0f, 3.0f});
 
     //creating clock for dt
     sf::Clock clock;
