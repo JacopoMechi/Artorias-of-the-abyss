@@ -4,13 +4,21 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
     window(window), type(type), GameCharacter(pos, hp, armor, cash, movementSpeed){
         //loading npcs rectangles
         //chester
-        if(type == 0)
+        if(type == 0){
             sprite.setTextureRect({394, 22, 16, 14});
+            //setting up items for chester
+            //homeward bones
+            merch[1] -> setItemCount(50);
         //elizabeth
-        else if(type == 1)  
+        }else if(type == 1){  
             sprite.setTextureRect({393, 40, 22, 25});
+            //setting up items for elizabeth
+            //pendant
+            merch[2] -> setItemCount(1);
+            //green blossom
+            merch[0] -> setItemCount(50);
         //dusk    
-        else if(type == 2)
+        }else if(type == 2)
             sprite.setTextureRect({422, 35, 23, 30});
         //sif
         else if(type == 3)
@@ -97,10 +105,13 @@ void NPC::drawInteractBox(sf::Vector2f pos){
 void NPC::drawShop(Item* item1){
     window.draw(shopSprite);
     item1 -> displayItem(780, 355, window);
+    item1 -> displayName(window, 900, 360);
 }
 
 void NPC::drawShop(Item* item1, Item* item2){
     window.draw(shopSprite);
     item1 -> displayItem(785, 358, window);
+    item1 -> displayName(window, 900, 360);
     item2 -> displayItem(780, 463, window);
+    item2 -> displayName(window, 900, 470);
 }
