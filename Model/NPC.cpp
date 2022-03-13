@@ -48,7 +48,7 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
 }
 
 NPC::~NPC(){
-    delete merch[3];
+    delete merch[3];//FIXME
 }
 
 void NPC::interact(Hero &hero) {
@@ -96,6 +96,8 @@ void NPC::interact(Hero &hero) {
                 this -> drawTracker(trackerPos);
                 this -> drawShop(merch[0], merch[2]);
             }
+        }else if(isTalking){
+            
         }else
             trackerPos = {773, 340};
     }

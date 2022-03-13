@@ -85,6 +85,8 @@ private:
 
     //items selling list
     Item* merch[3] = {new GreenBlossom(), new HomewardBone(), new Pendant()};//TODO correct array declaration in other classes
+
+    //inserting dialogue strings
 };
 
 #endif
