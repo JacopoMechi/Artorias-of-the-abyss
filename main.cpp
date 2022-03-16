@@ -42,7 +42,7 @@ int main()
     //gamecharacter
     Hero test(true, {150.0f,3.0f}, 100, 20, 0, 100.0f);
     //npc
-    NPC test1(window, 1, {300.0f, 3.0f});
+    NPC test1(window, 2, {300.0f, 3.0f});
 
     //creating clock for dt
     sf::Clock clock;
@@ -83,7 +83,7 @@ int main()
             map.draw(window);
 
             //handle player input
-            test.movement(hud.getInvIsOpen());
+            test.movement(hud.getInvIsOpen());//TODO implement a method stop the caracter moving when interacting
 
             // update character model
             test.update(dt);
@@ -97,7 +97,7 @@ int main()
             //draw the sprite
             test.draw(window);
             if (hud.getInvIsOpen()){
-                hud.drawInventory();
+                hud.drawInventory();//FIXME adjust tracker for items
             }
             hud.draw(); 
             hud.displayHealth(test);

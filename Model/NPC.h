@@ -41,7 +41,7 @@ public:
     //drawing tracker for selecting an item to buy
     void drawTracker(sf::Vector2f pos);
 
-    //TODO for later
+    //to stop character moving while interacting with an NPC
     bool getIsInteraction();
 
 private:
@@ -93,56 +93,57 @@ private:
     std::vector<std::string> textPool;
 
     //inserting dialogue strings
-    std::string elizabethPool[12] = {"Bene bene, abbiamo un nuovo ospite. Da quale lontana era provieni?",//Elizabeth
-                            "Ci sono molte cose che vorrei chiederti, ma so che non devo.",
+    //TODO fix dialogues
+    std::string elizabethPool[12] = {"Bene bene, abbiamo un nuovo ospite. \nDa quale lontana era provieni?",//Elizabeth
+                            "Ci sono molte cose che vorrei chiederti, \nma so che non devo.",
                             "Ahh, capisco. Non sai cosa sia successo...",
-                            "Vedrai più avanti. Un antica bestia è stata risvegliata "
-                            "e ha generato l'Abisso, minacciando di corrompere tutta Oolacile.",
-                            "Il cavaliere Artorias è venuto per fermare tutto questo, "
-                            "ma un tale eroe non è abbastanza coraggioso da affrontare tale potere.",
-                            "Senza dubbio è stato sconfitto, travolto dall'oscurità, "
-                            "ma spero ancora che la Principessa Dusk venga salvata.",
-                            "Non molto tempo fa, ho avuto un altro visitatore, un essere umano come te, "
+                            "Vedrai più avanti. Un antica bestia è \nstata risvegliata "
+                            "e ha generato l'Abisso, \nminacciando di corrompere tutta Oolacile.",
+                            "Il cavaliere Artorias è venuto per fermare \ntutto questo, "
+                            "ma un tale eroe non è \nabbastanza coraggioso da affrontare \ntale potere.",
+                            "Senza dubbio è stato sconfitto, travolto \ndall'oscurità, "
+                            "ma spero ancora \nche la Principessa Dusk venga salvata.",
+                            "Non molto tempo fa, ho avuto un altro \nvisitatore, un essere umano come te, \n"
                             "da un tempo lontano.",
-                            "Solo che era terribilmente odioso… e tempo che sia ancora tra noi.",
-                            "Indossava un cappello e un lungo cappotto nero…",
+                            "Solo che era terribilmente odioso… e \ntemo che sia ancora tra noi.",
+                            "E' calvo e indossa un indumento marrone...",
                             "Che le fiamme possano guidarti.",
-                            "Ti ringrazio per aver salvato la principessa Dusk, te ne sarò debitrice e "
+                            "Ti ringrazio per aver salvato la \nprincipessa Dusk, te ne sarò debitrice \ne "
                             "ti ricorderò per sempre.",
-                            "Ma terrò per me la tua storia perché una leggenda rimarrà sempre una leggenda…"
+                            "Ma terrò per me la tua storia \nperché una leggenda rimarrà sempre \nuna leggenda…"
                             };
     std::string sifPool = {"(Ulula)"};//sif
     std::string chesterPool[19] = {"Oh… Fammi indovinare",//chester
-                            "Sei stato catapultato nel passato di un'era differente?",
-                            "Come avevo sospettato. È successo anche a me: siamo entrambi degli estranea "
+                            "Sei stato catapultato nel passato di un'era \ndifferente?",
+                            "Come avevo sospettato. È successo anche a \nme: siamo entrambi degli estranei \n"
                             "in una terra sconosciuta.",
                             "Ma almeno adesso, siamo in due.",
                             "Beh… Errore mio.",
-                            "Ma siamo entrambi avventurieri e, per questo, dobbiamo aiutarci a vicenda.",
-                            "Ti è capitato di incontrare Artorias? Il leggendario camminatore degli Abissi, "
+                            "Ma siamo entrambi avventurieri e, per questo, \ndobbiamo aiutarci a vicenda.",
+                            "Ti è capitato di incontrare Artorias? Il \nleggendario camminatore degli Abissi, \n"
                             "secondo gli antichi racconti.",
-                            "Se ancora non è successo, meglio così. Se me lo stai chiedendo, sì, è ormai corrotto.",
+                            "Se ancora non è successo, meglio così. Se \nme lo stai chiedendo, sì, è ormai corrotto.",
                             "Ahahah ah ahah !",
-                            "Allora, cosa ti ha fare quel fungo gigante? Non che mi interessi. "
+                            "Allora, cosa ti ha fare quel fungo gigante? Non \nche mi interessi. "
                             "Non fa parte del mio business.",
-                            "Eheheheh  eheh…",
-                            "Hm? Non ho molto da dire…",
+                            "Eheheheh  eheh...",
+                            "Hm? Non ho molto da dire...",
                             "Hai veramente ucciso Artorias?",
-                            "Ho sentito dire che l'Abisso lo ha trasformato in qualcosa di veramente pericoloso.",
+                            "Ho sentito dire che l'Abisso lo ha trasformato in \nqualcosa di veramente pericoloso.",
                             "È assolutamente insidioso.",
                             "Ahahahahaha ahha!",
-                            "Che tu ci creda o no, Oolacile ha portato l'Abisso con se.",
+                            "Che tu ci creda o no, Oolacile ha portato \nl'Abisso con se.",
                             "Ti sei mai chiesto: Vale veramente la pena?",
-                            "Eheheheh eheh eh…"};
-    std::string duskPool[9] = {"...Mmn...ahh…",//Princess Dusk
-                            "…Aah...mmn…",
-                            "Salve avventuriero. Anche tu da queste parti, non è vero? Da quale era provieni?",
-                            "Sai… può sembrare strano, ma…",
-                            "Sono stata assalita da una creatura dell'Abisso e ci sarei "
-                            "morta se non fosse stato per il Grande Cavaliere Artorias.",
-                            "In realtà, ho visto poco di quanto è accaduto durante lo scontro. Ero stordita.",
-                            "Nonostante ciò, Artorias emanava un'aura particolare… In lui traspirava "
-                            "un equilibrio interiore…",
+                            "Eheheheh eheh eh..."};
+    std::string duskPool[9] = {"...Mmn...ahh...",//Princess Dusk
+                            "...Aah...mmn...",
+                            "Salve avventuriero. Anche tu da queste parti, \nnon è vero? Da quale era provieni?",
+                            "Sai... può sembrare strano, ma...",
+                            "Sono stata assalita da una creatura dell'Abisso \ne ci sarei "
+                            "morta se non fosse stato per \nil Grande Cavaliere Artorias.",
+                            "In realtà, ho visto poco di quanto è accaduto \ndurante lo scontro. Ero stordita.",
+                            "Nonostante ciò, Artorias emanava un'aura \nparticolare... In lui traspirava "
+                            "un equilibrio \ninteriore...",
                             "Che ritrovo tale e quale in te.",
                             "..."};
 };

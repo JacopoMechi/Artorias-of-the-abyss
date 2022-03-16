@@ -74,6 +74,8 @@ void NPC::interact(Hero &hero) {
     //and it will be possible to press the interaction button
     if(this -> isAggro(190, hero)){
         if(!isInteraction){
+           //reset interact box to default
+           interactionBoxSprite.setScale(1.0f, 1.0f);
            this -> drawInteractBox({815,862});//for the interaction box trigger
            this -> drawText("Premi Q per interagire", {855, 889});//for displaying message
         }
@@ -84,15 +86,22 @@ void NPC::interact(Hero &hero) {
     //handling npc interaction menu 
     if(isInteraction){
         if(!isShop && !isTalking){
+            //reset interact box to default
+            interactionBoxSprite.setScale(1.0f, 1.0f);
+
             //displaying interaction box
             this -> drawInteractBox({810, 303});
 
             //diplaying text for interaction box
-            this -> drawText("[1] Parla       [2] Acquista\n[Q] Esci",{825, 305});
+            if(type == 0 || type == 1){//for chester and elizabeth
+                this -> drawText("[1] Parla       [2] Acquista\n[Q] Esci",{825, 305});
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+                    isShop = !isShop;
+            }else //for the other npcs
+                this -> drawText("[1] Parla       [Q] Esci",{825, 305});
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
-                isShop = !isShop;
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+            //selcting between previous choises
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
                 isTalking = !isTalking;    
 
         //setting up npc shop    
@@ -120,14 +129,14 @@ void NPC::interact(Hero &hero) {
             }
         //starting dialogue with npc    
         }else if(isTalking){
+            //upscaling interact box
+            interactionBoxSprite.setScale(1.7f, 1.7f);
             //showing npc's dialogue box
-            this -> drawInteractBox({810, 303});
+            this -> drawInteractBox({800, 303});
             //showing dialouge
-            this -> drawText(textPool[dialogueTracker], {820, 313});
-            //scrolling through character's phrases
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
-                dialogueTracker = (dialogueTracker+1)%textPool.size();
+            this -> drawText(textPool[dialogueTracker], {815, 313});
         }else{
+
             //reset npc dialouge tracker
             dialogueTracker = 0;
             
@@ -139,8 +148,18 @@ void NPC::interact(Hero &hero) {
 
 void NPC::updateInputs(sf::Event keyInput){
     if(aggro){
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q)
-        isInteraction = !isInteraction;//open/close shop
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
+            isInteraction = !isInteraction;//open/close shop
+            //for resetting interaction
+            isShop = false;
+            isTalking = false;
+        }
+    }
+
+    if(isTalking){
+        //scrolling through character's phrases
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
+            dialogueTracker = (dialogueTracker+1)%(textPool.size()/2);//FIXME why /2?
     }
 }
 
@@ -170,4 +189,8 @@ void NPC::drawShop(Item* item1, Item* item2){
 void NPC::drawTracker(sf::Vector2f pos){
     trackerSprite.setPosition(pos);
     window.draw(trackerSprite);
+}
+
+bool NPC::getIsInteraction(){
+    return isInteraction;
 }
