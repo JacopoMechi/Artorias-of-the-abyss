@@ -26,9 +26,6 @@ void Hero::dash(){
     }
 }
 
-void Hero::restoreHp(int amount){
-    //GameCharacter::setHp(GameCharacter::getHp+amount);
-}
 
 /*void Hero::useItem() {//TODO may be useful later
 

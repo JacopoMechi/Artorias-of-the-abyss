@@ -20,7 +20,7 @@ public:
     int getDash();
     void setDash(int dashCount);
 
-    /*int getCooldown(); maybe they are not required
+    /*int getCooldown(); TODO maybe they are not required
     void setCooldown(int cooldown);*/
 
     float getHeroPosY();
@@ -35,8 +35,6 @@ public:
     void switchZone();
     
     void useBonfire();
-
-    void restoreHp(int amount);
 
     void raiseShield();
     
