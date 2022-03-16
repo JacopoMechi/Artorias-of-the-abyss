@@ -89,8 +89,8 @@ void Hero::updateDelayAndInputs(sf::Event keyInput, float dt) {
         }
     }
 }
-void Hero::movement(bool isInventoryOpen){
-    if (!isInventoryOpen && !actionStarting){
+void Hero::movement(bool isInventoryOpen, bool isInteracting){
+    if (!isInventoryOpen && !isInteracting && !actionStarting){
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
             dir.y = -1.0f;

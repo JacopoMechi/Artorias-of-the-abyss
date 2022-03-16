@@ -50,6 +50,9 @@ int main()
     //creating dt
     float dt = 0.0f;
 
+    //to block the character when is interacting with an npc
+    bool NPCInteraction = false;
+
     // starting the game loop
     while (window.isOpen())
     {    
@@ -82,8 +85,11 @@ int main()
             // draw map
             map.draw(window);
 
+            //setting bool value of interaction
+            NPCInteraction = test1.getIsInteraction();
+
             //handle player input
-            test.movement(hud.getInvIsOpen());//TODO implement a method stop the caracter moving when interacting
+            test.movement(hud.getInvIsOpen(), NPCInteraction);
 
             // update character model
             test.update(dt);

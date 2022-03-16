@@ -44,7 +44,7 @@ public:
 
     void updateDelayAndInputs(sf::Event keyInput, float dt);
     
-    void movement(bool isInventoryOpen);
+    void movement(bool isInventoryOpen, bool isInteracting);
     
     void respawn(float posX, float posY);
 

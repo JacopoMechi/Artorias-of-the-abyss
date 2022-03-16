@@ -93,7 +93,6 @@ private:
     std::vector<std::string> textPool;
 
     //inserting dialogue strings
-    //TODO fix dialogues
     std::string elizabethPool[12] = {"Bene bene, abbiamo un nuovo ospite. \nDa quale lontana era provieni?",//Elizabeth
                             "Ci sono molte cose che vorrei chiederti, \nma so che non devo.",
                             "Ahh, capisco. Non sai cosa sia successo...",
