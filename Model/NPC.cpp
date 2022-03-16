@@ -37,10 +37,6 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         //sif
         }else if(type == 3){
             sprite.setTextureRect({452, 38, 25, 27});    
-
-            //sif's dialogue
-            textPool.resize(sizeof(sifPool)/sizeof(std::string));
-            textPool.push_back("(Ulula)");
         }
         //loading shop sprite
         hudTexture.loadFromFile("../Textures/PlayerHUD.png");
@@ -134,7 +130,10 @@ void NPC::interact(Hero &hero) {
             //showing npc's dialogue box
             this -> drawInteractBox({800, 303});
             //showing dialouge
-            this -> drawText(textPool[dialogueTracker], {815, 313});
+            if(type == 3)//only Sif has one line of dialogue
+                this -> drawText(sifPool, {815, 313});
+            else
+                this -> drawText(textPool[dialogueTracker], {815, 313});
         }else{
 
             //reset npc dialouge tracker
@@ -156,7 +155,7 @@ void NPC::updateInputs(sf::Event keyInput){
         }
     }
 
-    if(isTalking){
+    if(isTalking){//TODO adjust dialogue depending on situations (like changing chester's text pool when Artorias is killed)
         //scrolling through character's phrases
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
             dialogueTracker = (dialogueTracker+1)%(textPool.size()/2);//FIXME why /2?
