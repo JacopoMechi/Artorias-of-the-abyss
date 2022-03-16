@@ -83,18 +83,24 @@ private:
     //for tracking character type
     int type;
 
+    //for tracking phrase number
+    int dialogueTracker = 0;
+
     //items selling list
     Item* merch[3] = {new GreenBlossom(), new HomewardBone(), new Pendant()};//TODO correct array declaration in other classes
 
+    //setting textpool for dialogues depending on character
+    std::vector<std::string> textPool;
+
     //inserting dialogue strings
-     std::string elizabethPool[] = {"Bene bene, abbiamo un nuovo ospite. Da quale lontana era provieni?",//Elizabeth
+    std::string elizabethPool[12] = {"Bene bene, abbiamo un nuovo ospite. Da quale lontana era provieni?",//Elizabeth
                             "Ci sono molte cose che vorrei chiederti, ma so che non devo.",
                             "Ahh, capisco. Non sai cosa sia successo...",
                             "Vedrai più avanti. Un antica bestia è stata risvegliata "
-                            "e ha generato l’Abisso, minacciando di corrompere tutta Oolacile.",
+                            "e ha generato l'Abisso, minacciando di corrompere tutta Oolacile.",
                             "Il cavaliere Artorias è venuto per fermare tutto questo, "
                             "ma un tale eroe non è abbastanza coraggioso da affrontare tale potere.",
-                            "Senza dubbio è stato sconfitto, travolto dall’oscurità, "
+                            "Senza dubbio è stato sconfitto, travolto dall'oscurità, "
                             "ma spero ancora che la Principessa Dusk venga salvata.",
                             "Non molto tempo fa, ho avuto un altro visitatore, un essere umano come te, "
                             "da un tempo lontano.",
@@ -103,11 +109,11 @@ private:
                             "Che le fiamme possano guidarti.",
                             "Ti ringrazio per aver salvato la principessa Dusk, te ne sarò debitrice e "
                             "ti ricorderò per sempre.",
-                            "Ma terrò per me la tua storia perché una leggenda rimarrà sempre una leggenda…",
+                            "Ma terrò per me la tua storia perché una leggenda rimarrà sempre una leggenda…"
                             };
     std::string sifPool = {"(Ulula)"};//sif
-    std::string chesterPool[] = {"Oh… Fammi indovinare",//chester
-                            "Sei stato catapultato nel passato di un’era differente?",
+    std::string chesterPool[19] = {"Oh… Fammi indovinare",//chester
+                            "Sei stato catapultato nel passato di un'era differente?",
                             "Come avevo sospettato. È successo anche a me: siamo entrambi degli estranea "
                             "in una terra sconosciuta.",
                             "Ma almeno adesso, siamo in due.",
@@ -122,20 +128,20 @@ private:
                             "Eheheheh  eheh…",
                             "Hm? Non ho molto da dire…",
                             "Hai veramente ucciso Artorias?",
-                            "Ho sentito dire che l’Abisso lo ha trasformato in qualcosa di veramente pericoloso.",
+                            "Ho sentito dire che l'Abisso lo ha trasformato in qualcosa di veramente pericoloso.",
                             "È assolutamente insidioso.",
                             "Ahahahahaha ahha!",
-                            "Che tu ci creda o no, Oolacile ha portato l’Abisso con se.",
+                            "Che tu ci creda o no, Oolacile ha portato l'Abisso con se.",
                             "Ti sei mai chiesto: Vale veramente la pena?",
                             "Eheheheh eheh eh…"};
-    std::string duskPool[] = {"...Mmn...ahh…",//Princess Dusk
+    std::string duskPool[9] = {"...Mmn...ahh…",//Princess Dusk
                             "…Aah...mmn…",
                             "Salve avventuriero. Anche tu da queste parti, non è vero? Da quale era provieni?",
                             "Sai… può sembrare strano, ma…",
-                            "Sono stata assalita da una creatura dell’Abisso e ci sarei "
+                            "Sono stata assalita da una creatura dell'Abisso e ci sarei "
                             "morta se non fosse stato per il Grande Cavaliere Artorias.",
                             "In realtà, ho visto poco di quanto è accaduto durante lo scontro. Ero stordita.",
-                            "Nonostante ciò, Artorias emanava un’aura particolare… In lui traspirava "
+                            "Nonostante ciò, Artorias emanava un'aura particolare… In lui traspirava "
                             "un equilibrio interiore…",
                             "Che ritrovo tale e quale in te.",
                             "..."};

@@ -2,29 +2,46 @@
 
 NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed) : 
     window(window), type(type), GameCharacter(pos, hp, armor, cash, movementSpeed){
-        //loading npcs rectangles
+        //loading npcs sprites' rectangles
         //chester
         if(type == 0){
             sprite.setTextureRect({394, 22, 16, 14});
+
             //setting up items for chester
             //homeward bones
             merch[1] -> setItemCount(50);
+
+            //chester's dialogue
+            textPool.resize(sizeof(chesterPool)/sizeof(std::string));
+            textPool.insert(textPool.begin(), &chesterPool[0], &chesterPool[sizeof(chesterPool)/sizeof(std::string)]);
         //elizabeth
         }else if(type == 1){  
             sprite.setTextureRect({393, 40, 22, 25});
+
             //setting up items for elizabeth
             //pendant
             merch[2] -> setItemCount(1);
             //green blossom
             merch[0] -> setItemCount(50);
+            
+            //elizabeth's dialogue
+            textPool.resize(sizeof(elizabethPool)/sizeof(std::string));
+            textPool.insert(textPool.begin(), &elizabethPool[0], &elizabethPool[(sizeof(elizabethPool)/sizeof(std::string))]);
         //dusk    
-        }else if(type == 2)
+        }else if(type == 2){
             sprite.setTextureRect({422, 35, 23, 30});
+
+            //dusk's dialogue
+            textPool.resize(sizeof(duskPool)/sizeof(std::string));
+            textPool.insert(textPool.begin(), &duskPool[0], &duskPool[sizeof(duskPool)/sizeof(std::string)]);
         //sif
-        else if(type == 3)
+        }else if(type == 3){
             sprite.setTextureRect({452, 38, 25, 27});    
 
-
+            //sif's dialogue
+            textPool.resize(sizeof(sifPool)/sizeof(std::string));
+            textPool.push_back("(Ulula)");
+        }
         //loading shop sprite
         hudTexture.loadFromFile("../Textures/PlayerHUD.png");
         shopSprite.setTexture(hudTexture);
@@ -75,9 +92,14 @@ void NPC::interact(Hero &hero) {
 
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
                 isShop = !isShop;
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+                isTalking = !isTalking;    
 
         //setting up npc shop    
         }else if(isShop){
+            //reset npc dialouge tracker
+            dialogueTracker = 0;
+
             //drawing shop sprite
             window.draw(shopSprite);
             //chester which sells homeward bones
@@ -96,10 +118,22 @@ void NPC::interact(Hero &hero) {
                 this -> drawTracker(trackerPos);
                 this -> drawShop(merch[0], merch[2]);
             }
+        //starting dialogue with npc    
         }else if(isTalking){
+            //showing npc's dialogue box
+            this -> drawInteractBox({810, 303});
+            //showing dialouge
+            this -> drawText(textPool[dialogueTracker], {820, 313});
+            //scrolling through character's phrases
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+                dialogueTracker = (dialogueTracker+1)%textPool.size();
+        }else{
+            //reset npc dialouge tracker
+            dialogueTracker = 0;
             
-        }else
+            //reset items highlights for shop
             trackerPos = {773, 340};
+        }
     }
 }
 
