@@ -30,7 +30,7 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     descriptionSprite.setScale(1.3f,1.3f);
     //inventory
     inventorySprite.setTexture(hudTexture);
-    inventorySprite.setTextureRect({89, 259, 352, 500});
+    inventorySprite.setTextureRect({89, 259, 352, 450});
     inventorySprite.setPosition(89, 259);
     inventorySprite.setScale(1.5f, 1.5f);
     //assign popup 994x318 x y 289x98 w h
@@ -69,6 +69,7 @@ void HUD::displayHealth(GameCharacter &character){
     std::string bar = std::string("HP: ") + std::to_string(character.getHp()) + std::string("/100");
     text.setPosition(1700, 15);
     text.setString(bar);
+    text.setScale(1.0f,1.0f);
     window.draw(text);
 }
 
