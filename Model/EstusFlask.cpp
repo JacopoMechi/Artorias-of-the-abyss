@@ -15,5 +15,5 @@ void EstusFlask::use(Hero& hero) {//TODO reset usage in Bonfire
         hero.setHp(hero.getHp()+healthRestored);
         EstusFlask::setItemCount(getItemCount()-1);
     }
-    // something that blocks the hero
+    //TODO something that blocks the hero (maybe)
 }

@@ -104,7 +104,6 @@ protected:
     };
 
     //creating consumable 
-    //Item consumables[4] = {EstusFlask(), GreenBlossom(), HomewardBone(), Pendant()};
     std::vector<Item*> consumables = {new EstusFlask(), new GreenBlossom(), new HomewardBone(), new Pendant()};
 };
 #endif

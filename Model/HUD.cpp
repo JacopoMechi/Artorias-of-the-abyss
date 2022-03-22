@@ -37,6 +37,9 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     assignSprite.setTexture(hudTexture);
     assignSprite.setTextureRect({994, 318, 289, 98});
     assignSprite.setPosition({994, 318});
+
+    //TODO only for tests. Needs to be removed
+    consumables[3] -> setItemCount(1);
 }
 
 bool HUD::getInvIsOpen(){
