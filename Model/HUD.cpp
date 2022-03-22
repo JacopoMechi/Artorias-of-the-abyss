@@ -1,6 +1,6 @@
 #include "HUD.h"
 
-HUD::HUD(sf::RenderWindow &window): window(window){
+HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
 
     //setting the font for the text      
     font.loadFromFile("../orangekid.ttf");
@@ -52,12 +52,10 @@ void HUD::draw() const{
     window.draw(quickslotSprite);
     window.draw(actionsSprite);
     //drawing quickslots items
-    if(quickSlot[0] != NULL){
-        quickSlot[0] -> displayItem(855, 975, window);}
-    if(quickSlot[1] != NULL)
-        quickSlot[1] -> displayItem(937, 975, window);
-    if(quickSlot[2] != NULL)
-        quickSlot[2] -> displayItem(1020, 975, window);   
+    //FIXME
+    /*quickSlot[0].displayItem(855, 975, window);
+    quickSlot[1].displayItem(937, 975, window);
+    quickSlot[2].displayItem(1020, 975, window);*/
 }
 
 void HUD::displayHealth(GameCharacter &character){ 
@@ -90,25 +88,23 @@ void HUD::drawInventory(){
         //list of consumables
         tab = "Consumabili >";//<tab> cambia categoria, <q> esci dall'inventario, <ArrowUp,ArrDown> scorri items
         //first slot
-        consumables[0]->displayItem(148, 455, window);
-        consumables[0]->displayName(window, 235, 460);
+        consumables[0].displayItem(148, 455, window);
+        consumables[0].displayName(window, 235, 460);
         //second slot
-        consumables[1]->displayItem(148, 560, window);
-        consumables[0]->displayName(window, 235, 460);
+        consumables[1].displayItem(148, 560, window);
+        consumables[0].displayName(window, 235, 460);
         //third slot
-        consumables[2]->displayItem(142, 665, window);
-        consumables[0]->displayName(window, 235, 460);
+        consumables[2].displayItem(142, 665, window);
+        consumables[0].displayName(window, 235, 460);
         //fourth slot
-        consumables[3]->displayItem(142, 780, window);
-        consumables[0]->displayName(window, 235, 460);
+        consumables[3].displayItem(142, 780, window);
+        consumables[0].displayName(window, 235, 460);
 
     }else{    
         //second category
         //scrolling between collectibles
         tab = "< Collezionabili";
-        //for scrolling between pages
-        /*if(!switching)
-            this -> scrollList();*/
+        
         //first slot
         collectibles[0+(4*inventoryScroll)].displayItem(145, 450, window);
         collectibles[0+(4*inventoryScroll)].displayName(window, 235, 460);
@@ -122,7 +118,6 @@ void HUD::drawInventory(){
         collectibles[3+(4*inventoryScroll)].displayItem(145, 775, window); 
         collectibles[1+(4*inventoryScroll)].displayName(window, 235, 565);
         //for detailed items description
-        //also handling input with delaytime   
     }
     this -> displayDescription();
     tabText.setString(tab);
@@ -140,9 +135,9 @@ void HUD::displayDescription(){
         //drawing item sprite (and name) and description text
         if(firstTab){
             //shows description of first category
-            text.setString(consumables[descriptionScroll]->getItemDescription());
-            consumables[descriptionScroll]->displayItem(760, 450, window);
-            consumables[descriptionScroll]->displayName(window, 780, 315);
+            text.setString(consumables[descriptionScroll].getItemDescription());
+            consumables[descriptionScroll].displayItem(760, 450, window);
+            consumables[descriptionScroll].displayName(window, 780, 315);
         }else{
             //shows description of second category
             collectibles[descriptionScroll].displayItem(760, 450, window);
@@ -154,7 +149,7 @@ void HUD::displayDescription(){
     }
 }
 
-void HUD::updateEvent(sf::Event keyInput){
+void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
     //handling inputs
     //opens inventory
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E){
@@ -198,20 +193,29 @@ void HUD::updateEvent(sf::Event keyInput){
         }
 
         //input for changing quickslot items. It opens a dialogue box if description box is opened
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U&&switching&&firstTab){
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && switching&&firstTab){
             quickAssign = !quickAssign;
         }        
 
         //handling slot assign
         if(quickAssign){
             if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
-                assignItem(consumables[descriptionScroll], 0);
+                this -> assignItem(consumables[descriptionScroll], 0);
             else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2)
-                assignItem(consumables[descriptionScroll], 1);
+                this -> assignItem(consumables[descriptionScroll], 1);
             else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3)
-                assignItem(consumables[descriptionScroll], 2);
+                this -> assignItem(consumables[descriptionScroll], 2);
         }
-    }         
+
+        if(!isInvOpen && !isInteracting){
+            if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
+                quickSlot[0].use(hero);
+            else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2)
+                quickSlot[1].use(hero);
+            else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3)
+                quickSlot[2].use(hero);
+        }
+    }
 }
 
 //drawing assign popup
@@ -225,7 +229,7 @@ void HUD::drawQuickSlot(){
     }
 }
 
-void HUD::assignItem(Item *consumable, int slot){
+void HUD::assignItem(Item consumable, int slot){
     quickSlot[slot] = consumable;
     quickAssign = false;
 }

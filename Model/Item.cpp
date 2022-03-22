@@ -16,10 +16,6 @@ Item::Item(std::string itemName, int itemPrice, std::string itemDescription, int
         name.setFont(font);
 }
 
-Item::~Item()
-{
-}
-
 int Item::getItemCount()
 {
     return itemCount;
@@ -57,4 +53,8 @@ std::string Item::getItemDescription() {
         return itemDescription;
     else
         return "...";    
+}
+
+void Item::use(Hero &hero){
+    
 }

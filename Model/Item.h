@@ -4,12 +4,14 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
+#include "Hero.h"
+
 class Item
 {
 public:
     Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height); 
 
-    ~Item();
+    virtual ~Item() = default;
 
     int getItemCount();
 
@@ -22,6 +24,8 @@ public:
     std::string getItemName();
 
     std::string getItemDescription();
+
+    virtual void use(Hero &hero);
 
 protected:
     std::string itemName;

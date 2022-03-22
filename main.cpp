@@ -37,10 +37,11 @@ int main()
     //disable multiple input from a single key
     window.setKeyRepeatEnabled(false);
 
-    //hud
-    HUD hud(window);
+    //initialising
     //gamecharacter
-    Hero test(true, {150.0f,3.0f}, 100, 20, 0, 100.0f);
+    Hero test(true, {150.0f,3.0f}, 1, 20, 0, 100.0f);//100
+    //hud
+    HUD hud(window, test);
     //npc
     NPC test1(window, 3, {300.0f, 3.0f});
 
@@ -61,7 +62,7 @@ int main()
         while (window.pollEvent(event))
         {
             //update inputs event in HUD
-            hud.updateEvent(event);
+            hud.updateEvent(event, NPCInteraction);
 
             //update inputs event for Hero
             test.updateDelayAndInputs(event, dt);

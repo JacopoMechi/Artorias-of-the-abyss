@@ -11,7 +11,7 @@ public:
                           std::string itemDescription = "Riduce il cooldown dei dash per 60 secondi", int maxItemCount = 10, 
                           int itemCount = 0, int x = 453, int y = 2, int width = 20, int height = 20);
     ~GreenBlossom();
-    //void use(Hero &hero, int newCooldown, int timeEffect);
+    //void use(Hero &hero);
 private:
     int newCooldwon;// needs a value
     int timeEffect = 60;
