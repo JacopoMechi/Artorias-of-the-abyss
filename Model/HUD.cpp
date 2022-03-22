@@ -82,7 +82,7 @@ void HUD::drawInventory(){
     tabText.setCharacterSize(35);
     std::string tab;
 
-    //manages switch between tabs  //FIXME
+    //manages switch between tabs
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             this -> setFirstTab(true);
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))

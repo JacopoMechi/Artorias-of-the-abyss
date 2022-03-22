@@ -82,7 +82,6 @@ void Hero::updateDelayAndInputs(sf::Event keyInput, float dt) {
     //handling dash cooldowns
     if(dashCount < maxDashes){
         dashTime += dt;
-        std::cout << dashCount << std::endl;
         if(dashTime >= dashTimeHolding){
             dashTime = 0;
             dashCount++;

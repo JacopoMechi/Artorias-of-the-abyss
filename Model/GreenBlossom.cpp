@@ -9,10 +9,10 @@ GreenBlossom::~GreenBlossom(){
 
 }
 
-/*void GreenBlossom::use(Hero& hero, int newCooldown, int timeEffect) {
+void GreenBlossom::use(Hero& hero) {
     int tmp = hero.getCooldown();
     // for time = timeEffect in seconds
     hero.setCooldown(newCooldown);
     //end time
     hero.setCooldown(tmp);
-}*/
+}
