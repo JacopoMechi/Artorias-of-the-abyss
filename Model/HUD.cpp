@@ -58,10 +58,10 @@ void HUD::draw() const{
     window.draw(actionsSprite);
     //drawing quickslots items
     if(quickSlot[0] != NULL)
-        quickSlot[0] -> displayItem(855, 975, window);
-    else if(quickSlot[1] != NULL)
+        quickSlot[0] -> displayItem(850, 975, window);
+    if(quickSlot[1] != NULL)
         quickSlot[1] -> displayItem(937, 975, window);
-    else if(quickSlot[2] != NULL)
+    if(quickSlot[2] != NULL)
         quickSlot[2] -> displayItem(1020, 975, window);
 }
 
@@ -206,6 +206,7 @@ void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
 
         //handling slot assign
         if(quickAssign){
+            //std::cout << descriptionScroll << std::endl;
             if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
                 this -> assignItem(consumables[descriptionScroll], 0);
             else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2)
