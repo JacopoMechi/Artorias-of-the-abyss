@@ -40,6 +40,8 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
 
     //TODO only for tests. Needs to be removed
     consumables[3] -> setItemCount(1);
+    consumables[2] -> setItemCount(1);
+    consumables[1] -> setItemCount(1);
 }
 
 bool HUD::getInvIsOpen(){
@@ -97,13 +99,13 @@ void HUD::drawInventory(){
         consumables[0] -> displayName(window, 235, 460);
         //second slot
         consumables[1] -> displayItem(148, 560, window);
-        consumables[0] -> displayName(window, 235, 460);
+        consumables[1] -> displayName(window, 235, 567);
         //third slot
         consumables[2] -> displayItem(142, 665, window);
-        consumables[0] -> displayName(window, 235, 460);
+        consumables[2] -> displayName(window, 235, 670);
         //fourth slot
         consumables[3] -> displayItem(142, 780, window);
-        consumables[0] -> displayName(window, 235, 460);
+        consumables[3] -> displayName(window, 235, 775);
 
     }else{    
         //second category
