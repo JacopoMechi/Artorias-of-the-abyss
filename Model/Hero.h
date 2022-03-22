@@ -20,8 +20,9 @@ public:
     int getDash();
     void setDash(int dashCount);
 
-    /*int getCooldown(); TODO maybe they are not required
-    void setCooldown(int cooldown);*/
+    //for green blossom which reduce dashes cooldown
+    int getCooldown();
+    void setCooldown(float dashTimeHolding);
 
     float getHeroPosY();
     void setHeroPosY(float heroPosY);
@@ -29,8 +30,6 @@ public:
     void dash();
 
     void addItem();
-    
-    void useItem();
     
     void switchZone();
     

@@ -17,6 +17,14 @@ void Hero::setDash(int dashCount) {
     this -> dashCount = dashCount;
 }
 
+int Hero::getCooldown(){
+    return dashTimeHolding;
+}
+
+void Hero::setCooldown(float dashTimeHolding){
+    this -> dashTimeHolding = dashTimeHolding;
+}
+
 void Hero::dash(){
     //for dashing, we just need to move the character position farther only in the moment that we press Space key
     dashing = dashDistance*dir;
@@ -25,11 +33,6 @@ void Hero::dash(){
         pos += dashing; 
     }
 }
-
-
-/*void Hero::useItem() {//TODO may be useful later
-
-}*/
 
 void Hero::switchZone() {//TODO useful later maybe
 
