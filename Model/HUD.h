@@ -33,7 +33,7 @@ public:
 
     void drawQuickSlot();
 
-    void assignItem(Item consumable, int slot);
+    void assignItem(Item *consumable, int slot);
 
 protected:
     //for using quickslot items
@@ -59,7 +59,8 @@ protected:
     bool quickAssign = false;
 
     //for displaying items in quickslot
-    Item quickSlot[3]{{"empty slot", 0, "...", 0, 0, 129, 4, 1, 1}, {"empty slot", 0, "...", 0, 0, 129, 4, 1, 1}, {"empty slot", 0, "...", 0, 0, 129, 4, 1, 1}};
+    //{"empty slot", 0, "...", 0, 0, 129, 4, 1, 1}
+    std::vector <Item*> quickSlot = {NULL, NULL, NULL};
 
     //Collectible items
     Item collectibles[8] = {
@@ -104,11 +105,6 @@ protected:
 
     //creating consumable 
     //Item consumables[4] = {EstusFlask(), GreenBlossom(), HomewardBone(), Pendant()};
-    std::vector<Item> consumables;
-    consumables.push_back(EstusFlask());
-    consumables.push_back(GreenBlossom());
-    consumables.push_back(HomewardBone());
-    consumables.push_back(Pendant());
-
+    std::vector<Item*> consumables = {new EstusFlask(), new GreenBlossom(), new HomewardBone(), new Pendant()};
 };
 #endif

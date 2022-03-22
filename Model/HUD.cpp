@@ -52,10 +52,12 @@ void HUD::draw() const{
     window.draw(quickslotSprite);
     window.draw(actionsSprite);
     //drawing quickslots items
-    //FIXME
-    /*quickSlot[0].displayItem(855, 975, window);
-    quickSlot[1].displayItem(937, 975, window);
-    quickSlot[2].displayItem(1020, 975, window);*/
+    if(quickSlot[0] != NULL)
+        quickSlot[0] -> displayItem(855, 975, window);
+    else if(quickSlot[1] != NULL)
+        quickSlot[1] -> displayItem(937, 975, window);
+    else if(quickSlot[2] != NULL)
+        quickSlot[2] -> displayItem(1020, 975, window);
 }
 
 void HUD::displayHealth(GameCharacter &character){ 
@@ -88,17 +90,17 @@ void HUD::drawInventory(){
         //list of consumables
         tab = "Consumabili >";//<tab> cambia categoria, <q> esci dall'inventario, <ArrowUp,ArrDown> scorri items
         //first slot
-        consumables[0].displayItem(148, 455, window);
-        consumables[0].displayName(window, 235, 460);
+        consumables[0] -> displayItem(148, 455, window);
+        consumables[0] -> displayName(window, 235, 460);
         //second slot
-        consumables[1].displayItem(148, 560, window);
-        consumables[0].displayName(window, 235, 460);
+        consumables[1] -> displayItem(148, 560, window);
+        consumables[0] -> displayName(window, 235, 460);
         //third slot
-        consumables[2].displayItem(142, 665, window);
-        consumables[0].displayName(window, 235, 460);
+        consumables[2] -> displayItem(142, 665, window);
+        consumables[0] -> displayName(window, 235, 460);
         //fourth slot
-        consumables[3].displayItem(142, 780, window);
-        consumables[0].displayName(window, 235, 460);
+        consumables[3] -> displayItem(142, 780, window);
+        consumables[0] -> displayName(window, 235, 460);
 
     }else{    
         //second category
@@ -135,9 +137,9 @@ void HUD::displayDescription(){
         //drawing item sprite (and name) and description text
         if(firstTab){
             //shows description of first category
-            text.setString(consumables[descriptionScroll].getItemDescription());
-            consumables[descriptionScroll].displayItem(760, 450, window);
-            consumables[descriptionScroll].displayName(window, 780, 315);
+            text.setString(consumables[descriptionScroll] -> getItemDescription());
+            consumables[descriptionScroll] -> displayItem(760, 450, window);
+            consumables[descriptionScroll] -> displayName(window, 780, 315);
         }else{
             //shows description of second category
             collectibles[descriptionScroll].displayItem(760, 450, window);
@@ -206,15 +208,13 @@ void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
             else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3)
                 this -> assignItem(consumables[descriptionScroll], 2);
         }
-
-        if(!isInvOpen && !isInteracting){
-            if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
-                quickSlot[0].use(hero);
-            else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2)
-                quickSlot[1].use(hero);
-            else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3)
-                quickSlot[2].use(hero);
-        }
+    }else{
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && quickSlot[0] != NULL)
+            quickSlot[0] -> use(hero);
+        else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && quickSlot[1] != NULL)
+            quickSlot[1] -> use(hero);
+        else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3 && quickSlot[2] != NULL)
+            quickSlot[2] -> use(hero);
     }
 }
 
@@ -229,7 +229,7 @@ void HUD::drawQuickSlot(){
     }
 }
 
-void HUD::assignItem(Item consumable, int slot){
+void HUD::assignItem(Item *consumable, int slot){
     quickSlot[slot] = consumable;
     quickAssign = false;
 }
