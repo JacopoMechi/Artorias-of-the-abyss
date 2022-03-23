@@ -11,7 +11,7 @@ public:
                         int width = 20, int height = 21);
     virtual ~EstusFlask();
     void use(Hero& hero) override;
-    //TODO reset usage in Bonfire
+    //TODO LATER reset usage in Bonfire
 private:
     int healthRestored = 30;// TODO blance healh restored
 };

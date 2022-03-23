@@ -61,7 +61,7 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
 }
 
 NPC::~NPC(){
-    delete merch[3];//FIXME
+    delete *merch;
 }
 
 void NPC::interact(Hero &hero) {
@@ -155,7 +155,7 @@ void NPC::updateInputs(sf::Event keyInput){
         }
     }
 
-    if(isTalking){//TODO adjust dialogue depending on situations (like changing chester's text pool when Artorias is killed)
+    if(isTalking){//TODO LATER adjust dialogue depending on situations (like changing chester's text pool when Artorias is killed)
         //scrolling through character's phrases
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
             dialogueTracker = (dialogueTracker+1)%(textPool.size()/2);//FIXME why /2?

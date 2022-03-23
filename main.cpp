@@ -104,7 +104,7 @@ int main()
             //draw the sprite
             test.draw(window);
             if (hud.getInvIsOpen()){
-                hud.drawInventory();//FIXME adjust tracker for items
+                hud.drawInventory();
             }
             hud.draw(); 
             hud.displayHealth(test);

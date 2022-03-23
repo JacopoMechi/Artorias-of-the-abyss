@@ -12,10 +12,11 @@
 
 
 class Hero: public GameCharacter {
+    //TODO add a method to switch hero's armor and weapon when a boss is killed
 public: 
 
     Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed);
-    ~Hero();
+    virtual ~Hero() = default;
 
     int getDash();
     void setDash(int dashCount);
@@ -37,7 +38,7 @@ public:
 
     void raiseShield();
     
-    void attack();
+    void attack() override;
 
     void updateDelayAndInputs(sf::Event keyInput, float dt);
     

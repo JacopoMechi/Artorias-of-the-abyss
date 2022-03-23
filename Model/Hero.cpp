@@ -5,10 +5,10 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
     //TODO switch between mage and knight by checking isKnight
 }
 
-Hero::~Hero(){
-    if (leftWeapon != nullptr)
-        delete leftWeapon;
-}
+//Hero::~Hero(){//TODO
+    //if (leftWeapon != nullptr)FIXME
+    //    delete leftWeapon;
+//}
 
 int Hero::getDash(){
     return dashCount;

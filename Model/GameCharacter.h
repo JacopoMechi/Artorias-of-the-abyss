@@ -14,7 +14,7 @@ class GameCharacter{//:  public MapElement
 public:
     
     GameCharacter(const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed);           
-    ~GameCharacter();
+    virtual ~GameCharacter() = default;
     
     int getHp() const;
     void setHp(int hp);
@@ -38,7 +38,7 @@ public:
 
     //virtual void movement() = 0;//in commit add "movement and attack, in gamecharacter class, are now base methods"
     
-    //virtual void attack() = 0;//FIXME
+    virtual void attack();
     
     bool isAggro(float aggroDistance, GameCharacter &entity);
 

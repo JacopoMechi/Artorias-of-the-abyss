@@ -8,10 +8,10 @@ GameCharacter::GameCharacter(const sf::Vector2f& pos, int hp, int armor, int cas
     sprite.setScale(7.5f, 7.5f);
 }
 
-GameCharacter::~GameCharacter() {
-    /*if (weapon != nullptr)
-        delete weapon;*/
-}
+/*GameCharacter::~GameCharacter() {//TODO
+    if (weapon != nullptr)
+        delete weapon;
+}*/
 
 int GameCharacter::getHp() const{
     return HP;
@@ -66,6 +66,10 @@ void GameCharacter::setWeapon(Weapon* weapon) {
 void GameCharacter::receiveDamage(int points) {
     points = points*armor/100;
     setHp(HP-points);
+}
+
+void GameCharacter::attack(){
+
 }
 
 bool GameCharacter::isAggro(float aggroDistance, GameCharacter &entity) {
