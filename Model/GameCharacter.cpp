@@ -2,10 +2,7 @@
 
 GameCharacter::GameCharacter(const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed): pos(pos), HP(hp), armor(armor), cash(cash),
  movementSpeed(movementSpeed), weapon(nullptr){
-    sprite.setTextureRect({127, 75, 16, 28});//    128, 75, 17, 28
-    texture.loadFromFile("../Textures/Textures.png");
-    sprite.setTexture(texture);
-    sprite.setScale(7.5f, 7.5f);
+    
 }
 
 /*GameCharacter::~GameCharacter() {//TODO

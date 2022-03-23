@@ -58,8 +58,8 @@ protected:
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;
     sf::Texture texture;
-    sf::IntRect frameRect = {0, 0, 16, 22};
-    sf::IntRect lastFrameRect = {0, 0, 16, 22};
+    sf::IntRect frameRect;
+    sf::IntRect lastFrameRect;
     float animationHolding = 0.08f;// for max time cap
     int nFrames;
     int iFrame = 0;

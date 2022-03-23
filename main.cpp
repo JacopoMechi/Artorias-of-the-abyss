@@ -39,7 +39,7 @@ int main()
 
     //initialising
     //gamecharacter
-    Hero test(true, {150.0f,3.0f}, 1, 20, 0, 100.0f);//100
+    Hero test(false, {150.0f,3.0f}, 1, 20, 0, 100.0f);//100
     //hud
     HUD hud(window, test);
     //npc
