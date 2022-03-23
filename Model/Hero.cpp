@@ -7,7 +7,7 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
     if(isKnight)
         defaultRect = {0, 0, 16, 22};
     else
-        defaultRect = {0, 83, 16, 21};
+        defaultRect = {0, 83, 15, 21};
     lastFrameRect = defaultRect;//for updating the sprite
     frameRect = defaultRect; 
     texture.loadFromFile("../Textures/Textures.png");
