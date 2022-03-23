@@ -89,11 +89,13 @@ void GameCharacter::update(float dt){
         nFrames = 4;
         animationHolding = 0.15f;
     }else if (dir.x > 0.0f){
-        frameRect = {0, 0, 16, 22};
+        frameRect = defaultRect;
         lastFrameRect = frameRect;// to set the right position of the caracter when the action animation is over
     }else if (dir.x < 0.0f){
-        frameRect = {16, 0, -16, 22};
-        lastFrameRect = frameRect;
+        frameRect = {defaultRect.width, defaultRect.top, -defaultRect.width, defaultRect.height};//flipped sprite
+
+        lastFrameRect = frameRect;//flipped sprite
+        
     }else if(dir.y == 0){
         nFrames = 1;
     }
