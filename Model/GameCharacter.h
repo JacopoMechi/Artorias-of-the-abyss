@@ -13,9 +13,8 @@ class GameCharacter
 { //:  public MapElement
 
 public:
-    GameCharacter(int hp, int a, int c, float mS, const sf::Vector2f &pos);
-    // hp: HP, a: armor, c: cash, mS: movementSpeed, t: textPool
-    ~GameCharacter();
+    GameCharacter(const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed);
+    virtual ~GameCharacter() = default;
 
     int getHp() const;
     void setHp(int hp);
@@ -37,14 +36,11 @@ public:
 
     virtual void receiveDamage(int points);
 
-    Weapon *getShield();
-    void setShield(Weapon *weapon);
+    // virtual void movement() = 0;//in commit add "movement and attack, in gamecharacter class, are now base methods"
 
-    virtual void movement(bool isInventoryOpen, bool menuIsOpen);
+    virtual void attack();
 
-    virtual void attack(GameCharacter &opponent);
-
-    bool isChasing(float aggroDistance, GameCharacter &enemy);
+    bool isAggro(float aggroDistance, GameCharacter &entity);
 
     void draw(sf::RenderTarget &rt) const;
 
@@ -55,17 +51,16 @@ protected:
     int armor;
     int cash;
     float movementSpeed;
-    int dialogueTracker = 0;
-    bool isInventoryOpen;
     float aggroDistance;
+    bool actionStarting = false;
     Weapon *weapon;
-    Weapon *leftWeapon;
     sf::Vector2f pos;
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;
     sf::Texture texture;
     sf::IntRect frameRect = {0, 0, 16, 22};
-    const float animationHolding = 0.08f; // for max time cap
+    sf::IntRect lastFrameRect = {0, 0, 16, 22};
+    float animationHolding = 0.08f; // for max time cap
     int nFrames;
     int iFrame = 0;
     float animationTime = 0.0f;

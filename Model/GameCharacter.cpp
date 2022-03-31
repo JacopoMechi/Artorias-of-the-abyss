@@ -1,7 +1,7 @@
 #include "GameCharacter.h"
 
-GameCharacter::GameCharacter(int hp, int a, int c, float mS, const sf::Vector2f &pos) : HP(hp), armor(a), cash(c),
-                                                                                        movementSpeed(mS), pos(pos), weapon(nullptr), leftWeapon(nullptr)
+GameCharacter::GameCharacter(const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed) : pos(pos), HP(hp), armor(armor), cash(cash),
+                                                                                                          movementSpeed(movementSpeed), weapon(nullptr)
 {
     sprite.setTextureRect({127, 75, 16, 28}); //    128, 75, 17, 28
     texture.loadFromFile("../Textures/Textures.png");
@@ -9,13 +9,10 @@ GameCharacter::GameCharacter(int hp, int a, int c, float mS, const sf::Vector2f 
     sprite.setScale(7.5f, 7.5f);
 }
 
-GameCharacter::~GameCharacter()
-{
+/*GameCharacter::~GameCharacter() {//TODO
     if (weapon != nullptr)
         delete weapon;
-    if (leftWeapon != nullptr)
-        delete leftWeapon;
-}
+}*/
 
 int GameCharacter::getHp() const
 {
@@ -85,62 +82,13 @@ void GameCharacter::receiveDamage(int points)
     setHp(HP - points);
 }
 
-Weapon *GameCharacter::getShield()
+void GameCharacter::attack()
 {
-    return leftWeapon;
 }
 
-void GameCharacter::setShield(Weapon *leftWeapon)
+bool GameCharacter::isAggro(float aggroDistance, GameCharacter &entity)
 {
-    this->leftWeapon = leftWeapon;
-}
-
-void GameCharacter::movement(bool isInventoryOpen, bool menuIsOpen)
-{
-    if (!isInventoryOpen && !menuIsOpen)
-    {
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && pos.y > 60)
-        {
-            dir.y = -1.0f;
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && pos.y < 740)
-        {
-            dir.y = 1.0f;
-        }
-        else
-            dir.y = 0;
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && pos.x > 250)
-        {
-            dir.x = -1.0f;
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && pos.x < 1540)
-        {
-            dir.x = 1.0f;
-        }
-        else
-            dir.x = 0;
-    }
-    else
-        dir = {0, 0};
-}
-
-void GameCharacter::attack(GameCharacter &opponent)
-{ // its virtual, needs to be overrided in enemy
-    // TODO with SFML library type if (sf::Keyboard::isPressed(sf::Keyboard::E){}
-    int hit = 1;
-    if (weapon)
-    { // and something else
-      // FIXME hit = weapon->getDamage();//edited in weapon -> from void use to int use
-    }
-    opponent.receiveDamage(hit);
-}
-
-bool GameCharacter::isChasing(float aggroDistance, GameCharacter &enemy)
-{
-    sf::Vector2f enemyPos = enemy.getPos();
-    if (sqrt((enemyPos.x - pos.x) * (enemyPos.x - pos.x) + (enemyPos.y - pos.y) * (enemyPos.y - pos.y)) < aggroDistance)
+    if (abs(sqrt(((entity.getPos().x - pos.x) * (entity.getPos().x - pos.x)) + ((entity.getPos().y - pos.y) * (entity.getPos().y - pos.y)))) < aggroDistance)
         return true;
     else
         return false;
@@ -157,13 +105,20 @@ void GameCharacter::update(float dt)
     pos += vel * dt;
 
     nFrames = 8;
-    if (dir.x > 0.0f)
+    if (actionStarting)
+    {
+        nFrames = 4;
+        animationHolding = 0.15f;
+    }
+    else if (dir.x > 0.0f)
     {
         frameRect = {0, 0, 16, 22};
+        lastFrameRect = frameRect; // to set the right position of the caracter when the action animation is over
     }
     else if (dir.x < 0.0f)
     {
         frameRect = {16, 0, -16, 22};
+        lastFrameRect = frameRect;
     }
     else if (dir.y == 0)
     {
@@ -176,6 +131,16 @@ void GameCharacter::update(float dt)
     {
         iFrame = (++iFrame) % nFrames;
         animationTime = 0.0f;
+        if (iFrame == nFrames - 1)
+        {
+            if (actionStarting)
+            {
+                actionStarting = false;
+                frameRect = lastFrameRect;
+                iFrame = 1;
+            }
+            animationHolding = 0.08f;
+        }
     }
 
     sprite.setTextureRect({frameRect.left + iFrame * abs(frameRect.width), frameRect.top, frameRect.width, frameRect.height});
