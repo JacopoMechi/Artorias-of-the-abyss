@@ -100,22 +100,22 @@ void GameCharacter::movement(bool isInventoryOpen, bool menuIsOpen)
     if (!isInventoryOpen && !menuIsOpen)
     {
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && pos.y > 60)
         {
             dir.y = -1.0f;
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && pos.y < 740)
         {
             dir.y = 1.0f;
         }
         else
             dir.y = 0;
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && pos.x > 250)
         {
             dir.x = -1.0f;
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && pos.x < 1540)
         {
             dir.x = 1.0f;
         }
@@ -132,7 +132,7 @@ void GameCharacter::attack(GameCharacter &opponent)
     int hit = 1;
     if (weapon)
     { // and something else
-        // FIXME hit = weapon->getDamage();//edited in weapon -> from void use to int use
+      // FIXME hit = weapon->getDamage();//edited in weapon -> from void use to int use
     }
     opponent.receiveDamage(hit);
 }
