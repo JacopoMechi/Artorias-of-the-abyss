@@ -1,6 +1,6 @@
 #include "HUD.h"
 
-HUD::HUD(sf::RenderWindow &window): window(window){
+HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
 
     //setting the font for the text      
     font.loadFromFile("../orangekid.ttf");
@@ -17,7 +17,7 @@ HUD::HUD(sf::RenderWindow &window): window(window){
     quickslotSprite.setTexture(hudTexture);
     quickslotSprite.setTextureRect({810, 960, 300, 77});
     quickslotSprite.setPosition(810, 960);
-    quickslotSprite.setScale(0.8f, 0.8f);
+    quickslotSprite.setScale(1.0f, 1.0f);
     //actions
     actionsSprite.setTexture(hudTexture);
     actionsSprite.setTextureRect({1743, 363, 85, 351});
@@ -30,13 +30,21 @@ HUD::HUD(sf::RenderWindow &window): window(window){
     descriptionSprite.setScale(1.3f,1.3f);
     //inventory
     inventorySprite.setTexture(hudTexture);
-    inventorySprite.setTextureRect({89, 259, 352, 500});
+    inventorySprite.setTextureRect({89, 259, 352, 450});
     inventorySprite.setPosition(89, 259);
     inventorySprite.setScale(1.5f, 1.5f);
+    //assign popup 994x318 x y 289x98 w h
+    assignSprite.setTexture(hudTexture);
+    assignSprite.setTextureRect({994, 318, 289, 98});
+    assignSprite.setPosition({994, 318});
+
+    //TODO only for tests. Needs to be removed
+    consumables[3] -> setItemCount(1);
+    consumables[2] -> setItemCount(1);
+    consumables[1] -> setItemCount(1);
 }
 
-bool HUD::getInvIsOpen()
-{
+bool HUD::getInvIsOpen(){
     return isInvOpen;
 }
 
@@ -48,12 +56,20 @@ void HUD::draw() const{
     window.draw(healthSprite);
     window.draw(quickslotSprite);
     window.draw(actionsSprite);
+    //drawing quickslots items
+    if(quickSlot[0] != NULL)
+        quickSlot[0] -> displayItem(850, 975, window);
+    if(quickSlot[1] != NULL)
+        quickSlot[1] -> displayItem(937, 975, window);
+    if(quickSlot[2] != NULL)
+        quickSlot[2] -> displayItem(1020, 975, window);
 }
 
 void HUD::displayHealth(GameCharacter &character){ 
     std::string bar = std::string("HP: ") + std::to_string(character.getHp()) + std::string("/100");
     text.setPosition(1700, 15);
     text.setString(bar);
+    text.setScale(1.0f,1.0f);
     window.draw(text);
 }
 
@@ -67,11 +83,11 @@ void HUD::drawInventory(){
     tabText.setCharacterSize(35);
     std::string tab;
 
-    //manages switch between tabs  
+    //manages switch between tabs
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             this -> setFirstTab(true);
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            this -> setFirstTab(false);
+            this -> setFirstTab(false);     
 
     //inventory interface        
     if (firstTab){
@@ -80,31 +96,36 @@ void HUD::drawInventory(){
         //list of consumables
         tab = "Consumabili >";//<tab> cambia categoria, <q> esci dall'inventario, <ArrowUp,ArrDown> scorri items
         //first slot
-        flask.displayItem(148, 455, window, 235, 460);
+        consumables[0] -> displayItem(148, 455, window);
+        consumables[0] -> displayName(window, 235, 460);
         //second slot
-        blossom.displayItem(148, 560, window, 235, 565);
+        consumables[1] -> displayItem(148, 560, window);
+        consumables[1] -> displayName(window, 235, 567);
         //third slot
-        homeward.displayItem(142, 665, window, 235, 670);
+        consumables[2] -> displayItem(142, 665, window);
+        consumables[2] -> displayName(window, 235, 670);
         //fourth slot
-        pendant.displayItem(142, 780, window, 235, 770);
+        consumables[3] -> displayItem(142, 780, window);
+        consumables[3] -> displayName(window, 235, 775);
 
     }else{    
         //second category
         //scrolling between collectibles
         tab = "< Collezionabili";
-        //for scrolling between pages
-        /*if(!switching)
-            this -> scrollList();*/
+        
         //first slot
-        collectibles[0+(4*inventoryScroll)].displayItem(145, 450, window, 235, 460);
+        collectibles[0+(4*inventoryScroll)].displayItem(145, 450, window);
+        collectibles[0+(4*inventoryScroll)].displayName(window, 235, 460);
         //second slot
-        collectibles[1+(4*inventoryScroll)].displayItem(145, 555, window, 235, 565);
+        collectibles[1+(4*inventoryScroll)].displayItem(145, 555, window);
+        collectibles[1+(4*inventoryScroll)].displayName(window, 235, 565);
         //third slot
-        collectibles[2+(4*inventoryScroll)].displayItem(145, 660, window, 235, 670);
+        collectibles[2+(4*inventoryScroll)].displayItem(145, 660, window);
+        collectibles[1+(4*inventoryScroll)].displayName(window, 235, 565);
         //fourth slot
-        collectibles[3+(4*inventoryScroll)].displayItem(145, 775, window, 235, 770); 
+        collectibles[3+(4*inventoryScroll)].displayItem(145, 775, window); 
+        collectibles[1+(4*inventoryScroll)].displayName(window, 235, 565);
         //for detailed items description
-        //also handling input with delaytime   
     }
     this -> displayDescription();
     tabText.setString(tab);
@@ -122,37 +143,23 @@ void HUD::displayDescription(){
         //drawing item sprite (and name) and description text
         if(firstTab){
             //shows description of first category
-            //EstusFlask
-            if(descriptionScroll == 0){
-                text.setString(flask.getItemDescription());
-                flask.displayItem(760, 450, window, 780, 315);
-            }
-            //GreenBlossom
-            if(descriptionScroll == 1){
-                text.setString(blossom.getItemDescription());
-                blossom.displayItem(760, 450, window, 780, 315);
-            }
-            //HomewardBone
-            if(descriptionScroll == 2){
-                text.setString(homeward.getItemDescription());
-                homeward.displayItem(760, 450, window, 780, 315);
-            }
-            //Pendant
-            if(descriptionScroll == 3){
-                text.setString(pendant.getItemDescription());
-                pendant.displayItem(760, 450, window, 780, 315);
-            }
+            text.setString(consumables[descriptionScroll] -> getItemDescription());
+            consumables[descriptionScroll] -> displayItem(760, 450, window);
+            consumables[descriptionScroll] -> displayName(window, 780, 315);
         }else{
             //shows description of second category
-            collectibles[descriptionScroll].displayItem(760, 450, window, 780, 315);
+            collectibles[descriptionScroll].displayItem(760, 450, window);
+            collectibles[descriptionScroll].displayName(window, 780, 315);
             text.setString(collectibles[descriptionScroll].getItemDescription());
         }
         window.draw(text);
+        drawQuickSlot();
     }
 }
 
-void HUD::updateEvent(sf::Event keyInput){
+void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
     //handling inputs
+    //opens inventory
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E){
         isInvOpen = !isInvOpen;
         if (!isInvOpen)
@@ -166,7 +173,8 @@ void HUD::updateEvent(sf::Event keyInput){
             descriptionScroll = 0;
         }
 
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up){
+        //inputs for scrolling in inventory
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up&&!quickAssign){//when quickAssign is open, it will not scroll
             //scrolling for description(up)
             if(switching){
                 if(firstTab)
@@ -179,7 +187,7 @@ void HUD::updateEvent(sf::Event keyInput){
                 inventoryScroll = (++inventoryScroll)%2;      
         }
 
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Down){
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Down&&!quickAssign){//when quickAssign is open, it will not scroll
             //scrolling for description (down)
             if(switching){
                 if(firstTab)
@@ -187,15 +195,48 @@ void HUD::updateEvent(sf::Event keyInput){
                 else    
                     descriptionScroll = (++descriptionScroll)%8;
             }
-            //scrolling for items 
+            //scrolling for items (down)
             else
                 inventoryScroll = (++inventoryScroll)%2;
+        }
+
+        //input for changing quickslot items. It opens a dialogue box if description box is opened
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && switching&&firstTab){
+            quickAssign = !quickAssign;
         }        
-    }         
+
+        //handling slot assign
+        if(quickAssign){
+            //std::cout << descriptionScroll << std::endl;
+            if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
+                this -> assignItem(consumables[descriptionScroll], 0);
+            else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2)
+                this -> assignItem(consumables[descriptionScroll], 1);
+            else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3)
+                this -> assignItem(consumables[descriptionScroll], 2);
+        }
+    }else{
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && quickSlot[0] != NULL)
+            quickSlot[0] -> use(hero);
+        else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && quickSlot[1] != NULL)
+            quickSlot[1] -> use(hero);
+        else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3 && quickSlot[2] != NULL)
+            quickSlot[2] -> use(hero);
+    }
 }
 
-/*//TODO complete later
-//updating dt in class
-void HUD::updateDelayTime(float dt){
-    delayTime = dt;
-}*/
+//drawing assign popup
+void HUD::drawQuickSlot(){
+    text.setPosition(1003, 328);
+    text.setCharacterSize(20);
+    text.setString("In quale slot vuoi assegnare il seguente\n oggetto?\n                          [1]  [2]  [3]");
+    if(quickAssign&&firstTab){
+        window.draw(assignSprite);
+        window.draw(text);
+    }
+}
+
+void HUD::assignItem(Item *consumable, int slot){
+    quickSlot[slot] = consumable;
+    quickAssign = false;
+}

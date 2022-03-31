@@ -15,7 +15,7 @@ class HUD
 
 public:
 
-    HUD(sf::RenderWindow &window);
+    HUD(sf::RenderWindow &window, Hero &hero);
 
     bool getInvIsOpen();
 
@@ -29,11 +29,15 @@ public:
 
     void drawInventory();
 
-    void updateEvent(sf::Event keyInput);
+    void updateEvent(sf::Event keyInput, bool isInteracting);
 
-    //TODO for later: void updateDelayTime(float dt);
+    void drawQuickSlot();
+
+    void assignItem(Item *consumable, int slot);
 
 protected:
+    //for using quickslot items
+    Hero &hero;
     //for functions of sprites
     sf::RenderWindow &window;
     //texture and sprites for hud
@@ -43,6 +47,7 @@ protected:
     sf::Sprite actionsSprite;
     sf::Sprite inventorySprite;
     sf::Sprite descriptionSprite;
+    sf::Sprite assignSprite;
     sf::Text text;
     sf::Font font;
     //switch for some sprites like inventory, healthsprite,...
@@ -51,6 +56,11 @@ protected:
     int inventoryScroll = 0;
     int descriptionScroll = 0;
     bool switching = false;
+    bool quickAssign = false;
+
+    //for displaying items in quickslot
+    //{"empty slot", 0, "...", 0, 0, 129, 4, 1, 1}
+    std::vector <Item*> quickSlot = {NULL, NULL, NULL};
 
     //Collectible items
     Item collectibles[8] = {
@@ -93,10 +103,7 @@ protected:
         
     };
 
-    //Consumable items
-    EstusFlask flask;
-    GreenBlossom blossom;
-    HomewardBone homeward;
-    Pendant pendant;  
+    //creating consumable 
+    std::vector<Item*> consumables = {new EstusFlask(), new GreenBlossom(), new HomewardBone(), new Pendant()};
 };
 #endif
