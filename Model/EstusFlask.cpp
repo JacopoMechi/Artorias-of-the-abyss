@@ -10,9 +10,10 @@ EstusFlask::~EstusFlask(){
 
 }
 
-/*TODOvoid EstusFlask::use(Hero& hero) {reset usage in Bonfire
-    if (EstusFlask::getItemCount() > 0)
-        hero.restoreHp(healthRestored);
-    EstusFlask::setItemCount(getItemCount()-1);
-    // something that blocks the hero
-}*/
+void EstusFlask::use(Hero& hero) {
+    if (EstusFlask::getItemCount() > 0){
+        hero.setHp(hero.getHp()+healthRestored);
+        EstusFlask::setItemCount(getItemCount()-1);
+    }
+    //TODO something that blocks the hero (maybe)
+}
