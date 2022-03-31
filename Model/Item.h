@@ -4,22 +4,28 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
+#include "Hero.h"
+
 class Item
 {
 public:
     Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height); 
 
-    ~Item();
+    virtual ~Item() = default;
 
     int getItemCount();
 
     void setItemCount(int itemCount);
 
-    void displayItem(float posX, float posY, sf::RenderTarget &window, float nameX, float nameY);
+    void displayItem(float posX, float posY, sf::RenderTarget &window);
+
+    void displayName(sf::RenderTarget &window, float nameX, float nameY);
 
     std::string getItemName();
 
     std::string getItemDescription();
+
+    virtual void use(Hero &hero);
 
 protected:
     std::string itemName;
