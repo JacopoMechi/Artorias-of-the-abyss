@@ -20,9 +20,11 @@ int main()
 
     // initializing objects
     // gate
+    Gate nextRoomGate(true);
+    Gate previewsRoomGate;
 
     // map
-    Map map({}, MAPPATH);
+    Map map({nextRoomGate, previewsRoomGate}, MAPPATH);
 
     // creating event
     sf::Event event;
