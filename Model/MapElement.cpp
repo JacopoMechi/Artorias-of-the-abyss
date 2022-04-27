@@ -42,4 +42,12 @@ MapElement::MapElement(sf::Vector2f &position, std::vector<sf::IntRect> &spriteF
     mapElementSprite.setTexture(this->mapElementTexture);
     mapElementSprite.setPosition(position);
 }
+MapElement::MapElement(const std::string &mapElementFilePath)
+{
+    if (!mapElementTexture.loadFromFile(mapElementFilePath))
+    {
+        std::cout << "Error while setting MapElement texture" << std::endl;
+    }
+    mapElementSprite.setTexture(this->mapElementTexture);
+}
 MapElement::~MapElement() {}

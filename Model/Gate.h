@@ -14,8 +14,7 @@ public:
 
     void setisOpen(bool isOpen);
 
-    Gate(sf::Vector2f position, bool isMirrored = true, bool isOpen = false, std::vector<sf::IntRect> spriteFrames = {{260, 308, -120, 195}}, // 140,308,120,195
-         const std::string mapElementFilePath = "../Textures/Textures.png");
+    Gate(bool isMirrored = false, bool isOpen = false);
 
     ~Gate();
 
@@ -26,6 +25,8 @@ protected:
 private:
     std::vector<sf::IntRect> mirroredSpriteFrames = {{260, 308, -120, 195}};
     std::vector<sf::IntRect> notMirroredSpriteFrames = {{140, 308, 120, 195}};
+    sf::Vector2f notMirroredPosition = {158.0f, 425.0f};
+    sf::Vector2f mirroredPosition = {1626.0f, 425.0f};
 };
 
 #endif //_GATE_H

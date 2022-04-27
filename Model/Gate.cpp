@@ -22,20 +22,26 @@ void Gate::setisOpen(bool isOpen)
     mapElementSprite.setTextureRect(spriteFrames[0]);
 }
 
-Gate::Gate(sf::Vector2f position, bool isMirrored, bool isOpen, std::vector<sf::IntRect> spriteFrames,
-           const std::string mapElementFilePath) : MapElement(position, spriteFrames, mapElementFilePath), isOpen(isOpen)
+Gate::Gate(bool isMirrored, bool isOpen) : MapElement(), isOpen(isOpen)
 {
+
     if (isMirrored)
-        this->spriteFrames = this->mirroredSpriteFrames;
+    {
+        spriteFrames = mirroredSpriteFrames;
+        mapElementSprite.setPosition(mirroredPosition);
+    }
+
     else
-        this->spriteFrames = this->notMirroredSpriteFrames;
+    {
+        spriteFrames = notMirroredSpriteFrames;
+        mapElementSprite.setPosition(notMirroredPosition);
+    }
 
     if (isOpen)
     {
-        this->spriteFrames[0].left = this->spriteFrames[0].left + abs(this->spriteFrames[0].width);
+        spriteFrames[0].left = spriteFrames[0].left + abs(spriteFrames[0].width);
     }
-    mapElementSprite.setTextureRect(this->spriteFrames[0]);
-    mapElementSprite.setPosition(position);
+    mapElementSprite.setTextureRect(spriteFrames[0]);
 }
 
 Gate::~Gate() {}

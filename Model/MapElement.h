@@ -15,6 +15,7 @@ public:
 
     MapElement(sf::Vector2f &position, std::vector<sf::IntRect> &spriteFrames,
                const std::string &mapElementFilePath = "../Textures/Textures.png");
+    MapElement(const std::string &mapElementFilePath = "../Textures/Textures.png");
     ~MapElement();
 
 protected:
