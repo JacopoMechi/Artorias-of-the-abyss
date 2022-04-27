@@ -14,13 +14,18 @@ public:
 
     void setisOpen(bool isOpen);
 
-    Gate(sf::Vector2f position, std::vector<sf::IntRect> spriteFrames = {{0, 0, 113, 196}},
-         const std::string mapElementFilePath = "../Textures/Textures.png", bool isOpen = false);
+    Gate(sf::Vector2f position, bool isMirrored = true, bool isOpen = false, std::vector<sf::IntRect> spriteFrames = {{260, 308, -120, 195}}, // 140,308,120,195
+         const std::string mapElementFilePath = "../Textures/Textures.png");
 
     ~Gate();
 
 protected:
     bool isOpen;
+    bool isMirrored;
+
+private:
+    std::vector<sf::IntRect> mirroredSpriteFrames = {{260, 308, -120, 195}};
+    std::vector<sf::IntRect> notMirroredSpriteFrames = {{140, 308, 120, 195}};
 };
 
 #endif //_GATE_H
