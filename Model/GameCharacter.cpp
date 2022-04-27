@@ -1,12 +1,8 @@
 #include "GameCharacter.h"
 
-GameCharacter::GameCharacter(const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed) : pos(pos), HP(hp), armor(armor), cash(cash),
-                                                                                                          movementSpeed(movementSpeed), weapon(nullptr)
-{
-    sprite.setTextureRect({127, 75, 16, 28}); //    128, 75, 17, 28
-    texture.loadFromFile("../Textures/Textures.png");
-    sprite.setTexture(texture);
-    sprite.setScale(7.5f, 7.5f);
+GameCharacter::GameCharacter(const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed): pos(pos), HP(hp), armor(armor), cash(cash),
+ movementSpeed(movementSpeed), weapon(nullptr){
+    
 }
 
 /*GameCharacter::~GameCharacter() {//TODO
@@ -109,19 +105,15 @@ void GameCharacter::update(float dt)
     {
         nFrames = 4;
         animationHolding = 0.15f;
-    }
-    else if (dir.x > 0.0f)
-    {
-        frameRect = {0, 0, 16, 22};
-        lastFrameRect = frameRect; // to set the right position of the caracter when the action animation is over
-    }
-    else if (dir.x < 0.0f)
-    {
-        frameRect = {16, 0, -16, 22};
-        lastFrameRect = frameRect;
-    }
-    else if (dir.y == 0)
-    {
+    }else if (dir.x > 0.0f){
+        frameRect = defaultRect;
+        lastFrameRect = frameRect;// to set the right position of the caracter when the action animation is over
+    }else if (dir.x < 0.0f){
+        frameRect = {defaultRect.width, defaultRect.top, -defaultRect.width, defaultRect.height};//flipped sprite
+
+        lastFrameRect = frameRect;//flipped sprite
+        
+    }else if(dir.y == 0){
         nFrames = 1;
     }
 
