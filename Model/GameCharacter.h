@@ -58,9 +58,10 @@ protected:
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;
     sf::Texture texture;
-    sf::IntRect frameRect = {0, 0, 16, 22};
-    sf::IntRect lastFrameRect = {0, 0, 16, 22};
-    float animationHolding = 0.08f; // for max time cap
+    sf::IntRect frameRect;
+    sf::IntRect lastFrameRect;
+    sf::IntRect defaultRect;//for resetting character in the right position
+    float animationHolding = 0.08f;// for max time cap
     int nFrames;
     int iFrame = 0;
     float animationTime = 0.0f;

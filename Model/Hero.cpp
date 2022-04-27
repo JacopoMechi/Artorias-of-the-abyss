@@ -2,7 +2,17 @@
 
 Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed):
     isKnight(isKnight), GameCharacter(pos, hp, armor, cash, movementSpeed){
-    //TODO switch between mage and knight by checking isKnight
+    //setting hero's sprite
+    //this will be a default position with which the player will spawn
+    if(isKnight)
+        defaultRect = {0, 0, 16, 22};
+    else
+        defaultRect = {0, 83, 15, 21};
+    lastFrameRect = defaultRect;//for updating the sprite
+    frameRect = defaultRect; 
+    texture.loadFromFile("../Textures/Textures.png");
+    sprite.setTexture(texture);
+    sprite.setScale(7.5f, 7.5f);
 }
 
 //Hero::~Hero(){//TODO
