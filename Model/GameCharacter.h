@@ -6,11 +6,11 @@
 #include <cmath>
 
 #include <SFML/Graphics.hpp>
-#include "MapElement.h"
+#include "RoomElement.h"
 #include "Weapon.h"
 
 class GameCharacter
-{ //:  public MapElement
+{
 
 public:
     GameCharacter(const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed);
@@ -60,8 +60,8 @@ protected:
     sf::Texture texture;
     sf::IntRect frameRect;
     sf::IntRect lastFrameRect;
-    sf::IntRect defaultRect;//for resetting character in the right position
-    float animationHolding = 0.08f;// for max time cap
+    sf::IntRect defaultRect;        // for resetting character in the right position
+    float animationHolding = 0.08f; // for max time cap
     int nFrames;
     int iFrame = 0;
     float animationTime = 0.0f;

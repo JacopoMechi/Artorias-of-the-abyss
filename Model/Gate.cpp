@@ -19,29 +19,29 @@ void Gate::setisOpen(bool isOpen)
     {
         spriteFrames[0].left = spriteFrames[0].left - abs(spriteFrames[0].width);
     }
-    mapElementSprite.setTextureRect(spriteFrames[0]);
+    roomElementSprite.setTextureRect(spriteFrames[0]);
 }
 
-Gate::Gate(bool isMirrored, bool isOpen) : MapElement(), isOpen(isOpen)
+Gate::Gate(bool isMirrored, bool isOpen) : RoomElement(), isOpen(isOpen)
 {
 
     if (isMirrored)
     {
         spriteFrames = mirroredSpriteFrames;
-        mapElementSprite.setPosition(mirroredPosition);
+        roomElementSprite.setPosition(mirroredPosition);
     }
 
     else
     {
         spriteFrames = notMirroredSpriteFrames;
-        mapElementSprite.setPosition(notMirroredPosition);
+        roomElementSprite.setPosition(notMirroredPosition);
     }
 
     if (isOpen)
     {
         spriteFrames[0].left = spriteFrames[0].left + abs(spriteFrames[0].width);
     }
-    mapElementSprite.setTextureRect(spriteFrames[0]);
+    roomElementSprite.setTextureRect(spriteFrames[0]);
 }
 
 Gate::~Gate() {}

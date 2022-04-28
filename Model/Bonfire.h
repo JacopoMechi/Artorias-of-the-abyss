@@ -4,9 +4,9 @@
 #include <SFML/System.hpp>
 #include <vector>
 
-#include "MapElement.h"
+#include "RoomElement.h"
 
-class Bonfire : public MapElement
+class Bonfire : public RoomElement
 {
 public:
     void draw(sf::RenderWindow &window);
@@ -19,7 +19,7 @@ public:
 
     Bonfire(sf::Vector2f position,
             std::vector<sf::IntRect> spriteFrames = {{250, 0, 189, 298}, {439, 0, 189, 298}, {628, 0, 189, 298}},
-            const std::string mapElementFilePath = "../Textures/Textures.png");
+            const std::string roomElementFilePath = "../Textures/Textures.png");
 
     ~Bonfire();
 };

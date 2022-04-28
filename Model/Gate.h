@@ -5,9 +5,9 @@
 #include <string>
 #include <vector>
 
-#include "MapElement.h"
+#include "RoomElement.h"
 
-class Gate : public MapElement
+class Gate : public RoomElement
 {
 public:
     bool getisOpen();
