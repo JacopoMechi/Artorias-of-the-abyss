@@ -19,10 +19,10 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/Bonfire.cpp
                                     Model/Gate.h
                                     Model/Gate.cpp
-                                    Model/Map.h
-                                    Model/Map.cpp
-                                    Model/MapElement.h
-                                    Model/MapElement.cpp
+                                    Model/Room.h
+                                    Model/Room.cpp
+                                    Model/RoomElement.h
+                                    Model/RoomElement.cpp
                                     Model/Menu.h
                                     Model/Menu.cpp
                                     ##Model/Weapon.h
