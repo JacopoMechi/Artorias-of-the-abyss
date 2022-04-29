@@ -9,14 +9,25 @@
 class Room
 {
 public:
-    Room(const std::vector<RoomElement> &roomElementsVector, const std::string &roomFilePath);
+    enum class Type
+    {
+        StartRoom,
+        FirstLevel,
+        SecondLevel,
+        ThirdLevel
+    };
+    Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType);
     ~Room();
-    void spawnEntity(const RoomElement &roomElement);
+    void spawnEntity(RoomElement *roomElement);
     void draw(sf::RenderWindow &window);
 
 private:
-    std::vector<RoomElement> roomElementsVector;
+    std::vector<std::unique_ptr<RoomElement>> roomElementsVector;
     sf::Texture roomTexture;
     sf::Sprite roomSprite;
+    std::string roomFilePath;
+    std::string roomPath1 = "../Textures/Lvl1.png";
+    std::string roomPath2 = "../Textures/Lvl2.png";
+    std::string roomPath3 = "../Textures/Lvl3.png";
 };
 #endif

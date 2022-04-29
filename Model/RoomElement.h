@@ -16,7 +16,7 @@ public:
     RoomElement(sf::Vector2f &position, std::vector<sf::IntRect> &spriteFrames,
                 const std::string &roomElementFilePath = "../Textures/Textures.png");
     RoomElement(const std::string &roomElementFilePath = "../Textures/Textures.png");
-    ~RoomElement();
+    virtual ~RoomElement();
 
 protected:
     sf::Texture roomElementTexture;
