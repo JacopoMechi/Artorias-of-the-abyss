@@ -48,6 +48,7 @@ protected:
     sf::Sprite inventorySprite;
     sf::Sprite descriptionSprite;
     sf::Sprite assignSprite;
+    sf::Sprite trackerSprite;
     sf::Text text;
     sf::Font font;
     //switch for some sprites like inventory, healthsprite,...

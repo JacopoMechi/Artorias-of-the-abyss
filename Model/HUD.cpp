@@ -37,6 +37,12 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     assignSprite.setTexture(hudTexture);
     assignSprite.setTextureRect({994, 318, 289, 98});
     assignSprite.setPosition({994, 318});
+    //tracker for description and items in shop //TODO check if shop is here
+    trackerSprite.setTexture(hudTexture);
+    trackerSprite.setTextureRect({116, 736, 266, 56});
+    trackerSprite.setScale(1.5f, 1.5f);
+    //trackerSprite.setPosition({130, 440});//TODO remember as first item highlited
+    //TODO set position depending on case and item's position
 
     //TODO only for tests. Needs to be removed
     consumables[3] -> setItemCount(1);
@@ -83,6 +89,9 @@ void HUD::drawInventory(){
     tabText.setCharacterSize(35);
     std::string tab;
 
+    //calling description for showing the items in the specific
+    this -> displayDescription();
+
     //manages switch between tabs
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             this -> setFirstTab(true);
@@ -91,6 +100,9 @@ void HUD::drawInventory(){
 
     //inventory interface        
     if (firstTab){
+
+        //TODO display testing for tracker
+        //window.draw(trackerSprite);
 
         //first category    
         //list of consumables
@@ -127,7 +139,6 @@ void HUD::drawInventory(){
         collectibles[1+(4*inventoryScroll)].displayName(window, 235, 565);
         //for detailed items description
     }
-    this -> displayDescription();
     tabText.setString(tab);
     window.draw(tabText);    
 }
@@ -146,6 +157,9 @@ void HUD::displayDescription(){
             text.setString(consumables[descriptionScroll] -> getItemDescription());
             consumables[descriptionScroll] -> displayItem(760, 450, window);
             consumables[descriptionScroll] -> displayName(window, 780, 315);
+            sf::Vector2f position(130, 440+(105*descriptionScroll));
+            trackerSprite.setPosition({position});//to highlight the item in the inventory
+            window.draw(trackerSprite);
         }else{
             //shows description of second category
             collectibles[descriptionScroll].displayItem(760, 450, window);
