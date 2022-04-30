@@ -93,9 +93,10 @@ void HUD::drawInventory(){
     this -> displayDescription();
 
     //manages switch between tabs
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+    //TODO maybe it can be done better
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !switching)
             this -> setFirstTab(true);
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !switching)
             this -> setFirstTab(false);     
 
     //inventory interface        
@@ -165,6 +166,9 @@ void HUD::displayDescription(){
             collectibles[descriptionScroll].displayItem(760, 450, window);
             collectibles[descriptionScroll].displayName(window, 780, 315);
             text.setString(collectibles[descriptionScroll].getItemDescription());
+            sf::Vector2f position(130, 440+(105*(descriptionScroll%4)));//TODO needs to change also the page of the collectibles when scrolling through descriptions
+            trackerSprite.setPosition({position});//to highlight the item in the inventory
+            window.draw(trackerSprite);
         }
         window.draw(text);
         drawQuickSlot();
