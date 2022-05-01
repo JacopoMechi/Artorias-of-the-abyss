@@ -166,7 +166,11 @@ void HUD::displayDescription(){
             collectibles[descriptionScroll].displayItem(760, 450, window);
             collectibles[descriptionScroll].displayName(window, 780, 315);
             text.setString(collectibles[descriptionScroll].getItemDescription());
-            sf::Vector2f position(130, 440+(105*(descriptionScroll%4)));//TODO needs to change also the page of the collectibles when scrolling through descriptions
+            sf::Vector2f position(130, 440+(105*(descriptionScroll%4)));//for switching category while scrolling through descriptions
+            if (descriptionScroll > 3)
+                inventoryScroll = 1;
+            else
+                inventoryScroll = 0;
             trackerSprite.setPosition({position});//to highlight the item in the inventory
             window.draw(trackerSprite);
         }
