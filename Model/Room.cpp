@@ -11,7 +11,7 @@ void Room::spawnEntity(RoomElement *roomElement)
     roomElementsVector.emplace_back(roomElement);
 }
 
-void Room::draw(sf::RenderWindow &window)
+void Room::draw()
 {
     roomSprite.setTextureRect(sf::IntRect(0, 0, 1920, 1080));
     window.draw(roomSprite);
@@ -19,13 +19,13 @@ void Room::draw(sf::RenderWindow &window)
         roomElement->draw(window);
 }
 
-Room::Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType)
+Room::Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType, sf::RenderWindow &window) : window(window)
 {
     switch (roomType)
     {
     case Type::StartRoom:
         roomFilePath = this->roomPath1;
-        this->roomElementsVector.emplace_back(new Gate);
+        this->roomElementsVector.emplace_back(new Gate(true, false));
         break;
     case Type::FirstLevel:
         roomFilePath = this->roomPath1;
