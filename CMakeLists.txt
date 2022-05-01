@@ -42,7 +42,9 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/Hero.h
                                     Model/Hero.cpp
                                     Model/NPC.h
-                                    Model/NPC.cpp)
+                                    Model/NPC.cpp
+                                    Model/Game.h
+                                    Model/Game.cpp)
 
 if(SFML_FOUND)
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-window sfml-system)
