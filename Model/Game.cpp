@@ -13,21 +13,38 @@ void Game::gameLoop()
     {
         while (window.pollEvent(event))
         {
-            hud.updateEvent(event, false);
-            // update inputs event for Hero
+            inGameMenu.updateEvent(event);
             hero.updateDelayAndInputs(event, dt);
-
-            // close window
             if (event.type == sf::Event::Closed)
                 window.close();
         }
         window.clear(sf::Color::Black);
         levels[level]->draw();
-        hero.movement(hud.getInvIsOpen(), false);
-        hero.update(dt);
-        hero.draw(window);
-        hud.draw();
-        hud.displayHealth(hero);
+        if (gameStatus == Game::Status::MainMenu)
+        {
+            mainMenu.launch();
+            if (mainMenu.getStartGame())
+                gameStatus = Game::Status::Playing;
+        }
+        else if (gameStatus == Game::Status::InGameMenu)
+        {
+            inGameMenu.launch();
+            if (inGameMenu.getStartGame())
+                gameStatus = Game::Status::Playing;
+        }
+        else if (gameStatus == Game::Status::Playing)
+        {
+            if (!inGameMenu.getStartGame() && mainMenu.getStartGame())
+                gameStatus = Game::Status::InGameMenu;
+            else
+            {
+                hero.movement(hud.getInvIsOpen(), false);
+                hero.update(dt);
+                hero.draw(window);
+                hud.draw();
+                hud.displayHealth(hero);
+            }
+        }
         window.display();
         dt = clock.getElapsedTime().asSeconds();
         clock.restart();

@@ -24,7 +24,8 @@ public:
     Game(sf::RenderWindow &window);
 
 private:
-    int level = 1;
+    int level = 0;
+    int levelReached = 12;
     float dt = 0.0f;
     std::vector<std::unique_ptr<Room>> levels;
     Status gameStatus = Game::Status::MainMenu;
