@@ -48,10 +48,7 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         //interaction box sprite
         interactionBoxSprite.setTexture(hudTexture);
         interactionBoxSprite.setTextureRect({993, 317, 289, 96});
-
-        //text for ineteracting box
-        interactFont.loadFromFile("../orangekid.ttf");
-        interactText.setFont(interactFont);
+        interactionBoxSprite.setScale(1.7f, 1.7f);
 
         //tracker for buying a specific item
         trackerSprite.setTexture(hudTexture);
@@ -69,12 +66,6 @@ void NPC::interact(Hero &hero) {
     //if true, it will pop-up a box like "Press to interact"
     //and it will be possible to press the interaction button
     if(this -> isAggro(190, hero)){
-        if(!isInteraction){
-           //reset interact box to default
-           interactionBoxSprite.setScale(1.0f, 1.0f);
-           this -> drawInteractBox({815,862});//for the interaction box trigger
-           this -> drawText("Premi Q per interagire", {855, 889});//for displaying message
-        }
         aggro = true;   
     }else
         aggro = false;
@@ -82,8 +73,6 @@ void NPC::interact(Hero &hero) {
     //handling npc interaction menu 
     if(isInteraction){
         if(!isShop && !isTalking){
-            //reset interact box to default
-            interactionBoxSprite.setScale(1.0f, 1.0f);
 
             //displaying interaction box
             this -> drawInteractBox({810, 303});
@@ -125,8 +114,6 @@ void NPC::interact(Hero &hero) {
             }
         //starting dialogue with npc    
         }else if(isTalking){
-            //upscaling interact box
-            interactionBoxSprite.setScale(1.7f, 1.7f);
             //showing npc's dialogue box
             this -> drawInteractBox({800, 303});
             //showing dialouge
@@ -192,4 +179,12 @@ void NPC::drawTracker(sf::Vector2f pos){
 
 bool NPC::getIsInteraction(){
     return isInteraction;
+}
+
+//set aggro for HUD class
+void NPC::setAggro(bool aggro){
+    this -> aggro = aggro;
+}
+bool NPC::getAggro(){
+    return aggro;
 }

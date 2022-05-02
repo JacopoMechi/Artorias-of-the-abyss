@@ -41,8 +41,12 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     trackerSprite.setTexture(hudTexture);
     trackerSprite.setTextureRect({116, 736, 266, 56});
     trackerSprite.setScale(1.5f, 1.5f);
-    //trackerSprite.setPosition({130, 440});//TODO remember as first item highlited
-    //TODO set position depending on case and item's position
+    //obscure interact sprite
+    obscureInteract.setTexture(hudTexture);
+    obscureInteract.setTextureRect({1756, 733, 63, 63});
+    obscureInteract.setScale(0.87f, 0.87f);
+    obscureInteract.setPosition(1750,575);
+
 
     //TODO only for tests. Needs to be removed
     consumables[3] -> setItemCount(1);
@@ -62,6 +66,8 @@ void HUD::draw() const{
     window.draw(healthSprite);
     window.draw(quickslotSprite);
     window.draw(actionsSprite);
+    if(!NPCAggro)
+        window.draw(obscureInteract);
     //drawing quickslots items
     if(quickSlot[0] != NULL)
         quickSlot[0] -> displayItem(850, 975, window);
@@ -261,4 +267,14 @@ void HUD::drawQuickSlot(){
 void HUD::assignItem(Item *consumable, int slot){
     quickSlot[slot] = consumable;
     quickAssign = false;
+}
+
+void HUD::checkNPCAggro(NPC npc){
+    if(npc.isAggro(190, hero)){
+        npc.setAggro(true);
+        NPCAggro = true;
+    }else{
+        npc.setAggro(false);
+        NPCAggro = false;
+    }
 }
