@@ -10,8 +10,6 @@ class Menu
 public:
     void launch();
 
-    bool getMenuIsOpen();
-
     bool getStartGame();
 
     void updateEvent(sf::Event keyInput);
@@ -20,7 +18,6 @@ public:
     ~Menu();
 
 protected:
-    bool menuIsOpen;
     sf::RenderWindow &window;
     sf::Texture menuTexture;
     sf::Sprite menuSprite;

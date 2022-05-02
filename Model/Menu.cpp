@@ -17,7 +17,6 @@ void Menu::launch()
             shadowSprite.setPosition({764.f, 375.f});
             window.draw(shadowSprite);
             startGame = true;
-            menuIsOpen = false;
         }
     }
     // Settings button check
@@ -51,7 +50,7 @@ void Menu::updateEvent(sf::Event keyInput)
     // handling inputs
     if (keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Escape)
     {
-        menuIsOpen = !menuIsOpen;
+        startGame = !startGame;
     }
 }
 
@@ -60,12 +59,7 @@ bool Menu::getStartGame()
     return startGame;
 }
 
-bool Menu::getMenuIsOpen()
-{
-    return menuIsOpen;
-}
-
-Menu::Menu(sf::RenderWindow &window, bool mainMenu, const std::string &buttonEffectsFilePath) : window(window), mainMenu(mainMenu), menuIsOpen(false)
+Menu::Menu(sf::RenderWindow &window, bool mainMenu, const std::string &buttonEffectsFilePath) : window(window), mainMenu(mainMenu)
 {
     if (mainMenu)
     {
