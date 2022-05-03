@@ -15,7 +15,7 @@ void Bonfire::respawnEnemies() // TODO to be implemented
 {
 }
 
-Bonfire::Bonfire(sf::Vector2f position,
-                 std::vector<sf::IntRect> spriteFrames,
-                 const std::string roomElementFilePath) : RoomElement(position, spriteFrames, roomElementFilePath) {}
+Bonfire::Bonfire(sf::RenderWindow &window, const sf::Vector2f &position,
+                 const std::vector<sf::IntRect> &spriteFrames,
+                 const std::string &roomElementFilePath) : RoomElement(window, position, spriteFrames, roomElementFilePath) {}
 Bonfire::~Bonfire() {}

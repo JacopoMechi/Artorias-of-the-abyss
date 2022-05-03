@@ -22,7 +22,7 @@ void Gate::setisOpen(bool isOpen)
     roomElementSprite.setTextureRect(spriteFrames[0]);
 }
 
-Gate::Gate(bool isMirrored, bool isOpen) : RoomElement(), isOpen(isOpen)
+Gate::Gate(sf::RenderWindow &window, bool isMirrored, bool isOpen) : RoomElement(window), isOpen(isOpen)
 {
 
     if (isMirrored)

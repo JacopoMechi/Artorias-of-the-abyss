@@ -12,16 +12,16 @@ public:
 
     sf::Vector2f getPos();
     void setPos(sf::Vector2f &newPos);
-
-    RoomElement(sf::Vector2f &position, std::vector<sf::IntRect> &spriteFrames,
+    RoomElement(sf::RenderWindow &window, const std::string &roomElementFilePath = "../Textures/Textures.png");
+    RoomElement(sf::RenderWindow &window, const sf::Vector2f &position, const std::vector<sf::IntRect> &spriteFrames,
                 const std::string &roomElementFilePath = "../Textures/Textures.png");
-    RoomElement(const std::string &roomElementFilePath = "../Textures/Textures.png");
     virtual ~RoomElement();
 
 protected:
     sf::Texture roomElementTexture;
     sf::Sprite roomElementSprite;
     std::vector<sf::IntRect> spriteFrames;
+    sf::RenderWindow &window;
     int frame = 0;
 };
 #endif

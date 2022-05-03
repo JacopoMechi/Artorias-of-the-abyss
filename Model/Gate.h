@@ -14,7 +14,7 @@ public:
 
     void setisOpen(bool isOpen);
 
-    Gate(bool isMirrored = false, bool isOpen = false);
+    Gate(sf::RenderWindow &window, bool isMirrored = false, bool isOpen = false);
 
     ~Gate();
 

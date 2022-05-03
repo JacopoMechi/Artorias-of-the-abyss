@@ -31,18 +31,7 @@ void RoomElement::setPos(sf::Vector2f &newPos)
     roomElementSprite.setPosition(newPos);
 }
 
-RoomElement::RoomElement(sf::Vector2f &position, std::vector<sf::IntRect> &spriteFrames, const std::string &roomElementFilePath)
-{
-    for (int i = 0; i < spriteFrames.size(); i++)
-        RoomElement::spriteFrames.push_back(spriteFrames[i]);
-    if (!roomElementTexture.loadFromFile(roomElementFilePath))
-    {
-        std::cout << "Error while setting RoomElement texture" << std::endl;
-    }
-    roomElementSprite.setTexture(roomElementTexture);
-    roomElementSprite.setPosition(position);
-}
-RoomElement::RoomElement(const std::string &roomElementFilePath)
+RoomElement::RoomElement(sf::RenderWindow &window, const std::string &roomElementFilePath) : window(window)
 {
     if (!roomElementTexture.loadFromFile(roomElementFilePath))
     {
@@ -50,4 +39,12 @@ RoomElement::RoomElement(const std::string &roomElementFilePath)
     }
     roomElementSprite.setTexture(this->roomElementTexture);
 }
+
+RoomElement::RoomElement(sf::RenderWindow &window, const sf::Vector2f &position, const std::vector<sf::IntRect> &spriteFrames, const std::string &roomElementFilePath) : RoomElement(window, roomElementFilePath)
+{
+    for (int i = 0; i < spriteFrames.size(); i++)
+        RoomElement::spriteFrames.push_back(spriteFrames[i]);
+    roomElementSprite.setPosition(position);
+}
+
 RoomElement::~RoomElement() {}
