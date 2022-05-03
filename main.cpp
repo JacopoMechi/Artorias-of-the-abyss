@@ -45,7 +45,7 @@ int main()
     // hud
     HUD hud(window, test);
     // npc
-    NPC test1(window, 3, {300.0f, 3.0f});
+    NPC test1(window, 2, {800.0f, 500.0f});
 
     // creating clock for dt
     sf::Clock clock;

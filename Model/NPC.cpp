@@ -2,6 +2,13 @@
 
 NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed) : 
     window(window), type(type), GameCharacter(pos, hp, armor, cash, movementSpeed){
+        //loading NPC's texture
+        texture.loadFromFile("../Textures/Textures.png");
+        sprite.setTexture(texture);
+        //setting NPC's scale
+        sprite.setScale(5.0f, 5.0f);
+        //setting NPC's position
+        sprite.setPosition(pos);
         //loading npcs sprites' rectangles
         //chester
         if(type == 0){
