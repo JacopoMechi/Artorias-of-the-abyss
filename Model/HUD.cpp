@@ -41,17 +41,21 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     trackerSprite.setTexture(hudTexture);
     trackerSprite.setTextureRect({116, 736, 266, 56});
     trackerSprite.setScale(1.5f, 1.5f);
-    //obscure interact sprite
+    //obscure interact button sprite
     obscureInteract.setTexture(hudTexture);
     obscureInteract.setTextureRect({1756, 733, 63, 63});
     obscureInteract.setScale(0.87f, 0.87f);
     obscureInteract.setPosition(1750,575);
-    //obscure dash sprite
+    //obscure dash button sprite
     obscureDash.setTexture(hudTexture);
     obscureDash.setTextureRect({1756, 733, 63, 63});
     obscureDash.setScale(0.87f, 0.87f);
     obscureDash.setPosition(1750, 445);
-
+    //obscure attack button sprite
+    obscureAttack.setTexture(hudTexture);
+    obscureAttack.setTextureRect({1756, 733, 63, 63});
+    obscureAttack.setScale(0.87f, 0.87f);
+    obscureAttack.setPosition(1750, 375);
 
     //TODO only for tests. Needs to be removed
     consumables[3] -> setItemCount(1);
@@ -77,6 +81,9 @@ void HUD::draw() const{
     //obscure dash button when dashes uses reaches 0
     if(hero.getDash() == 0)
         window.draw(obscureDash);
+    //obscure attack
+    if(!hero.getCanAttack())
+        window.draw(obscureAttack);
     //drawing quickslots items
     if(quickSlot[0] != NULL)
         quickSlot[0] -> displayItem(850, 975, window);
@@ -264,7 +271,7 @@ void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
 
     //hero's dash and attack handling
     //for attacking
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F)
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && hero.getCanAttack())
         hero.attack();
     //for dashes
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)

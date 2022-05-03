@@ -35,6 +35,10 @@ void Hero::setCooldown(float dashTimeHolding){
     this -> dashTimeHolding = dashTimeHolding;
 }
 
+bool Hero::getCanAttack(){
+    return canAttack;
+}
+
 void Hero::dash(){
     //for dashing, we just need to move the character position farther only in the moment that we press Space key
     dashing = dashDistance*dir;
@@ -74,22 +78,24 @@ void Hero::attack() {
     }
     actionStarting = true;
     iFrame = 0;
+    canAttack = false;
 }
 
 //handling character action inputs like attack, roll, interact
 void Hero::updateDelayAndInputs(sf::Event keyInput, float dt) {
     //updating delay time
     delayTime = dt;
-    /*//for attacking//TODO
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F)
-        this -> attack();
-    //for dashes
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
-        this -> dash();
-    //for using items in quickslot
-    //for dash cooldown*/
     
-    //handling dash cooldowns
+    //handling attack cooldown
+    if(!canAttack){
+        attackTime += dt;
+        if(attackTime >= attackTimeHolding){
+            attackTime = 0;
+            canAttack = true;
+        }
+    }
+
+    //handling dash cooldown
     if(dashCount < maxDashes){
         dashTime += dt;
         if(dashTime >= dashTimeHolding){

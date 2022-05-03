@@ -25,6 +25,9 @@ public:
     int getCooldown();
     void setCooldown(float dashTimeHolding);
 
+    //for hud to obscure attack
+    bool getCanAttack();
+
     float getHeroPosY();
     void setHeroPosY(float heroPosY);
 
@@ -62,6 +65,11 @@ protected:
     int maxDashes = 3;
     float dashTimeHolding = 1.0f;
     float dashTime = 0.0f;
+
+    //handling attack cooldown
+    bool canAttack = true;
+    float attackTimeHolding = 0.1f;
+    float attackTime = 0.0f;
  
 
     float actionTime = 0.0f;
