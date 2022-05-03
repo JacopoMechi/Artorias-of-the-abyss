@@ -5,6 +5,8 @@
 #include <SFML/Graphics.hpp>
 
 #include "RoomElement.h"
+#include "Gate.h"
+#include "Bonfire.h"
 
 class Room
 {
@@ -25,6 +27,9 @@ public:
 
 private:
     std::vector<std::unique_ptr<RoomElement>> roomElementsVector;
+    std::unique_ptr<Gate> entranceGate;
+    std::unique_ptr<Gate> exitGate;
+    std::unique_ptr<Bonfire> bonfire;
     std::string roomFilePath;
     std::string roomPath1 = "../Textures/Lvl1.png";
     std::string roomPath2 = "../Textures/Lvl2.png";

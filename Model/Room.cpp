@@ -1,10 +1,9 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <string>
+#include <memory>
 
 #include "Room.h"
-#include "Gate.h"
-#include "Bonfire.h"
 
 void Room::spawnEntity(RoomElement *roomElement)
 {
@@ -30,29 +29,29 @@ Room::Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Typ
     {
     case Type::StartRoom:
         roomFilePath = this->roomPath1;
-        this->roomElementsVector.emplace_back(new Gate(true, false));
+        this->exitGate = std::make_unique<Gate>(window, true, false);
         break;
     case Type::FirstLevel:
         roomFilePath = this->roomPath1;
-        this->roomElementsVector.emplace_back(new Gate);
-        this->roomElementsVector.emplace_back(new Gate(true, false));
-        this->roomElementsVector.emplace_back(new Bonfire({500.0f, 500.0f}));
+        this->entranceGate = std::make_unique<Gate>(window);
+        this->exitGate = std::make_unique<Gate>(window, true, false);
+        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {500.0f, 500.0f}));
         break;
     case Type::SecondLevel:
         roomFilePath = this->roomPath2;
-        this->roomElementsVector.emplace_back(new Gate);
-        this->roomElementsVector.emplace_back(new Gate(true, false));
-        this->roomElementsVector.emplace_back(new Bonfire({500.0f, 500.0f}));
+        this->entranceGate = std::make_unique<Gate>(window);
+        this->exitGate = std::make_unique<Gate>(window, true, false);
+        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {500.0f, 500.0f}));
         break;
     case Type::ThirdLevel:
         roomFilePath = this->roomPath3;
-        this->roomElementsVector.emplace_back(new Gate);
-        this->roomElementsVector.emplace_back(new Gate(true, false));
-        this->roomElementsVector.emplace_back(new Bonfire({500.0f, 500.0f}));
+        this->entranceGate = std::make_unique<Gate>(window);
+        this->exitGate = std::make_unique<Gate>(window, true, false);
+        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {500.0f, 500.0f}));
         break;
     case Type::FinalBoss:
         roomFilePath = this->roomPath3;
-        this->roomElementsVector.emplace_back(new Gate);
+        this->entranceGate = std::make_unique<Gate>(window);
         break;
     }
 
