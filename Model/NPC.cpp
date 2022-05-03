@@ -57,6 +57,10 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         interactionBoxSprite.setTextureRect({993, 317, 289, 96});
         interactionBoxSprite.setScale(1.7f, 1.7f);
 
+        //setting interaction text
+        interactFont.loadFromFile("../orangekid.ttf");
+        interactText.setFont(interactFont);
+
         //tracker for buying a specific item
         trackerSprite.setTexture(hudTexture);
         trackerSprite.setTextureRect({118, 738, 264, 55});
@@ -74,7 +78,7 @@ void NPC::interact(Hero &hero) {
         if(!isShop && !isTalking){
 
             //displaying interaction box
-            this -> drawInteractBox({810, 303});
+            this -> drawInteractBox({805, 295});
 
             //diplaying text for interaction box
             if(type == 0 || type == 1){//for chester and elizabeth

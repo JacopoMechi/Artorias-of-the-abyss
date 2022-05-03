@@ -104,7 +104,7 @@ int main()
             test1.draw(window);
 
             //checking aggro for npc
-            hud.checkNPCAggro(test1);//FIXME
+            hud.checkNPCAggro(test1);
 
             // player interact with npc
             test1.interact(test);
