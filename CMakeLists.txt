@@ -4,7 +4,7 @@ project(Artorias-Of-The-Abyss VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 20)
 
 set(EXECUTABLE_NAME ArtoriasOfTheAbyss)
 
