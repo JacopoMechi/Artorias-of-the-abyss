@@ -36,7 +36,7 @@ public:
 
     void assignItem(Item *consumable, int slot);
 
-    void checkNPCAggro(NPC npc);
+    void checkNPCAggro(NPC &npc);
 
 protected:
     //for using quickslot items

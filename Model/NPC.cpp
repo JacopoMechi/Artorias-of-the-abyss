@@ -69,14 +69,6 @@ NPC::~NPC(){
 }
 
 void NPC::interact(Hero &hero) {
-    //checking if player is close enough to npc and
-    //if true, it will pop-up a box like "Press to interact"
-    //and it will be possible to press the interaction button
-    if(this -> isAggro(190, hero)){
-        aggro = true;   
-    }else
-        aggro = false;
-
     //handling npc interaction menu 
     if(isInteraction){
         if(!isShop && !isTalking){

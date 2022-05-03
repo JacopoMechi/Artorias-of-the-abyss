@@ -269,7 +269,7 @@ void HUD::assignItem(Item *consumable, int slot){
     quickAssign = false;
 }
 
-void HUD::checkNPCAggro(NPC npc){
+void HUD::checkNPCAggro(NPC &npc){
     if(npc.isAggro(190, hero)){
         npc.setAggro(true);
         NPCAggro = true;
