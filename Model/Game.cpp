@@ -58,6 +58,7 @@ Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0
         this->levels.emplace_back(new Room({}, Room::Type::FirstLevel, window));
     for (int i = 0; i <= 3; i++)
         this->levels.emplace_back(new Room({}, Room::Type::SecondLevel, window));
-    for (int i = 0; i <= 3; i++)
+    for (int i = 0; i <= 2; i++)
         this->levels.emplace_back(new Room({}, Room::Type::ThirdLevel, window));
+    this->levels.emplace_back(new Room({}, Room::Type::FinalBoss, window));
 }
