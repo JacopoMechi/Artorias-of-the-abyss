@@ -14,21 +14,24 @@ public:
         StartRoom,
         FirstLevel,
         SecondLevel,
-        ThirdLevel
+        ThirdLevel,
+        FinalBoss
     };
     Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType, sf::RenderWindow &window);
     ~Room();
     void spawnEntity(RoomElement *roomElement);
     void draw();
+    bool getisClear();
 
 private:
     std::vector<std::unique_ptr<RoomElement>> roomElementsVector;
-    sf::Texture roomTexture;
-    sf::Sprite roomSprite;
     std::string roomFilePath;
     std::string roomPath1 = "../Textures/Lvl1.png";
     std::string roomPath2 = "../Textures/Lvl2.png";
     std::string roomPath3 = "../Textures/Lvl3.png";
+    sf::Texture roomTexture;
+    sf::Sprite roomSprite;
     sf::RenderWindow &window;
+    bool isClear = true; // TODO Default should be false, true for testing
 };
 #endif

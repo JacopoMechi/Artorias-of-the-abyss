@@ -19,6 +19,11 @@ void Room::draw()
         roomElement->draw(window);
 }
 
+bool Room::getisClear()
+{
+    return isClear;
+}
+
 Room::Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType, sf::RenderWindow &window) : window(window)
 {
     switch (roomType)
@@ -44,6 +49,10 @@ Room::Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Typ
         this->roomElementsVector.emplace_back(new Gate);
         this->roomElementsVector.emplace_back(new Gate(true, false));
         this->roomElementsVector.emplace_back(new Bonfire({500.0f, 500.0f}));
+        break;
+    case Type::FinalBoss:
+        roomFilePath = this->roomPath3;
+        this->roomElementsVector.emplace_back(new Gate);
         break;
     }
 
