@@ -80,14 +80,14 @@ void Hero::attack() {
 void Hero::updateDelayAndInputs(sf::Event keyInput, float dt) {
     //updating delay time
     delayTime = dt;
-    //for attacking
+    /*//for attacking//TODO
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F)
         this -> attack();
     //for dashes
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
         this -> dash();
     //for using items in quickslot
-    //for dash cooldown
+    //for dash cooldown*/
     
     //handling dash cooldowns
     if(dashCount < maxDashes){

@@ -46,6 +46,11 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     obscureInteract.setTextureRect({1756, 733, 63, 63});
     obscureInteract.setScale(0.87f, 0.87f);
     obscureInteract.setPosition(1750,575);
+    //obscure dash sprite
+    obscureDash.setTexture(hudTexture);
+    obscureDash.setTextureRect({1756, 733, 63, 63});
+    obscureDash.setScale(0.87f, 0.87f);
+    obscureDash.setPosition(1750, 445);
 
 
     //TODO only for tests. Needs to be removed
@@ -66,8 +71,12 @@ void HUD::draw() const{
     window.draw(healthSprite);
     window.draw(quickslotSprite);
     window.draw(actionsSprite);
+    //obscure interact button when you are not close to an NPC
     if(!NPCAggro)
         window.draw(obscureInteract);
+    //obscure dash button when dashes uses reaches 0
+    if(hero.getDash() == 0)
+        window.draw(obscureDash);
     //drawing quickslots items
     if(quickSlot[0] != NULL)
         quickSlot[0] -> displayItem(850, 975, window);
@@ -246,11 +255,23 @@ void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
     }else{
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && quickSlot[0] != NULL)
             quickSlot[0] -> use(hero);
+            //if(quickslot[0] -> getItemCount() == 0)//TODO ALSO HERE 
         else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && quickSlot[1] != NULL)
             quickSlot[1] -> use(hero);
         else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3 && quickSlot[2] != NULL)
             quickSlot[2] -> use(hero);
     }
+
+    //hero's dash and attack handling
+    //for attacking
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F)
+        hero.attack();
+    //for dashes
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
+        hero.dash();
+    //obscure when dashes are not available
+    //if(hero.getDash() == 0)
+
 }
 
 //drawing assign popup

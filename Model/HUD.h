@@ -56,6 +56,8 @@ protected:
     sf::Font font;
     //obscure interact button in hud
     sf::Sprite obscureInteract;
+    //obscure dash button in hud
+    sf::Sprite obscureDash;
     //switch for some sprites like inventory, healthsprite,...
     bool isInvOpen = false;
     bool firstTab = true;
