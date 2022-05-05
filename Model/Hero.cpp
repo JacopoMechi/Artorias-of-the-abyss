@@ -2,16 +2,19 @@
 
 Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed):
     isKnight(isKnight), GameCharacter(pos, hp, armor, cash, movementSpeed){
+    texture.loadFromFile("../Textures/Textures.png");
+    sprite.setTexture(texture);
     //setting hero's sprite
     //this will be a default position with which the player will spawn
-    if(isKnight)
+    if(isKnight){
         defaultRect = {0, 0, 16, 22};
-    else
+        auraShield.setTexture(texture);
+        auraShield.setTextureRect({501, 124, 20, 26});
+        auraShield.setScale(7.0f, 7.0f);
+    }else
         defaultRect = {0, 83, 15, 21};
     lastFrameRect = defaultRect;//for updating the sprite
     frameRect = defaultRect; 
-    texture.loadFromFile("../Textures/Textures.png");
-    sprite.setTexture(texture);
     sprite.setScale(7.5f, 7.5f);
 }
 
@@ -39,6 +42,14 @@ bool Hero::getCanAttack(){
     return canAttack;
 }
 
+bool Hero::getAuraReady(){
+    return auraReady;
+}
+
+void Hero::setAuraReady(bool auraReady){
+    this -> auraReady = auraReady;
+}
+
 void Hero::dash(){
     //for dashing, we just need to move the character position farther only in the moment that we press Space key
     dashing = dashDistance*dir;
@@ -57,8 +68,9 @@ void Hero::useBonfire() {
 }
 
 
-void Hero::raiseShield() {
-
+void Hero::blockDamage(sf::RenderWindow &window) {
+    auraShield.setPosition((pos.x-10), (pos.y-3));//(pos.x+3), (pos.y+3)
+    window.draw(auraShield);
 }
 
 
@@ -95,6 +107,15 @@ void Hero::updateDelayAndInputs(sf::Event keyInput, float dt) {
         }
     }
 
+    //handling shield aura time
+    if(!auraReady){
+        auraTime += dt;
+        if(auraTime >= auraTimeHolding){//TODO or when character got hit
+            auraTime = 0;
+            auraReady = true;
+        }
+    }
+
     //handling dash cooldown
     if(dashCount < maxDashes){
         dashTime += dt;
@@ -128,12 +149,4 @@ void Hero::movement(bool isInventoryOpen, bool isInteracting){
 
 void Hero::respawn(float posX,float posY) {
     //finish hero
-}
-
-Weapon* Hero::getShield() {
-    return leftWeapon;
-}
-
-void Hero::setShield(Weapon* leftWeapon) {
-    this->leftWeapon = leftWeapon;
 }

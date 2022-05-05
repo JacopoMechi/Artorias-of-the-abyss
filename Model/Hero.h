@@ -28,6 +28,10 @@ public:
     //for hud to obscure attack
     bool getCanAttack();
 
+    //getter and setter for aura 
+    bool getAuraReady();
+    void setAuraReady(bool auraReady);
+
     float getHeroPosY();
     void setHeroPosY(float heroPosY);
 
@@ -39,7 +43,7 @@ public:
     
     void useBonfire();
 
-    void raiseShield();
+    void blockDamage(sf::RenderWindow &window);
     
     void attack() override;
 
@@ -49,9 +53,6 @@ public:
     
     void respawn(float posX, float posY);
 
-    Weapon* getShield();
-    void setShield(Weapon* weapon);
-
 protected: 
 
     int dialogueTracker = 0;
@@ -59,6 +60,14 @@ protected:
     Weapon* leftWeapon;
     bool isKnight;
     float delayTime;
+
+    //shield aura sprite
+    sf::Sprite auraShield;
+
+    //handling shield aura time
+    bool auraReady = true;
+    float auraTimeHolding = 1.0f;
+    float auraTime = 0.0f;
 
     //handling dashes
     int dashCount = 3;

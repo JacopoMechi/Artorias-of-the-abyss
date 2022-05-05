@@ -84,6 +84,9 @@ void HUD::draw() const{
     //obscure attack
     if(!hero.getCanAttack())
         window.draw(obscureAttack);
+    //handling aura shield active time
+    if(!hero.getAuraReady())    
+        hero.blockDamage(window);     
     //drawing quickslots items
     if(quickSlot[0] != NULL)
         quickSlot[0] -> displayItem(850, 975, window);
@@ -276,8 +279,10 @@ void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
     //for dashes
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
         hero.dash();
-    //obscure when dashes are not available
-    //if(hero.getDash() == 0)
+    //for raising a shield aura
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::LShift)
+        hero.setAuraReady(false);
+    //hero.blockDamage(window);    
 
 }
 
