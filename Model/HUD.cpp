@@ -56,6 +56,11 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     obscureAttack.setTextureRect({1756, 733, 63, 63});
     obscureAttack.setScale(0.87f, 0.87f);
     obscureAttack.setPosition(1750, 375);
+    //obscure shield aura button sprite
+    obscureAuraShield.setTexture(hudTexture);
+    obscureAuraShield.setTextureRect({1756, 733, 63, 63});
+    obscureAuraShield.setScale(0.87f, 0.87f);
+    obscureAuraShield.setPosition(1750, 508);
 
     //TODO only for tests. Needs to be removed
     consumables[3] -> setItemCount(1);
@@ -84,9 +89,11 @@ void HUD::draw() const{
     //obscure attack
     if(!hero.getCanAttack())
         window.draw(obscureAttack);
-    //handling aura shield active time
-    if(!hero.getAuraReady())    
-        hero.blockDamage(window);     
+    //handling aura shield active time and obscuring aura shield sprite
+    if(!hero.getAuraReady()){    
+        hero.blockDamage(window); 
+    }    
+    window.draw(obscureAuraShield);
     //drawing quickslots items
     if(quickSlot[0] != NULL)
         quickSlot[0] -> displayItem(850, 975, window);
@@ -126,9 +133,6 @@ void HUD::drawInventory(){
 
     //inventory interface        
     if (firstTab){
-
-        //TODO display testing for tracker
-        //window.draw(trackerSprite);
 
         //first category    
         //list of consumables

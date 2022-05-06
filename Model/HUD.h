@@ -60,6 +60,8 @@ protected:
     sf::Sprite obscureDash;
     //obscure attack button in hud
     sf::Sprite obscureAttack;
+    //obscure aura shield button in hud
+    sf::Sprite obscureAuraShield;
     //switch for some sprites like inventory, healthsprite,...
     bool isInvOpen = false;
     bool firstTab = true;
