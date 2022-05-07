@@ -27,6 +27,7 @@ public:
 
     //for hud to obscure attack
     bool getCanAttack();
+    void setCanAttack(bool canAttack);
 
     //getter and setter for aura 
     bool getAuraReady();
@@ -45,7 +46,7 @@ public:
 
     void blockDamage(sf::RenderWindow &window);
     
-    void attack() override;
+    void attack(sf::RenderWindow& window) override;
 
     void updateDelayAndInputs(sf::Event keyInput, float dt);
     
@@ -63,6 +64,9 @@ protected:
 
     //shield aura sprite
     sf::Sprite auraShield;
+
+    //sword swing sprite
+    sf::Sprite weaponAttack;
 
     //handling shield aura time
     bool auraReady = true;

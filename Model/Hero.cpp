@@ -3,7 +3,8 @@
 Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed):
     isKnight(isKnight), GameCharacter(pos, hp, armor, cash, movementSpeed){
     texture.loadFromFile("../Textures/Textures.png");
-    sprite.setTexture(texture);
+    sprite.setTexture(texture);//loading chracter's sprite
+    weaponAttack.setTexture(texture);//loading character's weapon
     //setting hero's sprite
     //this will be a default position with which the player will spawn
     if(isKnight){
@@ -11,6 +12,8 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         auraShield.setTexture(texture);
         auraShield.setTextureRect({501, 124, 20, 26});
         auraShield.setScale(7.0f, 7.0f);
+        weaponAttack.setTextureRect({3, 157, 21, 44});
+        weaponAttack.setPosition(pos.x+3, pos.y-10);
     }else
         defaultRect = {0, 83, 15, 21};
     frameRect = defaultRect; 
@@ -39,6 +42,10 @@ void Hero::setCooldown(float dashTimeHolding){
 
 bool Hero::getCanAttack(){
     return canAttack;
+}
+
+void Hero::setCanAttack(bool canAttack){
+    this -> canAttack = canAttack;
 }
 
 bool Hero::getAuraReady(){
@@ -73,8 +80,9 @@ void Hero::blockDamage(sf::RenderWindow &window) {
 }
 
 
-void Hero::attack() {
-    canAttack = false;
+void Hero::attack(sf::RenderWindow &window) {
+    if(!canAttack)
+        window.draw(weaponAttack);
 }
 
 //handling character action inputs like attack, roll, interact
