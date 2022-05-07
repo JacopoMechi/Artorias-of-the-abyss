@@ -118,7 +118,8 @@ void HUD::drawInventory(){
     this -> displayDescription();
 
     //manages switch between tabs
-    //TODO maybe it can be done better
+    //when true, inventory display consumables' tab
+    //when false, inventory display collectibles' tab
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !switching)
             this -> setFirstTab(true);
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !switching)
