@@ -78,8 +78,7 @@ void GameCharacter::receiveDamage(int points)
     setHp(HP - points);
 }
 
-void GameCharacter::attack()
-{
+void GameCharacter::attack(sf::RenderWindow &window){
 }
 
 bool GameCharacter::isAggro(float aggroDistance, GameCharacter &entity)
