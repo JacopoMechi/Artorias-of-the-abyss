@@ -13,7 +13,6 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         auraShield.setScale(7.0f, 7.0f);
     }else
         defaultRect = {0, 83, 15, 21};
-    lastFrameRect = defaultRect;//for updating the sprite
     frameRect = defaultRect; 
     sprite.setScale(7.5f, 7.5f);
 }
@@ -111,7 +110,7 @@ void Hero::updateDelayAndInputs(sf::Event keyInput, float dt) {
     }
 }
 void Hero::movement(bool isInventoryOpen, bool isInteracting){
-    if (!isInventoryOpen && !isInteracting && !actionStarting){
+    if (!isInventoryOpen && !isInteracting){
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
             dir.y = -1.0f;

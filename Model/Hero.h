@@ -79,11 +79,6 @@ protected:
     bool canAttack = true;
     float attackTimeHolding = 0.1f;
     float attackTime = 0.0f;
- 
-
-    float actionTime = 0.0f;
-    int actionFrame = 0;
-    sf::IntRect lastActionFrame = {0, 158, 31, 22};
 
     //int cooldown = 5;
     Bonfire* bonfire ;
