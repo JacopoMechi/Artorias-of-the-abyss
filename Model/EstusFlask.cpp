@@ -11,9 +11,9 @@ EstusFlask::~EstusFlask(){
 }
 
 void EstusFlask::use(Hero& hero) {
-    if (EstusFlask::getItemCount() > 0){
+    if (this -> getItemCount() > 0){
         hero.setHp(hero.getHp()+healthRestored);
-        EstusFlask::setItemCount(getItemCount()-1);
+        this -> setItemCount(getItemCount()-1);
     }
     //TODO something that blocks the hero (maybe)
 }
