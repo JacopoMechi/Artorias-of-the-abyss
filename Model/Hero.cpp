@@ -75,21 +75,6 @@ void Hero::blockDamage(sf::RenderWindow &window) {
 
 
 void Hero::attack() {
-    if(isKnight){
-        //create texture rect and set nFrames
-        if(dir.x > 0.0f){
-            frameRect = {0, 158, 31, 22};
-            lastActionFrame = frameRect;
-        }else if(dir.x < 0.0f){    
-            frameRect = {31, 158, -31, 22};
-            lastActionFrame = frameRect;
-        }else
-            frameRect = lastActionFrame;
-    }else{
-        //same here but for the mage
-    }
-    actionStarting = true;
-    iFrame = 0;
     canAttack = false;
 }
 
