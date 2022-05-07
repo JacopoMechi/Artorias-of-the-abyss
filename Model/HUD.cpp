@@ -87,6 +87,13 @@ void HUD::draw() {
         quickSlot[1] -> displayItem(937, 975, window);
     if(quickSlot[2] != NULL)
         quickSlot[2] -> displayItem(1020, 975, window);
+    //obscuring quickslot items when they are 0
+    if(quickSlot[0] != NULL && quickSlot[0] -> getItemCount() == 0)
+        this -> obscureButton({847, 971});
+    if(quickSlot[1] != NULL && quickSlot[1] -> getItemCount() == 0)
+        this -> obscureButton({932, 971});    
+    if(quickSlot[2] != NULL && quickSlot[2] -> getItemCount() == 0)
+        this -> obscureButton({1015, 970});
 }
 
 void HUD::displayHealth(GameCharacter &character){ 
@@ -255,7 +262,6 @@ void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
     }else{
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && quickSlot[0] != NULL)
             quickSlot[0] -> use(hero);
-            //if(quickslot[0] -> getItemCount() == 0)//TODO ALSO HERE 
         else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && quickSlot[1] != NULL)
             quickSlot[1] -> use(hero);
         else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3 && quickSlot[2] != NULL)
