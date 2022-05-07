@@ -22,7 +22,7 @@ public:
 
     void setFirstTab(bool firstTab);
 
-    void draw() const;
+    void draw();
 
     void displayHealth(GameCharacter &character);
 
@@ -37,6 +37,9 @@ public:
     void assignItem(Item *consumable, int slot);
 
     void checkNPCAggro(NPC &npc);
+
+    //obscuring action buttons
+    void obscureButton(sf::Vector2f pos);
 
 protected:
     //for using quickslot items
@@ -54,14 +57,16 @@ protected:
     sf::Sprite trackerSprite;
     sf::Text text;
     sf::Font font;
-    //obscure interact button in hud
+    //obscure button sprite
+    sf::Sprite obscureSprite;
+    /*//obscure interact button in hud
     sf::Sprite obscureInteract;
     //obscure dash button in hud
     sf::Sprite obscureDash;
     //obscure attack button in hud
     sf::Sprite obscureAttack;
     //obscure aura shield button in hud
-    sf::Sprite obscureAuraShield;
+    sf::Sprite obscureAuraShield;*/
     //switch for some sprites like inventory, healthsprite,...
     bool isInvOpen = false;
     bool firstTab = true;

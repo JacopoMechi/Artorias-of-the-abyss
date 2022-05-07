@@ -33,7 +33,7 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     inventorySprite.setTextureRect({89, 259, 352, 450});
     inventorySprite.setPosition(89, 259);
     inventorySprite.setScale(1.5f, 1.5f);
-    //assign popup 994x318 x y 289x98 w h
+    //assign popup
     assignSprite.setTexture(hudTexture);
     assignSprite.setTextureRect({994, 318, 289, 98});
     assignSprite.setPosition({994, 318});
@@ -41,27 +41,13 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     trackerSprite.setTexture(hudTexture);
     trackerSprite.setTextureRect({116, 736, 266, 56});
     trackerSprite.setScale(1.5f, 1.5f);
-    //obscure interact button sprite
-    obscureInteract.setTexture(hudTexture);
-    obscureInteract.setTextureRect({1756, 733, 63, 63});
-    obscureInteract.setScale(0.87f, 0.87f);
-    obscureInteract.setPosition(1750,575);
-    //obscure dash button sprite
-    obscureDash.setTexture(hudTexture);
-    obscureDash.setTextureRect({1756, 733, 63, 63});
-    obscureDash.setScale(0.87f, 0.87f);
-    obscureDash.setPosition(1750, 445);
-    //obscure attack button sprite
-    obscureAttack.setTexture(hudTexture);
-    obscureAttack.setTextureRect({1756, 733, 63, 63});
-    obscureAttack.setScale(0.87f, 0.87f);
-    obscureAttack.setPosition(1750, 375);
-    //obscure shield aura button sprite
-    obscureAuraShield.setTexture(hudTexture);
-    obscureAuraShield.setTextureRect({1756, 733, 63, 63});
-    obscureAuraShield.setScale(0.87f, 0.87f);
-    obscureAuraShield.setPosition(1750, 508);
 
+    //setting obscure button sprite
+    obscureSprite.setTexture(hudTexture);
+    obscureSprite.setTextureRect({1756, 733, 63, 63});
+    obscureSprite.setScale(0.9f, 0.9f);
+
+    
     //TODO only for tests. Needs to be removed
     consumables[3] -> setItemCount(1);
     consumables[2] -> setItemCount(1);
@@ -76,24 +62,24 @@ void HUD::setFirstTab(bool firstTab){
     this -> firstTab = firstTab;
 }
 
-void HUD::draw() const{
+void HUD::draw() {
     window.draw(healthSprite);
     window.draw(quickslotSprite);
     window.draw(actionsSprite);
-    //obscure interact button when you are not close to an NPC
-    if(!NPCAggro)
-        window.draw(obscureInteract);
-    //obscure dash button when dashes uses reaches 0
-    if(hero.getDash() == 0)
-        window.draw(obscureDash);
     //obscure attack
     if(!hero.getCanAttack())
-        window.draw(obscureAttack);
+        this -> obscureButton({1750, 375});
+    //obscure dash button when dashes uses reaches 0
+    if(hero.getDash() == 0)
+        this -> obscureButton({1750, 445});
     //handling aura shield active time and obscuring aura shield sprite
     if(!hero.getAuraReady()){    
         hero.blockDamage(window); 
-    }    
-    window.draw(obscureAuraShield);
+        this -> obscureButton({1750, 508});
+    }
+    //obscure interact button when you are not close to an NPC
+    if(!NPCAggro)
+        this -> obscureButton({1750,575});
     //drawing quickslots items
     if(quickSlot[0] != NULL)
         quickSlot[0] -> displayItem(850, 975, window);
@@ -314,4 +300,9 @@ void HUD::checkNPCAggro(NPC &npc){
         npc.setAggro(false);
         NPCAggro = false;
     }
+}
+
+void HUD::obscureButton(sf::Vector2f pos) {
+    obscureSprite.setPosition(pos);
+    window.draw(obscureSprite);
 }
