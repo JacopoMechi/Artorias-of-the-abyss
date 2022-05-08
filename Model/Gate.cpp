@@ -3,6 +3,9 @@
 
 #include "Gate.h"
 
+const sf::Vector2f Gate::leftPosition = {158.0f, 425.0f};
+const sf::Vector2f Gate::rightPosition = {1626.0f, 425.0f};
+
 bool Gate::getisOpen()
 {
     return isOpen;
@@ -27,14 +30,16 @@ Gate::Gate(sf::RenderWindow &window, bool isMirrored, bool isOpen) : RoomElement
 
     if (isMirrored)
     {
-        spriteFrames = mirroredSpriteFrames;
-        roomElementSprite.setPosition(mirroredPosition);
+        spriteFrames = SpriteFrames;
+        spriteFrames[0].left += spriteFrames[0].width;
+        spriteFrames[0].width = -spriteFrames[0].width;
+        roomElementSprite.setPosition(rightPosition);
     }
 
     else
     {
-        spriteFrames = notMirroredSpriteFrames;
-        roomElementSprite.setPosition(notMirroredPosition);
+        spriteFrames = SpriteFrames;
+        roomElementSprite.setPosition(leftPosition);
     }
 
     if (isOpen)

@@ -10,6 +10,9 @@
 class Gate : public RoomElement
 {
 public:
+    static const sf::Vector2f leftPosition;
+    static const sf::Vector2f rightPosition;
+
     bool getisOpen();
 
     void setisOpen(bool isOpen);
@@ -23,10 +26,7 @@ protected:
     bool isMirrored;
 
 private:
-    std::vector<sf::IntRect> mirroredSpriteFrames = {{260, 308, -120, 195}};
-    std::vector<sf::IntRect> notMirroredSpriteFrames = {{140, 308, 120, 195}};
-    sf::Vector2f notMirroredPosition = {158.0f, 425.0f};
-    sf::Vector2f mirroredPosition = {1626.0f, 425.0f};
+    std::vector<sf::IntRect> SpriteFrames = {{140, 308, 120, 195}};
 };
 
 #endif //_GATE_H
