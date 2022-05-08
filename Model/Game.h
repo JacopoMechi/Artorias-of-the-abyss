@@ -25,7 +25,7 @@ public:
 
 private:
     int level = 0;
-    int levelReached = 12;
+    int levelReached = 0;
     float dt = 0.0f;
     std::vector<std::unique_ptr<Room>> levels;
     Status gameStatus = Game::Status::MainMenu;

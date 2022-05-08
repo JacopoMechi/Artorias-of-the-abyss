@@ -38,6 +38,29 @@ void Game::gameLoop()
                 gameStatus = Game::Status::InGameMenu;
             else
             {
+                if (levels[level]->rightGate != nullptr)
+                {
+                    if (levels[level]->rightGate->getisOpen() &&
+                        hero.getPos().x + hero.getSize().x > levels[level]->rightGate->getPos().x &&
+                        hero.getPos().y + hero.getSize().y / 2 > levels[level]->rightGate->getPos().y &&
+                        hero.getPos().y + hero.getSize().y / 2 < levels[level]->rightGate->getPos().y + levels[level]->rightGate->getSize().y)
+                    {
+                        hero.setPos(Gate::leftPosition + sf::Vector2f{hero.getSize().x, 0});
+                        level++;
+                    }
+                }
+                if (levels[level]->leftGate != nullptr)
+                {
+                    if (levels[level]->leftGate->getisOpen() &&
+                        hero.getPos().x < levels[level]->leftGate->getPos().x + levels[level]->leftGate->getSize().x &&
+                        hero.getPos().y + hero.getSize().y / 2 > levels[level]->leftGate->getPos().y &&
+                        hero.getPos().y + hero.getSize().y / 2 < levels[level]->leftGate->getPos().y + levels[level]->leftGate->getSize().y)
+                    {
+                        hero.setPos(Gate::rightPosition - sf::Vector2f{hero.getSize().x, 0});
+                        level--;
+                        std::cout << level << std::endl;
+                    }
+                }
                 hero.movement(hud.getInvIsOpen(), false);
                 hero.update(dt);
                 hero.draw(window);
@@ -51,7 +74,7 @@ void Game::gameLoop()
     }
 }
 
-Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(true, {150.0f, 3.0f}, 1, 20, 0, 100.0f), hud(window, hero)
+Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(true, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero)
 {
     this->levels.emplace_back(new Room({}, Room::Type::StartRoom, window));
     for (int i = 0; i <= 3; i++)
