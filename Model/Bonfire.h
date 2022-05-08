@@ -10,8 +10,6 @@
 class Bonfire : public RoomElement
 {
 public:
-    void draw(sf::RenderWindow &window);
-
     void resetHp(); // TODO to be implemented
 
     void setSpawnPoint(); // TODO to be implemented
