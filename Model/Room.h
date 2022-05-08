@@ -19,6 +19,8 @@ public:
         ThirdLevel,
         FinalBoss
     };
+    std::unique_ptr<Gate> leftGate;
+    std::unique_ptr<Gate> rightGate;
     Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType, sf::RenderWindow &window);
     ~Room();
     void spawnEntity(RoomElement *roomElement);
@@ -27,8 +29,6 @@ public:
 
 private:
     std::vector<std::unique_ptr<RoomElement>> roomElementsVector;
-    std::unique_ptr<Gate> entranceGate;
-    std::unique_ptr<Gate> exitGate;
     std::unique_ptr<Bonfire> bonfire;
     std::string roomFilePath;
     std::string roomPath1 = "../Textures/Lvl1.png";
