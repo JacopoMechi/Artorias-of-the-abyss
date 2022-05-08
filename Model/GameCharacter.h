@@ -46,6 +46,8 @@ public:
 
     void update(float dt);
 
+    sf::Vector2f getSize() const;
+
 protected:
     int HP;
     int armor;
