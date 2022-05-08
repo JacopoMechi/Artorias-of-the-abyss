@@ -91,6 +91,9 @@ protected:
     //for setting weapon pos when character is moving
     float weaponPosX;
 
+    //declaring weapon's position (to flip it when character flips from right to left or from left to right)
+    sf::IntRect weaponRect;
+
     sf::Vector2f dashing;
     float dashDistance = 100.0f;
 };
