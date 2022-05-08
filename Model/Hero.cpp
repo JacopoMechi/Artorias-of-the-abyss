@@ -92,7 +92,8 @@ void Hero::attack(sf::RenderWindow &window) {
                 weaponAttack.setPosition(pos.x-110, pos.y-50);
             }    
         }
-        window.draw(weaponAttack);}
+        window.draw(weaponAttack);
+    }
 }
 
 //handling character action inputs like attack, roll, interact
