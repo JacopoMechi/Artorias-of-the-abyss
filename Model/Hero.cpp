@@ -14,6 +14,7 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         auraShield.setScale(7.0f, 7.0f);
         weaponRect = {3, 157, 21, 44};
         weaponAttack.setScale(7.5f, 7.5f);
+        nWeaponFrames = 5;
     }else
         defaultRect = {0, 83, 15, 21};
     weaponAttack.setTextureRect(weaponRect);
@@ -83,16 +84,32 @@ void Hero::blockDamage(sf::RenderWindow &window) {
 
 void Hero::attack(sf::RenderWindow &window) {
     if(!canAttack){
+        //setting position and rectangles of the weapon
         if(isKnight){
             if(dir.x > 0.0f){
-                weaponAttack.setTextureRect(weaponRect);
+                currentRect = weaponRect;
                 weaponAttack.setPosition(pos.x+100, pos.y-50);
             }else if(dir.x < 0.0f){
-                weaponAttack.setTextureRect({weaponRect.width, weaponRect.top, -weaponRect.width, weaponRect.height});
-                weaponAttack.setPosition(pos.x-110, pos.y-50);
+                currentRect = {weaponRect.left, weaponRect.top, -weaponRect.width, weaponRect.height};
+                weaponAttack.setPosition(pos.x-120, pos.y-50);
             }    
         }
-        window.draw(weaponAttack);
+
+        //updating iFrames for weapon
+        weaponAnimationTime += delayTime;
+        if(weaponAnimationTime >= weaponAnimationHolding){
+            iWeaponFrame = (++iWeaponFrame) % nWeaponFrames;
+            weaponAnimationTime = 0.0f;
+            if(iWeaponFrame == 0)
+                canAttack = true;
+            //starting attack cooldown//FIXME
+        }
+
+        //drawing animation
+        if(!canAttack){
+            weaponAttack.setTextureRect({currentRect.left + iWeaponFrame*abs(currentRect.width), currentRect.top, currentRect.width, currentRect.height});
+            window.draw(weaponAttack);
+        }
     }
 }
 
@@ -103,7 +120,7 @@ void Hero::updateDelayAndInputs(sf::Event keyInput, float dt) {
     
     //handling attack cooldown
     if(!canAttack){
-        attackTime += dt;
+        attackTime += delayTime;
         if(attackTime >= attackTimeHolding){
             attackTime = 0;
             canAttack = true;
@@ -112,7 +129,7 @@ void Hero::updateDelayAndInputs(sf::Event keyInput, float dt) {
 
     //handling shield aura time
     if(!auraReady){
-        auraTime += dt;
+        auraTime += delayTime;
         if(auraTime >= auraTimeHolding){//TODO or when character got hit
             auraTime = 0;
             auraReady = true;
@@ -121,7 +138,7 @@ void Hero::updateDelayAndInputs(sf::Event keyInput, float dt) {
 
     //handling dash cooldown
     if(dashCount < maxDashes){
-        dashTime += dt;
+        dashTime += delayTime;
         if(dashTime >= dashTimeHolding){
             dashTime = 0;
             dashCount++;

@@ -112,7 +112,7 @@ void GameCharacter::update(float dt)
     animationTime += dt;
     if (animationTime >= animationHolding){
         iFrame = (++iFrame) % nFrames;
-        animationTime = 0.0;
+        animationTime = 0.0f;
     }
 
     sprite.setTextureRect({frameRect.left + iFrame * abs(frameRect.width), frameRect.top, frameRect.width, frameRect.height});

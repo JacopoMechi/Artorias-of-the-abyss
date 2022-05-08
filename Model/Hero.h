@@ -93,10 +93,11 @@ protected:
 
     //declaring weapon's position (to flip it when character flips from right to left or from left to right)
     sf::IntRect weaponRect;
+    sf::IntRect currentRect;
 
     //creating weapon's animation
     float weaponAnimationTime = 0.0f;
-    float weaponAnimationHolding = 0.08f;
+    float weaponAnimationHolding = 0.13f;
     int iWeaponFrame = 0;
     int nWeaponFrames;
 
