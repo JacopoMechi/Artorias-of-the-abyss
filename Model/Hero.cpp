@@ -88,10 +88,10 @@ void Hero::attack(sf::RenderWindow &window) {
         if(isKnight){
             if(dir.x > 0.0f){
                 currentRect = weaponRect;
-                weaponAttack.setPosition(pos.x+100, pos.y-50);
+                xVariation = 100;
             }else if(dir.x < 0.0f){
                 currentRect = {weaponRect.left, weaponRect.top, -weaponRect.width, weaponRect.height};
-                weaponAttack.setPosition(pos.x-120, pos.y-50);
+                xVariation = -120;
             }    
         }
 
@@ -107,6 +107,7 @@ void Hero::attack(sf::RenderWindow &window) {
 
         //drawing animation
         if(!canAttack){
+            weaponAttack.setPosition(pos.x+xVariation, pos.y-50);
             weaponAttack.setTextureRect({currentRect.left + iWeaponFrame*abs(currentRect.width), currentRect.top, currentRect.width, currentRect.height});
             window.draw(weaponAttack);
         }
