@@ -50,6 +50,14 @@ void Hero::setCanAttack(bool canAttack){
     this -> canAttack = canAttack;
 }
 
+bool Hero::getStartAnimation(){
+    return startAnimation;
+}
+
+void Hero::setStartAnimation(bool startAnimation){
+    this -> startAnimation = startAnimation;
+}
+
 bool Hero::getAuraReady(){
     return auraReady;
 }
@@ -83,7 +91,7 @@ void Hero::blockDamage(sf::RenderWindow &window) {
 
 
 void Hero::attack(sf::RenderWindow &window) {
-    if(!canAttack){
+    if(startAnimation){
         //setting position and rectangles of the weapon
         if(isKnight){
             if(dir.x > 0.0f){
@@ -101,12 +109,11 @@ void Hero::attack(sf::RenderWindow &window) {
             iWeaponFrame = (++iWeaponFrame) % nWeaponFrames;
             weaponAnimationTime = 0.0f;
             if(iWeaponFrame == 0)
-                canAttack = true;
-            //starting attack cooldown//FIXME
+                startAnimation = false;
         }
 
         //drawing animation
-        if(!canAttack){
+        if(startAnimation){
             weaponAttack.setPosition(pos.x+xVariation, pos.y-50);
             weaponAttack.setTextureRect({currentRect.left + iWeaponFrame*abs(currentRect.width), currentRect.top, currentRect.width, currentRect.height});
             window.draw(weaponAttack);

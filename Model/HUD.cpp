@@ -67,10 +67,10 @@ void HUD::draw() {
     window.draw(quickslotSprite);
     window.draw(actionsSprite);
     //obscure attack
-    if(!hero.getCanAttack()){
-        this -> obscureButton({1750, 375});
+    if(hero.getStartAnimation())
         hero.attack(window);
-    }
+    if(!hero.getCanAttack())
+        this -> obscureButton({1750, 375});
     //obscure dash button when dashes uses reaches 0
     if(hero.getDash() == 0)
         this -> obscureButton({1750, 445});
@@ -273,8 +273,10 @@ void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
 
     //hero's dash and attack handling
     //for attacking
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && hero.getCanAttack())
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && hero.getCanAttack()){
+        hero.setStartAnimation(true);
         hero.setCanAttack(false);
+    }
     //for dashes
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
         hero.dash();

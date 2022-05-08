@@ -29,6 +29,10 @@ public:
     bool getCanAttack();
     void setCanAttack(bool canAttack);
 
+    //for starting naimation from hud
+    bool getStartAnimation();
+    void setStartAnimation(bool startAnimation);
+
     //getter and setter for aura 
     bool getAuraReady();
     void setAuraReady(bool auraReady);
@@ -95,6 +99,9 @@ protected:
     sf::IntRect weaponRect;
     sf::IntRect currentRect;
     int xVariation;
+
+    //boolean variable to start the animation
+    bool startAnimation;
 
     //creating weapon's animation
     float weaponAnimationTime = 0.0f;
