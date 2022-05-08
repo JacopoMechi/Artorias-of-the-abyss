@@ -81,12 +81,15 @@ protected:
 
     //handling attack cooldown
     bool canAttack = true;
-    float attackTimeHolding = 0.1f;
+    float attackTimeHolding = 0.5f;
     float attackTime = 0.0f;
 
     //int cooldown = 5;
     Bonfire* bonfire ;
     int amount;
+
+    //for setting weapon pos when character is moving
+    float weaponPosX;
 
     sf::Vector2f dashing;
     float dashDistance = 100.0f;

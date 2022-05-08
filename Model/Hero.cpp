@@ -13,7 +13,7 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         auraShield.setTextureRect({501, 124, 20, 26});
         auraShield.setScale(7.0f, 7.0f);
         weaponAttack.setTextureRect({3, 157, 21, 44});
-        weaponAttack.setPosition(pos.x+3, pos.y-10);
+        weaponAttack.setScale(7.5f, 7.5f);
     }else
         defaultRect = {0, 83, 15, 21};
     frameRect = defaultRect; 
@@ -81,8 +81,14 @@ void Hero::blockDamage(sf::RenderWindow &window) {
 
 
 void Hero::attack(sf::RenderWindow &window) {
-    if(!canAttack)
-        window.draw(weaponAttack);
+    if(!canAttack){
+        if(isKnight){
+            if(dir.x > 0.0f)
+                weaponAttack.setPosition(pos.x+100, pos.y-50);
+            else if(dir.x < 0.0f)
+                weaponAttack.setPosition(pos.x-50, pos.y-50);    
+        }
+        window.draw(weaponAttack);}
 }
 
 //handling character action inputs like attack, roll, interact
