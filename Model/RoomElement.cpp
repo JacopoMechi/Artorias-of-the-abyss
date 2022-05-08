@@ -6,7 +6,7 @@
 
 #include "RoomElement.h"
 
-void RoomElement::draw(sf::RenderWindow &window)
+void RoomElement::draw()
 {
     roomElementSprite.setTextureRect(RoomElement::spriteFrames[frame]);
     window.draw(roomElementSprite);
@@ -29,6 +29,11 @@ sf::Vector2f RoomElement::getPos()
 void RoomElement::setPos(sf::Vector2f &newPos)
 {
     roomElementSprite.setPosition(newPos);
+}
+
+sf::Vector2f RoomElement::getSize() const
+{
+    return {this->roomElementSprite.getScale().x * spriteFrames[frame].width, this->roomElementSprite.getScale().y * spriteFrames[frame].height};
 }
 
 RoomElement::RoomElement(sf::RenderWindow &window, const std::string &roomElementFilePath) : window(window)
