@@ -1,6 +1,4 @@
 #include "Game.h"
-#include "Room.h"
-#include "Menu.h"
 
 void Game::setStatus(Game::Status gameStatus)
 {
