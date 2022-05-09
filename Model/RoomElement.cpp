@@ -1,7 +1,3 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <string>
-#include <vector>
 #include <iostream>
 
 #include "RoomElement.h"
@@ -21,7 +17,7 @@ void RoomElement::draw()
     window.draw(roomElementSprite);
 }
 
-sf::Vector2f RoomElement::getPos()
+sf::Vector2f RoomElement::getPos() const
 {
     return roomElementSprite.getPosition();
 }

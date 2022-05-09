@@ -13,7 +13,7 @@ public:
     static const sf::Vector2f leftPosition;
     static const sf::Vector2f rightPosition;
 
-    bool getisOpen();
+    bool getisOpen() const;
 
     void setisOpen(bool isOpen);
 

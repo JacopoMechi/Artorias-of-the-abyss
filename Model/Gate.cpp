@@ -6,7 +6,7 @@
 const sf::Vector2f Gate::leftPosition = {158.0f, 425.0f};
 const sf::Vector2f Gate::rightPosition = {1626.0f, 425.0f};
 
-bool Gate::getisOpen()
+bool Gate::getisOpen() const
 {
     return isOpen;
 }

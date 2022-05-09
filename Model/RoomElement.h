@@ -9,8 +9,7 @@ class RoomElement
 {
 public:
     void draw();
-
-    sf::Vector2f getPos();
+    sf::Vector2f getPos() const;
     void setPos(sf::Vector2f &newPos);
     sf::Vector2f getSize() const;
     RoomElement(sf::RenderWindow &window, const std::string &roomElementFilePath = "../Textures/Textures.png");
