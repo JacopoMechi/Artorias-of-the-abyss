@@ -44,6 +44,10 @@ public:
     //to stop character moving while interacting with an NPC
     bool getIsInteraction();
 
+    //to set aggro for hud
+    void setAggro(bool aggro);
+    bool getAggro();
+
 private:
 
     //getting window from main
@@ -55,10 +59,10 @@ private:
     //shop sprite declaration
     sf::Sprite shopSprite;
 
-    //interaction sprite declaration
+    //interactions sprite declaration
     sf::Sprite interactionBoxSprite;
 
-    //text for "press Q to interact" box 
+    //text for interactions
     sf::Text interactText;
     sf::Font interactFont;
 

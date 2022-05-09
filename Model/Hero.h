@@ -25,6 +25,13 @@ public:
     int getCooldown();
     void setCooldown(float dashTimeHolding);
 
+    //for hud to obscure attack
+    bool getCanAttack();
+
+    //getter and setter for aura 
+    bool getAuraReady();
+    void setAuraReady(bool auraReady);
+
     float getHeroPosY();
     void setHeroPosY(float heroPosY);
 
@@ -36,7 +43,7 @@ public:
     
     void useBonfire();
 
-    void raiseShield();
+    void blockDamage(sf::RenderWindow &window);
     
     void attack() override;
 
@@ -46,9 +53,6 @@ public:
     
     void respawn(float posX, float posY);
 
-    Weapon* getShield();
-    void setShield(Weapon* weapon);
-
 protected: 
 
     int dialogueTracker = 0;
@@ -57,11 +61,24 @@ protected:
     bool isKnight;
     float delayTime;
 
+    //shield aura sprite
+    sf::Sprite auraShield;
+
+    //handling shield aura time
+    bool auraReady = true;
+    float auraTimeHolding = 1.0f;
+    float auraTime = 0.0f;
+
     //handling dashes
     int dashCount = 3;
     int maxDashes = 3;
     float dashTimeHolding = 1.0f;
     float dashTime = 0.0f;
+
+    //handling attack cooldown
+    bool canAttack = true;
+    float attackTimeHolding = 0.1f;
+    float attackTime = 0.0f;
  
 
     float actionTime = 0.0f;

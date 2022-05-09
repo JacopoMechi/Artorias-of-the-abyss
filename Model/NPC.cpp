@@ -2,6 +2,13 @@
 
 NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed) : 
     window(window), type(type), GameCharacter(pos, hp, armor, cash, movementSpeed){
+        //loading NPC's texture
+        texture.loadFromFile("../Textures/Textures.png");
+        sprite.setTexture(texture);
+        //setting NPC's scale
+        sprite.setScale(5.0f, 5.0f);
+        //setting NPC's position
+        sprite.setPosition(pos);
         //loading npcs sprites' rectangles
         //chester
         if(type == 0){
@@ -48,8 +55,9 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         //interaction box sprite
         interactionBoxSprite.setTexture(hudTexture);
         interactionBoxSprite.setTextureRect({993, 317, 289, 96});
+        interactionBoxSprite.setScale(1.7f, 1.7f);
 
-        //text for ineteracting box
+        //setting interaction text
         interactFont.loadFromFile("../orangekid.ttf");
         interactText.setFont(interactFont);
 
@@ -65,28 +73,12 @@ NPC::~NPC(){
 }
 
 void NPC::interact(Hero &hero) {
-    //checking if player is close enough to npc and
-    //if true, it will pop-up a box like "Press to interact"
-    //and it will be possible to press the interaction button
-    if(this -> isAggro(190, hero)){
-        if(!isInteraction){
-           //reset interact box to default
-           interactionBoxSprite.setScale(1.0f, 1.0f);
-           this -> drawInteractBox({815,862});//for the interaction box trigger
-           this -> drawText("Premi Q per interagire", {855, 889});//for displaying message
-        }
-        aggro = true;   
-    }else
-        aggro = false;
-
     //handling npc interaction menu 
     if(isInteraction){
         if(!isShop && !isTalking){
-            //reset interact box to default
-            interactionBoxSprite.setScale(1.0f, 1.0f);
 
             //displaying interaction box
-            this -> drawInteractBox({810, 303});
+            this -> drawInteractBox({805, 295});
 
             //diplaying text for interaction box
             if(type == 0 || type == 1){//for chester and elizabeth
@@ -125,8 +117,6 @@ void NPC::interact(Hero &hero) {
             }
         //starting dialogue with npc    
         }else if(isTalking){
-            //upscaling interact box
-            interactionBoxSprite.setScale(1.7f, 1.7f);
             //showing npc's dialogue box
             this -> drawInteractBox({800, 303});
             //showing dialouge
@@ -192,4 +182,12 @@ void NPC::drawTracker(sf::Vector2f pos){
 
 bool NPC::getIsInteraction(){
     return isInteraction;
+}
+
+//set aggro for HUD class
+void NPC::setAggro(bool aggro){
+    this -> aggro = aggro;
+}
+bool NPC::getAggro(){
+    return aggro;
 }

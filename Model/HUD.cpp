@@ -33,11 +33,21 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     inventorySprite.setTextureRect({89, 259, 352, 450});
     inventorySprite.setPosition(89, 259);
     inventorySprite.setScale(1.5f, 1.5f);
-    //assign popup 994x318 x y 289x98 w h
+    //assign popup
     assignSprite.setTexture(hudTexture);
     assignSprite.setTextureRect({994, 318, 289, 98});
     assignSprite.setPosition({994, 318});
+    //tracker for description and items in shop //TODO check if shop is here
+    trackerSprite.setTexture(hudTexture);
+    trackerSprite.setTextureRect({116, 736, 266, 56});
+    trackerSprite.setScale(1.5f, 1.5f);
 
+    //setting obscure button sprite
+    obscureSprite.setTexture(hudTexture);
+    obscureSprite.setTextureRect({1756, 733, 63, 63});
+    obscureSprite.setScale(0.9f, 0.9f);
+
+    
     //TODO only for tests. Needs to be removed
     consumables[3] -> setItemCount(1);
     consumables[2] -> setItemCount(1);
@@ -52,10 +62,24 @@ void HUD::setFirstTab(bool firstTab){
     this -> firstTab = firstTab;
 }
 
-void HUD::draw() const{
+void HUD::draw() {
     window.draw(healthSprite);
     window.draw(quickslotSprite);
     window.draw(actionsSprite);
+    //obscure attack
+    if(!hero.getCanAttack())
+        this -> obscureButton({1750, 375});
+    //obscure dash button when dashes uses reaches 0
+    if(hero.getDash() == 0)
+        this -> obscureButton({1750, 445});
+    //handling aura shield active time and obscuring aura shield sprite
+    if(!hero.getAuraReady()){    
+        hero.blockDamage(window); 
+        this -> obscureButton({1750, 508});
+    }
+    //obscure interact button when you are not close to an NPC
+    if(!NPCAggro)
+        this -> obscureButton({1750,575});
     //drawing quickslots items
     if(quickSlot[0] != NULL)
         quickSlot[0] -> displayItem(850, 975, window);
@@ -63,6 +87,13 @@ void HUD::draw() const{
         quickSlot[1] -> displayItem(937, 975, window);
     if(quickSlot[2] != NULL)
         quickSlot[2] -> displayItem(1020, 975, window);
+    //obscuring quickslot items when they are 0
+    if(quickSlot[0] != NULL && quickSlot[0] -> getItemCount() == 0)
+        this -> obscureButton({847, 971});
+    if(quickSlot[1] != NULL && quickSlot[1] -> getItemCount() == 0)
+        this -> obscureButton({932, 971});    
+    if(quickSlot[2] != NULL && quickSlot[2] -> getItemCount() == 0)
+        this -> obscureButton({1015, 970});
 }
 
 void HUD::displayHealth(GameCharacter &character){ 
@@ -83,10 +114,15 @@ void HUD::drawInventory(){
     tabText.setCharacterSize(35);
     std::string tab;
 
+    //calling description for showing the items in the specific
+    this -> displayDescription();
+
     //manages switch between tabs
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+    //when true, inventory display consumables' tab
+    //when false, inventory display collectibles' tab
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !switching)
             this -> setFirstTab(true);
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !switching)
             this -> setFirstTab(false);     
 
     //inventory interface        
@@ -127,7 +163,6 @@ void HUD::drawInventory(){
         collectibles[1+(4*inventoryScroll)].displayName(window, 235, 565);
         //for detailed items description
     }
-    this -> displayDescription();
     tabText.setString(tab);
     window.draw(tabText);    
 }
@@ -146,11 +181,21 @@ void HUD::displayDescription(){
             text.setString(consumables[descriptionScroll] -> getItemDescription());
             consumables[descriptionScroll] -> displayItem(760, 450, window);
             consumables[descriptionScroll] -> displayName(window, 780, 315);
+            sf::Vector2f position(130, 440+(105*descriptionScroll));
+            trackerSprite.setPosition({position});//to highlight the item in the inventory
+            window.draw(trackerSprite);
         }else{
             //shows description of second category
             collectibles[descriptionScroll].displayItem(760, 450, window);
             collectibles[descriptionScroll].displayName(window, 780, 315);
             text.setString(collectibles[descriptionScroll].getItemDescription());
+            sf::Vector2f position(130, 440+(105*(descriptionScroll%4)));//for switching category while scrolling through descriptions
+            if (descriptionScroll > 3)
+                inventoryScroll = 1;
+            else
+                inventoryScroll = 0;
+            trackerSprite.setPosition({position});//to highlight the item in the inventory
+            window.draw(trackerSprite);
         }
         window.draw(text);
         drawQuickSlot();
@@ -223,6 +268,19 @@ void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
         else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3 && quickSlot[2] != NULL)
             quickSlot[2] -> use(hero);
     }
+
+    //hero's dash and attack handling
+    //for attacking
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && hero.getCanAttack())
+        hero.attack();
+    //for dashes
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
+        hero.dash();
+    //for raising a shield aura
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::LShift)
+        hero.setAuraReady(false);
+    //hero.blockDamage(window);    
+
 }
 
 //drawing assign popup
@@ -239,4 +297,19 @@ void HUD::drawQuickSlot(){
 void HUD::assignItem(Item *consumable, int slot){
     quickSlot[slot] = consumable;
     quickAssign = false;
+}
+
+void HUD::checkNPCAggro(NPC &npc){
+    if(npc.isAggro(190, hero)){
+        npc.setAggro(true);
+        NPCAggro = true;
+    }else{
+        npc.setAggro(false);
+        NPCAggro = false;
+    }
+}
+
+void HUD::obscureButton(sf::Vector2f pos) {
+    obscureSprite.setPosition(pos);
+    window.draw(obscureSprite);
 }

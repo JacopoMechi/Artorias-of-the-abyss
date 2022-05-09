@@ -9,6 +9,7 @@
 #include "GreenBlossom.h"
 #include "HomewardBone.h"
 #include "Pendant.h"
+#include "NPC.h"
 
 class HUD
 {
@@ -21,7 +22,7 @@ public:
 
     void setFirstTab(bool firstTab);
 
-    void draw() const;
+    void draw();
 
     void displayHealth(GameCharacter &character);
 
@@ -34,6 +35,11 @@ public:
     void drawQuickSlot();
 
     void assignItem(Item *consumable, int slot);
+
+    void checkNPCAggro(NPC &npc);
+
+    //obscuring action buttons
+    void obscureButton(sf::Vector2f pos);
 
 protected:
     //for using quickslot items
@@ -48,8 +54,19 @@ protected:
     sf::Sprite inventorySprite;
     sf::Sprite descriptionSprite;
     sf::Sprite assignSprite;
+    sf::Sprite trackerSprite;
     sf::Text text;
     sf::Font font;
+    //obscure button sprite
+    sf::Sprite obscureSprite;
+    /*//obscure interact button in hud
+    sf::Sprite obscureInteract;
+    //obscure dash button in hud
+    sf::Sprite obscureDash;
+    //obscure attack button in hud
+    sf::Sprite obscureAttack;
+    //obscure aura shield button in hud
+    sf::Sprite obscureAuraShield;*/
     //switch for some sprites like inventory, healthsprite,...
     bool isInvOpen = false;
     bool firstTab = true;
@@ -57,6 +74,8 @@ protected:
     int descriptionScroll = 0;
     bool switching = false;
     bool quickAssign = false;
+    //to get NPC aggro in hud for interactions
+    bool NPCAggro = false;
 
     //for displaying items in quickslot
     //{"empty slot", 0, "...", 0, 0, 129, 4, 1, 1}
