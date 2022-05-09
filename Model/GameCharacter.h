@@ -38,7 +38,7 @@ public:
 
     // virtual void movement() = 0;//in commit add "movement and attack, in gamecharacter class, are now base methods"
 
-    virtual void attack();
+    virtual void attack(sf::RenderWindow& window);
 
     bool isAggro(float aggroDistance, GameCharacter &entity);
 
@@ -61,9 +61,8 @@ protected:
     sf::Sprite sprite;
     sf::Texture texture;
     sf::IntRect frameRect;
-    sf::IntRect lastFrameRect;
-    sf::IntRect defaultRect;        // for resetting character in the right position
-    float animationHolding = 0.08f; // for max time cap
+    sf::IntRect defaultRect;//for resetting character in the right position
+    float animationHolding = 0.08f;// for max time cap
     int nFrames;
     int iFrame = 0;
     float animationTime = 0.0f;

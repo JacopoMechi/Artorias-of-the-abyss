@@ -78,8 +78,7 @@ void GameCharacter::receiveDamage(int points)
     setHp(HP - points);
 }
 
-void GameCharacter::attack()
-{
+void GameCharacter::attack(sf::RenderWindow &window){
 }
 
 bool GameCharacter::isAggro(float aggroDistance, GameCharacter &entity)
@@ -101,43 +100,19 @@ void GameCharacter::update(float dt)
     pos += vel * dt;
 
     nFrames = 8;
-    if (actionStarting)
-    {
-        nFrames = 4;
-        animationHolding = 0.15f;
-    }
-    else if (dir.x > 0.0f)
-    {
+    if (dir.x > 0.0f){
         frameRect = defaultRect;
-        lastFrameRect = frameRect; // to set the right position of the caracter when the action animation is over
-    }
-    else if (dir.x < 0.0f)
-    {
-        frameRect = {defaultRect.width, defaultRect.top, -defaultRect.width, defaultRect.height}; // flipped sprite
-
-        lastFrameRect = frameRect; // flipped sprite
-    }
-    else if (dir.y == 0)
-    {
+    }else if (dir.x < 0.0f){
+        frameRect = {defaultRect.width, defaultRect.top, -defaultRect.width, defaultRect.height};//flipped sprite
+    }else if(dir.y == 0){
         nFrames = 1;
-    }
+    } 
 
-    // check when animationTime reaches max gap (animationHolding): this means that is time to change sprite rect
+    //checking when animationTime reaches max gap (animationHolding): this means that is time to change sprite frame rect
     animationTime += dt;
-    if (animationTime >= animationHolding)
-    {
+    if (animationTime >= animationHolding){
         iFrame = (++iFrame) % nFrames;
         animationTime = 0.0f;
-        if (iFrame == nFrames - 1)
-        {
-            if (actionStarting)
-            {
-                actionStarting = false;
-                frameRect = lastFrameRect;
-                iFrame = 1;
-            }
-            animationHolding = 0.08f;
-        }
     }
 
     sprite.setTextureRect({frameRect.left + iFrame * abs(frameRect.width), frameRect.top, frameRect.width, frameRect.height});

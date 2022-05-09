@@ -27,6 +27,11 @@ public:
 
     //for hud to obscure attack
     bool getCanAttack();
+    void setCanAttack(bool canAttack);
+
+    //for starting naimation from hud
+    bool getStartAnimation();
+    void setStartAnimation(bool startAnimation);
 
     //getter and setter for aura 
     bool getAuraReady();
@@ -45,7 +50,7 @@ public:
 
     void blockDamage(sf::RenderWindow &window);
     
-    void attack() override;
+    void attack(sf::RenderWindow& window) override;
 
     void updateDelayAndInputs(sf::Event keyInput, float dt);
     
@@ -64,6 +69,9 @@ protected:
     //shield aura sprite
     sf::Sprite auraShield;
 
+    //sword swing sprite
+    sf::Sprite weaponAttack;
+
     //handling shield aura time
     bool auraReady = true;
     float auraTimeHolding = 1.0f;
@@ -77,17 +85,29 @@ protected:
 
     //handling attack cooldown
     bool canAttack = true;
-    float attackTimeHolding = 0.1f;
+    float attackTimeHolding = 0.5f;
     float attackTime = 0.0f;
- 
-
-    float actionTime = 0.0f;
-    int actionFrame = 0;
-    sf::IntRect lastActionFrame = {0, 158, 31, 22};
 
     //int cooldown = 5;
     Bonfire* bonfire ;
     int amount;
+
+    //for setting weapon pos when character is moving
+    float weaponPosX;
+
+    //declaring weapon's position (to flip it when character flips from right to left or from left to right)
+    sf::IntRect weaponRect;
+    sf::IntRect currentRect;
+    int xVariation;
+
+    //boolean variable to start the animation
+    bool startAnimation;
+
+    //creating weapon's animation
+    float weaponAnimationTime = 0.0f;
+    float weaponAnimationHolding = 0.13f;
+    int iWeaponFrame = 0;
+    int nWeaponFrames;
 
     sf::Vector2f dashing;
     float dashDistance = 100.0f;
