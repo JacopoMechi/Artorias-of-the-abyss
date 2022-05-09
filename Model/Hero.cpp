@@ -94,10 +94,10 @@ void Hero::attack(sf::RenderWindow &window) {
     if(startAnimation){
         //setting position and rectangles of the weapon
         if(isKnight){
-            if(dir.x > 0.0f){
+            if(frameRect.width > 0){
                 currentRect = weaponRect;
                 xVariation = 100;
-            }else if(dir.x < 0.0f){
+            }else if(frameRect.width < 0){
                 currentRect = {weaponRect.left, weaponRect.top, -weaponRect.width, weaponRect.height};
                 xVariation = -120;
             }    
