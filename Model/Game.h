@@ -27,6 +27,7 @@ private:
     int level = 0;
     int levelReached = 0;
     float dt = 0.0f;
+    bool NPCInteraction = false;//to block character when is interacting with an NPC
     std::vector<std::unique_ptr<Room>> levels;
     Status gameStatus = Game::Status::MainMenu;
     Menu mainMenu;

@@ -15,6 +15,7 @@ void Game::gameLoop()
             hero.updateDelayAndInputs(event, dt);
             if (event.type == sf::Event::Closed)
                 window.close();
+            hud.updateEvent(event, NPCInteraction);
         }
         window.clear(sf::Color::Black);
         levels[level]->draw();
@@ -59,7 +60,7 @@ void Game::gameLoop()
                         std::cout << level << std::endl;
                     }
                 }
-                hero.movement(hud.getInvIsOpen(), false);
+                hero.movement(hud.getInvIsOpen(), NPCInteraction);
                 hero.update(dt);
                 hero.draw(window);
                 hud.draw();
