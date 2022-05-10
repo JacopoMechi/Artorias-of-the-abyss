@@ -35,7 +35,7 @@ Room::Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Typ
     {
     case Type::StartRoom:
         roomFilePath = this->roomPath1;
-        this->rightGate = std::make_unique<Gate>(window, true, false);
+        this->rightGate = std::make_unique<Gate>(window, true, true);
         break;
     case Type::FirstLevel:
         roomFilePath = this->roomPath1;
