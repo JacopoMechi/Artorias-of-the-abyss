@@ -1,13 +1,14 @@
 #include "Hero.h"
 
-Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed):
-    isKnight(isKnight), GameCharacter(pos, hp, armor, cash, movementSpeed){
+Hero::Hero(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, float movementSpeed, bool isKnight) : GameCharacter(window, pos, hp, movementSpeed), isKnight(isKnight)
+{
     texture.loadFromFile("../Textures/Textures.png");
-    sprite.setTexture(texture);//loading chracter's sprite
-    weaponAttack.setTexture(texture);//loading character's weapon
-    //setting hero's sprite
-    //this will be a default position with which the player will spawn
-    if(isKnight){
+    sprite.setTexture(texture);       // loading chracter's sprite
+    weaponAttack.setTexture(texture); // loading character's weapon
+    // setting hero's sprite
+    // this will be a default position with which the player will spawn
+    if (isKnight)
+    {
         defaultRect = {0, 0, 16, 22};
         auraShield.setTexture(texture);
         auraShield.setTextureRect({501, 124, 20, 26});
@@ -15,18 +16,17 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         weaponRect = {3, 157, 21, 44};
         weaponAttack.setScale(7.5f, 7.5f);
         nWeaponFrames = 5;
-    }else
+    }
+    else
         defaultRect = {0, 83, 15, 21};
     weaponAttack.setTextureRect(weaponRect);
-    frameRect = defaultRect; 
+    frameRect = defaultRect;
     sprite.setScale(7.5f, 7.5f);
 }
-
 // Hero::~Hero(){//TODO
 // if (leftWeapon != nullptr)FIXME
 //     delete leftWeapon;
 //}
-
 int Hero::getDash()
 {
     return dashCount;
@@ -35,43 +35,46 @@ void Hero::setDash(int dashCount)
 {
     this->dashCount = dashCount;
 }
-
 int Hero::getCooldown()
 {
     return dashTimeHolding;
 }
-
 void Hero::setCooldown(float dashTimeHolding)
 {
     this->dashTimeHolding = dashTimeHolding;
 }
-
 bool Hero::getCanAttack()
 {
     return canAttack;
 }
-
-void Hero::setCanAttack(bool canAttack){
-    this -> canAttack = canAttack;
+void Hero::setCanAttack(bool canAttack)
+{
+    this->canAttack = canAttack;
 }
-
-bool Hero::getStartAnimation(){
+bool Hero::getStartAnimation()
+{
     return startAnimation;
 }
-
-void Hero::setStartAnimation(bool startAnimation){
-    this -> startAnimation = startAnimation;
+void Hero::setStartAnimation(bool startAnimation)
+{
+    this->startAnimation = startAnimation;
 }
-
-bool Hero::getAuraReady(){
+bool Hero::getAuraReady()
+{
     return auraReady;
 }
-
 void Hero::setAuraReady(bool auraReady)
 {
     this->auraReady = auraReady;
 }
-
+int Hero::getArmor()
+{
+    return armor;
+}
+void Hero::setArmor(int armorValue)
+{
+    armor = armorValue;
+}
 void Hero::dash()
 {
     // for dashing, we just need to move the character position farther only in the moment that we press Space key
@@ -82,88 +85,97 @@ void Hero::dash()
         pos += dashing;
     }
 }
-
 void Hero::switchZone()
 { // TODO useful later maybe
 }
-
 void Hero::useBonfire()
 {
 }
-
-void Hero::blockDamage(sf::RenderWindow &window)
+void Hero::blockDamage()
 {
     auraShield.setPosition((pos.x - 10), (pos.y - 3)); //(pos.x+3), (pos.y+3)
     window.draw(auraShield);
 }
-
-
-void Hero::attack(sf::RenderWindow &window) {
-    if(startAnimation){
-        //setting position and rectangles of the weapon
-        if(isKnight){
-            if(frameRect.width > 0){
+void Hero::attack()
+{
+    if (startAnimation)
+    {
+        // setting position and rectangles of the weapon
+        if (isKnight)
+        {
+            if (frameRect.width > 0)
+            {
                 currentRect = weaponRect;
                 xVariation = 100;
-            }else if(frameRect.width < 0){
+            }
+            else if (frameRect.width < 0)
+            {
                 currentRect = {weaponRect.left, weaponRect.top, -weaponRect.width, weaponRect.height};
                 xVariation = -120;
-            }    
+            }
         }
 
-        //updating iFrames for weapon
+        // updating iFrames for weapon
         weaponAnimationTime += delayTime;
-        if(weaponAnimationTime >= weaponAnimationHolding){
+        if (weaponAnimationTime >= weaponAnimationHolding)
+        {
             iWeaponFrame = (++iWeaponFrame) % nWeaponFrames;
             weaponAnimationTime = 0.0f;
-            if(iWeaponFrame == 0)
+            if (iWeaponFrame == 0)
                 startAnimation = false;
         }
 
-        //drawing animation
-        if(startAnimation){
-            weaponAttack.setPosition(pos.x+xVariation, pos.y-50);
-            weaponAttack.setTextureRect({currentRect.left + iWeaponFrame*abs(currentRect.width), currentRect.top, currentRect.width, currentRect.height});
+        // drawing animation
+        if (startAnimation)
+        {
+            weaponAttack.setPosition(pos.x + xVariation, pos.y - 50);
+            weaponAttack.setTextureRect({currentRect.left + iWeaponFrame * abs(currentRect.width), currentRect.top, currentRect.width, currentRect.height});
             window.draw(weaponAttack);
         }
     }
 }
-
-// handling character action inputs like attack, roll, interact
 void Hero::updateDelayAndInputs(sf::Event keyInput, float dt)
 {
     // updating delay time
     delayTime = dt;
-    
-    //handling attack cooldown
-    if(!canAttack){
+
+    // handling attack cooldown
+    if (!canAttack)
+    {
         attackTime += delayTime;
-        if(attackTime >= attackTimeHolding){
+        if (attackTime >= attackTimeHolding)
+        {
             attackTime = 0;
             canAttack = true;
         }
     }
 
-    //handling shield aura time
-    if(!auraReady){
+    // handling shield aura time
+    if (!auraReady)
+    {
         auraTime += delayTime;
-        if(auraTime >= auraTimeHolding){//TODO or when character got hit
+        if (auraTime >= auraTimeHolding)
+        { // TODO or when character got hit
             auraTime = 0;
             auraReady = true;
         }
     }
 
-    //handling dash cooldown
-    if(dashCount < maxDashes){
+    // handling dash cooldown
+    if (dashCount < maxDashes)
+    {
         dashTime += delayTime;
-        if(dashTime >= dashTimeHolding){
+        if (dashTime >= dashTimeHolding)
+        {
             dashTime = 0;
             dashCount++;
         }
     }
 }
-void Hero::movement(bool isInventoryOpen, bool isInteracting){
-    if (!isInventoryOpen && !isInteracting){
+void Hero::movement(bool isInventoryOpen, bool isInteracting)
+{
+    if (!isInventoryOpen && !isInteracting)
+    {
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && pos.y > 30)
         {
@@ -190,8 +202,8 @@ void Hero::movement(bool isInventoryOpen, bool isInteracting){
     else
         dir = {0, 0};
 }
-
 void Hero::respawn(float posX, float posY)
 {
     // finish hero
 }
+// void receiveDamage(int points) {}
