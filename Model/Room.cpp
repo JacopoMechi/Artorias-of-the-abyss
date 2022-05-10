@@ -41,19 +41,19 @@ Room::Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Typ
         roomFilePath = this->roomPath1;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
-        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {500.0f, 500.0f}));
+        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {865.5f, 391.0f}));
         break;
     case Type::SecondLevel:
         roomFilePath = this->roomPath2;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
-        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {500.0f, 500.0f}));
+        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {865.5f, 391.0f}));
         break;
     case Type::ThirdLevel:
         roomFilePath = this->roomPath3;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
-        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {500.0f, 500.0f}));
+        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {865.5f, 391.0f}));
         break;
     case Type::FinalBoss:
         roomFilePath = this->roomPath3;
