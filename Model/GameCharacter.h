@@ -11,9 +11,8 @@
 
 class GameCharacter
 {
-
 public:
-    GameCharacter(const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed);
+    GameCharacter(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, float movementSpeed);
     virtual ~GameCharacter() = default;
 
     int getHp() const;
@@ -22,25 +21,17 @@ public:
     sf::Vector2f getPos() const;
     void setPos(sf::Vector2f pos);
 
-    int getArmor() const;
-    void setArmor(int armor);
-
-    int getCash() const;
-    void setCash(int cash);
-
     int getMovementSpeed() const;
     void setMovementSpeed(int speed);
 
-    Weapon *getWeapon();
+    Weapon *getWeapon() const;
     void setWeapon(Weapon *weapon);
 
-    virtual void receiveDamage(int points);
+    // virtual void receiveDamage(int points) = 0;
 
-    // virtual void movement() = 0;//in commit add "movement and attack, in gamecharacter class, are now base methods"
+    virtual void attack() = 0;
 
-    virtual void attack(sf::RenderWindow& window);
-
-    bool isAggro(float aggroDistance, GameCharacter &entity);
+    bool isInteractable(GameCharacter &entity);
 
     void draw(sf::RenderTarget &rt) const;
 
@@ -50,10 +41,8 @@ public:
 
 protected:
     int HP;
-    int armor;
-    int cash;
     float movementSpeed;
-    float aggroDistance;
+    float interactableDistance;
     bool actionStarting = false;
     Weapon *weapon;
     sf::Vector2f pos;
@@ -61,12 +50,13 @@ protected:
     sf::Sprite sprite;
     sf::Texture texture;
     sf::IntRect frameRect;
-    sf::IntRect defaultRect;//for resetting character in the right position
-    float animationHolding = 0.08f;// for max time cap
+    sf::IntRect defaultRect;        // for resetting character in the right position
+    float animationHolding = 0.08f; // for max time cap
     int nFrames;
     int iFrame = 0;
     float animationTime = 0.0f;
     sf::Vector2f dir = {0.0f, 0.0f};
+    sf::RenderWindow &window;
 };
 
 #endif //_GAMECHARACTER_H

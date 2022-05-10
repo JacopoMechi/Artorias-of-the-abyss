@@ -1,14 +1,8 @@
 #include "GameCharacter.h"
 
-GameCharacter::GameCharacter(const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed) : pos(pos), HP(hp), armor(armor), cash(cash),
-                                                                                                          movementSpeed(movementSpeed), weapon(nullptr)
+GameCharacter::GameCharacter(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, float movementSpeed) : window(window), pos(pos), HP(hp), movementSpeed(movementSpeed), weapon(nullptr)
 {
 }
-
-/*GameCharacter::~GameCharacter() {//TODO
-    if (weapon != nullptr)
-        delete weapon;
-}*/
 
 int GameCharacter::getHp() const
 {
@@ -32,26 +26,6 @@ void GameCharacter::setPos(sf::Vector2f pos)
     this->pos = pos;
 }
 
-int GameCharacter::getArmor() const
-{
-    return armor;
-}
-
-void GameCharacter::setArmor(int armor)
-{
-    this->armor = armor;
-}
-
-int GameCharacter::getCash() const
-{
-    return cash;
-}
-
-void GameCharacter::setCash(int cash)
-{
-    this->cash = cash;
-}
-
 int GameCharacter::getMovementSpeed() const
 {
     return movementSpeed;
@@ -62,7 +36,7 @@ void GameCharacter::setMovementSpeed(int movementSpeed)
     this->movementSpeed = movementSpeed;
 }
 
-Weapon *GameCharacter::getWeapon()
+Weapon *GameCharacter::getWeapon() const
 {
     return weapon;
 }
@@ -72,18 +46,9 @@ void GameCharacter::setWeapon(Weapon *weapon)
     this->weapon = weapon;
 }
 
-void GameCharacter::receiveDamage(int points)
+bool GameCharacter::isInteractable(GameCharacter &entity)
 {
-    points = points * armor / 100;
-    setHp(HP - points);
-}
-
-void GameCharacter::attack(sf::RenderWindow &window){
-}
-
-bool GameCharacter::isAggro(float aggroDistance, GameCharacter &entity)
-{
-    if (abs(sqrt(((entity.getPos().x - pos.x) * (entity.getPos().x - pos.x)) + ((entity.getPos().y - pos.y) * (entity.getPos().y - pos.y)))) < aggroDistance)
+    if (abs(sqrt(((entity.getPos().x - pos.x) * (entity.getPos().x - pos.x)) + ((entity.getPos().y - pos.y) * (entity.getPos().y - pos.y)))) < interactableDistance)
         return true;
     else
         return false;
@@ -100,17 +65,23 @@ void GameCharacter::update(float dt)
     pos += vel * dt;
 
     nFrames = 8;
-    if (dir.x > 0.0f){
+    if (dir.x > 0.0f)
+    {
         frameRect = defaultRect;
-    }else if (dir.x < 0.0f){
-        frameRect = {defaultRect.width, defaultRect.top, -defaultRect.width, defaultRect.height};//flipped sprite
-    }else if(dir.y == 0){
+    }
+    else if (dir.x < 0.0f)
+    {
+        frameRect = {defaultRect.width, defaultRect.top, -defaultRect.width, defaultRect.height}; // flipped sprite
+    }
+    else if (dir.y == 0)
+    {
         nFrames = 1;
-    } 
+    }
 
-    //checking when animationTime reaches max gap (animationHolding): this means that is time to change sprite frame rect
+    // checking when animationTime reaches max gap (animationHolding): this means that is time to change sprite frame rect
     animationTime += dt;
-    if (animationTime >= animationHolding){
+    if (animationTime >= animationHolding)
+    {
         iFrame = (++iFrame) % nFrames;
         animationTime = 0.0f;
     }
