@@ -73,7 +73,7 @@ void Game::gameLoop()
     }
 }
 
-Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(true, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero)
+Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(window, {500.0f, 500.0f}, 1, 500.0f, true), hud(window, hero)
 {
     this->levels.emplace_back(new Room({}, Room::Type::StartRoom, window));
     for (int i = 0; i <= 3; i++)
