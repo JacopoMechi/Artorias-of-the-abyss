@@ -8,15 +8,20 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
     //setting hero's sprite
     //this will be a default position with which the player will spawn
     if(isKnight){
-        defaultRect = {0, 0, 16, 22};
-        auraShield.setTexture(texture);
+        defaultRect = {0, 0, 16, 22};//for hero's sprite
+        auraShield.setTexture(texture);//the aura shield is an exclusive of hero
         auraShield.setTextureRect({501, 124, 20, 26});
         auraShield.setScale(7.0f, 7.0f);
-        weaponRect = {3, 157, 21, 44};
+        weaponRect = {3, 157, 21, 44};//weapon's sprite
         weaponAttack.setScale(7.5f, 7.5f);
-        nWeaponFrames = 5;
-    }else
+        nWeaponFrames = 5;//for attack animation
+    }else{
+        //2,332,36,36
         defaultRect = {0, 83, 15, 21};
+        weaponRect = {2, 332, 38, 36};
+        weaponAttack.setScale(3.5f, 3.5f);
+        nWeaponFrames = 1;//TODO need to be set 
+    }
     weaponAttack.setTextureRect(weaponRect);
     frameRect = defaultRect; 
     sprite.setScale(7.5f, 7.5f);
@@ -101,14 +106,24 @@ void Hero::blockDamage(sf::RenderWindow &window)
 void Hero::attack(sf::RenderWindow &window) {
     if(startAnimation){
         //setting position and rectangles of the weapon
-        if(isKnight){
-            if(frameRect.width > 0){
-                currentRect = weaponRect;
+        if(frameRect.width > 0){
+            currentRect = weaponRect;
+            if(isKnight){
                 xVariation = 100;
-            }else if(frameRect.width < 0){
-                currentRect = {weaponRect.left, weaponRect.top, -weaponRect.width, weaponRect.height};
+                yVariation = -50;
+            }else{
+                xVariation = 10;
+                yVariation = 40;
+            }
+        }else if(frameRect.width < 0){
+            currentRect = {weaponRect.width, weaponRect.top, -weaponRect.width, weaponRect.height};
+            if(isKnight){
                 xVariation = -120;
-            }    
+                yVariation = -50;
+            }else{
+                xVariation = -20;
+                yVariation = 40;
+            }
         }
 
         //updating iFrames for weapon
@@ -122,7 +137,7 @@ void Hero::attack(sf::RenderWindow &window) {
 
         //drawing animation
         if(startAnimation){
-            weaponAttack.setPosition(pos.x+xVariation, pos.y-50);
+            weaponAttack.setPosition(pos.x+xVariation, pos.y+yVariation);
             weaponAttack.setTextureRect({currentRect.left + iWeaponFrame*abs(currentRect.width), currentRect.top, currentRect.width, currentRect.height});
             window.draw(weaponAttack);
         }

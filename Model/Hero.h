@@ -98,7 +98,9 @@ protected:
     //declaring weapon's position (to flip it when character flips from right to left or from left to right)
     sf::IntRect weaponRect;
     sf::IntRect currentRect;
+    //to set position of the weapon if it is a sword or a staff
     int xVariation;
+    int yVariation;
 
     //boolean variable to start the animation
     bool startAnimation;
