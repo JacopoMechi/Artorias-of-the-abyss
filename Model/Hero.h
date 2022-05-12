@@ -25,6 +25,9 @@ public:
     int getCooldown();
     void setCooldown(float dashTimeHolding);
 
+    //getter for isKnight
+    bool getCharacterType();
+
     //for hud to obscure attack
     bool getCanAttack();
     void setCanAttack(bool canAttack);

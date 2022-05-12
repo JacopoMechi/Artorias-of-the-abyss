@@ -51,6 +51,10 @@ void Hero::setCooldown(float dashTimeHolding)
     this->dashTimeHolding = dashTimeHolding;
 }
 
+bool Hero::getCharacterType(){
+    return isKnight;
+}
+
 bool Hero::getCanAttack()
 {
     return canAttack;

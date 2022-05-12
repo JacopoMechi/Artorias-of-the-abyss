@@ -78,7 +78,9 @@ void HUD::draw() {
     if(!hero.getAuraReady()){    
         hero.blockDamage(window); 
         this -> obscureButton({1750, 508});
-    }
+    //obscuring aura shield button if is Mage
+    }else if(!hero.getCharacterType())
+        this -> obscureButton({1750, 508});
     //obscure interact button when you are not close to an NPC
     if(!NPCAggro)
         this -> obscureButton({1750,575});
@@ -281,7 +283,7 @@ void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
         hero.dash();
     //for raising a shield aura
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::LShift)
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::LShift && hero.getCharacterType())
         hero.setAuraReady(false);
     //hero.blockDamage(window);    
 
