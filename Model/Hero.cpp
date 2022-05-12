@@ -20,7 +20,15 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         defaultRect = {0, 83, 15, 21};
         weaponRect = {2, 332, 38, 36};
         weaponAttack.setScale(3.5f, 3.5f);
-        nWeaponFrames = 1;//TODO need to be set 
+        nWeaponFrames = 1;//TODO need to be set
+        spellSprite.setTexture(texture);
+        currentSpellRect = {3, 299, 33, 20};
+        spellSprite.setTextureRect(currentSpellRect);
+        spellSprite.setScale(3.5f, 3.5f);
+        //TODO position for spell (on right side): pos.x+150, pos.y+40
+        //TODO test
+        spellPos = {pos.x+150, pos.y+40};
+        spellSprite.setPosition(spellPos);
     }
     weaponAttack.setTextureRect(weaponRect);
     frameRect = defaultRect; 
@@ -108,6 +116,7 @@ void Hero::blockDamage(sf::RenderWindow &window)
 
 
 void Hero::attack(sf::RenderWindow &window) {
+    window.draw(spellSprite);
     if(startAnimation){
         //setting position and rectangles of the weapon
         if(frameRect.width > 0){

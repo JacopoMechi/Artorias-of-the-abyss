@@ -61,6 +61,8 @@ public:
     
     void respawn(float posX, float posY);
 
+    void castSpell();
+
 protected: 
 
     int dialogueTracker = 0;
@@ -74,6 +76,12 @@ protected:
 
     //sword swing sprite
     sf::Sprite weaponAttack;
+
+    //spell system creation (after the use of the staff)
+    sf::Sprite spellSprite;
+    sf::Vector2f spellPos;
+    sf::Vector2f vel = {0.0f, 0.0f}; //for spell's speed
+    sf::IntRect currentSpellRect; //for right and left swap of the sprite
 
     //handling shield aura time
     bool auraReady = true;
