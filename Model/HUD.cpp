@@ -66,11 +66,18 @@ void HUD::draw() {
     window.draw(healthSprite);
     window.draw(quickslotSprite);
     window.draw(actionsSprite);
-    //obscure attack
+    //obscure and starting sword attack
     if(hero.getStartAnimation())
         hero.attack(window);
     if(!hero.getCanAttack())
         this -> obscureButton({1750, 375});
+    //obscure and starting spell attack
+    if(hero.getStartAnimation())//for showing the mage's staff
+        hero.attack(window);
+    if(!hero.getCanAttack()){//FIXME
+        if(hero.castSpell(window))
+            this -> obscureButton({1750, 375}); 
+    }
     //obscure dash button when dashes uses reaches 0
     if(hero.getDash() == 0)
         this -> obscureButton({1750, 445});
@@ -274,10 +281,12 @@ void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
     }
 
     //hero's dash and attack handling
-    //for attacking
+    //for attacking or casting spells
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && hero.getCanAttack()){
         hero.setStartAnimation(true);
         hero.setCanAttack(false);
+        if(!hero.getCharacterType())
+            hero.setSpellDirection();
     }
     //for dashes
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
@@ -285,7 +294,6 @@ void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
     //for raising a shield aura
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::LShift && hero.getCharacterType())
         hero.setAuraReady(false);
-    //hero.blockDamage(window);    
 
 }
 

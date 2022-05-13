@@ -22,12 +22,11 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         weaponAttack.setScale(3.5f, 3.5f);
         nWeaponFrames = 1;//TODO need to be set
         spellSprite.setTexture(texture);
-        currentSpellRect = {3, 299, 33, 20};
+        spellRect = {3, 299, 33, 20};
+        currentSpellRect = spellRect;
         spellSprite.setTextureRect(currentSpellRect);
         spellSprite.setScale(3.5f, 3.5f);
-        //TODO position for spell (on right side): pos.x+150, pos.y+40
-        //TODO test
-        spellPos = {pos.x+150, pos.y+40};
+        spellPos = {pos.x+150, pos.y+40};//because the caracter starts facing right side
         spellSprite.setPosition(spellPos);
     }
     weaponAttack.setTextureRect(weaponRect);
@@ -222,4 +221,34 @@ void Hero::movement(bool isInventoryOpen, bool isInteracting){
 void Hero::respawn(float posX, float posY)
 {
     // finish hero
+}
+
+//setting spell direction
+void Hero::setSpellDirection(){
+    if(frameRect.width > 0){//FIXME position of casting doesn't work
+        spellDirection = 1; //right
+        spellPos.x = pos.x + 150;
+        currentSpellRect = spellRect;
+    }if(frameRect.width < 0){
+        spellDirection = -1; //left
+        spellPos.x = pos.x - 150;
+        currentSpellRect = {spellRect.width, spellRect.top, -spellRect.width, spellRect.height};
+    }
+    spellPos.y = pos.y +40;
+    spellSprite.setTextureRect(currentSpellRect);
+    spellSprite.setPosition(spellPos);
+}
+
+bool Hero::castSpell(sf::RenderWindow &window){// boolean value to know when is active or not
+    if(spellPos.x < 1920 || spellPos.x > 0){ //to set the range of the spell//TODO needs to be adjusted (width of the screen)        
+
+        //to move the spell horizzontaly
+        spellPos.x += spellSpeed*delayTime*spellDirection; 
+        spellSprite.setPosition(spellPos);
+        
+        //printing on screen
+        window.draw(spellSprite);
+        return true;
+    }else
+        return false;
 }

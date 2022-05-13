@@ -67,6 +67,8 @@ protected:
     bool quickAssign = false;
     //to get NPC aggro in hud for interactions
     bool NPCAggro = false;
+    //setting spell direction for hero
+    int spellDirection; //it can be 1(right) or -1(left)
 
     //for displaying items in quickslot
     //{"empty slot", 0, "...", 0, 0, 129, 4, 1, 1}

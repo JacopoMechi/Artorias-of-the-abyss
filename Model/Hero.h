@@ -61,7 +61,9 @@ public:
     
     void respawn(float posX, float posY);
 
-    void castSpell();
+    void setSpellDirection();
+
+    bool castSpell(sf::RenderWindow &window);
 
 protected: 
 
@@ -80,8 +82,11 @@ protected:
     //spell system creation (after the use of the staff)
     sf::Sprite spellSprite;
     sf::Vector2f spellPos;
-    sf::Vector2f vel = {0.0f, 0.0f}; //for spell's speed
-    sf::IntRect currentSpellRect; //for right and left swap of the sprite
+    float spellSpeed = 500; //for spell's speed
+    //for right and left swap of the sprite
+    sf::IntRect spellRect;
+    sf::IntRect currentSpellRect; 
+    int spellDirection = 1; //to set direction in cast method //1 because characters starts from the right
 
     //handling shield aura time
     bool auraReady = true;
