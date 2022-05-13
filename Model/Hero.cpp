@@ -79,6 +79,14 @@ void Hero::setStartAnimation(bool startAnimation){
     this -> startAnimation = startAnimation;
 }
 
+bool Hero::getStartingSpell(){
+    return startSpell;
+}
+
+void Hero::setStartingSpell(bool startSpell){
+    this -> startSpell = startSpell;
+}
+
 bool Hero::getAuraReady(){
     return auraReady;
 }
@@ -225,7 +233,7 @@ void Hero::respawn(float posX, float posY)
 
 //setting spell direction
 void Hero::setSpellDirection(){
-    if(frameRect.width > 0){//FIXME position of casting doesn't work
+    if(frameRect.width > 0){
         spellDirection = 1; //right
         spellPos.x = pos.x + 150;
         currentSpellRect = spellRect;
@@ -239,16 +247,17 @@ void Hero::setSpellDirection(){
     spellSprite.setPosition(spellPos);
 }
 
-bool Hero::castSpell(sf::RenderWindow &window){// boolean value to know when is active or not
-    if(spellPos.x < 1920 || spellPos.x > 0){ //to set the range of the spell//TODO needs to be adjusted (width of the screen)        
+void Hero::castSpell(sf::RenderWindow &window){// boolean value to know when is active or not
+    if(startSpell){
+        if(0 < spellPos.x && spellPos.x < 1920){ //to set the range of the spell//TODO needs to be adjusted (width of the screen)        
 
-        //to move the spell horizzontaly
-        spellPos.x += spellSpeed*delayTime*spellDirection; 
-        spellSprite.setPosition(spellPos);
-        
-        //printing on screen
-        window.draw(spellSprite);
-        return true;
-    }else
-        return false;
+            //to move the spell horizzontaly
+            spellPos.x += spellSpeed*delayTime*spellDirection; 
+            spellSprite.setPosition(spellPos);
+            
+            //printing on screen
+            window.draw(spellSprite);
+        }else
+            startSpell = false;
+    }
 }

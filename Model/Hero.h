@@ -40,6 +40,10 @@ public:
     bool getAuraReady();
     void setAuraReady(bool auraReady);
 
+    //getter and setter for spell starting animation
+    bool getStartingSpell();
+    void setStartingSpell(bool startSpell);
+
     float getHeroPosY();
     void setHeroPosY(float heroPosY);
 
@@ -63,7 +67,7 @@ public:
 
     void setSpellDirection();
 
-    bool castSpell(sf::RenderWindow &window);
+    void castSpell(sf::RenderWindow &window);
 
 protected: 
 
@@ -117,6 +121,8 @@ protected:
     //to set position of the weapon if it is a sword or a staff
     int xVariation;
     int yVariation;
+    //to start spell animation
+    bool startSpell;
 
     //boolean variable to start the animation
     bool startAnimation;
