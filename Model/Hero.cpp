@@ -2,7 +2,7 @@
 
 Hero::Hero(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, float movementSpeed, bool isKnight) : GameCharacter(window, pos, hp, movementSpeed), isKnight(isKnight)
 {
-    texture.loadFromFile("../Textures/Textures.png");
+    texture.loadFromFile(texturePath);
     sprite.setTexture(texture);       // loading chracter's sprite
     weaponAttack.setTexture(texture); // loading character's weapon
     // setting hero's sprite
