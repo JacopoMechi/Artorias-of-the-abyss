@@ -8,32 +8,27 @@
 #include "Gate.h"
 #include "Bonfire.h"
 
-class Room
-{
+class Room{
 public:
-    enum class Type
-    {
-        StartRoom,
-        FirstLevel,
-        SecondLevel,
-        ThirdLevel,
-        FinalBoss
-    };
+
     std::unique_ptr<Gate> leftGate;
     std::unique_ptr<Gate> rightGate;
-    Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType, sf::RenderWindow &window);
-    ~Room();
+    
+    //nFloor stand for in-game levels
+    Room(int nFloor, const std::vector<RoomElement *> &roomElementsVector, sf::RenderWindow &window);
+
+    virtual ~Room() = 0;
     void spawnEntity(RoomElement *roomElement);
     void draw();
     bool getisClear();
 
-private:
+protected:
     std::vector<std::unique_ptr<RoomElement>> roomElementsVector;
     std::unique_ptr<Bonfire> bonfire;
     std::string roomFilePath;
-    std::string roomPath1 = "../Textures/Lvl1.png";
-    std::string roomPath2 = "../Textures/Lvl2.png";
-    std::string roomPath3 = "../Textures/Lvl3.png";
+    const std::string roomPath1 = "../Textures/Lvl1.png";
+    const std::string roomPath2 = "../Textures/Lvl2.png";
+    const std::string roomPath3 = "../Textures/Lvl3.png";
     sf::Texture roomTexture;
     sf::Sprite roomSprite;
     sf::RenderWindow &window;
