@@ -6,6 +6,12 @@
 #include <vector>
 
 #include "Room.h"
+#include "StartRoom.h"
+#include "SecondRoom.h"
+#include "ThirdRoom.h"
+#include "FourthRoom.h"
+#include "FinalRoom.h"
+
 
 class RoomFactory{
 protected:
@@ -14,8 +20,8 @@ protected:
 public:
     virtual ~RoomFactory() = 0;//FIXME maybe
 
-    Room* makeRoom(std::string type) const;
+    Room* makeRoom(std::string type, sf::RenderWindow &window, int roomLevel) const;
 
-    Room* createRoom(std::string type) const;
+    Room* createRoom(std::string type, sf::RenderWindow &window, int roomLevel) const;
 };
 #endif
