@@ -7,6 +7,7 @@
 #include "RoomElement.h"
 #include "Gate.h"
 #include "Bonfire.h"
+#include "Enemy.h"
 
 class Room
 {
@@ -21,6 +22,7 @@ public:
     };
     std::unique_ptr<Gate> leftGate;
     std::unique_ptr<Gate> rightGate;
+    std::unique_ptr<Enemy> enemy;
     Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType, sf::RenderWindow &window);
     ~Room();
     void spawnEntity(RoomElement *roomElement);

@@ -14,6 +14,7 @@ void Room::draw()
 {
     roomSprite.setTextureRect(sf::IntRect(0, 0, 1920, 1080));
     window.draw(roomSprite);
+    enemy->draw(window);
     if (leftGate != nullptr)
         leftGate->draw();
     if (rightGate != nullptr)
@@ -42,6 +43,7 @@ Room::Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Typ
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
         this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {865.5f, 391.0f}));
+        this->enemy = std::unique_ptr<Enemy>(new Enemy(window, {500.0f, 500.0f}, 1, 100.0f, Enemy::Type::Enemy1));
         break;
     case Type::SecondLevel:
         roomFilePath = this->roomPath2;
