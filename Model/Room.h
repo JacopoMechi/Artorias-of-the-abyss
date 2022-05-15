@@ -14,8 +14,7 @@ public:
     std::unique_ptr<Gate> leftGate;
     std::unique_ptr<Gate> rightGate;
     
-    //nFloor stand for in-game levels
-    Room(int nFloor, const std::vector<RoomElement *> &roomElementsVector, sf::RenderWindow &window);
+    Room(int level, sf::RenderWindow &window);
 
     virtual ~Room() = 0;
     void spawnEntity(RoomElement *roomElement);
