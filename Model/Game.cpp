@@ -73,7 +73,7 @@ void Game::gameLoop()
     }
 }
 
-Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(false, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero)
+/*Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(false, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero)
 {
     this->levels.emplace_back(new Room({}, Room::Type::StartRoom, window));
     for (int i = 0; i <= 3; i++)
@@ -83,4 +83,4 @@ Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0
     for (int i = 0; i <= 2; i++)
         this->levels.emplace_back(new Room({}, Room::Type::ThirdLevel, window));
     this->levels.emplace_back(new Room({}, Room::Type::FinalBoss, window));
-}
+}*/
