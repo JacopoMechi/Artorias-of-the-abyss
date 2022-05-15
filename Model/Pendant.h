@@ -2,7 +2,6 @@
 #define _PENDANT_H
 
 #include "Item.h"
-//#include "GameCharacter.h"
 
 class Pendant: public Item {
 public://is it correct the override like this?
