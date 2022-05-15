@@ -4,6 +4,7 @@
 #include "Room.h"
 
 class FinalRoom: public Room{
+public:
     FinalRoom(int level, sf::RenderWindow &window);
 };
 
