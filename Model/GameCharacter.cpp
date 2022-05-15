@@ -1,6 +1,9 @@
 #include "GameCharacter.h"
 
-GameCharacter::GameCharacter(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, float movementSpeed) : window(window), pos(pos), HP(hp), movementSpeed(movementSpeed), weapon(nullptr)
+const std::string GameCharacter::texturePath = "../Textures/Textures.png";
+
+GameCharacter::GameCharacter(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, float movementSpeed) : window(window),
+                                                                                                               pos(pos), HP(hp), movementSpeed(movementSpeed), weapon(nullptr)
 {
 }
 

@@ -43,10 +43,11 @@ protected:
     int HP;
     float movementSpeed;
     float interactableDistance;
-    bool actionStarting = false;
     Weapon *weapon;
     sf::Vector2f pos;
     sf::Vector2f vel = {0.0f, 0.0f};
+
+    static const std::string texturePath;
     sf::Sprite sprite;
     sf::Texture texture;
     sf::IntRect frameRect;
