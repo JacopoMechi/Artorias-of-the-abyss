@@ -4,6 +4,7 @@
 #include <SFML/System.hpp>
 #include <string>
 #include <vector>
+#include <iostream>
 
 class RoomElement
 {
