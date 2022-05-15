@@ -18,7 +18,7 @@ void Game::gameLoop()
             hud.updateEvent(event, NPCInteraction);
         }
         window.clear(sf::Color::Black);
-        levels[level]->draw();
+        //levels[level]->draw();
         if (gameStatus == Game::Status::MainMenu)
         {
             mainMenu.launch();
