@@ -16,4 +16,5 @@ FinalRoom::FinalRoom(int level, sf::RenderWindow &window): Room(level, window){
             break;    
     }
     leftGate = std::make_unique<Gate>(window);
+    roomSprite.setTexture(roomTexture);
 }

@@ -18,4 +18,5 @@ ThirdRoom::ThirdRoom(int level, sf::RenderWindow &window): Room(level, window){
     leftGate = std::make_unique<Gate>(window);
     rightGate = std::make_unique<Gate>(window, true, false);
     bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {500.0f, 500.0f}));
+    roomSprite.setTexture(roomTexture);
 }
