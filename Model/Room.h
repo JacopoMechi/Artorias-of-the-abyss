@@ -3,6 +3,9 @@
 
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include <string>
+#include <memory>
+#include <iostream>
 
 #include "RoomElement.h"
 #include "Gate.h"
@@ -11,12 +14,12 @@
 class Room{
 public:
 
+    Room(int level, sf::RenderWindow &window);
+
     std::unique_ptr<Gate> leftGate;
     std::unique_ptr<Gate> rightGate;
     
-    Room(int level, sf::RenderWindow &window);
-
-    virtual ~Room() = 0;
+    //virtual ~Room() = 0;
     void spawnEntity(RoomElement *roomElement);
     void draw();
     bool getisClear();
@@ -32,5 +35,6 @@ protected:
     sf::Sprite roomSprite;
     sf::RenderWindow &window;
     bool isClear = true; // TODO Default should be false, true for testing
+    int level;
 };
 #endif

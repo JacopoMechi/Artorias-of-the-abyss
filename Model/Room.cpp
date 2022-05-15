@@ -1,9 +1,9 @@
-#include <iostream>
-#include <SFML/Graphics.hpp>
-#include <string>
-#include <memory>
 
 #include "Room.h"
+
+Room::Room(int level, sf::RenderWindow &window): level(level), window(window){
+
+}
 
 void Room::spawnEntity(RoomElement *roomElement)
 {
