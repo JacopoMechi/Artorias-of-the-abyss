@@ -54,7 +54,9 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/ThirdRoom.h
                                     Model/ThirdRoom.cpp
                                     Model/FourthRoom.h
-                                    Model/FourthRoom.cpp)
+                                    Model/FourthRoom.cpp
+                                    Model/FinalRoom.h
+                                    Model/FinalRoom.cpp)
 
 if(SFML_FOUND)
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-window sfml-system)
