@@ -45,6 +45,8 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/NPC.cpp
                                     Model/Game.h
                                     Model/Game.cpp
+                                    Model/RoomFactory.h
+                                    Model/RoomFactory.cpp
                                     Model/StartRoom.h
                                     Model/StartRoom.cpp
                                     Model/SecondRoom.h
