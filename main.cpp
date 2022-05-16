@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-//#include "Game.h"
+#include "Game.h"
 
 int main()
 {
@@ -11,6 +11,6 @@ int main()
     // disable multiple input from a single key
     window.setKeyRepeatEnabled(false);
 
-    //Game game(window);
-    //game.gameLoop();
+    Game game(window);
+    game.gameLoop();
 }
