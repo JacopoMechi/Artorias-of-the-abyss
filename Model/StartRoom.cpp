@@ -16,5 +16,6 @@ StartRoom::StartRoom(int level, sf::RenderWindow &window): Room(level, window){
             break;
     }
     rightGate = std::make_unique<Gate>(window, true, false);
+    roomTexture.loadFromFile(roomFilePath);
     roomSprite.setTexture(roomTexture);
 }
