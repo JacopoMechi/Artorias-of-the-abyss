@@ -7,6 +7,7 @@
 #include "Menu.h"
 #include "Hero.h"
 #include "HUD.h"
+#include "RoomFactory.h"
 
 class Game
 {
@@ -24,11 +25,13 @@ public:
     Game(sf::RenderWindow &window);
 
 private:
-    int level = 0;
+    //int level = 0;
     int levelReached = 0;
     float dt = 0.0f;
     bool NPCInteraction = false;//to block character when is interacting with an NPC
-    std::vector<std::unique_ptr<Room>> levels;
+    RoomFactory* gameRooms = new RoomFactory();
+    Room* room;
+    //std::vector<std::unique_ptr<Room>> levels;
     Status gameStatus = Game::Status::MainMenu;
     Menu mainMenu;
     Menu inGameMenu;

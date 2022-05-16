@@ -4,7 +4,6 @@ Room* RoomFactory::makeRoom(std::string type, sf::RenderWindow &window, int room
     Room* room;
     room = createRoom(type, window, roomLevel);
     
-    room -> draw();
     return room;
 }
 
@@ -19,5 +18,5 @@ Room* RoomFactory::createRoom(std::string type, sf::RenderWindow &window, int ro
        return new FourthRoom(roomLevel, window);
    }else if(type.compare("finalroom") == 0){
        return new FinalRoom(roomLevel, window);
-   }
+   }else return 0;
 }

@@ -13,13 +13,11 @@
 
 class Room{
 public:
-
     Room(int level, sf::RenderWindow &window);
 
     std::unique_ptr<Gate> leftGate;
     std::unique_ptr<Gate> rightGate;
     
-    //virtual ~Room() = 0;
     void spawnEntity(RoomElement *roomElement);
     void draw();
     bool getisClear();

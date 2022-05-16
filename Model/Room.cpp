@@ -17,7 +17,7 @@ bool Room::getisClear()
 
 void Room::draw()
 {
-    roomSprite.setTextureRect(sf::IntRect(0, 0, 1920, 1080));
+    roomSprite.setTextureRect({0, 0, 1920, 1080});
     window.draw(roomSprite);
     if (leftGate != nullptr)
         leftGate->draw();

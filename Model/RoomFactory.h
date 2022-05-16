@@ -14,11 +14,8 @@
 
 
 class RoomFactory{
-protected:
-    RoomFactory(){}
-
 public:
-    virtual ~RoomFactory() = 0;//FIXME maybe
+    RoomFactory(){}
 
     Room* makeRoom(std::string type, sf::RenderWindow &window, int roomLevel) const;
 
