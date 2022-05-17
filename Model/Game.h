@@ -22,7 +22,7 @@ public:
     };
     void setStatus(Game::Status gameStatus);
     void gameLoop();
-    void swapRoom(int roomTracker, int level);
+    void swapRoom(std::string tracker, int floor);
     Game(sf::RenderWindow &window);
 
 private:

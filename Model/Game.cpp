@@ -48,7 +48,7 @@ void Game::gameLoop()
 
                         //switching to next room
                         roomTracker++;
-                        this -> swapRoom(roomTracker, level);
+                        this -> swapRoom(roomType[roomTracker], level);
                     }
                 }
                 if (room->leftGate != nullptr)
@@ -62,7 +62,7 @@ void Game::gameLoop()
                         
                         //switching to previous room
                         roomTracker--;
-                        this -> swapRoom(roomTracker, level);
+                        this -> swapRoom(roomType[roomTracker], level);
                     }
                 }
                 hero.movement(hud.getInvIsOpen(), NPCInteraction);
@@ -78,13 +78,13 @@ void Game::gameLoop()
     }
 }
 
-void Game::swapRoom(int roomTracker, int level){
+void Game::swapRoom(std::string tracker, int floor){
     delete room;
-    room = gameRooms -> makeRoom(roomType[roomTracker], window, level);
+    room = gameRooms -> makeRoom(tracker, window, floor);//roomType[roomTracker], window, level
 }
 
 Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(false, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero), 
-    room(gameRooms -> makeRoom("startingroom", window, 1)), roomType{std::string("startroom"),std::string("firstrooom"), std::string("thirdroom"), std::string("fourthroom"), std::string("finalroom")}
+    room(gameRooms -> makeRoom("startingroom", window, 1)), roomType{std::string("startroom"),std::string("secondroom"), std::string("thirdroom"), std::string("fourthroom"), std::string("finalroom")}
 {
     
 }
