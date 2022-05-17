@@ -80,7 +80,7 @@ void Game::gameLoop()
 
 void Game::swapRoom(std::string tracker, int floor){
     delete room;
-    room = gameRooms -> makeRoom(tracker, window, floor);//roomType[roomTracker], window, level
+    room = gameRooms -> makeRoom(tracker, window, floor);
 }
 
 Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(false, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero), 
