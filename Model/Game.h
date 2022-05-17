@@ -25,7 +25,8 @@ public:
     Game(sf::RenderWindow &window);
 
 private:
-    std::string roomType[5];
+    std::string roomType[5];//array of room names
+    int level = 1;//for floors
     int levelReached = 0;
     float dt = 0.0f;
     bool NPCInteraction = false;//to block character when is interacting with an NPC
