@@ -22,16 +22,23 @@ public:
     };
     void setStatus(Game::Status gameStatus);
     void gameLoop();
+    void swapRoom(int roomTracker, int level);
     Game(sf::RenderWindow &window);
 
 private:
+    //to manage rooms aand floors
     std::string roomType[5];//array of room names
+    int roomTracker = 0;//for tracking what room needs to be spawned
     int level = 1;//for floors
+
     int levelReached = 0;
     float dt = 0.0f;
     bool NPCInteraction = false;//to block character when is interacting with an NPC
+
+    //for room factory creation
     RoomFactory* gameRooms = new RoomFactory();
     Room* room;
+
     Status gameStatus = Game::Status::MainMenu;
     Menu mainMenu;
     Menu inGameMenu;

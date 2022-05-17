@@ -18,8 +18,7 @@ void Game::gameLoop()
             hud.updateEvent(event, NPCInteraction);
         }
         window.clear(sf::Color::Black);
-        //levels[level]->draw();
-        room -> draw();//FIXME
+        room -> draw();
         if (gameStatus == Game::Status::MainMenu)
         {
             mainMenu.launch();
@@ -46,7 +45,10 @@ void Game::gameLoop()
                         hero.getPos().y + hero.getSize().y / 2 < room->rightGate->getPos().y + room->rightGate->getSize().y)
                     {
                         hero.setPos(Gate::leftPosition + sf::Vector2f{hero.getSize().x, 0});
-                        //level++;
+
+                        //switching to next room
+                        roomTracker++;
+                        this -> swapRoom(roomTracker, level);
                     }
                 }
                 if (room->leftGate != nullptr)
@@ -57,8 +59,10 @@ void Game::gameLoop()
                         hero.getPos().y + hero.getSize().y / 2 < room->leftGate->getPos().y + room->leftGate->getSize().y)
                     {
                         hero.setPos(Gate::rightPosition - sf::Vector2f{hero.getSize().x, 0});
-                        //level--;
-                        //std::cout << level << std::endl;
+                        
+                        //switching to previous room
+                        roomTracker--;
+                        this -> swapRoom(roomTracker, level);
                     }
                 }
                 hero.movement(hud.getInvIsOpen(), NPCInteraction);
@@ -74,15 +78,13 @@ void Game::gameLoop()
     }
 }
 
+void Game::swapRoom(int roomTracker, int level){
+    delete room;
+    room = gameRooms -> makeRoom(roomType[roomTracker], window, level);
+}
+
 Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(false, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero), 
     room(gameRooms -> makeRoom("startingroom", window, 1)), roomType{std::string("startroom"),std::string("firstrooom"), std::string("thirdroom"), std::string("fourthroom"), std::string("finalroom")}
 {
-    /*this->levels.emplace_back(new Room({}, Room::Type::StartRoom, window));
-    for (int i = 0; i <= 3; i++)
-        this->levels.emplace_back(new Room({}, Room::Type::FirstLevel, window));
-    for (int i = 0; i <= 3; i++)
-        this->levels.emplace_back(new Room({}, Room::Type::SecondLevel, window));
-    for (int i = 0; i <= 2; i++)
-        this->levels.emplace_back(new Room({}, Room::Type::ThirdLevel, window));
-    this->levels.emplace_back(new Room({}, Room::Type::FinalBoss, window));*/
+    
 }
