@@ -74,7 +74,8 @@ void Game::gameLoop()
     }
 }
 
-Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(false, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero), room(gameRooms -> makeRoom("startingroom", window, 1))
+Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(false, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero), 
+    room(gameRooms -> makeRoom("startingroom", window, 1)), roomType{std::string("startroom"),std::string("firstrooom"), std::string("thirdroom"), std::string("fourthroom"), std::string("finalroom")}
 {
     /*this->levels.emplace_back(new Room({}, Room::Type::StartRoom, window));
     for (int i = 0; i <= 3; i++)
