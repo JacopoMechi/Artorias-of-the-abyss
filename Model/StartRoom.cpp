@@ -15,7 +15,7 @@ StartRoom::StartRoom(int level, sf::RenderWindow &window): Room(level, window){
             //TODOdraw enemies
             break;
     }
-    rightGate = std::make_unique<Gate>(window, true, false);
+    rightGate = std::make_unique<Gate>(window, true, true);
     roomTexture.loadFromFile(roomFilePath);
     roomSprite.setTexture(roomTexture);
 }
