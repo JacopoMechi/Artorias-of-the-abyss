@@ -76,6 +76,9 @@ void HUD::draw() {
     window.draw(healthSprite);
     window.draw(quickslotSprite);
     window.draw(actionsSprite);
+    //displaying inventory
+    if(isInvOpen)
+        this -> drawInventory();
     //obscure and starting sword attack
     if(hero.getCharacterType()){
         if(hero.getStartAnimation())
