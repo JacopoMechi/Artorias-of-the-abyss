@@ -100,12 +100,12 @@ protected:
     //handling dashes
     int dashCount = 3;
     int maxDashes = 3;
-    float dashTimeHolding = 1.0f;
+    float dashTimeHolding = 2.0f;
     float dashTime = 0.0f;
 
     //handling sword attack cooldown
     bool canAttack;
-    float attackTimeHolding = 0.5f;
+    float attackTimeHolding = 5.0f;
     float attackTime = 0.0f;
 
     //int cooldown = 5;

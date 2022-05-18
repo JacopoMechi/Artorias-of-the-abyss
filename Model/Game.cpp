@@ -12,11 +12,11 @@ void Game::gameLoop()
         while (window.pollEvent(event))
         {
             inGameMenu.updateEvent(event);
-            hero.updateDelayAndInputs(event, dt);
             if (event.type == sf::Event::Closed)
                 window.close();
             hud.updateEvent(event, NPCInteraction);
         }
+        hero.updateDelayAndInputs(event, dt);
         window.clear(sf::Color::Black);
         room -> draw();
         if (gameStatus == Game::Status::MainMenu)
@@ -82,7 +82,7 @@ void Game::swapRoom(std::string tracker, int floor){
     room = gameRooms -> makeRoom(tracker, window, floor);
 }
 
-Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(false, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero), 
+Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(true, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero), 
     room(gameRooms -> makeRoom("startingroom", window, 1)), roomType{std::string("startroom"),std::string("secondroom"), std::string("thirdroom"), std::string("fourthroom"), std::string("finalroom")}
 {
     

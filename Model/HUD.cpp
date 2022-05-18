@@ -286,18 +286,12 @@ void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
     //hero's dash and attack handling
     //for attacking or casting spells
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && (hero.getCanAttack() || !hero.getStartingSpell())){
-        std::cout<<"before"<<std::endl;
-        std::cout<<hero.getCanAttack()<<std::endl;
-        std::cout<<hero.getStartingSpell()<<std::endl;
         hero.setStartAnimation(true);
         if(!hero.getCharacterType()){//when hero is a mage
             hero.setSpellDirection();
             hero.setStartingSpell(true);
         }else//when hero is a knight
             hero.setCanAttack(false);
-        std::cout<<"after"<<std::endl;
-        std::cout<<hero.getCanAttack()<<std::endl;
-        std::cout<<hero.getStartingSpell()<<std::endl;
     }
     //for dashes
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)

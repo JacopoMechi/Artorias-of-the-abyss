@@ -16,6 +16,7 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         weaponAttack.setScale(7.5f, 7.5f);
         nWeaponFrames = 5;//for attack animation
         canAttack = true;
+        startSpell = true;
     }else{
         defaultRect = {0, 83, 15, 21};
         weaponRect = {2, 332, 38, 36};
