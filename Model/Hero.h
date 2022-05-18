@@ -105,7 +105,7 @@ protected:
 
     //handling sword attack cooldown
     bool canAttack;
-    float attackTimeHolding = 5.0f;
+    float attackTimeHolding = 3.0f;
     float attackTime = 0.0f;
 
     //int cooldown = 5;
