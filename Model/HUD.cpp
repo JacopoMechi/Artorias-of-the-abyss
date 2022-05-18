@@ -108,18 +108,15 @@ void HUD::draw() {
     if(!NPCAggro)
         this -> obscureButton({1750,575});
     //drawing quickslots items
-    if(quickSlot[0] != NULL)
-        quickSlot[0] -> displayItem(850, 975, window);
-    if(quickSlot[1] != NULL)
-        quickSlot[1] -> displayItem(937, 975, window);
-    if(quickSlot[2] != NULL)
-        quickSlot[2] -> displayItem(1020, 975, window);
+    quickSlot[0] -> displayItem(850, 975, window);
+    quickSlot[1] -> displayItem(937, 975, window);
+    quickSlot[2] -> displayItem(1020, 975, window);
     //obscuring quickslot items when they are 0
-    if(quickSlot[0] != NULL && quickSlot[0] -> getItemCount() == 0)
+    if(quickSlot[0] -> getItemCount() == 0)
         this -> obscureButton({847, 971});
-    if(quickSlot[1] != NULL && quickSlot[1] -> getItemCount() == 0)
+    if(quickSlot[1] -> getItemCount() == 0)
         this -> obscureButton({932, 971});    
-    if(quickSlot[2] != NULL && quickSlot[2] -> getItemCount() == 0)
+    if(quickSlot[2] -> getItemCount() == 0)
         this -> obscureButton({1015, 970});
 }
 

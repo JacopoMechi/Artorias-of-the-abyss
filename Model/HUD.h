@@ -9,6 +9,7 @@
 #include "GreenBlossom.h"
 #include "HomewardBone.h"
 #include "Pendant.h"
+#include "NullItem.h"
 #include "NPC.h"
 
 class HUD
@@ -72,7 +73,7 @@ protected:
     int spellDirection; //it can be 1(right) or -1(left)
 
     //for displaying items in quickslot
-    Item* quickSlot[3] = {NULL, NULL, NULL};
+    Item* quickSlot[3] = {new NullItem(), new NullItem(), new NullItem()};
 
     //Collectible items
     Item collectibles[8] = {
