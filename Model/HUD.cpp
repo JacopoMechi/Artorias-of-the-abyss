@@ -37,7 +37,7 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     assignSprite.setTexture(hudTexture);
     assignSprite.setTextureRect({994, 318, 289, 98});
     assignSprite.setPosition({994, 318});
-    //tracker for description and items in shop //TODO check if shop is here
+    //tracker for description
     trackerSprite.setTexture(hudTexture);
     trackerSprite.setTextureRect({116, 736, 266, 56});
     trackerSprite.setScale(1.5f, 1.5f);

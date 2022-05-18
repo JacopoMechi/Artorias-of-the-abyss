@@ -91,7 +91,7 @@ private:
     int dialogueTracker = 0;
 
     //items selling list
-    Item* merch[3] = {new GreenBlossom(), new HomewardBone(), new Pendant()};//TODO correct array declaration in other classes
+    Item* merch[3] = {new GreenBlossom(), new HomewardBone(), new Pendant()};
 
     //setting textpool for dialogues depending on character
     std::vector<std::string> textPool;

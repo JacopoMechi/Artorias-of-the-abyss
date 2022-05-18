@@ -69,7 +69,9 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
 }
 
 NPC::~NPC(){
-    delete *merch;
+    //deleting merch array
+    for(int i = 0; i < 3; i++)
+        delete merch[i];
 }
 
 void NPC::interact(Hero &hero) {
