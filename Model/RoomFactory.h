@@ -17,8 +17,8 @@ class RoomFactory{
 public:
     RoomFactory(){}
 
-    Room* makeRoom(std::string type, sf::RenderWindow &window, int roomLevel) const;
+    std::unique_ptr<Room> makeRoom(std::string type, sf::RenderWindow &window, int roomLevel) const;
 
-    Room* createRoom(std::string type, sf::RenderWindow &window, int roomLevel) const;
+    std::unique_ptr<Room> createRoom(std::string type, sf::RenderWindow &window, int roomLevel) const;
 };
 #endif

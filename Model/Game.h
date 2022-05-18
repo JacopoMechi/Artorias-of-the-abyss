@@ -36,8 +36,8 @@ private:
     bool NPCInteraction = false;//to block character when is interacting with an NPC
 
     //for room factory creation
-    RoomFactory* gameRooms = new RoomFactory();
-    Room* room;
+    std::unique_ptr<RoomFactory> gameRooms;
+    std::unique_ptr<Room> room;
 
     Status gameStatus = Game::Status::MainMenu;
     Menu mainMenu;

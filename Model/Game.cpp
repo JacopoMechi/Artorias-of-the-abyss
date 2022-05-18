@@ -79,7 +79,6 @@ void Game::gameLoop()
 }
 
 void Game::swapRoom(std::string tracker, int floor){
-    delete room;
     room = gameRooms -> makeRoom(tracker, window, floor);
 }
 
