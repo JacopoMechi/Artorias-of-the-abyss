@@ -103,8 +103,8 @@ protected:
     float dashTimeHolding = 1.0f;
     float dashTime = 0.0f;
 
-    //handling attack cooldown
-    bool canAttack = true;
+    //handling sword attack cooldown
+    bool canAttack;
     float attackTimeHolding = 0.5f;
     float attackTime = 0.0f;
 

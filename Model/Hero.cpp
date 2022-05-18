@@ -15,8 +15,8 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         weaponRect = {3, 157, 21, 44};//weapon's sprite
         weaponAttack.setScale(7.5f, 7.5f);
         nWeaponFrames = 5;//for attack animation
+        canAttack = true;
     }else{
-        //2,332,36,36
         defaultRect = {0, 83, 15, 21};
         weaponRect = {2, 332, 38, 36};
         weaponAttack.setScale(3.5f, 3.5f);
@@ -28,6 +28,7 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         spellSprite.setScale(3.5f, 3.5f);
         spellPos = {pos.x+150, pos.y+40};//because the caracter starts facing right side
         spellSprite.setPosition(spellPos);
+        canAttack = false;
     }
     weaponAttack.setTextureRect(weaponRect);
     frameRect = defaultRect; 
@@ -170,8 +171,8 @@ void Hero::updateDelayAndInputs(sf::Event keyInput, float dt)
     // updating delay time
     delayTime = dt;
     
-    //handling attack cooldown
-    if(!canAttack){
+    //handling sword attack cooldown
+    if(!canAttack && isKnight){
         attackTime += delayTime;
         if(attackTime >= attackTimeHolding){
             attackTime = 0;
