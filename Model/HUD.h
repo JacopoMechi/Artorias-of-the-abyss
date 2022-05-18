@@ -17,6 +17,7 @@ class HUD
 public:
 
     HUD(sf::RenderWindow &window, Hero &hero);
+    ~HUD();
 
     bool getInvIsOpen();
 
@@ -71,8 +72,7 @@ protected:
     int spellDirection; //it can be 1(right) or -1(left)
 
     //for displaying items in quickslot
-    //{"empty slot", 0, "...", 0, 0, 129, 4, 1, 1}
-    std::vector <Item*> quickSlot = {NULL, NULL, NULL};
+    Item* quickSlot[3] = {NULL, NULL, NULL};
 
     //Collectible items
     Item collectibles[8] = {
@@ -116,6 +116,6 @@ protected:
     };
 
     //creating consumable 
-    std::vector<Item*> consumables = {new EstusFlask(), new GreenBlossom(), new HomewardBone(), new Pendant()};
+    Item* consumables[4] = {new EstusFlask(), new GreenBlossom(), new HomewardBone(), new Pendant()};
 };
 #endif

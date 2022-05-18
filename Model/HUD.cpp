@@ -54,6 +54,16 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     consumables[1] -> setItemCount(1);
 }
 
+HUD::~HUD(){
+    //deleting quickslot
+    for(int i = 0; i < 3; i++)
+        delete quickSlot[i];
+
+    //deleting consumables
+    for(int i = 0; i < 4; i++)
+        delete consumables[i];    
+}
+
 bool HUD::getInvIsOpen(){
     return isInvOpen;
 }
