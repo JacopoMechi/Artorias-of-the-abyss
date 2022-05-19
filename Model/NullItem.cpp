@@ -1,6 +1,6 @@
 #include "NullItem.h"
 
-NullItem::NullItem(std::string itemName, int itemPrice, std::string itemDescription,
+NullItem::NullItem(std::wstring itemName, int itemPrice, std::wstring itemDescription,
                        int maxItemCount, int itemCount, int x, int y, int width, int height): 
                        Item(itemName, itemPrice, itemDescription, maxItemCount, itemCount, x, y, width, height){
 

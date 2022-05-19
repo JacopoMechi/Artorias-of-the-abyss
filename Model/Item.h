@@ -9,7 +9,7 @@
 class Item
 {
 public:
-    Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height); 
+    Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height); 
 
     virtual ~Item() = default;
 
@@ -21,17 +21,17 @@ public:
 
     void displayName(sf::RenderTarget &window, float nameX, float nameY);
 
-    std::string getItemName();
+    std::wstring getItemName();
 
-    std::string getItemDescription();
+    std::wstring getItemDescription();
 
     virtual void use(Hero &hero);
 
 protected:
-    std::string itemName;
+    std::wstring itemName;
     int itemPrice;
     int itemCount;
-    std::string itemDescription;
+    std::wstring itemDescription;
     int maxItemCount;
     int x;
     int y;

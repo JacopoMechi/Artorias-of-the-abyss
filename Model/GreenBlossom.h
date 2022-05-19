@@ -7,8 +7,8 @@
 
 class GreenBlossom: public Item {
 public:
-    explicit GreenBlossom(std::string itemName = "Estratto di Fiore verde", int itemPrice = 1000,
-                          std::string itemDescription = "Riduce il cooldown dei dash per 60 secondi", int maxItemCount = 10, 
+    explicit GreenBlossom(std::wstring itemName = L"Estratto di Fiore verde", int itemPrice = 1000,
+                          std::wstring itemDescription = L"Riduce il cooldown dei dash per 60 secondi", int maxItemCount = 10, 
                           int itemCount = 0, int x = 453, int y = 2, int width = 20, int height = 20);
     ~GreenBlossom();
     void use(Hero &hero);

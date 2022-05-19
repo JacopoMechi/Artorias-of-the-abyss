@@ -3,7 +3,7 @@
 HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
 
     //setting the font for the text      
-    font.loadFromFile("../orangekid.ttf");
+    font.loadFromFile("../pixelFont.ttf");
     text.setFont(font);
 
     //adding texture for the hud
@@ -175,16 +175,16 @@ void HUD::drawInventory(){
         
         //first slot
         collectibles[0+(4*inventoryScroll)].displayItem(145, 450, window);
-        collectibles[0+(4*inventoryScroll)].displayName(window, 235, 460);
+        collectibles[0+(4*inventoryScroll)].displayName(window, 235, 470);
         //second slot
         collectibles[1+(4*inventoryScroll)].displayItem(145, 555, window);
-        collectibles[1+(4*inventoryScroll)].displayName(window, 235, 565);
+        collectibles[1+(4*inventoryScroll)].displayName(window, 235, 575);
         //third slot
         collectibles[2+(4*inventoryScroll)].displayItem(145, 660, window);
-        collectibles[1+(4*inventoryScroll)].displayName(window, 235, 565);
+        collectibles[2+(4*inventoryScroll)].displayName(window, 235, 680);
         //fourth slot
         collectibles[3+(4*inventoryScroll)].displayItem(145, 775, window); 
-        collectibles[1+(4*inventoryScroll)].displayName(window, 235, 565);
+        collectibles[3+(4*inventoryScroll)].displayName(window, 235, 785);
         //for detailed items description
     }
     tabText.setString(tab);

@@ -1,6 +1,6 @@
 #include "Item.h"
 
-Item::Item(std::string itemName, int itemPrice, std::string itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height) : 
+Item::Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height) : 
     itemName(itemName), itemPrice(itemPrice), itemDescription(itemDescription), maxItemCount(maxItemCount), itemCount(itemCount), 
     x(x), width(width), height(height){
         texture.loadFromFile("../Textures/Textures.png");
@@ -43,16 +43,16 @@ void Item::displayName(sf::RenderTarget &window, float nameX, float nameY){
     }
 }
 
-std::string Item::getItemName()
+std::wstring Item::getItemName()
 {
     return itemName;
 }
 
-std::string Item::getItemDescription() {
+std::wstring Item::getItemDescription() {
     if(this -> getItemCount() > 0)
         return itemDescription;
     else
-        return "...";    
+        return L"...";    
 }
 
 void Item::use(Hero &hero){

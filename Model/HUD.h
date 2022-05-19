@@ -78,41 +78,41 @@ protected:
     //Collectible items
     Item collectibles[8] = {
         //guardiano
-        {"Anima del Guardiano", 0,"Anima del leone alato bianco, protettore del \nSantuario, che temeva la diffusione \ndell'Abisso.",
-         1, 2, 396, 73, 18, 22},
+        {L"Anima del Guardiano", 0,L"Anima del leone alato bianco, protettore del \nSantuario, che temeva la diffusione \ndell'Abisso.",
+         1, 1, 396, 73, 18, 22},
 
         //Artorias
-        {"Anima di Artorias", 0, "Anima di un cavaliere valoroso, che è stato \nconsumato dall'Abiosso. "
-        "La Leggenda narra \nche Artorias ha sconfitto l'Abisso, ma è solo \nuna storia raccontata a metà; "
-        "sembra che \nsia stato sconfitto e il suo onore preservato \nda un eroe non celebrato, "
-        "il quale ha \nveramente sconfitto l'Abisso.", 1, 1, 440, 73, 18, 22},
+        {L"Anima di Artorias", 0, L"Anima di un cavaliere valoroso, che è stato \nconsumato dall'Abiosso. "
+        L"La Leggenda narra \nche Artorias ha sconfitto l'Abisso, ma è solo \nuna storia raccontata a metà; "
+        L"sembra che \nsia stato sconfitto e il suo onore preservato \nda un eroe non celebrato, "
+        L"il quale ha \nveramente sconfitto l'Abisso.", 1, 1, 440, 73, 18, 22},
 
         //Manus
-        {"Anima di Manus", 0 , "Anima di manus, Padre dell'Abisso. \nChiaramente, una volta era un essere umano \nche, a causa della"
-        " perdita di un oggetto a lui \ncaro, un pendente, che lo portò alla follia, \ndivenne Padre dell'Abisso.", 1 , 1, 396, 99, 18, 22},
+        {L"Anima di Manus", 0 , L"Anima di manus, Padre dell'Abisso. \nChiaramente, una volta era un essere umano \nche, a causa della"
+        L" perdita di un oggetto a lui \ncaro, un pendente, che lo portò alla follia, \ndivenne Padre dell'Abisso.", 1 , 1, 396, 99, 18, 22},
 
         //cittadino di Oolacile
-        {"Testa Cittadino di Oolacile", 0, "Creature umanoidi "
-        "corrotte dall'Abisso. Sono \ncaratterizzati da un busto di cavallo e una \nfolta barba, con occhi di colore rosso.", 
+        {L"Testa Cittadino \ndi Oolacile", 0, L"Creature umanoidi "
+        L"corrotte dall'Abisso. Sono \ncaratterizzati da un busto di cavallo e una \nfolta barba, con occhi di colore rosso.", 
         1, 1, 440, 96, 23, 26},  
         
         //stregone di Oolacile
-        {"Testa Stregone di Oolacile", 0, "Creature che somigliano "
-        "ai cittadini di Oolacile, \nma possiedono un aspetto femminile.", 1, 1, 497, 47, 27, 21},
+        {L"Testa Stregone \ndi Oolacile", 0, L"Creature che somigliano "
+        L"ai cittadini di Oolacile, \nma possiedono un aspetto femminile.", 1, 1, 497, 47, 27, 21},
 
         //Scudo di Artorias(scudo grande purificatore) 
-        {"Scudo Grande Purificatore", 0, "Scudo usato da Artorias, cavaliere che ha \naffrontato l'Abisso. Artorias, profondamente \nspaventato "
-        "dall'Abisso, usò questo scudo \nper proteggere il suo fedele compagno Sif \ndalle Disumanità. Purtroppo, risulta uno \nscudo troppo "
-        "pesante per essere \nequipaggiato.", 1, 1, 419, 143, 22, 21},
+        {L"Scudo Grande \nPurificatore", 0, L"Scudo usato da Artorias, cavaliere che ha \naffrontato l'Abisso. Artorias, profondamente \nspaventato "
+        L"dall'Abisso, usò questo scudo \nper proteggere il suo fedele compagno Sif \ndalle Disumanità. Purtroppo, risulta uno \nscudo troppo "
+        L"pesante per essere \nequipaggiato.", 1, 1, 419, 143, 22, 21},
 
         //Guardiano di Pietra
-        {"Testa guardiano di Pietra", 0, "Testa dei Guardiani di Pietra. In realtà, \nquesti nemici sono un corpo di pietra "
-        "animato, \narmati di un'ascia di pietra, ma senza uno \nscudo.", 1 , 1, 497, 24, 21, 21}, 
+        {L"Testa guardiano \ndi Pietra", 0, L"Testa dei Guardiani di Pietra. In realtà, \nquesti nemici sono un corpo di pietra "
+        L"animato, \narmati di un'ascia di pietra, ma senza uno \nscudo.", 1 , 1, 497, 24, 21, 21}, 
         
         //Disumanita'
-        {"Disumanità", 0, "Queste creature sono una "
-        "rappresentazione \ndell'umanità come un'entità non ancora \nformatasi. A differenza degli altri nemici, non \nhanno alcun attacco e "
-        "danneggiano solo\nattraverso il contatto fisico.", 1, 1, 497, 0, 22, 20} 
+        {L"Disumanità", 0, L"Queste creature sono una "
+        L"rappresentazione \ndell'umanità come un'entità non ancora \nformatasi. A differenza degli altri nemici, non \nhanno alcun attacco e "
+        L"danneggiano solo\nattraverso il contatto fisico.", 1, 1, 497, 0, 22, 20} 
         
     };
 
