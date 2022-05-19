@@ -122,9 +122,9 @@ void HUD::draw() {
 
 void HUD::displayHealth(GameCharacter &character){ 
     std::string bar = std::string("HP: ") + std::to_string(character.getHp()) + std::string("/100");
-    text.setPosition(1700, 15);
+    text.setPosition(1700, 40);
     text.setString(bar);
-    text.setScale(1.0f,1.0f);
+    text.setScale(0.8f,0.8f);
     window.draw(text);
 }
 
@@ -134,8 +134,8 @@ void HUD::drawInventory(){
     
     sf::Text tabText;
     tabText.setFont(font);
-    tabText.setPosition(245, 310);
-    tabText.setCharacterSize(35);
+    tabText.setPosition(245, 330);
+    tabText.setCharacterSize(20);
     std::string tab;
 
     //calling description for showing the items in the specific
