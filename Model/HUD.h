@@ -58,6 +58,7 @@ protected:
     sf::Sprite assignSprite;
     sf::Sprite trackerSprite;
     sf::Text text;
+    sf::Text healthText;
     sf::Font font;
     //obscure button sprite
     sf::Sprite obscureSprite;

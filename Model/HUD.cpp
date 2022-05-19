@@ -2,10 +2,14 @@
 
 HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
 
-    //setting the font for the text      
+    //setting the font and size for the text      
     font.loadFromFile("../pixelFont.ttf");
     text.setFont(font);
-    text.setCharacterSize(15);
+    text.setCharacterSize(10);
+
+    //setting font and size of health text
+    healthText.setFont(font);
+    healthText.setCharacterSize(20);
 
     //adding texture for the hud
     hudTexture.loadFromFile("../Textures/PlayerHUD.png");
@@ -123,9 +127,9 @@ void HUD::draw() {
 
 void HUD::displayHealth(GameCharacter &character){ 
     std::string bar = std::string("HP: ") + std::to_string(character.getHp()) + std::string("/100");
-    text.setPosition(1700, 40);
-    text.setString(bar);
-    window.draw(text);
+    healthText.setPosition(1700, 40);
+    healthText.setString(bar);
+    window.draw(healthText);
 }
 
 
