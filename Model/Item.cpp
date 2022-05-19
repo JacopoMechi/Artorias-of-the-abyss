@@ -12,7 +12,7 @@ Item::Item(std::string itemName, int itemPrice, std::string itemDescription, int
         this -> height = height;
         sprite.setScale(2.5f, 2.5f);
 
-        font.loadFromFile("../orangekid.ttf");
+        font.loadFromFile("../pixelFont.ttf");
         name.setFont(font);
 }
 
@@ -38,7 +38,7 @@ void Item::displayName(sf::RenderTarget &window, float nameX, float nameY){
     if(this -> getItemCount() > 0){
         name.setPosition(nameX, nameY);
         name.setString(this -> getItemName());
-        name.setCharacterSize(30);
+        name.setCharacterSize(20);
         window.draw(name);
     }
 }
