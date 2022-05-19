@@ -162,7 +162,7 @@ void HUD::drawInventory(){
         consumables[1] -> displayItem(148, 560, window);
         consumables[1] -> displayName(window, 235, 567);
         //third slot
-        consumables[2] -> displayItem(142, 665, window);
+        consumables[2] -> displayItem(148, 670, window);
         consumables[2] -> displayName(window, 235, 670);
         //fourth slot
         consumables[3] -> displayItem(142, 780, window);
