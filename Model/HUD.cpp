@@ -5,6 +5,7 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     //setting the font for the text      
     font.loadFromFile("../pixelFont.ttf");
     text.setFont(font);
+    text.setCharacterSize(20);
 
     //adding texture for the hud
     hudTexture.loadFromFile("../Textures/PlayerHUD.png");
@@ -124,7 +125,6 @@ void HUD::displayHealth(GameCharacter &character){
     std::string bar = std::string("HP: ") + std::to_string(character.getHp()) + std::string("/100");
     text.setPosition(1700, 40);
     text.setString(bar);
-    text.setScale(0.8f,0.8f);
     window.draw(text);
 }
 
@@ -194,7 +194,6 @@ void HUD::drawInventory(){
 void HUD::displayDescription(){
     //setting the description
     text.setPosition(890, 375);
-    text.setCharacterSize(20);
     if(switching){
         //drawing description sprite
         window.draw(descriptionSprite);
