@@ -157,16 +157,16 @@ void HUD::drawInventory(){
         tab = "Consumabili >";//<tab> cambia categoria, <q> esci dall'inventario, <ArrowUp,ArrDown> scorri items
         //first slot
         consumables[0] -> displayItem(148, 455, window);
-        consumables[0] -> displayName(window, 235, 460);
+        consumables[0] -> displayName(window, 235, 470);
         //second slot
         consumables[1] -> displayItem(148, 560, window);
-        consumables[1] -> displayName(window, 235, 567);
+        consumables[1] -> displayName(window, 235, 577);
         //third slot
         consumables[2] -> displayItem(148, 670, window);
-        consumables[2] -> displayName(window, 235, 670);
+        consumables[2] -> displayName(window, 235, 680);
         //fourth slot
         consumables[3] -> displayItem(142, 780, window);
-        consumables[3] -> displayName(window, 235, 775);
+        consumables[3] -> displayName(window, 235, 785);
 
     }else{    
         //second category
