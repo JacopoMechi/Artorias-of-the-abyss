@@ -5,7 +5,7 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     //setting the font for the text      
     font.loadFromFile("../pixelFont.ttf");
     text.setFont(font);
-    text.setCharacterSize(20);
+    text.setCharacterSize(15);
 
     //adding texture for the hud
     hudTexture.loadFromFile("../Textures/PlayerHUD.png");
@@ -193,7 +193,7 @@ void HUD::drawInventory(){
 
 void HUD::displayDescription(){
     //setting the description
-    text.setPosition(890, 375);
+    text.setPosition(900, 395);
     if(switching){
         //drawing description sprite
         window.draw(descriptionSprite);
@@ -203,14 +203,12 @@ void HUD::displayDescription(){
             //shows description of first category
             text.setString(consumables[descriptionScroll] -> getItemDescription());
             consumables[descriptionScroll] -> displayItem(760, 450, window);
-            consumables[descriptionScroll] -> displayName(window, 780, 315);
             sf::Vector2f position(130, 440+(105*descriptionScroll));
             trackerSprite.setPosition({position});//to highlight the item in the inventory
             window.draw(trackerSprite);
         }else{
             //shows description of second category
             collectibles[descriptionScroll].displayItem(760, 450, window);
-            collectibles[descriptionScroll].displayName(window, 780, 315);
             text.setString(collectibles[descriptionScroll].getItemDescription());
             sf::Vector2f position(130, 440+(105*(descriptionScroll%4)));//for switching category while scrolling through descriptions
             if (descriptionScroll > 3)
