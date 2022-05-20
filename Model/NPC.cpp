@@ -84,11 +84,11 @@ void NPC::interact(Hero &hero) {
 
             //diplaying text for interaction box
             if(type == 0 || type == 1){//for chester and elizabeth
-                this -> drawText("[1] Parla       [2] Acquista\n[Q] Esci",{825, 305});
+                this -> drawText(L"[1] Parla       [2] Acquista\n[Q] Esci",{825, 305});
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
                     isShop = !isShop;
             }else //for the other npcs
-                this -> drawText("[1] Parla       [Q] Esci",{825, 305});
+                this -> drawText(L"[1] Parla       [Q] Esci",{825, 305});
 
             //selcting between previous choises
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
@@ -154,7 +154,7 @@ void NPC::updateInputs(sf::Event keyInput){
     }
 }
 
-void NPC::drawText(std::string text, sf::Vector2f textPos){
+void NPC::drawText(std::wstring text, sf::Vector2f textPos){
     interactText.setPosition(textPos);
     interactText.setString(text);
     window.draw(interactText);
