@@ -140,13 +140,13 @@ private:
                             L"Eheheheh eheh eh..."};
     std::wstring duskPool[9] = {L"...Mmn...ahh...",//Princess Dusk
                             L"...Aah...mmn...",
-                            L"Salve avventuriero. Anche tu da queste parti, \nnon è vero? Da quale era provieni?",
+                            L"Salve avventuriero. Anche tu da \nqueste parti, non è vero? \nDa quale era provieni?",
                             L"Sai... può sembrare strano, ma...",
-                            L"Sono stata assalita da una creatura dell'Abisso \ne ci sarei "
-                            L"morta se non fosse stato per \nil Grande Cavaliere Artorias.",
-                            L"In realtà, ho visto poco di quanto è accaduto \ndurante lo scontro. Ero stordita.",
-                            L"Nonostante ciò, Artorias emanava un'aura \nparticolare... In lui traspirava "
-                            L"un equilibrio \ninteriore...",
+                            L"Sono stata assalita da una creatura\n dell'Abisso e ci sarei "
+                            L"morta se non \nfosse stato per il Grande \nCavaliere Artorias.",
+                            L"In realtà, ho visto poco di quanto è \naccaduto durante lo scontro. \nEro stordita.",
+                            L"Nonostante ciò, Artorias emanava \nun'aura particolare... In lui traspirava "
+                            L"\nun equilibrio interiore...",
                             L"Che ritrovo tale e quale in te.",
                             L"..."};
 };

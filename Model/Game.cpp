@@ -91,7 +91,7 @@ void Game::swapRoom(std::string tracker, int floor){
 
 Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(true, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero), 
     room(gameRooms -> makeRoom("startingroom", window, 1)), roomType{std::string("startroom"),std::string("secondroom"), std::string("thirdroom"), std::string("fourthroom"), std::string("finalroom")},
-    npc(window, 1, {300, 300}, 0, 0, 0, 0)
+    npc(window, 2, {300, 300}, 0, 0, 0, 0)
 {
     
 }
