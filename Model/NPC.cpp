@@ -60,6 +60,7 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         //setting interaction text
         interactFont.loadFromFile("../pixelFont.ttf");
         interactText.setFont(interactFont);
+        interactText.setCharacterSize(20);
 
         //tracker for buying a specific item
         trackerSprite.setTexture(hudTexture);
@@ -84,11 +85,11 @@ void NPC::interact(Hero &hero) {
 
             //diplaying text for interaction box
             if(type == 0 || type == 1){//for chester and elizabeth
-                this -> drawText(L"[1] Parla       [2] Acquista\n[Q] Esci",{825, 305});
+                this -> drawText(L"[1] Parla       [2] Acquista\n[Q] Esci",{825, 325});
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
                     isShop = !isShop;
             }else //for the other npcs
-                this -> drawText(L"[1] Parla       [Q] Esci",{825, 305});
+                this -> drawText(L"[1] Parla       [Q] Esci",{825, 325});
 
             //selcting between previous choises
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
