@@ -58,7 +58,7 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         interactionBoxSprite.setScale(1.7f, 1.7f);
 
         //setting interaction text
-        interactFont.loadFromFile("../orangekid.ttf");
+        interactFont.loadFromFile("../pixelFont.ttf");
         interactText.setFont(interactFont);
 
         //tracker for buying a specific item
