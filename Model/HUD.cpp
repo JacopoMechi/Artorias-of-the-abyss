@@ -5,7 +5,8 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     //setting the font and size for the text      
     font.loadFromFile("../pixelFont.ttf");
     text.setFont(font);
-    text.setCharacterSize(10);
+    text.setCharacterSize(20);
+    text.setScale(0.7f, 0.7f);
 
     //setting font and size of health text
     healthText.setFont(font);
