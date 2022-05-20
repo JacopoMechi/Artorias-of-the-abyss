@@ -44,7 +44,8 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         //sif
         }else if(type == 3){
             sprite.setTextureRect({452, 38, 25, 27});    
-        }
+        }else
+            std::cout << "Error on loading the NPC" << std::endl;
         //loading shop sprite
         hudTexture.loadFromFile("../Textures/PlayerHUD.png");
         shopSprite.setTexture(hudTexture);

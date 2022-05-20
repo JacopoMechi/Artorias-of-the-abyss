@@ -117,26 +117,26 @@ private:
                             };
     std::wstring sifPool = {L"(Ulula)"};//sif
     std::wstring chesterPool[19] = {L"Oh… Fammi indovinare",//chester
-                            L"Sei stato catapultato nel passato di un'era \ndifferente?",
-                            L"Come avevo sospettato. È successo anche a \nme: siamo entrambi degli estranei \n"
-                            L"in una terra sconosciuta.",
+                            L"Sei stato catapultato nel passato di \nun'era differente?",
+                            L"Come avevo sospettato. È successo \nanche a me: siamo entrambi \ndegli estranei "
+                            L"in una terra \nsconosciuta.",
                             L"Ma almeno adesso, siamo in due.",
                             L"Beh… Errore mio.",
-                            L"Ma siamo entrambi avventurieri e, per questo, \ndobbiamo aiutarci a vicenda.",
+                            L"Ma siamo entrambi avventurieri e, per \nquesto, dobbiamo aiutarci a \nvicenda.",
                             L"Ti è capitato di incontrare Artorias? Il \nleggendario camminatore degli Abissi, \n"
                             L"secondo gli antichi racconti.",
-                            L"Se ancora non è successo, meglio così. Se \nme lo stai chiedendo, sì, è ormai corrotto.",
+                            L"Se ancora non è successo, meglio \ncosì. Se me lo stai chiedendo, sì, è \normai corrotto.",
                             L"Ahahah ah ahah !",
-                            L"Allora, cosa ti ha fare quel fungo gigante? Non \nche mi interessi. "
-                            L"Non fa parte del mio business.",
+                            L"Allora, cosa ti ha fare quel fungo \ngigante? Non che mi interessi. "
+                            L"Non fa \nparte del mio business.",
                             L"Eheheheh  eheh...",
                             L"Hm? Non ho molto da dire...",
                             L"Hai veramente ucciso Artorias?",
-                            L"Ho sentito dire che l'Abisso lo ha trasformato in \nqualcosa di veramente pericoloso.",
+                            L"Ho sentito dire che l'Abisso lo ha \ntrasformato in qualcosa di \nveramente pericoloso.",
                             L"È assolutamente insidioso.",
                             L"Ahahahahaha ahha!",
                             L"Che tu ci creda o no, Oolacile ha portato \nl'Abisso con se.",
-                            L"Ti sei mai chiesto: Vale veramente la pena?",
+                            L"Ti sei mai chiesto: \nVale veramente la pena?",
                             L"Eheheheh eheh eh..."};
     std::wstring duskPool[9] = {L"...Mmn...ahh...",//Princess Dusk
                             L"...Aah...mmn...",
