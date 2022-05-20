@@ -124,9 +124,9 @@ void NPC::interact(Hero &hero) {
             this -> drawInteractBox({800, 303});
             //showing dialouge
             if(type == 3)//only Sif has one line of dialogue
-                this -> drawText(sifPool, {815, 313});
+                this -> drawText(sifPool, {820, 333});
             else
-                this -> drawText(textPool[dialogueTracker], {815, 313});
+                this -> drawText(textPool[dialogueTracker], {820, 333});
         }else{
 
             //reset npc dialouge tracker

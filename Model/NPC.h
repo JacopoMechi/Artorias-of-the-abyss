@@ -98,18 +98,18 @@ private:
 
     //inserting dialogue strings
     std::wstring elizabethPool[12] = {L"Bene bene, abbiamo un nuovo ospite. \nDa quale lontana era provieni?",//Elizabeth
-                            L"Ci sono molte cose che vorrei chiederti, \nma so che non devo.",
-                            L"Ahh, capisco. Non sai cosa sia successo...",
+                            L"Ci sono molte cose che vorrei \nchiederti, ma so che non devo.",
+                            L"Ahh, capisco. Non sai cosa sia \nsuccesso...",
                             L"Vedrai più avanti. Un antica bestia è \nstata risvegliata "
-                            L"e ha generato l'Abisso, \nminacciando di corrompere tutta Oolacile.",
-                            L"Il cavaliere Artorias è venuto per fermare \ntutto questo, "
-                            L"ma un tale eroe non è \nabbastanza coraggioso da affrontare \ntale potere.",
-                            L"Senza dubbio è stato sconfitto, travolto \ndall'oscurità, "
-                            L"ma spero ancora \nche la Principessa Dusk venga salvata.",
+                            L"e ha generato \nl'Abisso, minacciando di corrompere \ntutta Oolacile.",
+                            L"Il cavaliere Artorias è venuto per \nfermare tutto questo, "
+                            L"ma un tale eroe \nnon è abbastanza coraggioso da \naffrontare tale potere.",
+                            L"Senza dubbio è stato sconfitto, \ntravolto dall'oscurità, "
+                            L"ma spero \nancora che la Principessa Dusk venga \nsalvata.",
                             L"Non molto tempo fa, ho avuto un altro \nvisitatore, un essere umano come te, \n"
                             L"da un tempo lontano.",
                             L"Solo che era terribilmente odioso… e \ntemo che sia ancora tra noi.",
-                            L"E' calvo e indossa un indumento marrone...",
+                            L"E' calvo e indossa un indumento \nmarrone...",
                             L"Che le fiamme possano guidarti.",
                             L"Ti ringrazio per aver salvato la \nprincipessa Dusk, te ne sarò debitrice \ne "
                             L"ti ricorderò per sempre.",
