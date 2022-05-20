@@ -8,6 +8,7 @@
 #include "Hero.h"
 #include "HUD.h"
 #include "RoomFactory.h"
+#include "NPC.h"
 
 class Game
 {
@@ -45,6 +46,7 @@ private:
     sf::RenderWindow &window;
     Hero hero;
     HUD hud;
+    NPC npc;
     sf::Clock clock;
     sf::Event event;
 };
