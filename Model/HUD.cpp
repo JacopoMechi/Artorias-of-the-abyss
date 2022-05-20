@@ -197,7 +197,7 @@ void HUD::drawInventory(){
 
 void HUD::displayDescription(){
     //setting the description
-    text.setPosition(900, 395);
+    text.setPosition(890, 395);
     if(switching){
         //drawing description sprite
         window.draw(descriptionSprite);
