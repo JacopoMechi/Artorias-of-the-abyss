@@ -231,7 +231,7 @@ void HUD::displayDescription(){
 void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
     //handling inputs
     //opens inventory
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E){
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E && !isInteracting){// isInteracting to not open the inventory
         isInvOpen = !isInvOpen;
         if (!isInvOpen)
             switching = false;
