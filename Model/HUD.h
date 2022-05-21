@@ -72,6 +72,8 @@ protected:
     bool NPCAggro = false;
     //setting spell direction for hero
     int spellDirection; //it can be 1(right) or -1(left)
+    //boolean value to let the character buy from merchant
+    bool wantsTobuy = false;
 
     //for displaying items in quickslot
     Item* quickSlot[3] = {new NullItem(), new NullItem(), new NullItem()};

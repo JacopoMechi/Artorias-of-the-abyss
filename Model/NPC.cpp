@@ -85,16 +85,10 @@ void NPC::interact(Hero &hero) {
             this -> drawInteractBox({805, 295});
 
             //diplaying text for interaction box
-            if(type == 0 || type == 1){//for chester and elizabeth
+            if(type == 0 || type == 1)//for chester and elizabeth
                 this -> drawText(L"[1] Parla       [2] Acquista\n[Q] Esci",{825, 325});
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
-                    isShop = !isShop;
-            }else //for the other npcs
+            else //for the other npcs
                 this -> drawText(L"[1] Parla       [Q] Esci",{825, 325});
-
-            //selcting between previous choises
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
-                isTalking = !isTalking;    
 
         //setting up npc shop    
         }else if(isShop){
@@ -112,10 +106,6 @@ void NPC::interact(Hero &hero) {
                 this -> drawShop(merch[1]);
             //eliszabeth which sells green blossoms and the pendant
             }else if (type == 1){
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-                    trackerPos = {773, 340};
-                else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-                    trackerPos = {773, 445};   
                 this -> drawTracker(trackerPos);
                 this -> drawShop(merch[0], merch[2]);
             }
@@ -123,6 +113,7 @@ void NPC::interact(Hero &hero) {
             //opening interact menu when trying to buy items
             if(isBuying){
                 this -> drawInteractBox({1230,300});
+                this -> drawText(L"Quanti ne vuoi acquistare?", {1250, 330});
             }
         //starting dialogue with npc    
         }else if(isTalking){
@@ -159,6 +150,25 @@ void NPC::updateInputs(sf::Event keyInput){
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
             dialogueTracker = (dialogueTracker+1)%(textPool.size()/2);//FIXME why /2?
     }
+
+    //handling inputs for scrolling through items in shop (for type = 1)//TODO
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up && type == 1)
+        trackerPos = {773, 340};
+    else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Down && type == 1)
+        trackerPos = {773, 445};   
+
+    //opening buying interface
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && isShop)
+        isBuying = !isBuying;    
+
+    //select talking option in interaction
+    if (keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && isInteraction && !isShop && !isTalking)
+        isTalking = !isTalking;    
+
+    //selecting shop option in interaction
+    //(only for specifics NPCs)
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2)
+        isShop = !isShop;
 }
 
 void NPC::drawText(std::wstring text, sf::Vector2f textPos){
