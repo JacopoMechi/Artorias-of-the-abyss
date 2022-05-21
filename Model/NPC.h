@@ -84,6 +84,9 @@ private:
     //switch for talking
     bool isTalking = false;
 
+    //boolean value to open a box where you can buy the selected item
+    bool isBuying  = true;//= false;
+
     //for tracking character type
     int type;
 

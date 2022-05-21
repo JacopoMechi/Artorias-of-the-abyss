@@ -119,6 +119,11 @@ void NPC::interact(Hero &hero) {
                 this -> drawTracker(trackerPos);
                 this -> drawShop(merch[0], merch[2]);
             }
+
+            //opening interact menu when trying to buy items
+            if(isBuying){
+                this -> drawInteractBox({1230,300});
+            }
         //starting dialogue with npc    
         }else if(isTalking){
             //showing npc's dialogue box
