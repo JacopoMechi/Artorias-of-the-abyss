@@ -12,6 +12,10 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     healthText.setFont(font);
     healthText.setCharacterSize(20);
 
+    //setting font and size of money counter text
+    moneyText.setFont(font);
+    moneyText.setCharacterSize(20);
+
     //adding texture for the hud
     hudTexture.loadFromFile("../Textures/PlayerHUD.png");
     //health
@@ -347,7 +351,10 @@ void HUD::checkNPCAggro(NPC &npc){
 
 void HUD::displayMoneyCounter(Hero &hero){
     window.draw(moneyCounterSprite);
-
+    std::string counter = std::string("Monete: ") + std::to_string(hero.getMoneyAmount());
+    moneyText.setString(counter);
+    moneyText.setPosition(90, 1035);
+    window.draw(moneyText);
 }
 
 void HUD::obscureButton(sf::Vector2f pos) {

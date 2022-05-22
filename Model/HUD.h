@@ -63,6 +63,7 @@ protected:
     sf::Sprite trackerSprite;
     sf::Text text;
     sf::Text healthText;
+    sf::Text moneyText;
     sf::Font font;
     //obscure button sprite
     sf::Sprite obscureSprite;
