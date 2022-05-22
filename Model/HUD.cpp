@@ -19,6 +19,11 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     healthSprite.setTextureRect({1531, 0, 389, 95});
     healthSprite.setPosition(1610, 0);
     healthSprite.setScale(0.8f, 0.8f);
+    //money counter
+    moneyCounterSprite.setTexture(hudTexture);
+    moneyCounterSprite.setTextureRect({0, 986, 389, 95});
+    moneyCounterSprite.setPosition(0,1000);
+    moneyCounterSprite.setScale(0.8f, 0.8f);
     //quickslot
     quickslotSprite.setTexture(hudTexture);
     quickslotSprite.setTextureRect({810, 960, 300, 77});
@@ -79,7 +84,6 @@ void HUD::setFirstTab(bool firstTab){
 }
 
 void HUD::draw() {
-    window.draw(healthSprite);
     window.draw(quickslotSprite);
     window.draw(actionsSprite);
     //displaying inventory
@@ -126,8 +130,9 @@ void HUD::draw() {
         this -> obscureButton({1015, 970});
 }
 
-void HUD::displayHealth(GameCharacter &character){ 
-    std::string bar = std::string("HP: ") + std::to_string(character.getHp()) + std::string("/100");
+void HUD::displayHealth(Hero &hero){ 
+    window.draw(healthSprite);
+    std::string bar = std::string("HP: ") + std::to_string(hero.getHp()) + std::string("/100");
     healthText.setPosition(1700, 40);
     healthText.setString(bar);
     window.draw(healthText);
@@ -338,6 +343,11 @@ void HUD::checkNPCAggro(NPC &npc){
         npc.setAggro(false);
         NPCAggro = false;
     }
+}
+
+void HUD::displayMoneyCounter(Hero &hero){
+    window.draw(moneyCounterSprite);
+
 }
 
 void HUD::obscureButton(sf::Vector2f pos) {

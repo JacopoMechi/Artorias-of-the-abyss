@@ -75,7 +75,7 @@ void Game::gameLoop()
                 hud.checkNPCAggro(npc);
                 hud.draw();
                 hud.displayHealth(hero);
-                
+                hud.displayMoneyCounter(hero);
             }
         }
         window.display();

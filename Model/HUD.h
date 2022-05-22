@@ -26,7 +26,7 @@ public:
 
     void draw();
 
-    void displayHealth(GameCharacter &character);
+    void displayHealth(Hero &hero);
 
     void displayDescription();
 
@@ -40,6 +40,9 @@ public:
 
     void checkNPCAggro(NPC &npc);
 
+    //display money counter in hud
+    void displayMoneyCounter(Hero &hero);
+
     //obscuring action buttons
     void obscureButton(sf::Vector2f pos);
 
@@ -51,6 +54,7 @@ protected:
     //texture and sprites for hud
     sf::Texture hudTexture;
     sf::Sprite healthSprite;
+    sf::Sprite moneyCounterSprite;
     sf::Sprite quickslotSprite;
     sf::Sprite actionsSprite;
     sf::Sprite inventorySprite;
