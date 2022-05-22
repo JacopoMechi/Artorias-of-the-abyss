@@ -44,6 +44,10 @@ public:
     bool getStartingSpell();
     void setStartingSpell(bool startSpell);
 
+    //getter and setter for changing the amount of money the character has
+    int getMoneyAmount();
+    void setMoneyAmount(int moneyCounter);
+
     float getHeroPosY();
     void setHeroPosY(float heroPosY);
 
@@ -76,6 +80,7 @@ protected:
     Weapon* leftWeapon;
     bool isKnight;
     float delayTime;
+    int moneyCounter = 0;
 
     //shield aura sprite
     sf::Sprite auraShield;
