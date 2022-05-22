@@ -98,6 +98,14 @@ void Hero::setAuraReady(bool auraReady)
     this->auraReady = auraReady;
 }
 
+int Hero::getMoneyAmount(){
+    return moneyCounter;
+}
+
+void Hero::setMoneyAmount(int moneyCounter){
+    this -> moneyCounter = moneyCounter;
+}
+
 void Hero::dash()
 {
     // for dashing, we just need to move the character position farther only in the moment that we press Space key
