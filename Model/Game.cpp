@@ -15,7 +15,7 @@ void Game::gameLoop()
             if (event.type == sf::Event::Closed)
                 window.close();
             hud.updateEvent(event, NPCInteraction);
-            npc.updateInputs(event);
+            npc.updateInputs(event, hero);
         }
         hero.updateDelayAndInputs(event, dt);
         window.clear(sf::Color::Black);

@@ -26,7 +26,7 @@ public:
     void interact(Hero &hero);
 
     //handling inputs
-    void updateInputs(sf::Event keyInput);
+    void updateInputs(sf::Event keyInput, Hero &hero);
 
     //drawing text for all menus 
     void drawText(std::wstring text, sf::Vector2f textPos);
@@ -98,6 +98,10 @@ private:
 
     //items selling list
     Item* merch[3] = {new GreenBlossom(), new HomewardBone(), new Pendant()};
+
+    //for displaying error message when the character doesn't have enough money
+    bool printErrorMessage = false;
+    sf::Text errorMessage;
 
     //setting textpool for dialogues depending on character
     std::vector<std::wstring> textPool;

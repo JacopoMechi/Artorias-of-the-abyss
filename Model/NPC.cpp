@@ -68,6 +68,12 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         trackerSprite.setTextureRect({118, 738, 264, 55});
         trackerSprite.setScale(1.5f, 1.5f);
         trackerSprite.setColor({255,255, 255, 80});
+
+        //drawing error message
+        errorMessage.setFont(interactFont);
+        errorMessage.setCharacterSize(20);
+        errorMessage.setPosition({1250, 380});
+        errorMessage.setString(L"Non hai abbastanza monete!");
 }
 
 NPC::~NPC(){
@@ -89,6 +95,19 @@ void NPC::interact(Hero &hero) {
                 this -> drawText(L"[1] Parla       [2] Acquista\n[Q] Esci",{825, 325});
             else //for the other npcs
                 this -> drawText(L"[1] Parla       [Q] Esci",{825, 325});
+
+            //resetting values
+            //reset npc dialouge tracker
+            dialogueTracker = 0;
+            
+            //reset items highlights for shop
+            trackerPos = {773, 340};
+
+            //reset isBuying
+            isBuying = false;
+
+            //reset error message
+            printErrorMessage = false;
 
         //setting up npc shop    
         }else if(isShop){
@@ -117,10 +136,14 @@ void NPC::interact(Hero &hero) {
                     price = merch[1] -> getItemPrice();
                 else if (trackerPos.x == 773 && trackerPos.y == 340) //first item of elizabeth
                     price = merch[0] -> getItemPrice();
-                else //secon item of elizabeth
+                else //second item of elizabeth
                     price = merch[2] -> getItemPrice();
 
-                this -> drawText(L"Quanti ne vuoi acquistare? (" + std::to_wstring(price) + L")", {1250, 330});
+                this -> drawText(L"Quanti ne vuoi acquistare? (" + std::to_wstring(price) + L") \n[1] 1     [2] 5     [3] 10", {1250, 330});
+
+                //displaying error message in case we don't have enough money to buy 
+                if(printErrorMessage)
+                    window.draw(errorMessage);
             }
         //starting dialogue with npc    
         }else if(isTalking){
@@ -131,18 +154,11 @@ void NPC::interact(Hero &hero) {
                 this -> drawText(sifPool, {820, 333});
             else
                 this -> drawText(textPool[dialogueTracker], {820, 333});
-        }else{
-
-            //reset npc dialouge tracker
-            dialogueTracker = 0;
-            
-            //reset items highlights for shop
-            trackerPos = {773, 340};
         }
     }
 }
 
-void NPC::updateInputs(sf::Event keyInput){
+void NPC::updateInputs(sf::Event keyInput, Hero &hero){
     if(aggro){
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
             isInteraction = !isInteraction;//open/close shop
@@ -169,13 +185,57 @@ void NPC::updateInputs(sf::Event keyInput){
         isBuying = !isBuying;    
 
     //select talking option in interaction
-    if (keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && isInteraction && !isShop && !isTalking)
+    if (keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && isInteraction && !isShop && !isTalking && !isBuying)
         isTalking = !isTalking;    
 
     //selecting shop option in interaction
     //(only for specifics NPCs)
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2)
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && !isBuying)
         isShop = !isShop;
+
+    //handling inputs for buying items
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && isBuying){
+        if(price < hero.getMoneyAmount()){
+            hero.setMoneyAmount(hero.getMoneyAmount() - price);
+            if(type == 0)
+                    merch[1] -> setItemCount(merch[1] -> getItemCount() + 1);
+                else if (trackerPos.x == 773 && trackerPos.y == 340) //first item of elizabeth
+                    merch[0] -> setItemCount(merch[0] -> getItemCount() + 1);
+                else //second item of elizabeth
+                    merch[2] -> setItemCount(merch[2] -> getItemCount() + 1);
+
+            printErrorMessage = false;
+        }else
+            printErrorMessage = true;
+    }
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && isBuying){
+        if((5*price) < hero.getMoneyAmount()){
+            hero.setMoneyAmount(hero.getMoneyAmount() - price);
+            if(type == 0)
+                    merch[1] -> setItemCount(merch[1] -> getItemCount() + 5);
+                else if (trackerPos.x == 773 && trackerPos.y == 340) //first item of elizabeth
+                    merch[0] -> setItemCount(merch[0] -> getItemCount() + 5);
+                else //second item of elizabeth
+                    merch[2] -> setItemCount(merch[2] -> getItemCount() + 5);
+
+            printErrorMessage = false;
+        }else
+            printErrorMessage = true;
+    }
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && isBuying){
+        if((10*price) < hero.getMoneyAmount()){
+            hero.setMoneyAmount(hero.getMoneyAmount() - price);
+            if(type == 0)
+                    merch[1] -> setItemCount(merch[1] -> getItemCount() + 10);
+                else if (trackerPos.x == 773 && trackerPos.y == 340) //first item of elizabeth
+                    merch[0] -> setItemCount(merch[0] -> getItemCount() + 10);
+                else //second item of elizabeth
+                    merch[2] -> setItemCount(merch[2] -> getItemCount() + 10);
+
+            printErrorMessage = false;
+        }else
+            printErrorMessage = true;
+    }
 }
 
 void NPC::drawText(std::wstring text, sf::Vector2f textPos){
