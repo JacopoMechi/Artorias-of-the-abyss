@@ -104,7 +104,7 @@ void NPC::interact(Hero &hero) {
                 this -> drawTracker(trackerPos);
 
                 this -> drawShop(merch[1]);
-            //eliszabeth which sells green blossoms and the pendant
+            //elizabeth which sells green blossoms and the pendant
             }else if (type == 1){
                 this -> drawTracker(trackerPos);
                 this -> drawShop(merch[0], merch[2]);
@@ -113,7 +113,14 @@ void NPC::interact(Hero &hero) {
             //opening interact menu when trying to buy items
             if(isBuying){
                 this -> drawInteractBox({1230,300});
-                this -> drawText(L"Quanti ne vuoi acquistare?", {1250, 330});
+                if(type == 0)
+                    price = merch[1] -> getItemPrice();
+                else if (trackerPos.x == 773 && trackerPos.y == 340) //first item of elizabeth
+                    price = merch[0] -> getItemPrice();
+                else //secon item of elizabeth
+                    price = merch[2] -> getItemPrice();
+
+                this -> drawText(L"Quanti ne vuoi acquistare? (" + std::to_wstring(price) + L")", {1250, 330});
             }
         //starting dialogue with npc    
         }else if(isTalking){

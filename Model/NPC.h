@@ -93,6 +93,9 @@ private:
     //bool value to open buying menu
     bool isBuying = false;
 
+    //getting item price
+    int price = 0;
+
     //items selling list
     Item* merch[3] = {new GreenBlossom(), new HomewardBone(), new Pendant()};
 
