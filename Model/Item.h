@@ -25,6 +25,8 @@ public:
 
     std::wstring getItemDescription();
 
+    int getItemPrice();
+
     virtual void use(Hero &hero);
 
 protected:

@@ -55,6 +55,10 @@ std::wstring Item::getItemDescription() {
         return L"...";    
 }
 
+int Item::getItemPrice(){
+    return itemPrice;
+}
+
 void Item::use(Hero &hero){
     
 }
