@@ -16,6 +16,10 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     moneyText.setFont(font);
     moneyText.setCharacterSize(20);
 
+    //setting font and size for counting how many consumables are in a slot in quickslot
+    itemAmountText.setFont(font);
+    itemAmountText.setCharacterSize(5);
+
     //adding texture for the hud
     hudTexture.loadFromFile("../Textures/PlayerHUD.png");
     //health
@@ -360,4 +364,10 @@ void HUD::displayMoneyCounter(Hero &hero){
 void HUD::obscureButton(sf::Vector2f pos) {
     obscureSprite.setPosition(pos);
     window.draw(obscureSprite);
+}
+
+void HUD::displayItemCount(Item* item, sf::Vector2f pos){
+    itemAmountText.setString(std::to_wstring(item -> getItemCount()));
+    itemAmountText.setPosition(pos);
+    window.draw(itemAmountText);
 }

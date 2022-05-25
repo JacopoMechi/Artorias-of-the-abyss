@@ -46,6 +46,9 @@ public:
     //obscuring action buttons
     void obscureButton(sf::Vector2f pos);
 
+    //displaying item count on quickslot
+    void displayItemCount(Item* item, sf::Vector2f pos);
+
 protected:
     //for using quickslot items
     Hero &hero;
@@ -64,6 +67,7 @@ protected:
     sf::Text text;
     sf::Text healthText;
     sf::Text moneyText;
+    sf::Text itemAmountText;
     sf::Font font;
     //obscure button sprite
     sf::Sprite obscureSprite;
