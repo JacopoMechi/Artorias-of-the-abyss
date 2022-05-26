@@ -80,7 +80,7 @@ protected:
     Weapon* leftWeapon;
     bool isKnight;
     float delayTime;
-    int moneyCounter = 0;
+    int moneyCounter = 10000;
 
     //shield aura sprite
     sf::Sprite auraShield;

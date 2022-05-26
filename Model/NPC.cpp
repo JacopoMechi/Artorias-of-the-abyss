@@ -195,42 +195,51 @@ void NPC::updateInputs(sf::Event keyInput, Hero &hero){
 
     //handling inputs for buying items
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && isBuying){
-        if(price < hero.getMoneyAmount()){
+        if(price <= hero.getMoneyAmount()){
             hero.setMoneyAmount(hero.getMoneyAmount() - price);
             if(type == 0)
-                    merch[1] -> setItemCount(merch[1] -> getItemCount() + 1);
+                    //interface.setItemAmount(2, 1);
+                    merch[1] -> setItemCount((merch[1] -> getItemCount() + 1));
                 else if (trackerPos.x == 773 && trackerPos.y == 340) //first item of elizabeth
-                    merch[0] -> setItemCount(merch[0] -> getItemCount() + 1);
+                    merch[0] -> setItemCount((merch[0] -> getItemCount() + 1));
+                    //interface.setItemAmount(1, 1);
                 else //second item of elizabeth
-                    merch[2] -> setItemCount(merch[2] -> getItemCount() + 1);
+                    merch[2] -> setItemCount((merch[2] -> getItemCount() + 1));
+                    //interface.setItemAmount(3, 1);
 
             printErrorMessage = false;
         }else
             printErrorMessage = true;
     }
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && isBuying){
-        if((5*price) < hero.getMoneyAmount()){
-            hero.setMoneyAmount(hero.getMoneyAmount() - price);
+        if((5*price) <= hero.getMoneyAmount()){
+            hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
             if(type == 0)
-                    merch[1] -> setItemCount(merch[1] -> getItemCount() + 5);
+                    merch[1] -> setItemCount((merch[1] -> getItemCount() + 5));
+                    //interface.setItemAmount(2, 1);
                 else if (trackerPos.x == 773 && trackerPos.y == 340) //first item of elizabeth
-                    merch[0] -> setItemCount(merch[0] -> getItemCount() + 5);
+                    merch[0] -> setItemCount((merch[0] -> getItemCount() + 5));
+                    //interface.setItemAmount(1, 1);
                 else //second item of elizabeth
-                    merch[2] -> setItemCount(merch[2] -> getItemCount() + 5);
+                    merch[2] -> setItemCount((merch[2] -> getItemCount() + 5));
+                    //interface.setItemAmount(3, 1);
 
             printErrorMessage = false;
         }else
             printErrorMessage = true;
     }
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && isBuying){
-        if((10*price) < hero.getMoneyAmount()){
-            hero.setMoneyAmount(hero.getMoneyAmount() - price);
+        if((10*price) <= hero.getMoneyAmount()){
+            hero.setMoneyAmount(hero.getMoneyAmount() - (price*10));
             if(type == 0)
-                    merch[1] -> setItemCount(merch[1] -> getItemCount() + 10);
+                    merch[1] -> setItemCount((merch[1] -> getItemCount() + 10));
+                    //interface.setItemAmount(2, 1);
                 else if (trackerPos.x == 773 && trackerPos.y == 340) //first item of elizabeth
-                    merch[0] -> setItemCount(merch[0] -> getItemCount() + 10);
+                    merch[0] -> setItemCount((merch[0] -> getItemCount() + 10));
+                    //interface.setItemAmount(1, 1);
                 else //second item of elizabeth
-                    merch[2] -> setItemCount(merch[2] -> getItemCount() + 10);
+                    merch[2] -> setItemCount((merch[2] -> getItemCount() + 10));
+                    //interface.setItemAmount(3, 1);
 
             printErrorMessage = false;
         }else

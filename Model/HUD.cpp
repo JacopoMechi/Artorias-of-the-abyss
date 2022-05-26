@@ -18,7 +18,7 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
 
     //setting font and size for counting how many consumables are in a slot in quickslot
     itemAmountText.setFont(font);
-    itemAmountText.setCharacterSize(5);
+    itemAmountText.setCharacterSize(10);
 
     //adding texture for the hud
     hudTexture.loadFromFile("../Textures/PlayerHUD.png");
@@ -87,6 +87,10 @@ bool HUD::getInvIsOpen(){
     return isInvOpen;
 }
 
+void HUD::setItemAmount(int itemNumber, int amount){
+    consumables[itemNumber] -> setItemCount(consumables[itemNumber] -> getItemCount() + amount);
+}
+
 void HUD::setFirstTab(bool firstTab){
     this -> firstTab = firstTab;
 }
@@ -136,6 +140,11 @@ void HUD::draw() {
         this -> obscureButton({932, 971});    
     if(quickSlot[2] -> getItemCount() == 0)
         this -> obscureButton({1015, 970});
+
+    //displaying item counts
+    this -> displayItemCount(quickSlot[0], {890, 980});
+    this -> displayItemCount(quickSlot[1], {975, 980});
+    this -> displayItemCount(quickSlot[2], {1060, 980});
 }
 
 void HUD::displayHealth(Hero &hero){ 

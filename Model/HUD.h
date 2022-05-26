@@ -22,6 +22,9 @@ public:
 
     bool getInvIsOpen();
 
+    //setter for setting items amount in inventory
+    void setItemAmount(int itemNumber, int amount);
+
     void setFirstTab(bool firstTab);
 
     void draw();
