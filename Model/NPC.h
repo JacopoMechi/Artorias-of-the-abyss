@@ -32,7 +32,6 @@ public:
     void drawText(std::wstring text, sf::Vector2f textPos);
 
     //drawing interaction box
-    void drawInteractBox(sf::Vector2f pos);
 
     //drawing shop box
     void drawShop(Item* item1, Item* item2);
@@ -64,10 +63,6 @@ private:
 
     //getting item price
     int price = 0;
-
-    //items selling list
-    //Item* merch[3] = {new GreenBlossom(), new HomewardBone(), new Pendant()};
-
     
     bool printErrorMessage = false;
     

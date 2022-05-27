@@ -52,6 +52,9 @@ public:
     //displaying item count on quickslot
     void displayItemCount(Item* item, sf::Vector2f pos);
 
+    //method to display interact box for interactions NPCs
+    void drawInteractBox(sf::Vector2f pos);
+
 protected:
     //for using quickslot items
     Hero &hero;

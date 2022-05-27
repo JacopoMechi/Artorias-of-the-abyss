@@ -49,9 +49,6 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
 }
 
 NPC::~NPC(){
-    //deleting merch array
-    for(int i = 0; i < 3; i++)
-        delete merch[i];
 }
 
 void NPC::interact(Hero &hero) {
@@ -68,10 +65,7 @@ void NPC::drawText(std::wstring text, sf::Vector2f textPos){
     window.draw(interactText);
 }
 
-void NPC::drawInteractBox(sf::Vector2f pos){
-    interactionBoxSprite.setPosition(pos);
-    window.draw(interactionBoxSprite);
-}
+
 
 void NPC::drawShop(Item* item1){
     item1 -> displayItem(780, 355, window);

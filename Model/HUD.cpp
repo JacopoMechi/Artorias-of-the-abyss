@@ -569,3 +569,8 @@ void HUD::displayItemCount(Item* item, sf::Vector2f pos){
     itemAmountText.setPosition(pos);
     window.draw(itemAmountText);
 }
+
+void NPC::drawInteractBox(sf::Vector2f pos){
+    interactionBoxSprite.setPosition(pos);
+    window.draw(interactionBoxSprite);
+}
