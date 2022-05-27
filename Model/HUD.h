@@ -67,13 +67,24 @@ protected:
     sf::Sprite descriptionSprite;
     sf::Sprite assignSprite;
     sf::Sprite trackerSprite;
+    //obscure button sprite
+    sf::Sprite obscureSprite;
+    //shop sprite declaration
+    sf::Sprite shopSprite;
+    //interactions sprite declaration
+    sf::Sprite interactionBoxSprite;
+    //tracker sprite for shop
+    sf::Sprite shopTrackerSprite;
+    //text for interactions
+    sf::Text interactText;
     sf::Text text;
     sf::Text healthText;
     sf::Text moneyText;
     sf::Text itemAmountText;
+    //for displaying error message when the character doesn't have enough money
+    sf::Text errorMessage;
     sf::Font font;
-    //obscure button sprite
-    sf::Sprite obscureSprite;
+    
     bool isInvOpen = false;
     bool firstTab = true;
     int inventoryScroll = 0;
@@ -86,6 +97,24 @@ protected:
     int spellDirection; //it can be 1(right) or -1(left)
     //boolean value to let the character buy from merchant
     bool wantsTobuy = false;
+
+    //switch for open shop
+    bool isInteraction = false;
+
+    //switch for interaction menu
+    bool aggro = false;
+
+    //switch for shop menu
+    bool isShop = false;
+
+    //switch for talking
+    bool isTalking = false;
+
+    //for tracking phrase number
+    int dialogueTracker = 0;
+    
+    //bool value to open buying menu
+    bool isBuying = false;
 
     //for displaying items in quickslot
     Item* quickSlot[3] = {new NullItem(), new NullItem(), new NullItem()};

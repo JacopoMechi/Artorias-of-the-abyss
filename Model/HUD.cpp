@@ -66,6 +66,34 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     obscureSprite.setTextureRect({1756, 733, 63, 63});
     obscureSprite.setScale(0.9f, 0.9f);
 
+    //loading shop sprite
+    hudTexture.loadFromFile("../Textures/PlayerHUD.png");
+    shopSprite.setTexture(hudTexture);
+    shopSprite.setTextureRect({91, 357, 317, 312});
+    shopSprite.setPosition(730, 303);
+    shopSprite.setScale(1.5f, 1.5f);
+
+    //interaction box sprite
+    interactionBoxSprite.setTexture(hudTexture);
+    interactionBoxSprite.setTextureRect({993, 317, 289, 96});
+    interactionBoxSprite.setScale(1.7f, 1.7f);
+
+    //setting interaction text
+    interactText.setFont(font);
+    interactText.setCharacterSize(20);
+
+    //tracker for buying a specific item
+    shopTrackerSprite.setTexture(hudTexture);
+    shopTrackerSprite.setTextureRect({118, 738, 264, 55});
+    shopTrackerSprite.setScale(1.5f, 1.5f);
+    shopTrackerSprite.setColor({255,255, 255, 80});
+
+    //drawing error message
+    errorMessage.setFont(font);
+    errorMessage.setCharacterSize(20);
+    errorMessage.setPosition({1250, 380});
+    errorMessage.setString(L"Non hai abbastanza monete!");
+
     
     //TODO only for tests. Needs to be removed
     consumables[3] -> setItemCount(1);
@@ -145,6 +173,80 @@ void HUD::draw() {
     this -> displayItemCount(quickSlot[0], {890, 980});
     this -> displayItemCount(quickSlot[1], {975, 980});
     this -> displayItemCount(quickSlot[2], {1060, 980});
+
+     //handling npc interaction menu 
+    if(isInteraction){
+        if(!isShop && !isTalking){
+
+            //displaying interaction box
+            this -> drawInteractBox({805, 295});
+
+            //diplaying text for interaction box
+            if(type == 0 || type == 1)//for chester and elizabeth
+                this -> drawText(L"[1] Parla       [2] Acquista\n[Q] Esci",{825, 325});
+            else //for the other npcs
+                this -> drawText(L"[1] Parla       [Q] Esci",{825, 325});
+
+            //resetting values
+            //reset npc dialouge tracker
+            dialogueTracker = 0;
+            
+            //reset items highlights for shop
+            trackerPos = {773, 340};
+
+            //reset isBuying
+            isBuying = false;
+
+            //reset error message
+            printErrorMessage = false;
+
+        //setting up npc shop    
+        }else if(isShop){
+            //reset npc dialouge tracker
+            dialogueTracker = 0;
+
+            //drawing shop sprite
+            window.draw(shopSprite);
+            //chester which sells homeward bones
+            if(type == 0){
+
+                //drawing tracker for scrolling items in the shop
+                this -> drawTracker(trackerPos);
+
+                this -> drawShop(merch[1]);
+            //elizabeth which sells green blossoms and the pendant
+            }else if (type == 1){
+                this -> drawTracker(trackerPos);
+                this -> drawShop(merch[0], merch[2]);
+            }
+
+            //opening interact menu when trying to buy items
+            if(isBuying){
+                this -> drawInteractBox({1230,300});
+                if(type == 0)
+                    price = merch[1] -> getItemPrice();
+                else if (trackerPos.x == 773 && trackerPos.y == 340) //first item of elizabeth
+                    price = merch[0] -> getItemPrice();
+                else //second item of elizabeth
+                    price = merch[2] -> getItemPrice();
+
+                this -> drawText(L"Quanti ne vuoi acquistare? (" + std::to_wstring(price) + L") \n[1] 1     [2] 5     [3] 10", {1250, 330});
+
+                //displaying error message in case we don't have enough money to buy 
+                if(printErrorMessage)
+                    window.draw(errorMessage);
+            }
+        //starting dialogue with npc    
+        }else if(isTalking){
+            //showing npc's dialogue box
+            this -> drawInteractBox({800, 303});
+            //showing dialouge
+            if(type == 3)//only Sif has one line of dialogue
+                this -> drawText(sifPool, {820, 333});
+            else
+                this -> drawText(textPool[dialogueTracker], {820, 333});
+        }
+    }
 }
 
 void HUD::displayHealth(Hero &hero){ 

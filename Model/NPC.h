@@ -56,42 +56,11 @@ private:
     //loading hud textures
     sf::Texture hudTexture;
 
-    //shop sprite declaration
-    sf::Sprite shopSprite;
-
-    //interactions sprite declaration
-    sf::Sprite interactionBoxSprite;
-
-    //text for interactions
-    sf::Text interactText;
-    sf::Font interactFont;
-
-    //tracker sprite
-    sf::Sprite trackerSprite;
-
     //initial tracker pos
     sf::Vector2f trackerPos = {773, 340};
 
-    //switch for open shop
-    bool isInteraction = false;
-
-    //switch for interaction menu
-    bool aggro = false;
-
-    //switch for shop menu
-    bool isShop = false;
-
-    //switch for talking
-    bool isTalking = false;
-
     //for tracking character type
     int type;
-
-    //for tracking phrase number
-    int dialogueTracker = 0;
-    
-    //bool value to open buying menu
-    bool isBuying = false;
 
     //getting item price
     int price = 0;
@@ -99,9 +68,9 @@ private:
     //items selling list
     Item* merch[3] = {new GreenBlossom(), new HomewardBone(), new Pendant()};
 
-    //for displaying error message when the character doesn't have enough money
+    
     bool printErrorMessage = false;
-    sf::Text errorMessage;
+    
 
     //setting textpool for dialogues depending on character
     std::vector<std::wstring> textPool;
