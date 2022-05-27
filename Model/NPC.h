@@ -66,7 +66,7 @@ private:
     int price = 0;
 
     //items selling list
-    Item* merch[3] = {new GreenBlossom(), new HomewardBone(), new Pendant()};
+    //Item* merch[3] = {new GreenBlossom(), new HomewardBone(), new Pendant()};
 
     
     bool printErrorMessage = false;

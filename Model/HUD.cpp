@@ -352,7 +352,7 @@ void HUD::displayDescription(){
     }
 }
 
-void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
+void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
     //handling inputs
     //opens inventory
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E && !isInteracting){// isInteracting to not open the inventory
@@ -436,6 +436,93 @@ void HUD::updateEvent(sf::Event keyInput, bool isInteracting){
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::LShift && hero.getCharacterType())
         hero.setAuraReady(false);
 
+    //handling inputs for interaction with npc
+     if(aggro){
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
+            isInteraction = !isInteraction;//open/close shop
+            //for resetting interaction
+            isShop = false;
+            isTalking = false;
+        }
+    }
+
+    if(isTalking){//TODO LATER adjust dialogue depending on situations (like changing chester's text pool when Artorias is killed)
+        //scrolling through character's phrases
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
+            dialogueTracker = (dialogueTracker+1)%(textPool.size()/2);//FIXME why /2?
+    }
+
+    //handling inputs for scrolling through items in shop (for type = 1)//TODO
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up && type == 1)
+        trackerPos = {773, 340};
+    else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Down && type == 1)
+        trackerPos = {773, 445};   
+
+    //opening buying interface
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && isShop)
+        isBuying = !isBuying;    
+
+    //select talking option in interaction
+    if (keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && isInteraction && !isShop && !isTalking && !isBuying)
+        isTalking = !isTalking;    
+
+    //selecting shop option in interaction
+    //(only for specifics NPCs)
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && !isBuying)
+        isShop = !isShop;
+
+    //handling inputs for buying items
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && isBuying){
+        if(price <= hero.getMoneyAmount()){
+            hero.setMoneyAmount(hero.getMoneyAmount() - price);
+            if(type == 0)
+                    //interface.setItemAmount(2, 1);
+                    merch[1] -> setItemCount((merch[1] -> getItemCount() + 1));
+                else if (trackerPos.x == 773 && trackerPos.y == 340) //first item of elizabeth
+                    merch[0] -> setItemCount((merch[0] -> getItemCount() + 1));
+                    //interface.setItemAmount(1, 1);
+                else //second item of elizabeth
+                    merch[2] -> setItemCount((merch[2] -> getItemCount() + 1));
+                    //interface.setItemAmount(3, 1);
+
+            printErrorMessage = false;
+        }else
+            printErrorMessage = true;
+    }
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && isBuying){
+        if((5*price) <= hero.getMoneyAmount()){
+            hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
+            if(type == 0)
+                    merch[1] -> setItemCount((merch[1] -> getItemCount() + 5));
+                    //interface.setItemAmount(2, 1);
+                else if (trackerPos.x == 773 && trackerPos.y == 340) //first item of elizabeth
+                    merch[0] -> setItemCount((merch[0] -> getItemCount() + 5));
+                    //interface.setItemAmount(1, 1);
+                else //second item of elizabeth
+                    merch[2] -> setItemCount((merch[2] -> getItemCount() + 5));
+                    //interface.setItemAmount(3, 1);
+
+            printErrorMessage = false;
+        }else
+            printErrorMessage = true;
+    }
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && isBuying){
+        if((10*price) <= hero.getMoneyAmount()){
+            hero.setMoneyAmount(hero.getMoneyAmount() - (price*10));
+            if(type == 0)
+                    merch[1] -> setItemCount((merch[1] -> getItemCount() + 10));
+                    //interface.setItemAmount(2, 1);
+                else if (trackerPos.x == 773 && trackerPos.y == 340) //first item of elizabeth
+                    merch[0] -> setItemCount((merch[0] -> getItemCount() + 10));
+                    //interface.setItemAmount(1, 1);
+                else //second item of elizabeth
+                    merch[2] -> setItemCount((merch[2] -> getItemCount() + 10));
+                    //interface.setItemAmount(3, 1);
+
+            printErrorMessage = false;
+        }else
+            printErrorMessage = true;
+    }
 }
 
 //drawing assign popup
