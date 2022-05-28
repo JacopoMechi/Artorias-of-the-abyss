@@ -66,6 +66,7 @@ void Game::gameLoop()
                     }
                 }
                 hud.setTextPool(npc.getTextPool());
+                hud.setNPCType(npc.getNPCType());
                 NPCInteraction = hud.getIsInteraction();
                 hero.movement(hud.getInvIsOpen(), NPCInteraction);
                 hero.update(dt);

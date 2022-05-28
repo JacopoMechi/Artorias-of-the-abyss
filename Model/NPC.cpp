@@ -48,3 +48,7 @@ void NPC::draw(){
 std::vector<std::wstring> NPC::getTextPool(){
     return textPool;
 }
+
+int NPC::getNPCType(){
+    return type;
+}
