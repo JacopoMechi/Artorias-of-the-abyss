@@ -14,8 +14,7 @@ void Game::gameLoop()
             inGameMenu.updateEvent(event);
             if (event.type == sf::Event::Closed)
                 window.close();
-            hud.updateEvent(event, NPCInteraction);
-            npc.updateInputs(event, hero);
+            hud.updateEvent(event);
         }
         hero.updateDelayAndInputs(event, dt);
         window.clear(sf::Color::Black);
@@ -66,12 +65,12 @@ void Game::gameLoop()
                         this -> swapRoom(roomType[roomTracker], level);
                     }
                 }
-                NPCInteraction = npc.getIsInteraction();
+                hud.setTextPool(npc.getTextPool());
+                NPCInteraction = hud.getIsInteraction();
                 hero.movement(hud.getInvIsOpen(), NPCInteraction);
                 hero.update(dt);
-                npc.interact(hero);
                 hero.draw(window);
-                npc.draw(window);
+                npc.draw();
                 hud.checkNPCAggro(npc);
                 hud.draw();
                 hud.displayHealth(hero);

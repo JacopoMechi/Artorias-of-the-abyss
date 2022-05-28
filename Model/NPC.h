@@ -21,31 +21,18 @@ public:
     NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp = 100, int armor = 0, int cash = 0, float movementSpeed = 0);
     ~NPC();
 
+    //disabling inherited methods
     void receiveDamage() = delete;//to be unkillable
+    void attack() = delete;
 
-    void interact(Hero &hero);
+    //drawing the model of the NPC
+    void draw();
 
-    //handling inputs
-    void updateInputs(sf::Event keyInput, Hero &hero);
+    //method to let HUD get text pool
+    std::vector<std::wstring> getTextPool();
 
-    //drawing text for all menus 
-    void drawText(std::wstring text, sf::Vector2f textPos);
-
-    //drawing interaction box
-
-    //drawing shop box
-    void drawShop(Item* item1, Item* item2);
-    void drawShop(Item* item1);
-
-    //drawing tracker for selecting an item to buy
-    void drawTracker(sf::Vector2f pos);
-
-    //to stop character moving while interacting with an NPC
-    bool getIsInteraction();
-
-    //to set aggro for hud
-    void setAggro(bool aggro);
-    bool getAggro();
+    //getter NPC information for HUD purpose
+    int getNPCType();
 
 private:
 
@@ -60,11 +47,6 @@ private:
 
     //for tracking character type
     int type;
-
-    //getting item price
-    int price = 0;
-    
-    bool printErrorMessage = false;
     
 
     //setting textpool for dialogues depending on character
@@ -89,7 +71,6 @@ private:
                             L"ti ricorderò per sempre.",
                             L"Ma terrò per me la tua storia \nperché una leggenda rimarrà sempre \nuna leggenda…"
                             };
-    std::wstring sifPool = {L"(Ulula)"};//sif
     std::wstring chesterPool[19] = {L"Oh… Fammi indovinare",//chester
                             L"Sei stato catapultato nel passato di \nun'era differente?",
                             L"Come avevo sospettato. È successo \nanche a me: siamo entrambi \ndegli estranei "

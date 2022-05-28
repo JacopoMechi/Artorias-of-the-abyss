@@ -27,6 +27,12 @@ public:
 
     void setFirstTab(bool firstTab);
 
+    //setting text pool for displaying on hud
+    void setTextPool(std::vector<std::wstring> textPool);
+
+    //method for blocking hero when is intercating with an NPC
+    bool getIsInteraction();
+
     void draw();
 
     void displayHealth(Hero &hero);
@@ -35,7 +41,7 @@ public:
 
     void drawInventory();
 
-    void updateEvent(sf::Event keyInput, bool isInteracting);
+    void updateEvent(sf::Event keyInput);
 
     void drawQuickSlot();
 
@@ -54,6 +60,19 @@ public:
 
     //method to display interact box for interactions NPCs
     void drawInteractBox(sf::Vector2f pos);
+
+    //getting type of npc with which the player is interacting
+    void setNPCType(int NPCType);
+
+    //drawing tracker for selecting an item to buy
+    void drawShopTracker(sf::Vector2f pos);
+
+    //drawing text for all menus 
+    void drawShopText(std::wstring text, sf::Vector2f textPos);
+
+    //drawing shop box
+    void drawShop(Item* item1, Item* item2);
+    void drawShop(Item* item1);
 
 protected:
     //for using quickslot items
@@ -87,7 +106,15 @@ protected:
     //for displaying error message when the character doesn't have enough money
     sf::Text errorMessage;
     sf::Font font;
-    
+    //for displaying error message when you dont have enough money to buy an item
+    bool printErrorMessage = false;
+    //getting text pool to display it
+    std::vector<std::wstring> textPool;
+    //for setting position of shop tracker sprite
+    sf::Vector2f shopTrackerPos = {773, 340};
+    //for getting NPC type
+    int NPCType = -1; //because from 0 to 3 are NPCs
+
     bool isInvOpen = false;
     bool firstTab = true;
     int inventoryScroll = 0;
@@ -104,9 +131,6 @@ protected:
     //switch for open shop
     bool isInteraction = false;
 
-    //switch for interaction menu
-    bool aggro = false;
-
     //switch for shop menu
     bool isShop = false;
 
@@ -118,6 +142,9 @@ protected:
     
     //bool value to open buying menu
     bool isBuying = false;
+
+    //getting price of the item for shop
+    int price = 0;
 
     //for displaying items in quickslot
     Item* quickSlot[3] = {new NullItem(), new NullItem(), new NullItem()};

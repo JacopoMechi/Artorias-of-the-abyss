@@ -14,22 +14,12 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
     if(type == 0){
         sprite.setTextureRect({394, 22, 16, 14});
 
-        //setting up items for chester
-        //homeward bones
-        merch[1] -> setItemCount(50);
-
         //chester's dialogue
         textPool.resize(sizeof(chesterPool)/sizeof(std::string));
         textPool.insert(textPool.begin(), &chesterPool[0], &chesterPool[sizeof(chesterPool)/sizeof(std::string)]);
     //elizabeth
     }else if(type == 1){  
         sprite.setTextureRect({393, 40, 22, 25});
-
-        //setting up items for elizabeth
-        //pendant
-        merch[2] -> setItemCount(1);
-        //green blossom
-        merch[0] -> setItemCount(50);
         
         //elizabeth's dialogue
         textPool.resize(sizeof(elizabethPool)/sizeof(std::string));
@@ -51,47 +41,10 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
 NPC::~NPC(){
 }
 
-void NPC::interact(Hero &hero) {
-   
+void NPC::draw(){
+    window.draw(sprite);
 }
 
-void NPC::updateInputs(sf::Event keyInput, Hero &hero){
-   
-}
-
-void NPC::drawText(std::wstring text, sf::Vector2f textPos){
-    interactText.setPosition(textPos);
-    interactText.setString(text);
-    window.draw(interactText);
-}
-
-
-
-void NPC::drawShop(Item* item1){
-    item1 -> displayItem(780, 355, window);
-    item1 -> displayName(window, 900, 360);
-}
-
-void NPC::drawShop(Item* item1, Item* item2){
-    item1 -> displayItem(785, 358, window);
-    item1 -> displayName(window, 900, 360);
-    item2 -> displayItem(780, 463, window);
-    item2 -> displayName(window, 900, 470);
-}
-
-void NPC::drawTracker(sf::Vector2f pos){
-    trackerSprite.setPosition(pos);
-    window.draw(trackerSprite);
-}
-
-bool NPC::getIsInteraction(){
-    return isInteraction;
-}
-
-//set aggro for HUD class
-void NPC::setAggro(bool aggro){
-    this -> aggro = aggro;
-}
-bool NPC::getAggro(){
-    return aggro;
+std::vector<std::wstring> NPC::getTextPool(){
+    return textPool;
 }
