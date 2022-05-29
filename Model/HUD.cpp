@@ -526,9 +526,9 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
 
 //drawing assign popup
 void HUD::drawQuickSlot(){
-    text.setPosition(1003, 328);
+    text.setPosition(1008, 338);
     text.setCharacterSize(20);
-    text.setString("In quale slot vuoi assegnare il seguente\n oggetto?\n                          [1]  [2]  [3]");
+    text.setString("In quale slot vuoi assegnare \nil seguente oggetto?\n\n                          [1]  [2]  [3]");
     if(quickAssign&&firstTab){
         window.draw(assignSprite);
         window.draw(text);
