@@ -88,9 +88,8 @@ bool GameCharacter::isAggro(float aggroDistance, GameCharacter &entity)
         return false;
 }
 
-void GameCharacter::draw(sf::RenderTarget &rt) const
-{
-    rt.draw(sprite);
+void GameCharacter::draw(sf::RenderWindow &window) const{
+    window.draw(sprite);
 }
 
 void GameCharacter::update(float dt)

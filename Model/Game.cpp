@@ -71,7 +71,7 @@ void Game::gameLoop()
                 hero.movement(hud.getInvIsOpen(), NPCInteraction);
                 hero.update(dt);
                 hero.draw(window);
-                npc.draw();
+                npc.draw(window);
                 hud.checkNPCAggro(npc);
                 hud.draw();
                 hud.displayHealth(hero);

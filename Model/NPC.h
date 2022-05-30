@@ -27,9 +27,6 @@ public:
     virtual void attack(sf::RenderWindow &window) override;
     virtual void movement(bool isInventoryOpen, bool isInteracting) override;
 
-    //drawing the model of the NPC
-    void draw();
-
     //method to let HUD get text pool
     std::vector<std::wstring> getTextPool();
 
