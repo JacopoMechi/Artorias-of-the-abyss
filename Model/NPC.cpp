@@ -38,6 +38,17 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         std::cout << "Error on loading the NPC" << std::endl;
 }
 
+void NPC::receiveDamage(int points){
+    std::cout << "Error: cannot use receiveDamage function in NPC class" << std::endl;
+}
+
+void NPC::attack(sf::RenderWindow &window){
+    std::cout << "Error: cannot use attack function in NPC class" << std::endl;
+}
+
+void NPC::movement(bool isInvetoryOpen, bool isInteracting){
+    std::cout << "Error: cannot use movement function in NPC class" << std::endl;
+}
 
 void NPC::draw(){
     window.draw(sprite);
