@@ -18,12 +18,13 @@ class NPC: public GameCharacter {
 
 public:
 
-    NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp = 100, int armor = 0, int cash = 0, float movementSpeed = 0);
-    ~NPC();
+    explicit NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp = 100, int armor = 0, int cash = 0, float movementSpeed = 0);
+    virtual ~NPC() = default;
 
     //disabling inherited methods
     void receiveDamage() = delete;//to be unkillable
     void attack() = delete;
+    void movement(bool isInventoryOpen, bool isInteracting) { };//FIXME
 
     //drawing the model of the NPC
     void draw();
@@ -90,7 +91,7 @@ private:
                             L"Ho sentito dire che l'Abisso lo ha \ntrasformato in qualcosa di \nveramente pericoloso.",
                             L"È assolutamente insidioso.",
                             L"Ahahahahaha ahha!",
-                            L"Che tu ci creda o no, Oolacile ha portato \nl'Abisso con se.",
+                            L"Che tu ci creda o no, Oolacile ha \nportato l'Abisso con se.",
                             L"Ti sei mai chiesto: \nVale veramente la pena?",
                             L"Eheheheh eheh eh..."};
     std::wstring duskPool[9] = {L"...Mmn...ahh...",//Princess Dusk

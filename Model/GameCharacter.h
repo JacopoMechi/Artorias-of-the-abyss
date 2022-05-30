@@ -36,8 +36,8 @@ public:
 
     virtual void receiveDamage(int points);
 
-    // virtual void movement() = 0;//in commit add "movement and attack, in gamecharacter class, are now base methods"
-
+    virtual void movement(bool isInventoryOpen, bool isInteracting);
+    
     virtual void attack(sf::RenderWindow& window);
 
     bool isAggro(float aggroDistance, GameCharacter &entity);

@@ -78,6 +78,10 @@ void GameCharacter::receiveDamage(int points)
     setHp(HP - points);
 }
 
+void GameCharacter::movement(bool isInventoryOpen, bool isInteracting){
+    
+}
+
 void GameCharacter::attack(sf::RenderWindow &window){
 }
 

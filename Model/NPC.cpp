@@ -38,8 +38,6 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
         std::cout << "Error on loading the NPC" << std::endl;
 }
 
-NPC::~NPC(){
-}
 
 void NPC::draw(){
     window.draw(sprite);
