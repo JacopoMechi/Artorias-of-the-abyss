@@ -50,10 +50,10 @@ void NPC::movement(bool isInvetoryOpen, bool isInteracting){
     std::cout << "Error: cannot use movement function in NPC class" << std::endl;
 }
 
-std::vector<std::wstring> NPC::getTextPool(){
+std::vector<std::wstring> NPC::getTextPool() const{
     return textPool;
 }
 
-int NPC::getNPCType(){
+int NPC::getNPCType() const{
     return type;
 }

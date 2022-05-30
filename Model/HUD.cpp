@@ -111,7 +111,7 @@ HUD::~HUD(){
         delete consumables[i];    
 }
 
-bool HUD::getInvIsOpen(){
+bool HUD::getInvIsOpen() const{
     return isInvOpen;
 }
 

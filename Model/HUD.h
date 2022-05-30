@@ -20,7 +20,7 @@ public:
     HUD(sf::RenderWindow &window, Hero &hero);
     ~HUD();
 
-    bool getInvIsOpen();
+    bool getInvIsOpen() const;
 
     //setter for setting items amount in inventory
     void setItemAmount(int itemNumber, int amount);

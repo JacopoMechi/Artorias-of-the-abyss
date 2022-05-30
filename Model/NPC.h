@@ -28,10 +28,10 @@ public:
     virtual void movement(bool isInventoryOpen, bool isInteracting) override;
 
     //method to let HUD get text pool
-    std::vector<std::wstring> getTextPool();
+    std::vector<std::wstring> getTextPool() const;
 
     //getter NPC information for HUD purpose
-    int getNPCType();
+    int getNPCType() const;
 
 private:
 
