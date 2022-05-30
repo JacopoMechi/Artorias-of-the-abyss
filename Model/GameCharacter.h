@@ -36,7 +36,7 @@ public:
 
     virtual void receiveDamage(int points);
 
-    virtual void movement(bool isInventoryOpen, bool isInteracting);
+    virtual void movement(bool isInventoryOpen, bool isInteracting) = 0;
     
     virtual void attack(sf::RenderWindow& window);
 

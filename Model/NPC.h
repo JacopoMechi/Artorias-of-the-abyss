@@ -22,9 +22,9 @@ public:
     virtual ~NPC() = default;
 
     //disabling inherited methods
-    void receiveDamage() = delete;//to be unkillable
-    void attack() = delete;
-    void movement(bool isInventoryOpen, bool isInteracting) { };//FIXME
+    virtual void receiveDamage(int points) override { };//to be unkillable
+    virtual void attack(sf::RenderWindow &window) override { };
+    virtual void movement(bool isInventoryOpen, bool isInteracting) override { };//{ };//TODO add std cout for the moment. Next throw an error
 
     //drawing the model of the NPC
     void draw();

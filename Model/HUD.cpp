@@ -460,7 +460,7 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
             dialogueTracker = (dialogueTracker+1)%(textPool.size()/2);//FIXME why /2?
     }
 
-    //handling inputs for scrolling through items in shop (for type = 1)//TODO
+    //handling inputs for scrolling through items in shop 
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up && NPCType == 1)
         shopTrackerPos = {773, 340};
     else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Down && NPCType == 1)

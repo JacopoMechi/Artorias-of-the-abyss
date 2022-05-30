@@ -36,11 +36,6 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
     sprite.setScale(7.5f, 7.5f);
 }
 
-// Hero::~Hero(){//TODO
-// if (leftWeapon != nullptr)FIXME
-//     delete leftWeapon;
-//}
-
 int Hero::getDash()
 {
     return dashCount;
@@ -259,7 +254,7 @@ void Hero::setSpellDirection(){
 
 void Hero::castSpell(sf::RenderWindow &window){// boolean value to know when is active or not
     if(startSpell){
-        if(0 < spellPos.x && spellPos.x < 1920){ //to set the range of the spell//TODO needs to be adjusted (width of the screen)        
+        if(0 < spellPos.x && spellPos.x < 1920){ //to set the range of the spell       
 
             //to move the spell horizzontaly
             spellPos.x += spellSpeed*delayTime*spellDirection; 
