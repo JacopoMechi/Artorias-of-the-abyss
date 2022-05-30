@@ -5,11 +5,6 @@ GameCharacter::GameCharacter(const sf::Vector2f &pos, int hp, int armor, int cas
 {
 }
 
-/*GameCharacter::~GameCharacter() {//TODO
-    if (weapon != nullptr)
-        delete weapon;
-}*/
-
 int GameCharacter::getHp() const
 {
     return HP;
