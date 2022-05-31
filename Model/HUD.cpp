@@ -480,7 +480,7 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
         isShop = !isShop;
 
     //handling inputs for buying items
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && isBuying){
+    if(isBuying && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1){
         if(price <= hero.getMoneyAmount()){
             hero.setMoneyAmount(hero.getMoneyAmount() - price);
             if(NPCType == 0)
@@ -494,7 +494,7 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
         }else
             printErrorMessage = true;
     }
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && isBuying){
+    if(isBuying && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
         if((5*price) <= hero.getMoneyAmount()){
             hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
             if(NPCType == 0)
@@ -508,7 +508,7 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
         }else
             printErrorMessage = true;
     }
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3 && isBuying){
+    if(isBuying && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
         if((10*price) <= hero.getMoneyAmount()){
             hero.setMoneyAmount(hero.getMoneyAmount() - (price*10));
             if(NPCType == 0)
