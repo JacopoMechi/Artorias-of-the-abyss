@@ -31,7 +31,7 @@ public:
     void setTextPool(std::vector<std::wstring> textPool);
 
     //method for blocking hero when is intercating with an NPC
-    bool getIsInteraction();
+    bool getIsInteraction() const;
 
     void draw();
 

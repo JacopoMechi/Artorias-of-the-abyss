@@ -127,7 +127,7 @@ void HUD::setTextPool(std::vector<std::wstring> textPool){
     this -> textPool = textPool;
 }
 
-bool HUD::getIsInteraction(){
+bool HUD::getIsInteraction() const{
     return isInteraction;
 }
 
@@ -200,7 +200,7 @@ void HUD::draw() {
             dialogueTracker = 0;
             
             //reset items highlights for shop
-            shopTrackerPos = {773, 340};
+            shopTrackerPos = {768, 336};
 
             //reset isBuying
             isBuying = false;
@@ -462,9 +462,9 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
 
     //handling inputs for scrolling through items in shop 
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up && NPCType == 1)
-        shopTrackerPos = {773, 340};
+        shopTrackerPos = {768, 336};
     else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Down && NPCType == 1)
-        shopTrackerPos = {773, 445};   
+        shopTrackerPos = {768, 441};   
 
     //opening buying interface
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && isShop)
@@ -589,12 +589,12 @@ void HUD::drawShopText(std::wstring text, sf::Vector2f textPos){
 
 void HUD::drawShop(Item* item1){
     item1 -> displayItem(780, 355, window);
-    item1 -> displayName(window, 900, 360);
+    item1 -> displayName(window, 870, 360);
 }
 
 void HUD::drawShop(Item* item1, Item* item2){
     item1 -> displayItem(785, 358, window);
-    item1 -> displayName(window, 900, 360);
+    item1 -> displayName(window, 870, 360);
     item2 -> displayItem(780, 463, window);
-    item2 -> displayName(window, 900, 470);
+    item2 -> displayName(window, 870, 470);
 }
