@@ -419,12 +419,55 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
                 this -> assignItem(consumables[descriptionScroll], 2);
         }
     }else{
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && quickSlot[0] != NULL)
-            quickSlot[0] -> use(hero);
-        else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && quickSlot[1] != NULL)
-            quickSlot[1] -> use(hero);
-        else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3 && quickSlot[2] != NULL)
-            quickSlot[2] -> use(hero);
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
+            if(isInteraction && isBuying){
+                if(price <= hero.getMoneyAmount()){
+                    hero.setMoneyAmount(hero.getMoneyAmount() - price);
+                    if(NPCType == 0)
+                            consumables[2] -> setItemCount((consumables[2] -> getItemCount() + 1));
+                        else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
+                            consumables[1] -> setItemCount((consumables[1] -> getItemCount() + 1));
+                        else //second item of elizabeth
+                            consumables[3] -> setItemCount((consumables[3] -> getItemCount() + 1));
+
+                    printErrorMessage = false;
+                }else
+                    printErrorMessage = true;
+            }else
+                quickSlot[0] -> use(hero);
+        else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
+            if(isInteraction && isBuying){
+                if((5*price) <= hero.getMoneyAmount()){
+                    hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
+                    if(NPCType == 0)
+                            consumables[2] -> setItemCount((consumables[2] -> getItemCount() + 5));
+                        else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
+                            consumables[1] -> setItemCount((consumables[1] -> getItemCount() + 5));
+                        else //second item of elizabeth
+                            consumables[3] -> setItemCount((consumables[3] -> getItemCount() + 5));
+
+                    printErrorMessage = false;
+                }else
+                    printErrorMessage = true;
+            }else
+                quickSlot[1] -> use(hero);
+        }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
+            if(isInteraction && isBuying){
+                if((10*price) <= hero.getMoneyAmount()){
+                    hero.setMoneyAmount(hero.getMoneyAmount() - (price*10));
+                    if(NPCType == 0)
+                            consumables[2] -> setItemCount((consumables[2] -> getItemCount() + 10));
+                        else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
+                            consumables[1] -> setItemCount((consumables[1] -> getItemCount() + 10));
+                        else //second item of elizabeth
+                            consumables[3] -> setItemCount((consumables[3] -> getItemCount() + 10));
+
+                    printErrorMessage = false;
+                }else
+                    printErrorMessage = true;
+            }else
+                quickSlot[2] -> use(hero);
+        }
     }
 
     //hero's dash and attack handling
@@ -480,48 +523,15 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
         isShop = !isShop;
 
     //handling inputs for buying items
-    if(isBuying && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1){
-        if(price <= hero.getMoneyAmount()){
-            hero.setMoneyAmount(hero.getMoneyAmount() - price);
-            if(NPCType == 0)
-                    consumables[2] -> setItemCount((consumables[2] -> getItemCount() + 1));
-                else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
-                    consumables[1] -> setItemCount((consumables[1] -> getItemCount() + 1));
-                else //second item of elizabeth
-                    consumables[3] -> setItemCount((consumables[3] -> getItemCount() + 1));
-
-            printErrorMessage = false;
-        }else
-            printErrorMessage = true;
-    }
-    if(isBuying && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
-        if((5*price) <= hero.getMoneyAmount()){
-            hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
-            if(NPCType == 0)
-                    consumables[2] -> setItemCount((consumables[2] -> getItemCount() + 5));
-                else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
-                    consumables[1] -> setItemCount((consumables[1] -> getItemCount() + 5));
-                else //second item of elizabeth
-                    consumables[3] -> setItemCount((consumables[3] -> getItemCount() + 5));
-
-            printErrorMessage = false;
-        }else
-            printErrorMessage = true;
-    }
-    if(isBuying && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
-        if((10*price) <= hero.getMoneyAmount()){
-            hero.setMoneyAmount(hero.getMoneyAmount() - (price*10));
-            if(NPCType == 0)
-                    consumables[2] -> setItemCount((consumables[2] -> getItemCount() + 10));
-                else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
-                    consumables[1] -> setItemCount((consumables[1] -> getItemCount() + 10));
-                else //second item of elizabeth
-                    consumables[3] -> setItemCount((consumables[3] -> getItemCount() + 10));
-
-            printErrorMessage = false;
-        }else
-            printErrorMessage = true;
-    }
+    /*if(isBuying && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1){
+        
+    }*/
+    /*if(isBuying && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
+        
+    }*/
+    /*if(isBuying && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
+        
+    }*/
 }
 
 //drawing assign popup
