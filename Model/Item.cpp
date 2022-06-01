@@ -6,10 +6,6 @@ Item::Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, i
         texture.loadFromFile("../Textures/Textures.png");
         sprite.setTexture(texture);
         sprite.setTextureRect({x, y, width, height});
-        this -> x = x;
-        this -> y = y;
-        this -> width = width;
-        this -> height = height;
         sprite.setScale(2.5f, 2.5f);
 
         font.loadFromFile("../pixelFont.ttf");
@@ -28,16 +24,16 @@ void Item::setItemCount(int itemCount)
 
 void Item::displayItem(float posX, float posY, sf::RenderTarget &window){
     sprite.setPosition({posX, posY});
-    if(this -> getItemCount() <= 0)
+    if(itemCount <= 0)
         //display gray sprite
         sprite.setTextureRect({x+width, y, width, height});
     window.draw(sprite);
 }
 
 void Item::displayName(sf::RenderTarget &window, float nameX, float nameY){
-    if(this -> getItemCount() > 0){
+    if(itemCount > 0){
         name.setPosition(nameX, nameY);
-        name.setString(this -> getItemName());
+        name.setString(itemName);
         name.setCharacterSize(20);
         window.draw(name);
     }
@@ -49,7 +45,7 @@ std::wstring Item::getItemName()
 }
 
 std::wstring Item::getItemDescription() {
-    if(this -> getItemCount() > 0)
+    if(itemCount > 0)
         return itemDescription;
     else
         return L"...";    
