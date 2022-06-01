@@ -101,7 +101,7 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     consumables[1] -> setItemCount(1);
 }
 
-HUD::~HUD(){
+HUD::~HUD(){//FIXME sgmentation fault when closing program. Maybe we don't need this implementation 
     //deleting quickslot
     for(int i = 0; i < 3; i++)
         delete quickSlot[i];

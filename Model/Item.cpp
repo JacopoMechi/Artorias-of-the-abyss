@@ -7,7 +7,7 @@ Item::Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, i
         sprite.setTexture(texture);
         sprite.setTextureRect({x, y, width, height});
         sprite.setScale(2.5f, 2.5f);
-
+        coloredSprite = {x, y, width, height};
         font.loadFromFile("../pixelFont.ttf");
         name.setFont(font);
 }
@@ -26,7 +26,9 @@ void Item::displayItem(float posX, float posY, sf::RenderTarget &window){
     sprite.setPosition({posX, posY});
     if(itemCount <= 0)
         //display gray sprite
-        sprite.setTextureRect({x+width, y, width, height});
+        sprite.setTextureRect({coloredSprite.left+coloredSprite.width, coloredSprite.top, coloredSprite.width, coloredSprite.height});
+    else//setting colored sprite
+        sprite.setTextureRect({coloredSprite});    
     window.draw(sprite);
 }
 

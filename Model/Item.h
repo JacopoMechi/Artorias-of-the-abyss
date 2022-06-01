@@ -30,6 +30,7 @@ public:
     virtual void use(Hero &hero);
 
 protected:
+    sf::IntRect coloredSprite;
     std::wstring itemName;
     int itemPrice;
     int itemCount;
