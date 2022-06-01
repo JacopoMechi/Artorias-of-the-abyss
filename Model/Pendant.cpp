@@ -3,7 +3,7 @@
 Pendant::Pendant(std::wstring itemName, int itemPrice, std::wstring itemDescription, int maxItemCount, int itemCount,
                  int x, int y, int width, int height): Item(itemName, itemPrice, itemDescription, maxItemCount, itemCount, 
                  x, y, width, height){
-
+    sprite.setScale(2.1f, 2.1f);
 }
 
 Pendant::~Pendant(){

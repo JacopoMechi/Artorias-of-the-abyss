@@ -167,7 +167,7 @@ void HUD::draw() {
         this -> obscureButton({1750,575});
     //drawing quickslots items
     quickSlot[0] -> displayItem(850, 975, window);
-    quickSlot[1] -> displayItem(937, 975, window);
+    quickSlot[1] -> displayItem(935, 975, window);
     quickSlot[2] -> displayItem(1020, 975, window);
     //obscuring quickslot items when they are 0
     if(quickSlot[0] -> getItemCount() == 0)
