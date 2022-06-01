@@ -5,9 +5,12 @@ Item::Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, i
     x(x), width(width), height(height){
         texture.loadFromFile("../Textures/Textures.png");
         sprite.setTexture(texture);
-        sprite.setTextureRect({x, y, width, height});
-        sprite.setScale(2.5f, 2.5f);
         coloredSprite = {x, y, width, height};
+        sprite.setTextureRect(coloredSprite);
+        sprite.setScale(2.5f, 2.5f);
+        shopItemSprite.setTexture(texture);
+        shopItemSprite.setTextureRect(coloredSprite);
+        shopItemSprite.setScale(2.5f, 2.5f);
         font.loadFromFile("../pixelFont.ttf");
         name.setFont(font);
 }
@@ -59,4 +62,9 @@ int Item::getItemPrice(){
 
 void Item::use(Hero &hero){
     
+}
+
+void Item::displayShopIcon(sf::Vector2f pos, sf::RenderTarget &window){
+    shopItemSprite.setPosition(pos);
+    window.draw(shopItemSprite);
 }

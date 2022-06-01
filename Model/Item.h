@@ -29,7 +29,11 @@ public:
 
     virtual void use(Hero &hero);
 
+    //displaying item icon for shop
+    void displayShopIcon(sf::Vector2f pos, sf::RenderTarget &window);
+
 protected:
+    sf::Sprite shopItemSprite;//to display the item in shop
     sf::IntRect coloredSprite;
     std::wstring itemName;
     int itemPrice;
