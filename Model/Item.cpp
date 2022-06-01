@@ -13,6 +13,9 @@ Item::Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, i
         shopItemSprite.setScale(2.5f, 2.5f);
         font.loadFromFile("../pixelFont.ttf");
         name.setFont(font);
+        shopItemText.setFont(font);
+        shopItemText.setString(itemName);
+        shopItemText.setCharacterSize(20);
 }
 
 int Item::getItemCount()
@@ -64,7 +67,12 @@ void Item::use(Hero &hero){
     
 }
 
-void Item::displayShopIcon(sf::Vector2f pos, sf::RenderTarget &window){
+void Item::displayShopItemIcon(sf::Vector2f pos, sf::RenderTarget &window){
     shopItemSprite.setPosition(pos);
     window.draw(shopItemSprite);
+}
+
+void Item::displayShopItemName(sf::Vector2f pos, sf::RenderTarget &window){
+    shopItemText.setPosition(pos);
+    window.draw(shopItemText);
 }

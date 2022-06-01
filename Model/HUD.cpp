@@ -598,13 +598,13 @@ void HUD::drawShopText(std::wstring text, sf::Vector2f textPos){
 }
 
 void HUD::drawShop(Item* item1){
-    item1 -> displayShopIcon({780, 355}, window);
-    item1 -> displayName(window, 870, 360);
+    item1 -> displayShopItemIcon({780, 355}, window);
+    item1 -> displayShopItemName({870, 360}, window);
 }
 
 void HUD::drawShop(Item* item1, Item* item2){
-    item1 -> displayShopIcon({785, 358}, window);
-    item1 -> displayName(window, 870, 360);
-    item2 -> displayShopIcon({780, 463}, window);
-    item2 -> displayName(window, 870, 470);
+    item1 -> displayShopItemIcon({785, 358}, window);
+    item1 -> displayShopItemName({870, 360}, window);
+    item2 -> displayShopItemIcon({780, 463}, window);
+    item2 -> displayShopItemName({870, 470}, window);
 }
