@@ -420,7 +420,7 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
         }
     }else{
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
-            if(isInteraction && isBuying){
+            if(isInteraction && isBuying){//for buying items in shop
                 if(price <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - price);
                     if(NPCType == 0)
@@ -436,7 +436,7 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
             }else
                 quickSlot[0] -> use(hero);
         else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
-            if(isInteraction && isBuying){
+            if(isInteraction && isBuying){//for buying items in shop
                 if((5*price) <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
                     if(NPCType == 0)
@@ -452,7 +452,7 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
             }else
                 quickSlot[1] -> use(hero);
         }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
-            if(isInteraction && isBuying){
+            if(isInteraction && isBuying){//for buying items in shop
                 if((10*price) <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - (price*10));
                     if(NPCType == 0)
@@ -521,17 +521,6 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
     //(only for specifics NPCs)
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && !isBuying)
         isShop = !isShop;
-
-    //handling inputs for buying items
-    /*if(isBuying && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1){
-        
-    }*/
-    /*if(isBuying && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
-        
-    }*/
-    /*if(isBuying && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
-        
-    }*/
 }
 
 //drawing assign popup
