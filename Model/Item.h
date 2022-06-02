@@ -13,7 +13,7 @@ public:
 
     virtual ~Item() = default;
 
-    int getItemCount();
+    int getItemCount() const;
 
     void setItemCount(int itemCount);
 
@@ -21,11 +21,11 @@ public:
 
     void displayName(sf::RenderTarget &window, float nameX, float nameY);
 
-    std::wstring getItemName();
+    std::wstring getItemName() const;
 
-    std::wstring getItemDescription();
+    std::wstring getItemDescription() const;
 
-    int getItemPrice();
+    int getItemPrice() const;
 
     virtual void use(Hero &hero);
 

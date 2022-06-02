@@ -18,8 +18,7 @@ Item::Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, i
         shopItemText.setCharacterSize(20);
 }
 
-int Item::getItemCount()
-{
+int Item::getItemCount() const{
     return itemCount;
 }
 
@@ -47,19 +46,18 @@ void Item::displayName(sf::RenderTarget &window, float nameX, float nameY){
     }
 }
 
-std::wstring Item::getItemName()
-{
+std::wstring Item::getItemName() const{
     return itemName;
 }
 
-std::wstring Item::getItemDescription() {
+std::wstring Item::getItemDescription() const{
     if(itemCount > 0)
         return itemDescription;
     else
         return L"...";    
 }
 
-int Item::getItemPrice(){
+int Item::getItemPrice() const{
     return itemPrice;
 }
 
