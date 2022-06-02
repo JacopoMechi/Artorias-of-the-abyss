@@ -1,8 +1,8 @@
 #include "Pendant.h"
 
 Pendant::Pendant(std::wstring itemName, int itemPrice, std::wstring itemDescription, int maxItemCount, int itemCount,
-                 int x, int y, int width, int height): Item(itemName, itemPrice, itemDescription, maxItemCount, itemCount, 
-                 x, y, width, height){
+                 sf::IntRect spriteRect, sf::IntRect effectRect): Item(itemName, itemPrice, itemDescription, maxItemCount, itemCount, 
+                 spriteRect, effectRect){
     sprite.setScale(2.1f, 2.1f);
 }
 

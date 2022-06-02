@@ -1,11 +1,10 @@
 #include "Item.h"
 
-Item::Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height) : 
+Item::Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, int maxItemCount, int itemCount, sf::IntRect spriteRect, sf::IntRect effectRect) : 
     itemName(itemName), itemPrice(itemPrice), itemDescription(itemDescription), maxItemCount(maxItemCount), itemCount(itemCount), 
-    x(x), width(width), height(height){
+    coloredSprite(spriteRect){
         texture.loadFromFile("../Textures/Textures.png");
         sprite.setTexture(texture);
-        coloredSprite = {x, y, width, height};
         sprite.setTextureRect(coloredSprite);
         sprite.setScale(2.5f, 2.5f);
         shopItemSprite.setTexture(texture);
@@ -16,6 +15,8 @@ Item::Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, i
         shopItemText.setFont(font);
         shopItemText.setString(itemName);
         shopItemText.setCharacterSize(20);
+        itemEffectSprite.setTextureRect(effectRect);
+        itemEffectSprite.setTexture(texture);
 }
 
 int Item::getItemCount() const{
@@ -73,4 +74,9 @@ void Item::displayShopItemIcon(sf::Vector2f pos, sf::RenderTarget &window){
 void Item::displayShopItemName(sf::Vector2f pos, sf::RenderTarget &window){
     shopItemText.setPosition(pos);
     window.draw(shopItemText);
+}
+
+void Item::displayEffect(sf::Vector2f pos, sf::RenderTarget &window){
+    itemEffectSprite.setPosition(pos);
+    window.draw(itemEffectSprite);
 }

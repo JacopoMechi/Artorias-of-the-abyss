@@ -9,7 +9,7 @@
 class Item
 {
 public:
-    Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, int maxItemCount, int itemCount, int x, int y, int width, int height); 
+    Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, int maxItemCount, int itemCount, sf::IntRect spriteRect, sf::IntRect effectRect);
 
     virtual ~Item() = default;
 
@@ -35,7 +35,11 @@ public:
     //displaying item name for shop
     void displayShopItemName(sf::Vector2f pos, sf::RenderTarget &window);
 
+    //method to display different items' effects
+    void displayEffect(sf::Vector2f pos, sf::RenderTarget &window);//pos must be updated by getting the position of the hero
+
 protected:
+    sf::Sprite itemEffectSprite;
     sf::Text shopItemText; // to display item name in shop
     sf::Sprite shopItemSprite; //to display the item in shop
     sf::IntRect coloredSprite;

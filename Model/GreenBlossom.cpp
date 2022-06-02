@@ -1,7 +1,8 @@
 #include "GreenBlossom.h"
 
 GreenBlossom::GreenBlossom(std::wstring itemName, int itemPrice, std::wstring itemDescription, int maxItemCount, int itemCount,
-                           int x, int y, int width, int height): Item(itemName, itemPrice, itemDescription, maxItemCount, itemCount, x, y, width, height){
+                           sf::IntRect spriteRect, sf::IntRect effectRect): Item(itemName, itemPrice, itemDescription, 
+                           maxItemCount, itemCount, spriteRect, effectRect){
 
 }
 
