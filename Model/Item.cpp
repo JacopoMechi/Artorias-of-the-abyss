@@ -15,8 +15,8 @@ Item::Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, i
         shopItemText.setFont(font);
         shopItemText.setString(itemName);
         shopItemText.setCharacterSize(20);
-        itemEffectSprite.setTextureRect(effectRect);
         itemEffectSprite.setTexture(texture);
+        itemEffectSprite.setTextureRect(effectRect);
 }
 
 int Item::getItemCount() const{
