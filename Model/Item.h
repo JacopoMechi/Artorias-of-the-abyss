@@ -40,7 +40,7 @@ public:
 
 protected:
     sf::Sprite itemEffectSprite;
-    sf::Text shopItemText; // to display item name in shop
+    sf::Text shopItemText; //to display item name in shop
     sf::Sprite shopItemSprite; //to display the item in shop
     sf::IntRect coloredSprite;
     std::wstring itemName;
