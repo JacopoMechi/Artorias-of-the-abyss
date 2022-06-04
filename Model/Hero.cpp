@@ -36,8 +36,7 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
     sprite.setScale(7.5f, 7.5f);
 }
 
-int Hero::getDash()
-{
+int Hero::getDash() const{
     return dashCount;
 }
 void Hero::setDash(int dashCount)
@@ -45,8 +44,7 @@ void Hero::setDash(int dashCount)
     this->dashCount = dashCount;
 }
 
-int Hero::getCooldown()
-{
+int Hero::getCooldown() const{
     return dashTimeHolding;
 }
 
@@ -55,12 +53,11 @@ void Hero::setCooldown(float dashTimeHolding)
     this->dashTimeHolding = dashTimeHolding;
 }
 
-bool Hero::getCharacterType(){
+bool Hero::getCharacterType() const{
     return isKnight;
 }
 
-bool Hero::getCanAttack()
-{
+bool Hero::getCanAttack() const{
     return canAttack;
 }
 
@@ -68,7 +65,7 @@ void Hero::setCanAttack(bool canAttack){
     this -> canAttack = canAttack;
 }
 
-bool Hero::getStartAnimation(){
+bool Hero::getStartAnimation() const{
     return startAnimation;
 }
 
@@ -76,7 +73,7 @@ void Hero::setStartAnimation(bool startAnimation){
     this -> startAnimation = startAnimation;
 }
 
-bool Hero::getStartingSpell(){
+bool Hero::getStartingSpell() const{
     return startSpell;
 }
 
@@ -84,7 +81,7 @@ void Hero::setStartingSpell(bool startSpell){
     this -> startSpell = startSpell;
 }
 
-bool Hero::getAuraReady(){
+bool Hero::getAuraReady() const{
     return auraReady;
 }
 
@@ -93,7 +90,7 @@ void Hero::setAuraReady(bool auraReady)
     this->auraReady = auraReady;
 }
 
-int Hero::getMoneyAmount(){
+int Hero::getMoneyAmount() const{
     return moneyCounter;
 }
 
@@ -170,8 +167,7 @@ void Hero::attack(sf::RenderWindow &window) {
 }
 
 // handling character action inputs like attack, roll, interact
-void Hero::updateDelayAndInputs(sf::Event keyInput, float dt)
-{
+void Hero::updateDelayAndInputs(sf::Event keyInput, float dt){
     // updating delay time
     delayTime = dt;
     
@@ -226,13 +222,11 @@ void Hero::movement(bool isInventoryOpen, bool isInteracting){
         }
         else
             dir.x = 0;
-    }
-    else
+    }else
         dir = {0, 0};
 }
 
-void Hero::respawn(float posX, float posY)
-{
+void Hero::respawn(float posX, float posY){
     // finish hero
 }
 

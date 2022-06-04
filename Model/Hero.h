@@ -18,37 +18,37 @@ public:
     Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed);
     virtual ~Hero() = default;
 
-    int getDash();
+    int getDash() const;
     void setDash(int dashCount);
 
     //for green blossom which reduce dashes cooldown
-    int getCooldown();
+    int getCooldown() const;
     void setCooldown(float dashTimeHolding);
 
     //getter for isKnight
-    bool getCharacterType();
+    bool getCharacterType() const;
 
     //for hud to obscure attack
-    bool getCanAttack();
+    bool getCanAttack() const;
     void setCanAttack(bool canAttack);
 
     //for starting naimation from hud
-    bool getStartAnimation();
+    bool getStartAnimation() const;
     void setStartAnimation(bool startAnimation);
 
     //getter and setter for aura 
-    bool getAuraReady();
+    bool getAuraReady() const;
     void setAuraReady(bool auraReady);
 
     //getter and setter for spell starting animation
-    bool getStartingSpell();
+    bool getStartingSpell() const;
     void setStartingSpell(bool startSpell);
 
     //getter and setter for changing the amount of money the character has
-    int getMoneyAmount();
+    int getMoneyAmount() const;
     void setMoneyAmount(int moneyCounter);
 
-    float getHeroPosY();
+    float getHeroPosY() const;
     void setHeroPosY(float heroPosY);
 
     void dash();
@@ -61,7 +61,7 @@ public:
 
     void blockDamage(sf::RenderWindow &window);
     
-    void attack(sf::RenderWindow& window) override;
+    virtual void attack(sf::RenderWindow& window) override;
 
     void updateDelayAndInputs(sf::Event keyInput, float dt);
     
