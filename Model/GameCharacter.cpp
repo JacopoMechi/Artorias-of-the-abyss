@@ -1,8 +1,7 @@
 #include "GameCharacter.h"
 
-GameCharacter::GameCharacter(const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed) : pos(pos), HP(hp), armor(armor), cash(cash),
-                                                                                                          movementSpeed(movementSpeed), weapon(nullptr)
-{
+GameCharacter::GameCharacter(const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed) : 
+                                pos(pos), HP(hp), armor(armor), cash(cash), movementSpeed(movementSpeed), weapon(nullptr){
 }
 
 int GameCharacter::getHp() const

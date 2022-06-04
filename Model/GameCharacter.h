@@ -12,7 +12,7 @@
 class GameCharacter{
 
 public:
-    GameCharacter(const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed);
+    GameCharacter(const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed);
     virtual ~GameCharacter() = default;
 
     int getHp() const;
@@ -43,7 +43,7 @@ public:
 
     void draw(sf::RenderWindow &window) const;
 
-    void update(float dt);
+    virtual void update(float dt);
 
     sf::Vector2f getSize() const;
 
