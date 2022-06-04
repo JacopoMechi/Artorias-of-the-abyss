@@ -58,7 +58,9 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/FinalRoom.h
                                     Model/FinalRoom.cpp
                                     Model/NullItem.h
-                                    Model/NullItem.cpp)
+                                    Model/NullItem.cpp
+                                    Model/Spell.h
+                                    Model/Spell.cpp)
 
 if(SFML_FOUND)
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-window sfml-system)
