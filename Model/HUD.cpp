@@ -497,7 +497,7 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
 
     //handling inputs for interaction with npc
      if(NPCAggro){
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
+        if(!isInvOpen && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
             isInteraction = !isInteraction;//open/close shop
             //for resetting interaction
             isShop = false;
