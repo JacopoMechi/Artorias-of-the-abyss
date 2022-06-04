@@ -9,8 +9,7 @@
 #include "RoomElement.h"
 #include "Weapon.h"
 
-class GameCharacter
-{
+class GameCharacter{
 
 public:
     GameCharacter(const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed);
