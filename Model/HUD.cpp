@@ -182,7 +182,7 @@ void HUD::draw() {
     this -> displayItemCount(quickSlot[1], {975, 980});
     this -> displayItemCount(quickSlot[2], {1060, 980});
 
-     //handling npc interaction menu 
+    //drawing npc interaction menu 
     if(isInteraction){
         if(!isShop && !isTalking){
 
@@ -257,7 +257,12 @@ void HUD::draw() {
     }
 }
 
-void HUD::displayHealth(Hero &hero){ 
+void HUD::displayHealthAndEffects(Hero &hero){ 
+    //drawing effects
+    quickSlot[0] -> displayEffect({hero.getPos().x, hero.getPos().y}, window);
+    quickSlot[1] -> displayEffect({hero.getPos().x, hero.getPos().y}, window);
+    quickSlot[2] -> displayEffect({hero.getPos().x, hero.getPos().y}, window);
+    //drawing health
     window.draw(healthSprite);
     std::string bar = std::string("HP: ") + std::to_string(hero.getHp()) + std::string("/100");
     healthText.setPosition(1700, 40);
@@ -433,8 +438,9 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
                     printErrorMessage = false;
                 }else
                     printErrorMessage = true;
-            }else
+            }else{
                 quickSlot[0] -> use(hero);
+            }
         else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
             if(isInteraction && isBuying){//for buying items in shop
                 if((5*price) <= hero.getMoneyAmount()){
@@ -449,8 +455,9 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
                     printErrorMessage = false;
                 }else
                     printErrorMessage = true;
-            }else
+            }else{
                 quickSlot[1] -> use(hero);
+            }
         }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
             if(isInteraction && isBuying){//for buying items in shop
                 if((10*price) <= hero.getMoneyAmount()){
@@ -465,8 +472,9 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
                     printErrorMessage = false;
                 }else
                     printErrorMessage = true;
-            }else
+            }else{
                 quickSlot[2] -> use(hero);
+            }
         }
     }
 
@@ -596,4 +604,10 @@ void HUD::drawShop(Item* item1, Item* item2){
     item1 -> displayShopItemName({870, 360}, window);
     item2 -> displayShopItemIcon({780, 463}, window);
     item2 -> displayShopItemName({870, 470}, window);
+}
+
+void HUD::gettingDelayTime(float dt){
+    quickSlot[0] -> effectTime(dt);
+    quickSlot[1] -> effectTime(dt);
+    quickSlot[2] -> effectTime(dt);
 }

@@ -17,6 +17,7 @@ void Game::gameLoop()
             hud.updateEvent(event);
         }
         hero.updateDelayAndInputs(event, dt);
+        hud.gettingDelayTime(dt);
         window.clear(sf::Color::Black);
         room -> draw();
         if (gameStatus == Game::Status::MainMenu)
@@ -74,7 +75,7 @@ void Game::gameLoop()
                 npc.draw(window);
                 hud.checkNPCAggro(npc);
                 hud.draw();
-                hud.displayHealth(hero);
+                hud.displayHealthAndEffects(hero);
                 hud.displayMoneyCounter(hero);
             }
         }

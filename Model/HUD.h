@@ -35,7 +35,7 @@ public:
 
     void draw();
 
-    void displayHealth(Hero &hero);
+    void displayHealthAndEffects(Hero &hero);
 
     void displayDescription();
 
@@ -73,6 +73,9 @@ public:
     //drawing shop box
     void drawShop(Item* item1, Item* item2);
     void drawShop(Item* item1);
+
+    //getting delay time to display item effects
+    void gettingDelayTime(float dt);
 
 protected:
     //for using quickslot items

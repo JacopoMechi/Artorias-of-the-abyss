@@ -17,6 +17,7 @@ Item::Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, i
         shopItemText.setCharacterSize(20);
         itemEffectSprite.setTexture(texture);
         itemEffectSprite.setTextureRect(effectRect);
+        itemEffectSprite.setScale(7.0f, 7.0f);
 }
 
 int Item::getItemCount() const{
@@ -77,6 +78,18 @@ void Item::displayShopItemName(sf::Vector2f pos, sf::RenderTarget &window){
 }
 
 void Item::displayEffect(sf::Vector2f pos, sf::RenderTarget &window){
-    itemEffectSprite.setPosition(pos);
-    window.draw(itemEffectSprite);
+    if(!startEffect){
+        itemEffectSprite.setPosition(pos);
+        window.draw(itemEffectSprite);
+    }
+}
+
+void Item::effectTime(float dt){
+    if(!startEffect){
+        timeEffect += dt;
+        if(timeEffect >= 2.0f){ //0.2 is holdtime
+            timeEffect = 0.0f;
+            startEffect = true;
+        }
+    }
 }

@@ -14,5 +14,6 @@ void EstusFlask::use(Hero& hero) {
     if (itemCount > 0){
         itemCount--;
         hero.setHp(hero.getHp()+healthRestored);
+        startEffect = false;
     }
 }

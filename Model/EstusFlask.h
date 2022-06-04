@@ -2,7 +2,6 @@
 #define _ESTUSFLASK_H
 
 #include "Item.h"
-#include "Hero.h"
 
 class EstusFlask: public Item {
 public:
@@ -10,7 +9,7 @@ public:
                         std::wstring itemDescriptin = L"Fiaschette che curano \n30hp", int maxItemCount = 5, int itemCount = 5, 
                         sf::IntRect spriteRect = {412, 2, 20, 21}, sf::IntRect effectRect = {530, 157, 17, 22});
     virtual ~EstusFlask();
-    void use(Hero& hero) override;
+    virtual void use(Hero& hero) override;
     //TODO LATER reset usage in Bonfire
 private:
     int healthRestored = 30;// TODO blance healh restored

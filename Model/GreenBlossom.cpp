@@ -18,5 +18,6 @@ void GreenBlossom::use(Hero& hero) {
         hero.setCooldown(newCooldown);
         //end time
         hero.setCooldown(tmp);
+        startEffect = false;
     }
 }

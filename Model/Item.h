@@ -36,7 +36,10 @@ public:
     void displayShopItemName(sf::Vector2f pos, sf::RenderTarget &window);
 
     //method to display different items' effects
-    void displayEffect(sf::Vector2f pos, sf::RenderTarget &window);//pos must be updated by getting the position of the hero
+    virtual void displayEffect(sf::Vector2f pos, sf::RenderTarget &window);//pos must be updated by getting the position of the hero
+
+    //implementing time for displaying tiems effect
+    void effectTime(float dt);
 
 protected:
     sf::Sprite itemEffectSprite;
@@ -44,6 +47,8 @@ protected:
     sf::Sprite shopItemSprite; //to display the item in shop
     sf::IntRect coloredSprite;
     std::wstring itemName;
+    bool startEffect = true; //to start displaying item for a period of time
+    float timeEffect = 0.0f; //counter time
     int itemPrice;
     int itemCount;
     std::wstring itemDescription;
