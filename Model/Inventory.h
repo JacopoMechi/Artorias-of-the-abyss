@@ -28,6 +28,10 @@ public:
     void nextTab();
     void previousTab();
 
+    //to switch between first and previous page
+    void nextPage();
+    void previousPage();
+
     //drawing Inventory and items
     void draw() const;
 
@@ -49,6 +53,9 @@ private:
 
     //tracker to scroll between items
     int itemScroll = 0;//starting from the first item
+
+    //to change page in a tab
+    int nPage = 0;
 
     //items
     Item* items[16] = {
