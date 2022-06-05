@@ -12,13 +12,24 @@
 
 class Inventory{
 public:
-    Inventory();
+
+    Inventory(sf::RenderWindow &window);
+    ~Inventory() = default;
+
+    //getter and setter to open inventory from HUD
+    bool getInvOpen() const;
+    void setInvOpen(bool isInventoryOpen);
+
+    //getter and setter for when the character use or acquire an item//TODO maybe useful later
+    int getItemCount(Item &item) const;
+    void setItemCount(Item &item, int value);
+
 private:
     //to display items and inventory in hud
     sf::RenderWindow &window;
 
     //setting texture to display sprites
-    sf::Texture Texture;
+    sf::Texture texture;
 
     //to display inventory sprite
     sf::Sprite inventorySprite;
