@@ -25,3 +25,25 @@ int Inventory::getItemCount(Item &item) const{
 void Inventory::setItemCount(Item &item, int value){
     item.setItemCount(value);
 }
+
+void Inventory::nextTab(){
+    nTab = (nTab + 1) % 2;
+}
+
+void Inventory::previousTab(){
+    nTab = (nTab - 1) % 2;
+}
+
+void Inventory::draw() const{
+    if(isInventoryOpen){
+        window.draw(inventorySprite);
+        items[0] -> displayItem(148, 455, window);//first slot
+        items[0] -> displayName(window, 235, 470);
+        items[1] -> displayItem(148, 560, window);//second slot
+        items[1] -> displayName(window, 235, 577);
+        items[2] -> displayItem(148, 670, window);//third slot
+        items[2] -> displayName(window, 235, 680);
+        items[3] -> displayItem(142, 780, window);//fourth slot
+        items[3] -> displayName(window, 235, 785);
+    }
+}
