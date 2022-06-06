@@ -46,10 +46,6 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero), inve
     assignSprite.setTexture(hudTexture);
     assignSprite.setTextureRect({994, 318, 289, 98});
     assignSprite.setPosition({994, 318});
-    //tracker for description
-    trackerSprite.setTexture(hudTexture);
-    trackerSprite.setTextureRect({116, 736, 266, 56});
-    trackerSprite.setScale(1.5f, 1.5f);
 
     //setting obscure button sprite
     obscureSprite.setTexture(hudTexture);
@@ -333,51 +329,39 @@ void HUD::displayHealthAndEffects(Hero &hero){
     }
 }*/
 
-/*void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
+void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
     //handling inputs
     //opens inventory
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E && !isInteraction){// isInteracting to not open the inventory
-        isInvOpen = !isInvOpen;
-        if (!isInvOpen)
-            switching = false;
-        inventoryScroll = 0;    
+        inventory.setInvOpen(!inventory.getInvOpen());
+        inventory.resetPositions();    
     }
-    if (isInvOpen){
+    if (inventory.getInvOpen()){
         //opens items descriptions
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter){
-            switching = !switching;
-            descriptionScroll = 0;
-        }
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
+            inventory.setShowDescription(!inventory.getShowDescription());
+
 
         //inputs for scrolling in inventory
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up&&!quickAssign){//when quickAssign is open, it will not scroll
-            //scrolling for description(up)
-            if(switching){
-                if(firstTab)
-                    descriptionScroll = (descriptionScroll + 3)%4;
-                else    
-                    descriptionScroll = (descriptionScroll + 7)%8;
-            }
-            //scrolling for items (up)
-            else
-                inventoryScroll = (++inventoryScroll)%2;      
-        }
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up&&!quickAssign)//when quickAssign is open, it will not scroll
+            //scrolling through items (up)
+            inventory.previousItem();
 
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Down&&!quickAssign){//when quickAssign is open, it will not scroll
-            //scrolling for description (down)
-            if(switching){
-                if(firstTab)
-                    descriptionScroll = (++descriptionScroll)%4;
-                else    
-                    descriptionScroll = (++descriptionScroll)%8;
-            }
-            //scrolling for items (down)
-            else
-                inventoryScroll = (++inventoryScroll)%2;
-        }
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Down&&!quickAssign)//when quickAssign is open, it will not scroll
+            //scrolling through items (down)
+            inventory.nextItem();
 
-        //input for changing quickslot items. It opens a dialogue box if description box is opened
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && switching&&firstTab){
+
+        //inputs for switching tabs
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Right&&!quickAssign)
+            inventory.nextTab();
+
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Left&&!quickAssign)
+            inventory.previousTab();
+
+
+        /*//input for changing quickslot items. It opens a dialogue box if description box is opened
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && switching){
             quickAssign = !quickAssign;
         }        
 
@@ -390,8 +374,8 @@ void HUD::displayHealthAndEffects(Hero &hero){
                 this -> assignItem(consumables[descriptionScroll], 1);
             else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3)
                 this -> assignItem(consumables[descriptionScroll], 2);
-        }
-    }else{
+        }*/
+    }/*else{
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
             if(isInteraction && isBuying){//for buying items in shop
                 if(price <= hero.getMoneyAmount()){
@@ -496,8 +480,8 @@ void HUD::displayHealthAndEffects(Hero &hero){
     //selecting shop option in interaction
     //(only for specifics NPCs)
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && !isBuying)
-        isShop = !isShop;
-}*/
+        isShop = !isShop;*/
+}
 
 //drawing assign popup
 void HUD::drawQuickSlot(){
@@ -551,10 +535,10 @@ void HUD::setNPCType(int NPCType){
     this -> NPCType = NPCType;
 }
 
-void HUD::drawShopTracker(sf::Vector2f pos){
+/*void HUD::drawShopTracker(sf::Vector2f pos){
     trackerSprite.setPosition(pos);
     window.draw(trackerSprite);
-}
+}*/
 
 void HUD::drawShopText(std::wstring text, sf::Vector2f textPos){
     interactText.setPosition(textPos);

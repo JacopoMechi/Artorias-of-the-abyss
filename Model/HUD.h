@@ -82,7 +82,6 @@ protected:
     sf::Sprite actionsSprite;
     sf::Sprite descriptionSprite;
     sf::Sprite assignSprite;
-    sf::Sprite trackerSprite;
     //obscure button sprite
     sf::Sprite obscureSprite;
     //shop sprite declaration

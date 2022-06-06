@@ -14,7 +14,7 @@ void Game::gameLoop()
             inGameMenu.updateEvent(event);
             if (event.type == sf::Event::Closed)
                 window.close();
-            //hud.updateEvent(event);
+            hud.updateEvent(event);
         }
         hero.updateDelayAndInputs(event, dt);
         hud.gettingDelayTime(dt);

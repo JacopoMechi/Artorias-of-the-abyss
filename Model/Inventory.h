@@ -29,8 +29,15 @@ public:
     void previousTab();
 
     //to switch between first and previous page
-    void nextPage();
-    void previousPage();
+    void nextItem();
+    void previousItem();
+
+    //method to reset nPage, tracker and nTab
+    void resetPositions();
+
+    //method to show the description of the item
+    bool getShowDescription() const;
+    void setShowDescription(bool showDescription);
 
     //to draw text for the inventory
     void drawText(std::wstring text, sf::Vector2f pos);
@@ -60,8 +67,16 @@ private:
     //to display box sprite for items' descriptions
     sf::Sprite descriptionSprite;
 
+    //for tracking item in inventory
+    sf::Sprite trackerSprite;
+    int tracker = 0;//for tracking positions
+    sf::Vector2f trackerPos[4] = {{130, 440}, {130, 440+105}, {130, 440+105*2}, {130, 440+105*3}};
+
     //boolean value to let the hud know when we want to open/close inventory
-    bool isInventoryOpen = true;//= false;
+    bool isInventoryOpen = false;
+
+    //boolean value to get the item description
+    bool showDescription = false;
 
     //to change tab in inventory between consumables and collectibles
     int nTab = 0;//it starts from consumables
