@@ -20,9 +20,11 @@ public:
     bool getInvOpen() const;
     void setInvOpen(bool isInventoryOpen);
 
-    //getter and setter for when the character use or acquire an item//TODO maybe useful later
-    int getItemCount(Item &item) const;
-    void setItemCount(Item &item, int value);
+    //to assign item
+    Item* receiveItem() const;
+
+    //to set item amount when an item is bought//TODO can be useful later
+    void setItemAmount(int nItem, int amount);
 
     //to switch between first and previous tab
     void nextTab();

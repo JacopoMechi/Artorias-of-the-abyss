@@ -234,69 +234,6 @@ void HUD::displayHealthAndEffects(Hero &hero){
     window.draw(healthText);
 }
 
-
-/*void HUD::drawInventory(){
-    window.draw(inventorySprite);
-    
-    sf::Text tabText;
-    tabText.setFont(font);
-    tabText.setPosition(245, 330);
-    tabText.setCharacterSize(20);
-    std::string tab;
-
-    //calling description for showing the items in the specific
-    this -> displayDescription();
-
-    //manages switch between tabs
-    //when true, inventory display consumables' tab
-    //when false, inventory display collectibles' tab
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && !switching)
-            this -> setFirstTab(true);
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !switching)
-            this -> setFirstTab(false);     
-
-    //inventory interface        
-    if (firstTab){
-
-        //first category    
-        //list of consumables
-        tab = "Consumabili >";//<tab> cambia categoria, <q> esci dall'inventario, <ArrowUp,ArrDown> scorri items
-        //first slot
-        consumables[0] -> displayItem(148, 455, window);
-        consumables[0] -> displayName(window, 235, 470);
-        //second slot
-        consumables[1] -> displayItem(148, 560, window);
-        consumables[1] -> displayName(window, 235, 577);
-        //third slot
-        consumables[2] -> displayItem(148, 670, window);
-        consumables[2] -> displayName(window, 235, 680);
-        //fourth slot
-        consumables[3] -> displayItem(142, 780, window);
-        consumables[3] -> displayName(window, 235, 785);
-
-    }else{    
-        //second category
-        //scrolling between collectibles
-        tab = "< Collezionabili";
-        
-        //first slot
-        collectibles[0+(4*inventoryScroll)].displayItem(145, 450, window);
-        collectibles[0+(4*inventoryScroll)].displayName(window, 235, 470);
-        //second slot
-        collectibles[1+(4*inventoryScroll)].displayItem(145, 555, window);
-        collectibles[1+(4*inventoryScroll)].displayName(window, 235, 575);
-        //third slot
-        collectibles[2+(4*inventoryScroll)].displayItem(145, 660, window);
-        collectibles[2+(4*inventoryScroll)].displayName(window, 235, 680);
-        //fourth slot
-        collectibles[3+(4*inventoryScroll)].displayItem(145, 775, window); 
-        collectibles[3+(4*inventoryScroll)].displayName(window, 235, 785);
-        //for detailed items description
-    }
-    tabText.setString(tab);
-    window.draw(tabText);    
-}*/
-
 void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
     //handling inputs
     //opens inventory

@@ -35,12 +35,12 @@ void Inventory::setInvOpen(bool isInventoryOpen){
     this -> isInventoryOpen = isInventoryOpen;
 }
 
-int Inventory::getItemCount(Item &item) const{
-    return item.getItemCount();
+Item* Inventory::receiveItem() const{
+    return items[tracker];
 }
 
-void Inventory::setItemCount(Item &item, int value){
-    item.setItemCount(value);
+void Inventory::setItemAmount(int nItem, int amount){
+    items[nItem] -> setItemCount(items[nItem] -> getItemCount() + amount);
 }
 
 void Inventory::nextTab(){
