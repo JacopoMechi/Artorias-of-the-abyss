@@ -1,6 +1,6 @@
 #include "HUD.h"
 
-HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
+HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero), inventory(window){
 
     //setting the font and size for the text      
     font.loadFromFile("../pixelFont.ttf");
@@ -42,16 +42,6 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     actionsSprite.setTextureRect({1743, 363, 85, 351});
     actionsSprite.setPosition(1743, 363);
     actionsSprite.setScale(0.8f, 0.8f);
-    //items description
-    descriptionSprite.setTexture(hudTexture);
-    descriptionSprite.setTextureRect({528, 293, 430, 233});
-    descriptionSprite.setPosition(650, 296);
-    descriptionSprite.setScale(1.3f,1.3f);
-    //inventory
-    inventorySprite.setTexture(hudTexture);
-    inventorySprite.setTextureRect({89, 259, 352, 450});
-    inventorySprite.setPosition(89, 259);
-    inventorySprite.setScale(1.5f, 1.5f);
     //assign popup
     assignSprite.setTexture(hudTexture);
     assignSprite.setTextureRect({994, 318, 289, 98});
@@ -93,12 +83,6 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero){
     errorMessage.setCharacterSize(20);
     errorMessage.setPosition({1250, 380});
     errorMessage.setString(L"Non hai abbastanza monete!");
-
-    
-    //TODO only for tests. Needs to be removed
-    consumables[3] -> setItemCount(1);
-    consumables[2] -> setItemCount(1);
-    consumables[1] -> setItemCount(1);
 }
 
 HUD::~HUD(){//FIXME sgmentation fault when closing program. Maybe we don't need this implementation 
@@ -106,21 +90,6 @@ HUD::~HUD(){//FIXME sgmentation fault when closing program. Maybe we don't need 
     for(int i = 0; i < 3; i++)
         delete quickSlot[i];
 
-    //deleting consumables
-    for(int i = 0; i < 4; i++)
-        delete consumables[i];    
-}
-
-bool HUD::getInvIsOpen() const{
-    return isInvOpen;
-}
-
-void HUD::setItemAmount(int itemNumber, int amount){
-    consumables[itemNumber] -> setItemCount(consumables[itemNumber] -> getItemCount() + amount);
-}
-
-void HUD::setFirstTab(bool firstTab){
-    this -> firstTab = firstTab;
 }
 
 void HUD::setTextPool(std::vector<std::wstring> textPool){
@@ -135,8 +104,7 @@ void HUD::draw() {
     window.draw(quickslotSprite);
     window.draw(actionsSprite);
     //displaying inventory
-    if(isInvOpen)
-        this -> drawInventory();
+    inventory.draw();
     //obscure and starting sword attack
     if(hero.getCharacterType()){
         if(hero.getStartAnimation())
@@ -183,7 +151,7 @@ void HUD::draw() {
     this -> displayItemCount(quickSlot[2], {1060, 980});
 
     //drawing npc interaction menu 
-    if(isInteraction){
+    /*if(isInteraction){
         if(!isShop && !isTalking){
 
             //displaying interaction box
@@ -254,7 +222,7 @@ void HUD::draw() {
             else
                 this -> drawShopText(textPool[dialogueTracker], {820, 333});
         }
-    }
+    }*/
 }
 
 void HUD::displayHealthAndEffects(Hero &hero){ 
@@ -271,7 +239,7 @@ void HUD::displayHealthAndEffects(Hero &hero){
 }
 
 
-void HUD::drawInventory(){
+/*void HUD::drawInventory(){
     window.draw(inventorySprite);
     
     sf::Text tabText;
@@ -331,9 +299,9 @@ void HUD::drawInventory(){
     }
     tabText.setString(tab);
     window.draw(tabText);    
-}
+}*/
 
-void HUD::displayDescription(){
+/*void HUD::displayDescription(){
     //setting the description
     text.setPosition(890, 395);
     if(switching){
@@ -363,9 +331,9 @@ void HUD::displayDescription(){
         window.draw(text);
         drawQuickSlot();
     }
-}
+}*/
 
-void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
+/*void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
     //handling inputs
     //opens inventory
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E && !isInteraction){// isInteracting to not open the inventory
@@ -529,14 +497,14 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
     //(only for specifics NPCs)
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && !isBuying)
         isShop = !isShop;
-}
+}*/
 
 //drawing assign popup
 void HUD::drawQuickSlot(){
     text.setPosition(1008, 338);
     text.setCharacterSize(20);
     text.setString("In quale slot vuoi assegnare \nil seguente oggetto?\n\n                          [1]  [2]  [3]");
-    if(quickAssign&&firstTab){
+    if(quickAssign){//&&firstTab
         window.draw(assignSprite);
         window.draw(text);
     }

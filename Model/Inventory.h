@@ -1,5 +1,5 @@
-#ifndef _HUD_H
-#define _HUD_H
+#ifndef _INVENTORY_H
+#define _INVENTORY_H
 
 #include <SFML/Graphics.hpp>
 
@@ -32,12 +32,24 @@ public:
     void nextPage();
     void previousPage();
 
+    //to draw text for the inventory
+    void drawText(std::wstring text, sf::Vector2f pos);
+
+    //to draw item's description when enter button is pressed on highlited item
+    void drawDescription(int nItem);
+
     //drawing Inventory and items
-    void draw() const;
+    void draw();
 
 private:
     //to display items and inventory in hud
     sf::RenderWindow &window;
+
+    //font for drawing text in inventory
+    sf::Font font;
+
+    //setting text for inventory
+    sf::Text text;
 
     //setting texture to display sprites
     sf::Texture texture;
@@ -45,11 +57,16 @@ private:
     //to display inventory sprite
     sf::Sprite inventorySprite;
 
+    //to display box sprite for items' descriptions
+    sf::Sprite descriptionSprite;
+
     //boolean value to let the hud know when we want to open/close inventory
-    bool isInventoryOpen = false;
+    bool isInventoryOpen = true;//= false;
 
     //to change tab in inventory between consumables and collectibles
     int nTab = 0;//it starts from consumables
+    //list of strings of two elements to indicate the name of the tab
+    std::wstring tabName[2] = {L"Consumabili >", L"< Collezionabili"};
 
     //tracker to scroll between items
     int itemScroll = 0;//starting from the first item

@@ -14,7 +14,7 @@ void Game::gameLoop()
             inGameMenu.updateEvent(event);
             if (event.type == sf::Event::Closed)
                 window.close();
-            hud.updateEvent(event);
+            //hud.updateEvent(event);
         }
         hero.updateDelayAndInputs(event, dt);
         hud.gettingDelayTime(dt);
@@ -69,7 +69,7 @@ void Game::gameLoop()
                 hud.setTextPool(npc.getTextPool());
                 hud.setNPCType(npc.getNPCType());
                 NPCInteraction = hud.getIsInteraction();
-                hero.movement(hud.getInvIsOpen(), NPCInteraction);
+                hero.movement(false, NPCInteraction);//for the moment
                 hero.update(dt);
                 hero.draw(window);
                 npc.draw(window);
