@@ -52,16 +52,16 @@ void Inventory::previousTab(){
 }
 
 void Inventory::nextItem(){
-    /*if(tracker + 1 == 4){
+    if(tracker + 1 == 4){
         nPage = (nPage + 1) % 2;
-    }*/
+    }
     tracker = (tracker + 1) % 4;
 }
 
 void Inventory::previousItem(){
-    /*if(tracker - 1 == -1){
-        nPage = abs((nPage - 1) % 2);
-    }*/
+    if(tracker - 1 == -1){
+        nPage = (1 + nPage) % 2;
+    }
     tracker = (3 + tracker) % 4;
 }
 

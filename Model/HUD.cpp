@@ -297,38 +297,6 @@ void HUD::displayHealthAndEffects(Hero &hero){
     window.draw(tabText);    
 }*/
 
-/*void HUD::displayDescription(){
-    //setting the description
-    text.setPosition(890, 395);
-    if(switching){
-        //drawing description sprite
-        window.draw(descriptionSprite);
-
-        //drawing item sprite (and name) and description text
-        if(firstTab){
-            //shows description of first category
-            text.setString(consumables[descriptionScroll] -> getItemDescription());
-            consumables[descriptionScroll] -> displayItem(760, 450, window);
-            sf::Vector2f position(130, 440+(105*descriptionScroll));
-            trackerSprite.setPosition({position});//to highlight the item in the inventory
-            window.draw(trackerSprite);
-        }else{
-            //shows description of second category
-            collectibles[descriptionScroll].displayItem(760, 450, window);
-            text.setString(collectibles[descriptionScroll].getItemDescription());
-            sf::Vector2f position(130, 440+(105*(descriptionScroll%4)));//for switching category while scrolling through descriptions
-            if (descriptionScroll > 3)
-                inventoryScroll = 1;
-            else
-                inventoryScroll = 0;
-            trackerSprite.setPosition({position});//to highlight the item in the inventory
-            window.draw(trackerSprite);
-        }
-        window.draw(text);
-        drawQuickSlot();
-    }
-}*/
-
 void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
     //handling inputs
     //opens inventory
