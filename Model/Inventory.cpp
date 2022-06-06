@@ -20,6 +20,11 @@ Inventory::Inventory(sf::RenderWindow &window): window(window){
     trackerSprite.setTextureRect({116, 736, 266, 56});
     trackerSprite.setScale(1.5f, 1.5f);
 
+    //setting assign box sprite
+    assignBoxSprite.setTexture(texture);
+    assignBoxSprite.setTextureRect({1994, 318, 289, 98});
+    assignBoxSprite.setPosition({994, 318});
+
     //setting text for inventory
     font.loadFromFile("../pixelFont.ttf");
     text.setFont(font);
@@ -41,6 +46,10 @@ Item* Inventory::receiveItem() const{
 
 void Inventory::setItemAmount(int nItem, int amount){
     items[nItem] -> setItemCount(items[nItem] -> getItemCount() + amount);
+}
+
+int Inventory::getNTab() const{
+    return nTab;
 }
 
 void Inventory::nextTab(){
@@ -80,6 +89,21 @@ void Inventory::setShowDescription(bool showDescription){
     this -> showDescription = showDescription;
 }
 
+void Inventory::displayAssignBox(){
+    if(isAssign){
+        window.draw(assignBoxSprite);
+        drawText(L"In quale slot vuoi assegnare \nil seguente oggetto?\n\n                          [1]  [2]  [3]", {1008, 338});
+    }
+}
+
+bool Inventory::getAssign() const{
+    return isAssign;
+}
+
+void Inventory::setAssign(bool isAssign){
+    this -> isAssign = isAssign;
+}
+
 void Inventory::drawText(std::wstring text, sf::Vector2f pos){
     this -> text.setString(text);
     this -> text.setPosition(pos);
@@ -109,6 +133,9 @@ void Inventory::draw(){
 
         //calling function to display item's description in case we want the read the item's description
         drawDescription(tracker + nPage*4 + nTab*8);
+
+        //calling function to display assign item
+        displayAssignBox();
     }
 }
 

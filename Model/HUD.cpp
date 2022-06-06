@@ -42,10 +42,10 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero), inve
     actionsSprite.setTextureRect({1743, 363, 85, 351});
     actionsSprite.setPosition(1743, 363);
     actionsSprite.setScale(0.8f, 0.8f);
-    //assign popup
+    /*//assign popup
     assignSprite.setTexture(hudTexture);
     assignSprite.setTextureRect({994, 318, 289, 98});
-    assignSprite.setPosition({994, 318});
+    assignSprite.setPosition({994, 318});*/
 
     //setting obscure button sprite
     obscureSprite.setTexture(hudTexture);
@@ -265,21 +265,25 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
             inventory.previousTab();
 
 
-        /*//input for changing quickslot items. It opens a dialogue box if description box is opened
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && switching){
-            quickAssign = !quickAssign;
+        //input for changing quickslot items. It opens a dialogue box
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && inventory.getShowDescription()){
+            inventory.setAssign(!inventory.getAssign());
         }        
 
         //handling slot assign
-        if(quickAssign){
+        if(inventory.getNTab() == 0 && inventory.getAssign()){
             //std::cout << descriptionScroll << std::endl;
-            if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
-                this -> assignItem(consumables[descriptionScroll], 0);
-            else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2)
-                this -> assignItem(consumables[descriptionScroll], 1);
-            else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3)
-                this -> assignItem(consumables[descriptionScroll], 2);
-        }*/
+            if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1){
+                quickSlot[0] = inventory.receiveItem();
+                inventory.setAssign(false);
+            }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
+                quickSlot[1] = inventory.receiveItem();
+                inventory.setAssign(false);
+            }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
+                quickSlot[2] = inventory.receiveItem();
+                inventory.setAssign(false);
+            }
+        }
     }/*else{
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
             if(isInteraction && isBuying){//for buying items in shop

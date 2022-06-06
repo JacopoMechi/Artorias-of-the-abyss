@@ -26,6 +26,9 @@ public:
     //to set item amount when an item is bought//TODO can be useful later
     void setItemAmount(int nItem, int amount);
 
+    //getter for nTab to assign item only on first tab
+    int  getNTab() const;
+
     //to switch between first and previous tab
     void nextTab();
     void previousTab();
@@ -40,6 +43,13 @@ public:
     //method to show the description of the item
     bool getShowDescription() const;
     void setShowDescription(bool showDescription);
+
+    //method to display assign sprite system
+    void displayAssignBox();
+
+    //method to open/close assign box
+    bool getAssign() const;
+    void setAssign(bool isAssign);
 
     //to draw text for the inventory
     void drawText(std::wstring text, sf::Vector2f pos);
@@ -69,6 +79,9 @@ private:
     //to display box sprite for items' descriptions
     sf::Sprite descriptionSprite;
 
+    //to display assign box for items assign
+    sf::Sprite assignBoxSprite;
+
     //for tracking item in inventory
     sf::Sprite trackerSprite;
     int tracker = 0;//for tracking positions
@@ -79,6 +92,9 @@ private:
 
     //boolean value to get the item description
     bool showDescription = false;
+
+    //boolean value to open assign box
+    bool isAssign = false;
 
     //to change tab in inventory between consumables and collectibles
     int nTab = 0;//it starts from consumables

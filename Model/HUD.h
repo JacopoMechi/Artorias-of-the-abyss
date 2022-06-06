@@ -32,7 +32,6 @@ public:
 
     void displayHealthAndEffects(Hero &hero);
 
-
     void updateEvent(sf::Event keyInput);
 
     void drawQuickSlot();
