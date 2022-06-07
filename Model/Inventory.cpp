@@ -22,8 +22,8 @@ Inventory::Inventory(sf::RenderWindow &window): window(window){
 
     //setting assign box sprite
     assignBoxSprite.setTexture(texture);
-    assignBoxSprite.setTextureRect({1994, 318, 289, 98});
-    assignBoxSprite.setPosition({994, 318});
+    assignBoxSprite.setTextureRect({994, 318, 289, 98});
+    assignBoxSprite.setPosition({994, 418});
 
     //setting text for inventory
     font.loadFromFile("../pixelFont.ttf");
@@ -90,10 +90,11 @@ void Inventory::setShowDescription(bool showDescription){
 }
 
 void Inventory::displayAssignBox(){
-    if(isAssign){
+    if(isAssign && nTab == 0){//only displays on first tab
         window.draw(assignBoxSprite);
-        drawText(L"In quale slot vuoi assegnare \nil seguente oggetto?\n\n                          [1]  [2]  [3]", {1008, 338});
-    }
+        drawText(L"In quale slot vuoi assegnare \nil seguente oggetto?\n\n                          [1]  [2]  [3]", {1008, 438}, 13);
+    }else if(nTab != 0)//to reset assign when changing tab
+        isAssign = false;
 }
 
 bool Inventory::getAssign() const{
@@ -104,7 +105,8 @@ void Inventory::setAssign(bool isAssign){
     this -> isAssign = isAssign;
 }
 
-void Inventory::drawText(std::wstring text, sf::Vector2f pos){
+void Inventory::drawText(std::wstring text, sf::Vector2f pos, int characterSize){
+    this -> text.setCharacterSize(characterSize);
     this -> text.setString(text);
     this -> text.setPosition(pos);
     window.draw(this -> text);
@@ -115,7 +117,7 @@ void Inventory::draw(){
         window.draw(inventorySprite);
 
         //drawing the name of the tab
-        drawText(tabName[nTab], {245, 330});
+        drawText(tabName[nTab], {245, 330}, 20);
 
         //displaying tracker for items
         trackerSprite.setPosition(trackerPos[tracker]);
@@ -142,13 +144,9 @@ void Inventory::draw(){
 void Inventory::drawDescription(int nItem){
     if(showDescription){
         window.draw(descriptionSprite);
-        //setting character size smaller for the moment
-        text.setCharacterSize(13);
         //drawing sprite inside the the description sprite
         items[nItem] -> displayItem(800, 460, window);
         //drawing description of the item
-        drawText(items[nItem] -> getItemDescription(), {950, 415});
-        //reset character size
-        text.setCharacterSize(20);
+        drawText(items[nItem] -> getItemDescription(), {950, 415}, 13);
     }
 }

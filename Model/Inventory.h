@@ -52,7 +52,7 @@ public:
     void setAssign(bool isAssign);
 
     //to draw text for the inventory
-    void drawText(std::wstring text, sf::Vector2f pos);
+    void drawText(std::wstring text, sf::Vector2f pos, int characterSize);
 
     //to draw item's description when enter button is pressed on highlited item
     void drawDescription(int nItem);
