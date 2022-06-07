@@ -44,6 +44,10 @@ Item* Inventory::receiveItem() const{
     return items[tracker];
 }
 
+Item* Inventory::receiveItem(int nItem) const{
+    return items[nItem];
+}
+
 void Inventory::setItemAmount(int nItem, int amount){
     items[nItem] -> setItemCount(items[nItem] -> getItemCount() + amount);
 }

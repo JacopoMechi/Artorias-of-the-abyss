@@ -42,11 +42,6 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero), inve
     actionsSprite.setTextureRect({1743, 363, 85, 351});
     actionsSprite.setPosition(1743, 363);
     actionsSprite.setScale(0.8f, 0.8f);
-    /*//assign popup
-    assignSprite.setTexture(hudTexture);
-    assignSprite.setTextureRect({994, 318, 289, 98});
-    assignSprite.setPosition({994, 318});*/
-
     //setting obscure button sprite
     obscureSprite.setTexture(hudTexture);
     obscureSprite.setTextureRect({1756, 733, 63, 63});
@@ -147,7 +142,7 @@ void HUD::draw() {
     this -> displayItemCount(quickSlot[2], {1060, 980});
 
     //drawing npc interaction menu 
-    /*if(isInteraction){
+    if(isInteraction){
         if(!isShop && !isTalking){
 
             //displaying interaction box
@@ -185,22 +180,22 @@ void HUD::draw() {
                 //drawing tracker for scrolling items in the shop
                 this -> drawShopTracker(shopTrackerPos);
 
-                this -> drawShop(consumables[2]);
+                this -> drawShop(inventory.receiveItem(2));
             //elizabeth which sells green blossoms and the pendant
             }else if (NPCType == 1){
                 this -> drawShopTracker(shopTrackerPos);
-                this -> drawShop(consumables[1], consumables[3]);
+                this -> drawShop(inventory.receiveItem(1), inventory.receiveItem(3));
             }
 
             //opening interact menu when trying to buy items
             if(isBuying){
                 this -> drawInteractBox({1230,300});
                 if(NPCType == 0)
-                    price = consumables[2] -> getItemPrice();
+                    price = inventory.receiveItem(2) -> getItemPrice();
                 else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
-                    price = consumables[1] -> getItemPrice();
+                    price = inventory.receiveItem(1) -> getItemPrice();
                 else //second item of elizabeth
-                    price = consumables[3] -> getItemPrice();
+                    price = inventory.receiveItem(3) -> getItemPrice();
 
                 this -> drawShopText(L"Quanti ne vuoi acquistare? (" + std::to_wstring(price) + L") \n[1] 1     [2] 5     [3] 10", {1250, 330});
 
@@ -218,7 +213,7 @@ void HUD::draw() {
             else
                 this -> drawShopText(textPool[dialogueTracker], {820, 333});
         }
-    }*/
+    }
 }
 
 void HUD::displayHealthAndEffects(Hero &hero){ 
@@ -284,17 +279,17 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
                 inventory.setAssign(false);
             }
         }
-    }/*else{
+    }else{
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
             if(isInteraction && isBuying){//for buying items in shop
                 if(price <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - price);
                     if(NPCType == 0)
-                            consumables[2] -> setItemCount((consumables[2] -> getItemCount() + 1));
+                            inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 1);
                         else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
-                            consumables[1] -> setItemCount((consumables[1] -> getItemCount() + 1));
+                            inventory.setItemAmount(1, inventory.receiveItem(1) -> getItemCount() + 1);
                         else //second item of elizabeth
-                            consumables[3] -> setItemCount((consumables[3] -> getItemCount() + 1));
+                            inventory.setItemAmount(3, inventory.receiveItem(3) -> getItemCount() + 1);
 
                     printErrorMessage = false;
                 }else
@@ -307,11 +302,11 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
                 if((5*price) <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
                     if(NPCType == 0)
-                            consumables[2] -> setItemCount((consumables[2] -> getItemCount() + 5));
+                            inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 5);
                         else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
-                            consumables[1] -> setItemCount((consumables[1] -> getItemCount() + 5));
+                            inventory.setItemAmount(1, inventory.receiveItem(1) -> getItemCount() + 5);
                         else //second item of elizabeth
-                            consumables[3] -> setItemCount((consumables[3] -> getItemCount() + 5));
+                            inventory.setItemAmount(3, inventory.receiveItem(3) -> getItemCount() + 5);
 
                     printErrorMessage = false;
                 }else
@@ -324,11 +319,11 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
                 if((10*price) <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - (price*10));
                     if(NPCType == 0)
-                            consumables[2] -> setItemCount((consumables[2] -> getItemCount() + 10));
+                            inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 10);
                         else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
-                            consumables[1] -> setItemCount((consumables[1] -> getItemCount() + 10));
+                            inventory.setItemAmount(1, inventory.receiveItem(1) -> getItemCount() + 10);
                         else //second item of elizabeth
-                            consumables[3] -> setItemCount((consumables[3] -> getItemCount() + 10));
+                            inventory.setItemAmount(3, inventory.receiveItem(3) -> getItemCount() + 10);
 
                     printErrorMessage = false;
                 }else
@@ -358,7 +353,7 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
 
     //handling inputs for interaction with npc
      if(NPCAggro){
-        if(!isInvOpen && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
+        if(!inventory.getInvOpen() && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
             isInteraction = !isInteraction;//open/close shop
             //for resetting interaction
             isShop = false;
@@ -389,7 +384,7 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
     //selecting shop option in interaction
     //(only for specifics NPCs)
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && !isBuying)
-        isShop = !isShop;*/
+        isShop = !isShop;
 }
 
 //drawing assign popup
@@ -444,10 +439,10 @@ void HUD::setNPCType(int NPCType){
     this -> NPCType = NPCType;
 }
 
-/*void HUD::drawShopTracker(sf::Vector2f pos){
-    trackerSprite.setPosition(pos);
-    window.draw(trackerSprite);
-}*/
+void HUD::drawShopTracker(sf::Vector2f pos){
+    /*trackerSprite.setPosition(pos);
+    window.draw(trackerSprite);*/
+}
 
 void HUD::drawShopText(std::wstring text, sf::Vector2f textPos){
     interactText.setPosition(textPos);
