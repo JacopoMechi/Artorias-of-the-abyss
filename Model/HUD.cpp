@@ -1,6 +1,6 @@
 #include "HUD.h"
 
-HUD::HUD(sf::RenderWindow &window, Hero& hero): window(window), hero(hero), inventory(window){
+HUD::HUD(sf::RenderWindow &window, Hero& hero, Inventory &inventory): window(window), hero(hero), inventory(inventory){
 
     //setting the font and size for the text      
     font.loadFromFile("../pixelFont.ttf");

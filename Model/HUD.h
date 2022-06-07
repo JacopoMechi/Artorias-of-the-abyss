@@ -19,7 +19,7 @@ class HUD
 
 public:
 
-    HUD(sf::RenderWindow &window, Hero &hero);
+    HUD(sf::RenderWindow &window, Hero &hero, Inventory &inventroy);
     ~HUD();
 
     //setting text pool for displaying on hud
@@ -138,6 +138,6 @@ protected:
     Item* quickSlot[3] = {new NullItem(), new NullItem(), new NullItem()};
 
     //inserting inventory
-    Inventory inventory;
+    Inventory &inventory;
 };
 #endif
