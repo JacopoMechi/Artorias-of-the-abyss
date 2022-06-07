@@ -16,6 +16,6 @@ private:
     HUD &hud;
 
 
-}
+};
 
 #endif
