@@ -21,6 +21,10 @@ public:
     int getDash() const;
     void setDash(int dashCount);
 
+    //setter for character direction
+    void setDirX(float value);
+    void setDirY(float value);
+
     //for green blossom which reduce dashes cooldown
     int getCooldown() const;
     void setCooldown(float dashTimeHolding);
@@ -48,9 +52,6 @@ public:
     int getMoneyAmount() const;
     void setMoneyAmount(int moneyCounter);
 
-    float getHeroPosY() const;
-    void setHeroPosY(float heroPosY);
-
     void dash();
 
     void addItem();
@@ -63,7 +64,7 @@ public:
     
     virtual void attack(sf::RenderWindow& window) override;
 
-    void updateDelayAndInputs(sf::Event keyInput, float dt);
+    void updateDelay(float dt);
     
     virtual void movement(bool isInventoryOpen, bool isInteracting) override;
     

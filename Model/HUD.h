@@ -32,11 +32,9 @@ public:
 
     void displayHealthAndEffects(Hero &hero);
 
-    void updateEvent(sf::Event keyInput);
+    //void updateEvent(sf::Event keyInput);
 
-    void drawQuickSlot();
-
-    void assignItem(Item *consumable, int slot);
+    void assignItemInQuickslot(int slot);
 
     void checkNPCAggro(NPC &npc);
 
@@ -107,8 +105,6 @@ protected:
     //for getting NPC type
     int NPCType = -1; //because from 0 to 3 are NPCs
 
-    bool switching = false;
-    bool quickAssign = false;
     //to get NPC aggro in hud for interactions
     bool NPCAggro = false;
     //setting spell direction for hero

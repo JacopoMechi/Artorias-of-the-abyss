@@ -229,7 +229,7 @@ void HUD::displayHealthAndEffects(Hero &hero){
     window.draw(healthText);
 }
 
-void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
+/*void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
     //handling inputs
     //opens inventory
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E && !isInteraction){// isInteracting to not open the inventory
@@ -385,22 +385,10 @@ void HUD::updateEvent(sf::Event keyInput){//, bool isInteracting
     //(only for specifics NPCs)
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && !isBuying)
         isShop = !isShop;
-}
+}*/
 
-//drawing assign popup
-void HUD::drawQuickSlot(){
-    text.setPosition(1008, 338);
-    text.setCharacterSize(20);
-    text.setString("In quale slot vuoi assegnare \nil seguente oggetto?\n\n                          [1]  [2]  [3]");
-    if(quickAssign){//&&firstTab
-        window.draw(assignSprite);
-        window.draw(text);
-    }
-}
-
-void HUD::assignItem(Item *consumable, int slot){
-    quickSlot[slot] = consumable;
-    quickAssign = false;
+void HUD::assignItemInQuickslot(int slot){
+    quickSlot[slot] = inventory.receiveItem();
 }
 
 void HUD::checkNPCAggro(NPC &npc){

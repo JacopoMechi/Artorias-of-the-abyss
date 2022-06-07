@@ -44,6 +44,14 @@ void Hero::setDash(int dashCount)
     this->dashCount = dashCount;
 }
 
+void Hero::setDirX(float value){
+    dir.x = value;
+}
+
+void Hero::setDirY(float value){
+    dir.y = value;
+}
+
 int Hero::getCooldown() const{
     return dashTimeHolding;
 }
@@ -167,7 +175,7 @@ void Hero::attack(sf::RenderWindow &window) {
 }
 
 // handling character action inputs like attack, roll, interact
-void Hero::updateDelayAndInputs(sf::Event keyInput, float dt){
+void Hero::updateDelay(float dt){
     // updating delay time
     delayTime = dt;
     
@@ -199,31 +207,7 @@ void Hero::updateDelayAndInputs(sf::Event keyInput, float dt){
     }
 }
 void Hero::movement(bool isInventoryOpen, bool isInteracting){
-    if (!isInventoryOpen && !isInteracting){
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && pos.y > 30)
-        {
-            dir.y = -1.0f;
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && pos.y < 745)
-        {
-            dir.y = 1.0f;
-        }
-        else
-            dir.y = 0;
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && pos.x > 230)
-        {
-            dir.x = -1.0f;
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && pos.x < 1550)
-        {
-            dir.x = 1.0f;
-        }
-        else
-            dir.x = 0;
-    }else
-        dir = {0, 0};
+    
 }
 
 void Hero::respawn(float posX, float posY){

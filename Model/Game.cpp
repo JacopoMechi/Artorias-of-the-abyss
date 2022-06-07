@@ -14,9 +14,9 @@ void Game::gameLoop()
             inGameMenu.updateEvent(event);
             if (event.type == sf::Event::Closed)
                 window.close();
-            hud.updateEvent(event);
+            inputs.updateInputs(event);
         }
-        hero.updateDelayAndInputs(event, dt);
+        hero.updateDelay(dt);
         hud.gettingDelayTime(dt);
         window.clear(sf::Color::Black);
         room -> draw();
@@ -89,9 +89,9 @@ void Game::swapRoom(std::string tracker, int floor){
     room = gameRooms -> makeRoom(tracker, window, floor);
 }
 
-Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(true, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero), 
+Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inventory(window), inGameMenu(window, 0), window(window), hero(true, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero, inventory), 
     room(gameRooms -> makeRoom("startingroom", window, 1)), roomType{std::string("startroom"),std::string("secondroom"), std::string("thirdroom"), std::string("fourthroom"), std::string("finalroom")},
-    npc(window, 1, {300, 300})
+    npc(window, 1, {300, 300}), inputs(inventory, hud, hero)
 {
     
 }
