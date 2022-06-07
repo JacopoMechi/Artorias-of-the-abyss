@@ -87,10 +87,6 @@ void HUD::setTextPool(std::vector<std::wstring> textPool){
     this -> textPool = textPool;
 }
 
-bool HUD::getIsInteraction() const{
-    return isInteraction;
-}
-
 void HUD::draw() {
     window.draw(quickslotSprite);
     window.draw(actionsSprite);
@@ -122,8 +118,8 @@ void HUD::draw() {
     }else if(!hero.getCharacterType())
         this -> obscureButton({1750, 508});
     //obscure interact button when you are not close to an NPC
-    if(!NPCAggro)
-        this -> obscureButton({1750,575});
+    //if(!NPCAggro)//TODO here
+    //   this -> obscureButton({1750,575});
     //drawing quickslots items
     quickSlot[0] -> displayItem(850, 975, window);
     quickSlot[1] -> displayItem(935, 975, window);
@@ -142,7 +138,7 @@ void HUD::draw() {
     this -> displayItemCount(quickSlot[2], {1060, 980});
 
     //drawing npc interaction menu 
-    if(isInteraction){
+    /*if(isInteraction){
         if(!isShop && !isTalking){
 
             //displaying interaction box
@@ -213,7 +209,7 @@ void HUD::draw() {
             else
                 this -> drawShopText(textPool[dialogueTracker], {820, 333});
         }
-    }
+    }*/
 }
 
 void HUD::displayHealthAndEffects(Hero &hero){ 
@@ -391,13 +387,13 @@ void HUD::assignItemInQuickslot(int slot){
     quickSlot[slot] = inventory.receiveItem();
 }
 
-void HUD::checkNPCAggro(NPC &npc){
+/*void HUD::checkNPCAggro(NPC &npc){
     if(npc.isAggro(190, hero)){
         NPCAggro = true;
     }else{
         NPCAggro = false;
     }
-}
+}*/
 
 void HUD::displayMoneyCounter(Hero &hero){
     window.draw(moneyCounterSprite);

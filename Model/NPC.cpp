@@ -50,6 +50,13 @@ void NPC::movement(bool isInvetoryOpen, bool isInteracting){
     std::cout << "Error: cannot use movement function in NPC class" << std::endl;
 }
 
+bool NPC::closeToHero(Hero &hero){
+    if(isAggro(190, hero))
+        return true;
+    else
+        return false;
+}
+
 std::vector<std::wstring> NPC::getTextPool() const{
     return textPool;
 }

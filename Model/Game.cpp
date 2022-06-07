@@ -68,13 +68,12 @@ void Game::gameLoop()
                 }
                 hud.setTextPool(npc.getTextPool());
                 hud.setNPCType(npc.getNPCType());
-                NPCInteraction = hud.getIsInteraction();
+                NPCInteraction = npc.closeToHero(hero);
                 hero.movement(false, NPCInteraction);//for the moment
                 hero.update(dt);
                 hero.draw(window);
                 npc.draw(window);
-                hud.checkNPCAggro(npc);
-                hud.draw();
+                //hud.draw();
                 hud.displayHealthAndEffects(hero);
                 hud.displayMoneyCounter(hero);
             }

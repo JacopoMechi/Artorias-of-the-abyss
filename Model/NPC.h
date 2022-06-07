@@ -26,6 +26,9 @@ public:
     virtual void attack(sf::RenderWindow &window) override;
     virtual void movement(bool isInventoryOpen, bool isInteracting) override;
 
+    //to know if hero is close to npcs
+    bool closeToHero(Hero &hero);
+
     //method to let HUD get text pool
     std::vector<std::wstring> getTextPool() const;
 
@@ -45,7 +48,6 @@ private:
 
     //for tracking character type
     int type;
-    
 
     //setting textpool for dialogues depending on character
     std::vector<std::wstring> textPool;

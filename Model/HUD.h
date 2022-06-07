@@ -25,9 +25,6 @@ public:
     //setting text pool for displaying on hud
     void setTextPool(std::vector<std::wstring> textPool);
 
-    //method for blocking hero when is intercating with an NPC
-    bool getIsInteraction() const;
-
     void draw();
 
     void displayHealthAndEffects(Hero &hero);
@@ -36,13 +33,15 @@ public:
 
     void assignItemInQuickslot(int slot);
 
-    void checkNPCAggro(NPC &npc);
+    //void checkNPCAggro(NPC &npc);
 
     //display money counter in hud
     void displayMoneyCounter(Hero &hero);
 
     //obscuring action buttons
     void obscureButton(sf::Vector2f pos);
+
+    void setInteraction(bool value);
 
     //displaying item count on quickslot
     void displayItemCount(Item* item, sf::Vector2f pos);
@@ -106,14 +105,11 @@ protected:
     int NPCType = -1; //because from 0 to 3 are NPCs
 
     //to get NPC aggro in hud for interactions
-    bool NPCAggro = false;
+    //bool NPCAggro = false;
     //setting spell direction for hero
     int spellDirection; //it can be 1(right) or -1(left)
     //boolean value to let the character buy from merchant
     bool wantsTobuy = false;
-
-    //switch for open shop
-    bool isInteraction = false;
 
     //switch for shop menu
     bool isShop = false;

@@ -12,12 +12,14 @@ public:
 
     void updateInputs(sf::Event keyInputs);
 
+    void setHeroNPCAggro(bool status);
+
 private:
+    //all the stuff needed to handle inputs
     Inventory &inventory;
     HUD &hud;
     Hero &hero;
-
-
+    bool isInRange = false;
 };
 
 #endif

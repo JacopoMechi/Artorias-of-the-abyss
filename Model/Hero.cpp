@@ -207,7 +207,7 @@ void Hero::updateDelay(float dt){
     }
 }
 void Hero::movement(bool isInventoryOpen, bool isInteracting){
-    
+
 }
 
 void Hero::respawn(float posX, float posY){

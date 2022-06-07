@@ -77,9 +77,9 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         else
             hero.setDirX(0.0f);
         
-            /*if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
             if(isInteraction && isBuying){//for buying items in shop
-                if(price <= hero.getMoneyAmount()){
+                /*if(price <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - price);
                     if(NPCType == 0)
                             inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 1);
@@ -90,13 +90,13 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
 
                     printErrorMessage = false;
                 }else
-                    printErrorMessage = true;
+                    printErrorMessage = true;*/
             }else{
-                quickSlot[0] -> use(hero);
+                //quickSlot[0] -> use(hero);
             }
         else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
             if(isInteraction && isBuying){//for buying items in shop
-                if((5*price) <= hero.getMoneyAmount()){
+                /*if((5*price) <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
                     if(NPCType == 0)
                             inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 5);
@@ -107,13 +107,13 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
 
                     printErrorMessage = false;
                 }else
-                    printErrorMessage = true;
+                    printErrorMessage = true;*/
             }else{
-                quickSlot[1] -> use(hero);
+                //quickSlot[1] -> use(hero);
             }
         }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
             if(isInteraction && isBuying){//for buying items in shop
-                if((10*price) <= hero.getMoneyAmount()){
+                /*if((10*price) <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - (price*10));
                     if(NPCType == 0)
                             inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 10);
@@ -124,9 +124,9 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
 
                     printErrorMessage = false;
                 }else
-                    printErrorMessage = true;
+                    printErrorMessage = true;*/
             }else{
-                quickSlot[2] -> use(hero);
+                //quickSlot[2] -> use(hero);
             }
         }
         //hero's dash and attack handling
@@ -147,7 +147,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         hero.setAuraReady(false);
 
     //handling inputs for interaction with npc
-     if(NPCAggro){
+    /* if(isInRange){//TODO npc must be better
         if(!inventory.getInvOpen() && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
             isInteraction = !isInteraction;//open/close shop
             //for resetting interaction
@@ -179,6 +179,11 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     //selecting shop option in interaction
     //(only for specifics NPCs)
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && !isBuying)
-        isShop = !isShop;*/
-    }
+        isShop = !isShop;
+    }*/
+
+}
+
+void CharacterInputs::setHeroNPCAggro(int status){
+    isInRange = status;
 }
