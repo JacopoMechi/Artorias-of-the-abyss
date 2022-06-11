@@ -78,7 +78,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
             hero.setDirX(0.0f);
         
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
-            if(isInteraction && isBuying){//for buying items in shop
+            if(isInteraction){// && isBuying //for buying items in shop
                 /*if(price <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - price);
                     if(NPCType == 0)
@@ -95,7 +95,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
                 //quickSlot[0] -> use(hero);
             }
         else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
-            if(isInteraction && isBuying){//for buying items in shop
+            if(isInteraction){// && isBuying //for buying items in shop
                 /*if((5*price) <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
                     if(NPCType == 0)
@@ -112,7 +112,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
                 //quickSlot[1] -> use(hero);
             }
         }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
-            if(isInteraction && isBuying){//for buying items in shop
+            if(isInteraction){// && isBuying //for buying items in shop
                 /*if((10*price) <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - (price*10));
                     if(NPCType == 0)
@@ -130,32 +130,32 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
             }
         }
         //hero's dash and attack handling
-    //for attacking or casting spells
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && (hero.getCanAttack() || !hero.getStartingSpell())){
-        hero.setStartAnimation(true);
-        if(!hero.getCharacterType()){//when hero is a mage
-            hero.setSpellDirection();
-            hero.setStartingSpell(true);
-        }else//when hero is a knight
-            hero.setCanAttack(false);
+        //for attacking or casting spells
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && (hero.getCanAttack() || !hero.getStartingSpell())){
+            hero.setStartAnimation(true);
+            if(!hero.getCharacterType()){//when hero is a mage
+                hero.setSpellDirection();
+                hero.setStartingSpell(true);
+            }else//when hero is a knight
+                hero.setCanAttack(false);
+        }
+        //for dashes
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
+            hero.dash();
+        //for raising a shield aura
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::LShift && hero.getCharacterType())
+            hero.setAuraReady(false);
     }
-    //for dashes
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
-        hero.dash();
-    //for raising a shield aura
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::LShift && hero.getCharacterType())
-        hero.setAuraReady(false);
-
     //handling inputs for interaction with npc
-    /* if(isInRange){//TODO npc must be better
+    if(isInRange){//TODO npc must be better
         if(!inventory.getInvOpen() && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
             isInteraction = !isInteraction;//open/close shop
             //for resetting interaction
-            isShop = false;
-            isTalking = false;
+            hud.setInteraction(!hud.getInteraction());
+            //isTalking = false;
         }
     }
-
+    /*
     if(isTalking){//TODO LATER adjust dialogue depending on situations (like changing chester's text pool when Artorias is killed)
         //scrolling through character's phrases
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
@@ -181,9 +181,12 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && !isBuying)
         isShop = !isShop;
     }*/
-
 }
 
-void CharacterInputs::setHeroNPCAggro(int status){
+void CharacterInputs::setHeroNPCAggro(bool status){
     isInRange = status;
+}
+
+void CharacterInputs::setInteraction(bool interaction){
+    isInteraction = interaction;
 }

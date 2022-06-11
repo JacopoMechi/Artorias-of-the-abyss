@@ -138,7 +138,7 @@ void HUD::draw() {
     this -> displayItemCount(quickSlot[2], {1060, 980});
 
     //drawing npc interaction menu 
-    /*if(isInteraction){
+    if(isInteraction){
         if(!isShop && !isTalking){
 
             //displaying interaction box
@@ -209,7 +209,7 @@ void HUD::draw() {
             else
                 this -> drawShopText(textPool[dialogueTracker], {820, 333});
         }
-    }*/
+    }
 }
 
 void HUD::displayHealthAndEffects(Hero &hero){ 
@@ -450,4 +450,22 @@ void HUD::gettingDelayTime(float dt){
     quickSlot[0] -> effectTime(dt);
     quickSlot[1] -> effectTime(dt);
     quickSlot[2] -> effectTime(dt);
+}
+
+//TODO for the moment
+bool HUD::getDrawShop(){
+    return isShop;
+}
+
+void HUD::setDrawShop(bool isShop){
+    this -> isShop = isShop;
+}
+
+//TODO for the moment
+bool HUD::getInteraction(){
+    return isInteraction;
+}
+
+void HUD::setInteraction(bool isInteraction){
+    this -> isInteraction = isInteraction;
 }

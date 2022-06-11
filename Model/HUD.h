@@ -41,8 +41,6 @@ public:
     //obscuring action buttons
     void obscureButton(sf::Vector2f pos);
 
-    void setInteraction(bool value);
-
     //displaying item count on quickslot
     void displayItemCount(Item* item, sf::Vector2f pos);
 
@@ -64,6 +62,14 @@ public:
 
     //getting delay time to display item effects
     void gettingDelayTime(float dt);
+
+    //getter and setter to open shop //TODO for the moment
+    bool getDrawShop();
+    void setDrawShop(bool isShop);
+
+    //TODO for the moment
+    bool getInteraction();
+    void setInteraction(bool isInteraction);
 
 protected:
     //for using quickslot items
@@ -110,6 +116,9 @@ protected:
     int spellDirection; //it can be 1(right) or -1(left)
     //boolean value to let the character buy from merchant
     bool wantsTobuy = false;
+
+    //TODO for the moment
+    bool isInteraction = false;
 
     //switch for shop menu
     bool isShop = false;

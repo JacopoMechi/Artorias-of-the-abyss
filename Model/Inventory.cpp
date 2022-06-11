@@ -83,6 +83,7 @@ void Inventory::resetPositions(){
     nPage = 0;
     nTab = 0;
     showDescription = false;
+    isAssign = false;
 }
 
 bool Inventory::getShowDescription() const{
