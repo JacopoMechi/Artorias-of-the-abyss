@@ -17,7 +17,7 @@ public:
     void respawnEnemies(); // TODO to be implemented
 
     Bonfire(sf::RenderWindow &window, const sf::Vector2f &position,
-            const std::vector<sf::IntRect> &spriteFrames = {{2, 522, 189, 298}, {191, 522, 189, 298}, {380, 522, 189, 298}},
+            const std::vector<sf::IntRect> &spriteFrames = {{1, 520, 184, 297}, {191, 540, 203, 277}, {405, 521, 176, 293}},
             const std::string &roomElementFilePath = "../Textures/Textures.png");
 
     ~Bonfire();

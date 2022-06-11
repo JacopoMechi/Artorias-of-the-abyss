@@ -51,7 +51,21 @@ void GameCharacter::setWeapon(Weapon *weapon)
 
 bool GameCharacter::isInteractable(GameCharacter &entity)
 {
-    if (abs(sqrt(((entity.getPos().x - pos.x) * (entity.getPos().x - pos.x)) + ((entity.getPos().y - pos.y) * (entity.getPos().y - pos.y)))) < interactableDistance)
+    points = points * armor / 100;
+    setHp(HP - points);
+}
+
+void GameCharacter::movement(bool isInventoryOpen, bool isInteracting)
+{
+}
+
+void GameCharacter::attack(sf::RenderWindow &window)
+{
+}
+
+bool GameCharacter::isAggro(float aggroDistance, GameCharacter &entity)
+{
+    if (abs(sqrt(((entity.getPos().x - pos.x) * (entity.getPos().x - pos.x)) + ((entity.getPos().y - pos.y) * (entity.getPos().y - pos.y)))) < aggroDistance)
         return true;
     else
         return false;

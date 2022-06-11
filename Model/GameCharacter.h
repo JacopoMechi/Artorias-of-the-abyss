@@ -29,9 +29,11 @@ public:
 
     // virtual void receiveDamage(int points) = 0;
 
-    virtual void attack() = 0;
+    virtual void movement(bool isInventoryOpen, bool isInteracting) = 0;
 
-    bool isInteractable(GameCharacter &entity);
+    virtual void attack(sf::RenderWindow &window);
+
+    bool isAggro(float aggroDistance, GameCharacter &entity);
 
     void draw(sf::RenderWindow &window) const;
 
