@@ -1,47 +1,33 @@
-/**
- * Project Untitled
- */
-
-
 #ifndef _ENEMY_H
 #define _ENEMY_H
 
 #include "GameCharacter.h"
 
+class Enemy : public GameCharacter
+{
+public:
+    // enum class Type
+    // {
+    //     Boss1,
+    //     Boss2,
+    //     Boss3,
+    //     Enemy1,
+    //     Enemy2,
+    //     Enemy3,
+    //     Enemy4
+    // };
 
-class Enemy: public GameCharacter {
-public: 
-    
-/**
- * @param float dropChance
- */
-void dropItem(void float dropChance);
-    
-void getAggro();
-    
-/**
- * @param float aggroDistance
- */
-void setAggro(void float aggroDistance);
-    
-/**
- * @param bool isRanged
- * @param int delay
- */
-override attack(void bool isRanged, void int delay);
-    
-/**
- * @param isRanged
- */
-override movement(void isRanged);
-    
-override respawn();
-protected: 
+    Enemy(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, float movementSpeed);
+
+    bool getAggro();
+
+    void setAggro(bool aggro);
+
+    void attack() override;
+
+protected:
     bool isRanged;
-    int delay;
     bool aggro;
-    float dropChance;
-    float aggroDistance;
 };
 
-#endif //_ENEMY_H
+#endif

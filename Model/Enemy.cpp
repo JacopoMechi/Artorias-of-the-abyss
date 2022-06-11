@@ -1,53 +1,53 @@
-/**
- * Project Untitled
- */
-
-
 #include "Enemy.h"
 
-/**
- * Enemy implementation
- */
-
-
-/**
- * @param float dropChance
- */
-void Enemy::dropItem(void float dropChance) {
-
+Enemy::Enemy(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, float movementSpeed) : GameCharacter(window, pos, hp, movementSpeed)
+{
+    // texture.loadFromFile(texturePath);
+    // sprite.setTexture(texture); // loading chracter's sprite
+    // switch (enemyType)
+    // {
+    // case Type::Boss1:
+    //     defaultRect = {0, 0, 16, 22};
+    //     frameRect = defaultRect;
+    //     break;
+    // case Type::Boss2:
+    //     defaultRect = {0, 0, 16, 22};
+    //     frameRect = defaultRect;
+    //     break;
+    // case Type::Boss3:
+    //     defaultRect = {0, 0, 16, 22};
+    //     frameRect = defaultRect;
+    //     break;
+    // case Type::Enemy1:
+    //     defaultRect = {138, 4, 23, 30};
+    //     frameRect = defaultRect;
+    //     break;
+    // case Type::Enemy2:
+    //     defaultRect = {0, 0, 16, 22};
+    //     frameRect = defaultRect;
+    //     break;
+    // case Type::Enemy3:
+    //     defaultRect = {0, 0, 16, 22};
+    //     frameRect = defaultRect;
+    //     break;
+    // case Type::Enemy4:
+    //     defaultRect = {0, 0, 16, 22};
+    //     frameRect = defaultRect;
+    //     break;
+    // }
+    // sprite.setScale(7.5f, 7.5f);
 }
 
-void Enemy::getAggro() {
-
+bool Enemy::getAggro()
+{
+    return aggro;
 }
 
-/**
- * @param float aggroDistance
- */
-void Enemy::setAggro(void float aggroDistance) {
-
+void Enemy::setAggro(bool aggro)
+{
+    this->aggro = aggro;
 }
 
-/**
- * @param bool isRanged
- * @param int delay
- * @return override
- */
-override Enemy::attack(void bool isRanged, void int delay) {
-    return null;
-}
-
-/**
- * @param isRanged
- * @return override
- */
-override Enemy::movement(void isRanged) {
-    return null;
-}
-
-/**
- * @return override
- */
-override Enemy::respawn() {
-    return null;
+void Enemy::attack()
+{
 }
