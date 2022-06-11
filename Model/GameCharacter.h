@@ -33,7 +33,7 @@ public:
 
     bool isInteractable(GameCharacter &entity);
 
-    void draw(sf::RenderTarget &rt) const;
+    void draw(sf::RenderWindow &window) const;
 
     void update(float dt);
 

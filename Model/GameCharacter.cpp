@@ -57,9 +57,9 @@ bool GameCharacter::isInteractable(GameCharacter &entity)
         return false;
 }
 
-void GameCharacter::draw(sf::RenderTarget &rt) const
+void GameCharacter::draw(sf::RenderWindow &window) const
 {
-    rt.draw(sprite);
+    window.draw(sprite);
 }
 
 void GameCharacter::update(float dt)
