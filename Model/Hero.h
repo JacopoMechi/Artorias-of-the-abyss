@@ -106,13 +106,12 @@ protected:
     float dashTimeHolding = 2.0f;
     float dashTime = 0.0f;
 
-    // handling sword attack cooldown
-    bool canAttack;
-    float attackTimeHolding = 3.0f;
+    // handling attack cooldown
+    bool canAttack = true;
+    float attackTimeHolding = 0.5f;
     float attackTime = 0.0f;
 
     // int cooldown = 5;
-    Bonfire *bonfire;
     int amount;
 
     // for setting weapon pos when character is moving

@@ -17,7 +17,7 @@ public:
     //     Enemy4
     // };
 
-    Enemy(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, float movementSpeed);
+    Enemy(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed);
 
     bool getAggro();
 

@@ -1,6 +1,6 @@
 #include "Enemy.h"
 
-Enemy::Enemy(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, float movementSpeed) : GameCharacter(window, pos, hp, movementSpeed)
+Enemy::Enemy(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed) : GameCharacter(window, pos, hp, armor, cash, movementSpeed)
 {
     // texture.loadFromFile(texturePath);
     // sprite.setTexture(texture); // loading chracter's sprite
