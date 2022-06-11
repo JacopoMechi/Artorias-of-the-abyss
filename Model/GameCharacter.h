@@ -6,7 +6,7 @@
 #include <cmath>
 
 #include <SFML/Graphics.hpp>
-#include "RoomElement.h"
+#include "Rooms/RoomElement.h"
 #include "Weapon.h"
 
 class GameCharacter

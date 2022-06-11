@@ -5,7 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-#include "RoomElement.h"
+#include "Rooms/RoomElement.h"
 
 class Bonfire : public RoomElement
 {

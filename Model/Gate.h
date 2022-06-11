@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include "RoomElement.h"
+#include "Rooms/RoomElement.h"
 
 class Gate : public RoomElement
 {

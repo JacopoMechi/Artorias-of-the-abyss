@@ -19,10 +19,10 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/Bonfire.cpp
                                     Model/Gate.h
                                     Model/Gate.cpp
-                                    Model/Room.h
-                                    Model/Room.cpp
-                                    Model/RoomElement.h
-                                    Model/RoomElement.cpp
+                                    Model/Rooms/Room.h
+                                    Model/Rooms/Room.cpp
+                                    Model/Rooms/RoomElement.h
+                                    Model/Rooms/RoomElement.cpp
                                     Model/Menu.h
                                     Model/Menu.cpp
                                     ##Model/Weapon.h
@@ -47,18 +47,18 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/Game.cpp
                                     Model/Enemy.h 
                                     Model/Enemy.cpp
-                                    Model/RoomFactory.h
-                                    Model/RoomFactory.cpp
-                                    Model/StartRoom.h
-                                    Model/StartRoom.cpp
-                                    Model/SecondRoom.h
-                                    Model/SecondRoom.cpp
-                                    Model/ThirdRoom.h
-                                    Model/ThirdRoom.cpp
-                                    Model/FourthRoom.h
-                                    Model/FourthRoom.cpp
-                                    Model/FinalRoom.h
-                                    Model/FinalRoom.cpp
+                                    Model/Rooms/RoomFactory.h
+                                    Model/Rooms/RoomFactory.cpp
+                                    Model/Rooms/StartRoom.h
+                                    Model/Rooms/StartRoom.cpp
+                                    Model/Rooms/SecondRoom.h
+                                    Model/Rooms/SecondRoom.cpp
+                                    Model/Rooms/ThirdRoom.h
+                                    Model/Rooms/ThirdRoom.cpp
+                                    Model/Rooms/FourthRoom.h
+                                    Model/Rooms/FourthRoom.cpp
+                                    Model/Rooms/FinalRoom.h
+                                    Model/Rooms/FinalRoom.cpp
                                     Model/NullItem.h
                                     Model/NullItem.cpp)
 

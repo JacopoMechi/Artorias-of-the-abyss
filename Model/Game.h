@@ -3,11 +3,11 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "Room.h"
+#include "Rooms/Room.h"
 #include "Menu.h"
 #include "Hero.h"
 #include "HUD.h"
-#include "RoomFactory.h"
+#include "Rooms/RoomFactory.h"
 #include "NPC.h"
 
 class Game
@@ -27,16 +27,16 @@ public:
     Game(sf::RenderWindow &window);
 
 private:
-    //to manage rooms aand floors
-    std::string roomType[5];//array of room names
-    int roomTracker = 0;//for tracking what room needs to be spawned
-    int level = 1;//for floors
+    // to manage rooms aand floors
+    std::string roomType[5]; // array of room names
+    int roomTracker = 0;     // for tracking what room needs to be spawned
+    int level = 1;           // for floors
 
     int levelReached = 0;
     float dt = 0.0f;
-    bool NPCInteraction = false;//to block character when is interacting with an NPC
+    bool NPCInteraction = false; // to block character when is interacting with an NPC
 
-    //for room factory creation
+    // for room factory creation
     std::unique_ptr<RoomFactory> gameRooms;
     std::unique_ptr<Room> room;
 
