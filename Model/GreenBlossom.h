@@ -2,16 +2,15 @@
 #define _GREENBLOSSOM_H
 
 #include "Item.h"
-//#include "Hero.h"
 
 
 class GreenBlossom: public Item {
 public:
-    explicit GreenBlossom(std::string itemName = "Estratto di Fiore verde", int itemPrice = 1000,
-                          std::string itemDescription = "Riduce il cooldown dei dash per 60 secondi", int maxItemCount = 10, 
-                          int itemCount = 0, int x = 453, int y = 2, int width = 20, int height = 20);
-    ~GreenBlossom();
-    void use(Hero &hero);
+    explicit GreenBlossom(std::wstring itemName = L"Estratto di Fiore verde", int itemPrice = 1000,
+                          std::wstring itemDescription = L"Riduce il cooldown \ndei dash per 60 secondi", int maxItemCount = 10, 
+                          int itemCount = 0, sf::IntRect spriteRect = {453, 2, 20, 20}, sf::IntRect effectRect = {530, 124, 17, 22});
+    virtual ~GreenBlossom();
+    virtual void use(Hero &hero) override;
 private:
     float newCooldown = 0.8f;// TODO needs to be balanced
     int timeEffect = 60;

@@ -12,7 +12,7 @@
 class GameCharacter
 {
 public:
-    GameCharacter(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, float movementSpeed);
+    GameCharacter(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed);
     virtual ~GameCharacter() = default;
 
     int getHp() const;
@@ -27,13 +27,15 @@ public:
     Weapon *getWeapon() const;
     void setWeapon(Weapon *weapon);
 
-    // virtual void receiveDamage(int points) = 0;
+    virtual void receiveDamage(int points);
 
-    virtual void attack() = 0;
+    virtual void movement(bool isInventoryOpen, bool isInteracting) = 0;
 
-    bool isInteractable(GameCharacter &entity);
+    virtual void attack();
 
-    void draw(sf::RenderWindow &window) const;
+    bool isInteractable(float aggroDistance, GameCharacter &entity);
+
+    void draw() const;
 
     void update(float dt);
 
@@ -41,6 +43,8 @@ public:
 
 protected:
     int HP;
+    int armor;
+    int cash;
     float movementSpeed;
     float interactableDistance;
     Weapon *weapon;

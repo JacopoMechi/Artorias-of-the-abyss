@@ -2,8 +2,8 @@
 
 const std::string GameCharacter::texturePath = "../Textures/Textures.png";
 
-GameCharacter::GameCharacter(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, float movementSpeed) : window(window),
-                                                                                                               pos(pos), HP(hp), movementSpeed(movementSpeed), weapon(nullptr)
+GameCharacter::GameCharacter(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed) : window(window),
+                                                                                                                                    pos(pos), HP(hp), movementSpeed(movementSpeed), weapon(nullptr)
 {
 }
 
@@ -49,7 +49,13 @@ void GameCharacter::setWeapon(Weapon *weapon)
     this->weapon = weapon;
 }
 
-bool GameCharacter::isInteractable(GameCharacter &entity)
+void GameCharacter::receiveDamage(int points)
+{
+    points = points * armor / 100;
+    setHp(HP - points);
+}
+
+bool GameCharacter::isInteractable(float interactableDistance, GameCharacter &entity)
 {
     if (abs(sqrt(((entity.getPos().x - pos.x) * (entity.getPos().x - pos.x)) + ((entity.getPos().y - pos.y) * (entity.getPos().y - pos.y)))) < interactableDistance)
         return true;
@@ -57,7 +63,15 @@ bool GameCharacter::isInteractable(GameCharacter &entity)
         return false;
 }
 
-void GameCharacter::draw(sf::RenderWindow &window) const
+void GameCharacter::movement(bool isInventoryOpen, bool isInteracting)
+{
+}
+
+void GameCharacter::attack()
+{
+}
+
+void GameCharacter::draw() const
 {
     window.draw(sprite);
 }
