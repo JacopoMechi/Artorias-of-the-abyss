@@ -452,6 +452,10 @@ void HUD::gettingDelayTime(float dt){
     quickSlot[2] -> effectTime(dt);
 }
 
+void HUD::useItem(int nItem, Hero &hero){
+    quickSlot[nItem] -> use(hero);
+}
+
 //TODO for the moment
 bool HUD::getDrawShop(){
     return isShop;

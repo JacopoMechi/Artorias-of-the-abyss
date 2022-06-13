@@ -92,7 +92,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
                 }else
                     printErrorMessage = true;*/
             }else{
-                //quickSlot[0] -> use(hero);
+                hud.useItem(0, hero);
             }
         else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
             if(isInteraction){// && isBuying //for buying items in shop
@@ -109,7 +109,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
                 }else
                     printErrorMessage = true;*/
             }else{
-                //quickSlot[1] -> use(hero);
+                hud.useItem(1, hero);
             }
         }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
             if(isInteraction){// && isBuying //for buying items in shop
@@ -126,7 +126,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
                 }else
                     printErrorMessage = true;*/
             }else{
-                //quickSlot[2] -> use(hero);
+                hud.useItem(2, hero);
             }
         }
         //hero's dash and attack handling

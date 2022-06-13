@@ -63,6 +63,9 @@ public:
     //getting delay time to display item effects
     void gettingDelayTime(float dt);
 
+    //method to use an item
+    void useItem(int nItem, Hero &hero);
+
     //getter and setter to open shop //TODO for the moment
     bool getDrawShop();
     void setDrawShop(bool isShop);
