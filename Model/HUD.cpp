@@ -473,3 +473,17 @@ bool HUD::getInteraction(){
 void HUD::setInteraction(bool isInteraction){
     this -> isInteraction = isInteraction;
 }
+
+//TODO for the moment
+bool HUD::getIsTalking(){
+    return isTalking;
+}
+
+void HUD::setIsTalking(bool isTalking){
+    this -> isTalking = isTalking;
+}
+
+//TODO for the moment
+void HUD::nextPhrase(){
+    dialogueTracker = (dialogueTracker+1)%(textPool.size()/2);//FIXME why /2?
+}

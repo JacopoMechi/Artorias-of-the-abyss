@@ -74,6 +74,13 @@ public:
     bool getInteraction();
     void setInteraction(bool isInteraction);
 
+    //getter and setter for talking//TODO for the moment
+    bool getIsTalking();
+    void setIsTalking(bool isTalking);
+
+    //method to go through npc's phrases//TODO must be revisited
+    void nextPhrase();
+
 protected:
     //for using quickslot items
     Hero &hero;

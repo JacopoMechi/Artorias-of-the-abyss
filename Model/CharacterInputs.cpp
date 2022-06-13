@@ -8,10 +8,12 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     //handling inputs
     //opens inventory
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E){//&& !isInteraction// isInteracting to not open the inventory
-        inventory.setInvOpen(!inventory.getInvOpen());
-        inventory.resetPositions();    
+        if(!hud.getInteraction()){
+            inventory.setInvOpen(!inventory.getInvOpen());
+            inventory.resetPositions();    
+        }
     }
-    if(inventory.getInvOpen()){
+    if(inventory.getInvOpen() && !hud.getInteraction()){
         //stop the character from moving
         hero.setDirX(0.0f);
         hero.setDirY(0.0f);
@@ -79,6 +81,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         
         if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
             if(isInteraction){// && isBuying //for buying items in shop
+                //if isBuying
                 /*if(price <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - price);
                     if(NPCType == 0)
@@ -91,6 +94,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
                     printErrorMessage = false;
                 }else
                     printErrorMessage = true;*/
+                hud.setIsTalking(!hud.getIsTalking());
             }else{
                 hud.useItem(0, hero);
             }
@@ -113,6 +117,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
             }
         }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
             if(isInteraction){// && isBuying //for buying items in shop
+                //if isBuying
                 /*if((10*price) <= hero.getMoneyAmount()){
                     hero.setMoneyAmount(hero.getMoneyAmount() - (price*10));
                     if(NPCType == 0)
@@ -147,14 +152,19 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
             hero.setAuraReady(false);
     }
     //handling inputs for interaction with npc
-    if(isInRange){//TODO npc must be better
-        if(!inventory.getInvOpen() && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
+    if(!inventory.getInvOpen() && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
+        if(isInRange){//TODO npc must be better
             isInteraction = !isInteraction;//open/close shop
             //for resetting interaction
             hud.setInteraction(!hud.getInteraction());
-            //isTalking = false;
+            hud.setIsTalking(false);
         }
     }
+    //scrolling through character's phrases
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
+        if(hud.getIsTalking())
+            hud.nextPhrase();
+
     /*
     if(isTalking){//TODO LATER adjust dialogue depending on situations (like changing chester's text pool when Artorias is killed)
         //scrolling through character's phrases
