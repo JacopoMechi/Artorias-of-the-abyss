@@ -5,7 +5,7 @@
 #include <vector>
 #include "Rooms/Room.h"
 #include "Menu.h"
-#include "Hero.h"
+#include "GameCharacters/Hero.h"
 #include "HUD.h"
 #include "Rooms/RoomFactory.h"
 #include "NPC.h"

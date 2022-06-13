@@ -13,8 +13,8 @@ find_package(SFML 2 COMPONENTS network audio graphics window system REQUIRED)
 include_directories(Model)
 
 add_executable(${EXECUTABLE_NAME}   main.cpp
-                                    Model/GameCharacter.h
-                                    Model/GameCharacter.cpp
+                                    Model/GameCharacters/GameCharacter.h
+                                    Model/GameCharacters/GameCharacter.cpp
                                     Model/Bonfire.h
                                     Model/Bonfire.cpp
                                     Model/Gate.h
@@ -39,14 +39,14 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/HomewardBone.cpp
                                     Model/Pendant.h
                                     Model/Pendant.cpp
-                                    Model/Hero.h
-                                    Model/Hero.cpp
+                                    Model/GameCharacters/Hero.h
+                                    Model/GameCharacters/Hero.cpp
                                     Model/NPC.h
                                     Model/NPC.cpp
                                     Model/Game.h
                                     Model/Game.cpp
-                                    Model/Enemy.h 
-                                    Model/Enemy.cpp
+                                    Model/GameCharacters/Enemy.h 
+                                    Model/GameCharacters/Enemy.cpp
                                     Model/Rooms/RoomFactory.h
                                     Model/Rooms/RoomFactory.cpp
                                     Model/Rooms/StartRoom.h

@@ -6,9 +6,9 @@
 #include <vector>
 #include <memory>
 
-#include "GameCharacter.h"
+#include "GameCharacters/GameCharacter.h"
 #include "Item.h"
-#include "Hero.h"
+#include "GameCharacters/Hero.h"
 #include "HomewardBone.h"
 #include "Pendant.h"
 #include "GreenBlossom.h"
