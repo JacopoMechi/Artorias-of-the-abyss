@@ -12,6 +12,38 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     }
 
     //handling inputs
+
+    //handling inputs to move the character
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+        if(!inventory.getInvOpen() && !hud.getInteraction() && hero.getPos().y > 30)
+            hero.setDirY(-1.0f);
+        else if(inventory.getInvOpen() && !hud.getInteraction())//scrolling through items (up)
+            inventory.previousItem();
+    }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+        if(!inventory.getInvOpen() && !hud.getInteraction() && hero.getPos().y < 745)
+            hero.setDirY(1.0f);
+        else if(inventory.getInvOpen() && !hud.getInteraction())//scrolling through items (down)
+            inventory.nextItem();
+    }
+    else
+        hero.setDirY(0.0f);
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+        if(!inventory.getInvOpen() && !hud.getInteraction() && hero.getPos().x > 230)
+            hero.setDirX(-1.0f);
+        else if(inventory.getInvOpen() && !hud.getInteraction())
+            inventory.previousTab();
+    }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+        if(!inventory.getInvOpen() && !hud.getInteraction() && hero.getPos().x < 1550)
+            hero.setDirX(1.0f);
+        else if(inventory.getInvOpen() && !hud.getInteraction())
+            inventory.nextTab();
+    }
+    else
+        hero.setDirX(0.0f);
+
     //opens inventory
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E){//&& !isInteraction// isInteracting to not open the inventory
         if(!hud.getInteraction()){
@@ -20,151 +52,95 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         }
     }
     
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter){
-            if(inventory.getInvOpen() && !hud.getInteraction())//opens items descriptions
-                inventory.setShowDescription(!inventory.getShowDescription());
-            else if(hud.getIsTalking())//scrolling through character's phrases
-                hud.nextPhrase();
-        }
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter){
+        if(inventory.getInvOpen() && !hud.getInteraction())//opens items descriptions
+            inventory.setShowDescription(!inventory.getShowDescription());
+        else if(hud.getIsTalking())//scrolling through character's phrases
+            hud.nextPhrase();
+    }    
 
     
-    if(inventory.getInvOpen() && !hud.getInteraction()){
-        
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
+        if(isInteraction){// && isBuying //for buying items in shop
+            //if isBuying
+            /*if(price <= hero.getMoneyAmount()){
+                hero.setMoneyAmount(hero.getMoneyAmount() - price);
+                if(NPCType == 0)
+                        inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 1);
+                    else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
+                        inventory.setItemAmount(1, inventory.receiveItem(1) -> getItemCount() + 1);
+                    else //second item of elizabeth
+                        inventory.setItemAmount(3, inventory.receiveItem(3) -> getItemCount() + 1);
 
-
-        //inputs for scrolling in inventory
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up)//&&!quickAssign//when quickAssign is open, it will not scroll
-            //scrolling through items (up)
-            inventory.previousItem();
-
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Down)//&&!quickAssign//when quickAssign is open, it will not scroll
-            //scrolling through items (down)
-            inventory.nextItem();
-
-
-        //inputs for switching tabs
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Right)//&&!quickAssign
-            inventory.nextTab();
-
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Left)//&&!quickAssign
-            inventory.previousTab();
-
-
-        //input for changing quickslot items. It opens a dialogue box
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && inventory.getShowDescription()){
-            inventory.setAssign(!inventory.getAssign());
-        }        
-
-        //handling slot assign
-        if(inventory.getNTab() == 0 && inventory.getAssign()){
-            //std::cout << descriptionScroll << std::endl;
-            if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1){
-                hud.assignItemInQuickslot(0);
-                inventory.setAssign(false);
-            }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
-                hud.assignItemInQuickslot(1);
-                inventory.setAssign(false);
-            }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
-                hud.assignItemInQuickslot(2);
-                inventory.setAssign(false);
-            }
+                printErrorMessage = false;
+            }else
+                printErrorMessage = true;*/
+            hud.setIsTalking(!hud.getIsTalking());
+        }else if(inventory.getNTab() == 0 && inventory.getAssign()){
+            hud.assignItemInQuickslot(0);
+            inventory.setAssign(false);
+        }else{
+            hud.useItem(0, hero);
         }
-    }else{
-        //handling inputs to move the character
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && hero.getPos().y > 30){
-            if(!inventory.getInvOpen() && !hud.getInteraction())
-                hero.setDirY(-1.0f);
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && hero.getPos().y < 745){
-            if(!inventory.getInvOpen() && !hud.getInteraction())
-                hero.setDirY(1.0f);
-        }
-        else
-            hero.setDirY(0.0f);
+    else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
+        if(isInteraction){// && isBuying //for buying items in shop
+            /*if((5*price) <= hero.getMoneyAmount()){
+                hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
+                if(NPCType == 0)
+                        inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 5);
+                    else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
+                        inventory.setItemAmount(1, inventory.receiveItem(1) -> getItemCount() + 5);
+                    else //second item of elizabeth
+                        inventory.setItemAmount(3, inventory.receiveItem(3) -> getItemCount() + 5);
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && hero.getPos().x > 230){
-            if(!inventory.getInvOpen() && !hud.getInteraction())
-                hero.setDirX(-1.0f);
+                printErrorMessage = false;
+            }else
+                printErrorMessage = true;*/
+        }else if(inventory.getNTab() == 0 && inventory.getAssign()){
+            hud.assignItemInQuickslot(1);
+            inventory.setAssign(false);
+        }else{
+            hud.useItem(1, hero);
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && hero.getPos().x < 1550){
-            if(!inventory.getInvOpen() && !hud.getInteraction())
-                hero.setDirX(1.0f);
-        }
-        else
-            hero.setDirX(0.0f);
-        
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
-            if(isInteraction){// && isBuying //for buying items in shop
-                //if isBuying
-                /*if(price <= hero.getMoneyAmount()){
-                    hero.setMoneyAmount(hero.getMoneyAmount() - price);
-                    if(NPCType == 0)
-                            inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 1);
-                        else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
-                            inventory.setItemAmount(1, inventory.receiveItem(1) -> getItemCount() + 1);
-                        else //second item of elizabeth
-                            inventory.setItemAmount(3, inventory.receiveItem(3) -> getItemCount() + 1);
+    }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
+        if(isInteraction){// && isBuying //for buying items in shop
+            //if isBuying
+            /*if((10*price) <= hero.getMoneyAmount()){
+                hero.setMoneyAmount(hero.getMoneyAmount() - (price*10));
+                if(NPCType == 0)
+                        inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 10);
+                    else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
+                        inventory.setItemAmount(1, inventory.receiveItem(1) -> getItemCount() + 10);
+                    else //second item of elizabeth
+                        inventory.setItemAmount(3, inventory.receiveItem(3) -> getItemCount() + 10);
 
-                    printErrorMessage = false;
-                }else
-                    printErrorMessage = true;*/
-                hud.setIsTalking(!hud.getIsTalking());
-            }else{
-                hud.useItem(0, hero);
-            }
-        else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
-            if(isInteraction){// && isBuying //for buying items in shop
-                /*if((5*price) <= hero.getMoneyAmount()){
-                    hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
-                    if(NPCType == 0)
-                            inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 5);
-                        else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
-                            inventory.setItemAmount(1, inventory.receiveItem(1) -> getItemCount() + 5);
-                        else //second item of elizabeth
-                            inventory.setItemAmount(3, inventory.receiveItem(3) -> getItemCount() + 5);
-
-                    printErrorMessage = false;
-                }else
-                    printErrorMessage = true;*/
-            }else{
-                hud.useItem(1, hero);
-            }
-        }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
-            if(isInteraction){// && isBuying //for buying items in shop
-                //if isBuying
-                /*if((10*price) <= hero.getMoneyAmount()){
-                    hero.setMoneyAmount(hero.getMoneyAmount() - (price*10));
-                    if(NPCType == 0)
-                            inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 10);
-                        else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
-                            inventory.setItemAmount(1, inventory.receiveItem(1) -> getItemCount() + 10);
-                        else //second item of elizabeth
-                            inventory.setItemAmount(3, inventory.receiveItem(3) -> getItemCount() + 10);
-
-                    printErrorMessage = false;
-                }else
-                    printErrorMessage = true;*/
-            }else{
-                hud.useItem(2, hero);
-            }
+                printErrorMessage = false;
+            }else
+                printErrorMessage = true;*/
+        }else if(inventory.getNTab() == 0 && inventory.getAssign()){
+            hud.assignItemInQuickslot(2);
+            inventory.setAssign(false);
+        }else{
+            hud.useItem(2, hero);
         }
-        //hero's dash and attack handling
-        //for attacking or casting spells
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && (hero.getCanAttack() || !hero.getStartingSpell())){
-            hero.setStartAnimation(true);
-            if(!hero.getCharacterType()){//when hero is a mage
-                hero.setSpellDirection();
-                hero.setStartingSpell(true);
-            }else//when hero is a knight
-                hero.setCanAttack(false);
-        }
-        //for dashes
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
-            hero.dash();
-        //for raising a shield aura
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::LShift && hero.getCharacterType())
-            hero.setAuraReady(false);
     }
+    //hero's dash and attack handling
+    //for attacking or casting spells
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && (hero.getCanAttack() || !hero.getStartingSpell())){
+        hero.setStartAnimation(true);
+        if(!hero.getCharacterType()){//when hero is a mage
+            hero.setSpellDirection();
+            hero.setStartingSpell(true);
+        }else//when hero is a knight
+            hero.setCanAttack(false);
+    }
+    //for dashes
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
+        hero.dash();
+    //for raising a shield aura
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::LShift && hero.getCharacterType())
+        hero.setAuraReady(false);
+    
     //handling inputs for interaction with npc
     if(!inventory.getInvOpen() && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
         if(isInRange){//TODO npc must be better
@@ -174,6 +150,13 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
             hud.setIsTalking(false);
         }
     }
+
+    //input for changing quickslot items. It opens a dialogue box
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && inventory.getShowDescription() && 
+        inventory.getInvOpen() && !hud.getInteraction()){
+        inventory.setAssign(!inventory.getAssign());
+    }
+
     //scrolling through character's phrases//TODO
     /*if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
         if(hud.getIsTalking())
