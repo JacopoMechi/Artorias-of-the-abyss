@@ -5,6 +5,12 @@ CharacterInputs::CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero): in
 }
 
 void CharacterInputs::updateInputs(sf::Event keyInput){
+    //to stop the character current animation
+    if(inventory.getInvOpen() || hud.getInteraction()){
+        hero.setDirX(0.0f);
+        hero.setDirY(0.0f);
+    }
+
     //handling inputs
     //opens inventory
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E){//&& !isInteraction// isInteracting to not open the inventory
@@ -13,13 +19,17 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
             inventory.resetPositions();    
         }
     }
+    
+        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter){
+            if(inventory.getInvOpen() && !hud.getInteraction())//opens items descriptions
+                inventory.setShowDescription(!inventory.getShowDescription());
+            else if(hud.getIsTalking())//scrolling through character's phrases
+                hud.nextPhrase();
+        }
+
+    
     if(inventory.getInvOpen() && !hud.getInteraction()){
-        //stop the character from moving
-        hero.setDirX(0.0f);
-        hero.setDirY(0.0f);
-        //opens items descriptions
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
-            inventory.setShowDescription(!inventory.getShowDescription());
+        
 
 
         //inputs for scrolling in inventory
@@ -62,19 +72,23 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     }else{
         //handling inputs to move the character
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && hero.getPos().y > 30){
-            hero.setDirY(-1.0f);
+            if(!inventory.getInvOpen() && !hud.getInteraction())
+                hero.setDirY(-1.0f);
         }
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && hero.getPos().y < 745){
-            hero.setDirY(1.0f);
+            if(!inventory.getInvOpen() && !hud.getInteraction())
+                hero.setDirY(1.0f);
         }
         else
             hero.setDirY(0.0f);
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && hero.getPos().x > 230){
-            hero.setDirX(-1.0f);
+            if(!inventory.getInvOpen() && !hud.getInteraction())
+                hero.setDirX(-1.0f);
         }
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && hero.getPos().x < 1550){
-            hero.setDirX(1.0f);
+            if(!inventory.getInvOpen() && !hud.getInteraction())
+                hero.setDirX(1.0f);
         }
         else
             hero.setDirX(0.0f);
@@ -160,10 +174,10 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
             hud.setIsTalking(false);
         }
     }
-    //scrolling through character's phrases
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
+    //scrolling through character's phrases//TODO
+    /*if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
         if(hud.getIsTalking())
-            hud.nextPhrase();
+            hud.nextPhrase();*/
 
     /*
     if(isTalking){//TODO LATER adjust dialogue depending on situations (like changing chester's text pool when Artorias is killed)

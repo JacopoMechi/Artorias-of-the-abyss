@@ -95,7 +95,7 @@ void Inventory::setShowDescription(bool showDescription){
 }
 
 void Inventory::displayAssignBox(){
-    if(isAssign && nTab == 0){//only displays on first tab
+    if(showDescription && isAssign && nTab == 0){//only displays on first tab
         window.draw(assignBoxSprite);
         drawText(L"In quale slot vuoi assegnare \nil seguente oggetto?\n\n                          [1]  [2]  [3]", {1008, 438}, 13);
     }else if(nTab != 0)//to reset assign when changing tab
@@ -153,5 +153,6 @@ void Inventory::drawDescription(int nItem){
         items[nItem] -> displayItem(800, 460, window);
         //drawing description of the item
         drawText(items[nItem] -> getItemDescription(), {950, 415}, 13);
-    }
+    }else
+        isAssign = false;//to remove assign box when description is not displaying
 }
