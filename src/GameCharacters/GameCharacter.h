@@ -31,7 +31,7 @@ public:
 
     virtual void movement(bool isInventoryOpen, bool isInteracting) = 0;
 
-    virtual void attack();
+    virtual void attack() = 0;
 
     bool isInteractable(float aggroDistance, GameCharacter &entity);
 
@@ -42,7 +42,7 @@ public:
     sf::Vector2f getSize() const;
 
 protected:
-    int HP;
+    int hp;
     int armor;
     int cash;
     float movementSpeed;

@@ -10,57 +10,78 @@ set(EXECUTABLE_NAME ArtoriasOfTheAbyss)
 
 find_package(SFML 2 COMPONENTS network audio graphics window system REQUIRED)
 
-include_directories(Model)
+include_directories(src)
 
 add_executable(${EXECUTABLE_NAME}   main.cpp
-                                    Model/GameCharacters/GameCharacter.h
-                                    Model/GameCharacters/GameCharacter.cpp
-                                    Model/Bonfire.h
-                                    Model/Bonfire.cpp
-                                    Model/Gate.h
-                                    Model/Gate.cpp
-                                    Model/Rooms/Room.h
-                                    Model/Rooms/Room.cpp
-                                    Model/Rooms/RoomElement.h
-                                    Model/Rooms/RoomElement.cpp
-                                    Model/Menu.h
-                                    Model/Menu.cpp
-                                    ##Model/Weapon.h
-                                    ##Model/Weapon.cpp
-                                    Model/Item.cpp
-                                    Model/Item.h
-                                    Model/HUD.h
-                                    Model/HUD.cpp
-                                    Model/EstusFlask.h
-                                    Model/EstusFlask.cpp
-                                    Model/GreenBlossom.h
-                                    Model/GreenBlossom.cpp
-                                    Model/HomewardBone.h
-                                    Model/HomewardBone.cpp
-                                    Model/Pendant.h
-                                    Model/Pendant.cpp
-                                    Model/GameCharacters/Hero.h
-                                    Model/GameCharacters/Hero.cpp
-                                    Model/NPC.h
-                                    Model/NPC.cpp
-                                    Model/Game.h
-                                    Model/Game.cpp
-                                    Model/GameCharacters/Enemy.h 
-                                    Model/GameCharacters/Enemy.cpp
-                                    Model/Rooms/RoomFactory.h
-                                    Model/Rooms/RoomFactory.cpp
-                                    Model/Rooms/StartRoom.h
-                                    Model/Rooms/StartRoom.cpp
-                                    Model/Rooms/SecondRoom.h
-                                    Model/Rooms/SecondRoom.cpp
-                                    Model/Rooms/ThirdRoom.h
-                                    Model/Rooms/ThirdRoom.cpp
-                                    Model/Rooms/FourthRoom.h
-                                    Model/Rooms/FourthRoom.cpp
-                                    Model/Rooms/FinalRoom.h
-                                    Model/Rooms/FinalRoom.cpp
-                                    Model/NullItem.h
-                                    Model/NullItem.cpp)
+                                    src/Game.h
+                                    src/Game.cpp
+
+                                    #GameCharacters 
+                                    src/GameCharacters/GameCharacter.h
+                                    src/GameCharacters/GameCharacter.cpp
+                                    src/GameCharacters/Hero.h
+                                    src/GameCharacters/Hero.cpp
+                                    src/GameCharacters/NPC.h
+                                    src/GameCharacters/NPC.cpp
+                                    src/GameCharacters/Enemies/EnemyFactory.h
+                                    src/GameCharacters/Enemies/EnemyFactory.cpp
+                                    src/GameCharacters/Enemies/Enemy.h
+                                    src/GameCharacters/Enemies/Enemy.cpp
+                                    src/GameCharacters/Enemies/Boss1.h
+                                    src/GameCharacters/Enemies/Boss1.cpp
+                                    src/GameCharacters/Enemies/Boss2.h
+                                    src/GameCharacters/Enemies/Boss2.cpp
+                                    src/GameCharacters/Enemies/Boss3.h
+                                    src/GameCharacters/Enemies/Boss3.cpp
+                                    src/GameCharacters/Enemies/Enemy1.h
+                                    src/GameCharacters/Enemies/Enemy1.cpp
+                                    src/GameCharacters/Enemies/Enemy2.h
+                                    src/GameCharacters/Enemies/Enemy2.cpp
+                                    src/GameCharacters/Enemies/Enemy3.h
+                                    src/GameCharacters/Enemies/Enemy3.cpp
+                                    src/GameCharacters/Enemies/Enemy4.h
+                                    src/GameCharacters/Enemies/Enemy4.cpp
+                                    
+                                    #Rooms
+                                    src/Rooms/RoomFactory.h
+                                    src/Rooms/RoomFactory.cpp
+                                    src/Rooms/Room.h
+                                    src/Rooms/Room.cpp
+                                    src/Rooms/StartRoom.h
+                                    src/Rooms/StartRoom.cpp
+                                    src/Rooms/SecondRoom.h
+                                    src/Rooms/SecondRoom.cpp
+                                    src/Rooms/ThirdRoom.h
+                                    src/Rooms/ThirdRoom.cpp
+                                    src/Rooms/FourthRoom.h
+                                    src/Rooms/FourthRoom.cpp
+                                    src/Rooms/FinalRoom.h
+                                    src/Rooms/FinalRoom.cpp
+                            
+                                    src/Bonfire.h
+                                    src/Bonfire.cpp
+                                    src/Gate.h
+                                    src/Gate.cpp
+                                    src/Rooms/RoomElement.h
+                                    src/Rooms/RoomElement.cpp
+                                    src/Menu.h
+                                    src/Menu.cpp
+                                    ##src/Weapon.h
+                                    ##src/Weapon.cpp
+                                    src/Item.cpp
+                                    src/Item.h
+                                    src/HUD.h
+                                    src/HUD.cpp
+                                    src/EstusFlask.h
+                                    src/EstusFlask.cpp
+                                    src/GreenBlossom.h
+                                    src/GreenBlossom.cpp
+                                    src/HomewardBone.h
+                                    src/HomewardBone.cpp
+                                    src/Pendant.h
+                                    src/Pendant.cpp
+                                    src/NullItem.h
+                                    src/NullItem.cpp)
 
 if(SFML_FOUND)
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-window sfml-system)

@@ -10,7 +10,7 @@
 #include "RoomElement.h"
 #include "Gate.h"
 #include "Bonfire.h"
-#include "GameCharacters/Enemy.h"
+#include "GameCharacters/Enemies/Enemy.h"
 
 class Room
 {

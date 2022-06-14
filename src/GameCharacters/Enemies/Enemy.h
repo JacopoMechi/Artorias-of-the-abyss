@@ -1,7 +1,7 @@
 #ifndef _ENEMY_H
 #define _ENEMY_H
 
-#include "GameCharacter.h"
+#include "GameCharacters/GameCharacter.h"
 
 class Enemy : public GameCharacter
 {
@@ -23,7 +23,7 @@ public:
 
     void setAggro(bool aggro);
 
-    void attack() override;
+    virtual void attack() = 0;
 
 protected:
     bool isRanged;

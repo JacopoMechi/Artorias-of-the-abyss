@@ -8,7 +8,7 @@
 #include "GameCharacters/Hero.h"
 #include "HUD.h"
 #include "Rooms/RoomFactory.h"
-#include "NPC.h"
+#include "GameCharacters/NPC.h"
 
 class Game
 {

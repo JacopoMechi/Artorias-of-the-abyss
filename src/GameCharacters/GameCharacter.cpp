@@ -3,20 +3,20 @@
 const std::string GameCharacter::texturePath = "../Textures/Textures.png";
 
 GameCharacter::GameCharacter(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed) : window(window),
-                                                                                                                                    pos(pos), HP(hp), movementSpeed(movementSpeed), weapon(nullptr)
+                                                                                                                                    pos(pos), hp(hp), movementSpeed(movementSpeed), weapon(nullptr)
 {
 }
 
 int GameCharacter::getHp() const
 {
-    return HP;
+    return hp;
 }
 
 void GameCharacter::setHp(int hp)
 {
     if (hp < 0)
         hp = 0;
-    this->HP = hp;
+    this->hp = hp;
 }
 
 sf::Vector2f GameCharacter::getPos() const
@@ -52,7 +52,7 @@ void GameCharacter::setWeapon(Weapon *weapon)
 void GameCharacter::receiveDamage(int points)
 {
     points = points * armor / 100;
-    setHp(HP - points);
+    setHp(hp - points);
 }
 
 bool GameCharacter::isInteractable(float interactableDistance, GameCharacter &entity)
@@ -64,10 +64,6 @@ bool GameCharacter::isInteractable(float interactableDistance, GameCharacter &en
 }
 
 void GameCharacter::movement(bool isInventoryOpen, bool isInteracting)
-{
-}
-
-void GameCharacter::attack()
 {
 }
 

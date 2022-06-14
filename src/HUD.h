@@ -10,7 +10,7 @@
 #include "HomewardBone.h"
 #include "Pendant.h"
 #include "NullItem.h"
-#include "NPC.h"
+#include "GameCharacters/NPC.h"
 
 class HUD
 {
