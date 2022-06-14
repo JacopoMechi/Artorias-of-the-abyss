@@ -59,9 +59,10 @@ public:
     void drawDescription(int nItem);
 
     //drawing Inventory and items
-    void draw();
+    //virtual for shop
+    virtual void draw();
 
-private:
+protected:
     //to display items and inventory in hud
     sf::RenderWindow &window;
 

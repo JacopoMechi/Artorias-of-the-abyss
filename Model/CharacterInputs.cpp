@@ -157,19 +157,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         inventory.setAssign(!inventory.getAssign());
     }
 
-    //scrolling through character's phrases//TODO
-    /*if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
-        if(hud.getIsTalking())
-            hud.nextPhrase();*/
-
-    /*
-    if(isTalking){//TODO LATER adjust dialogue depending on situations (like changing chester's text pool when Artorias is killed)
-        //scrolling through character's phrases
-        if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter)
-            dialogueTracker = (dialogueTracker+1)%(textPool.size()/2);//FIXME why /2?
-    }
-
-    //handling inputs for scrolling through items in shop 
+    /*//handling inputs for scrolling through items in shop 
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up && NPCType == 1)
         shopTrackerPos = {768, 336};
     else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Down && NPCType == 1)
