@@ -32,12 +32,12 @@ Inventory::Inventory(sf::RenderWindow &window): window(window){
 
 }
 
-bool Inventory::getInvOpen() const{
-    return isInventoryOpen;
+bool Inventory::getOpen() const{
+    return isOpen;
 }
 
-void Inventory::setInvOpen(bool isInventoryOpen){
-    this -> isInventoryOpen = isInventoryOpen;
+void Inventory::setOpen(bool isOpen){
+    this -> isOpen = isOpen;
 }
 
 Item* Inventory::receiveItem() const{
@@ -118,7 +118,7 @@ void Inventory::drawText(std::wstring text, sf::Vector2f pos, int characterSize)
 }
 
 void Inventory::draw(){
-    if(isInventoryOpen){
+    if(isOpen){
         window.draw(inventorySprite);
 
         //drawing the name of the tab

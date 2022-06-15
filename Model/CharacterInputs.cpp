@@ -6,7 +6,7 @@ CharacterInputs::CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero): in
 
 void CharacterInputs::updateInputs(sf::Event keyInput){
     //to stop the character current animation
-    if(inventory.getInvOpen() || hud.getInteraction()){
+    if(inventory.getOpen() || hud.getInteraction()){
         hero.setDirX(0.0f);
         hero.setDirY(0.0f);
     }
@@ -15,30 +15,30 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
 
     //handling inputs to move the character
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-        if(!inventory.getInvOpen() && !hud.getInteraction() && hero.getPos().y > 30)
+        if(!inventory.getOpen() && !hud.getInteraction() && hero.getPos().y > 30)
             hero.setDirY(-1.0f);
-        else if(inventory.getInvOpen() && !hud.getInteraction())//scrolling through items (up)
+        else if(inventory.getOpen() && !hud.getInteraction())//scrolling through items (up)
             inventory.previousItem();
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-        if(!inventory.getInvOpen() && !hud.getInteraction() && hero.getPos().y < 745)
+        if(!inventory.getOpen() && !hud.getInteraction() && hero.getPos().y < 745)
             hero.setDirY(1.0f);
-        else if(inventory.getInvOpen() && !hud.getInteraction())//scrolling through items (down)
+        else if(inventory.getOpen() && !hud.getInteraction())//scrolling through items (down)
             inventory.nextItem();
     }
     else
         hero.setDirY(0.0f);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-        if(!inventory.getInvOpen() && !hud.getInteraction() && hero.getPos().x > 230)
+        if(!inventory.getOpen() && !hud.getInteraction() && hero.getPos().x > 230)
             hero.setDirX(-1.0f);
-        else if(inventory.getInvOpen() && !hud.getInteraction())
+        else if(inventory.getOpen() && !hud.getInteraction())
             inventory.previousTab();
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-        if(!inventory.getInvOpen() && !hud.getInteraction() && hero.getPos().x < 1550)
+        if(!inventory.getOpen() && !hud.getInteraction() && hero.getPos().x < 1550)
             hero.setDirX(1.0f);
-        else if(inventory.getInvOpen() && !hud.getInteraction())
+        else if(inventory.getOpen() && !hud.getInteraction())
             inventory.nextTab();
     }
     else
@@ -47,13 +47,13 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     //opens inventory
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E){//&& !isInteraction// isInteracting to not open the inventory
         if(!hud.getInteraction()){
-            inventory.setInvOpen(!inventory.getInvOpen());
+            inventory.setOpen(!inventory.getOpen());
             inventory.resetPositions();    
         }
     }
     
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Enter){
-        if(inventory.getInvOpen() && !hud.getInteraction())//opens items descriptions
+        if(inventory.getOpen() && !hud.getInteraction())//opens items descriptions
             inventory.setShowDescription(!inventory.getShowDescription());
         else if(hud.getIsTalking())//scrolling through character's phrases
             hud.nextPhrase();
@@ -142,7 +142,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         hero.setAuraReady(false);
     
     //handling inputs for interaction with npc
-    if(!inventory.getInvOpen() && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
+    if(!inventory.getOpen() && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
         if(isInRange){//TODO npc must be better
             isInteraction = !isInteraction;//open/close shop
             //for resetting interaction
@@ -153,7 +153,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
 
     //input for changing quickslot items. It opens a dialogue box
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && inventory.getShowDescription() && 
-        inventory.getInvOpen() && !hud.getInteraction()){
+        inventory.getOpen() && !hud.getInteraction()){
         inventory.setAssign(!inventory.getAssign());
     }
 

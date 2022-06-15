@@ -17,8 +17,8 @@ public:
     ~Inventory() = default;
 
     //getter and setter to open inventory from HUD
-    bool getInvOpen() const;
-    void setInvOpen(bool isInventoryOpen);
+    bool getOpen() const;
+    void setOpen(bool isInventoryOpen);
 
     //to assign item
     Item* receiveItem() const;
@@ -90,7 +90,7 @@ protected:
     sf::Vector2f trackerPos[4] = {{130, 440}, {130, 440+105}, {130, 440+105*2}, {130, 440+105*3}};
 
     //boolean value to let the hud know when we want to open/close inventory
-    bool isInventoryOpen = false;
+    bool isOpen = false;
 
     //boolean value to get the item description
     bool showDescription = false;
