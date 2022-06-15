@@ -18,7 +18,7 @@ public:
 
     //getter and setter to open inventory from HUD
     bool getOpen() const;
-    void setOpen(bool isInventoryOpen);
+    void setOpen(bool isOpen);
 
     //to assign item
     Item* receiveItem() const;
@@ -76,7 +76,7 @@ protected:
     sf::Texture texture;
 
     //to display inventory sprite
-    sf::Sprite inventorySprite;
+    sf::Sprite sprite;
 
     //to display box sprite for items' descriptions
     sf::Sprite descriptionSprite;

@@ -4,10 +4,10 @@ Inventory::Inventory(sf::RenderWindow &window): window(window){
     texture.loadFromFile("../Textures/PlayerHUD.png");
 
     //setting inventory sprite
-    inventorySprite.setTexture(texture);
-    inventorySprite.setTextureRect({89, 259, 352, 450});
-    inventorySprite.setPosition(89, 259);
-    inventorySprite.setScale(1.5f, 1.5f);
+    sprite.setTexture(texture);
+    sprite.setTextureRect({89, 259, 352, 450});
+    sprite.setPosition(89, 259);
+    sprite.setScale(1.5f, 1.5f);
 
     //setting box sprite for items' descriptions
     descriptionSprite.setTexture(texture);
@@ -119,7 +119,7 @@ void Inventory::drawText(std::wstring text, sf::Vector2f pos, int characterSize)
 
 void Inventory::draw(){
     if(isOpen){
-        window.draw(inventorySprite);
+        window.draw(sprite);
 
         //drawing the name of the tab
         drawText(tabName[nTab], {245, 330}, 20);
