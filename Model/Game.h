@@ -11,6 +11,7 @@
 #include "NPC.h"
 #include "Inventory.h"
 #include "CharacterInputs.h"
+#include "Shop.h"
 
 class Game
 {
@@ -50,6 +51,7 @@ private:
     HUD hud;
     NPC npc;
     Inventory inventory;
+    Shop shop;
     sf::Clock clock;
     sf::Event event;
     CharacterInputs inputs;

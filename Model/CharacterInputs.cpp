@@ -1,6 +1,6 @@
 #include "CharacterInputs.h"
 
-CharacterInputs::CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero): inventory(inventory), hud(hud), hero(hero){
+CharacterInputs::CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero, Shop &shop): inventory(inventory), hud(hud), hero(hero), shop(shop){
 
 }
 
@@ -83,7 +83,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
             hud.useItem(0, hero);
         }
     else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
-        if(isInteraction){// && isBuying //for buying items in shop
+        if(isInteraction){// && isBuying //to open shop
             /*if((5*price) <= hero.getMoneyAmount()){
                 hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
                 if(NPCType == 0)
@@ -96,6 +96,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
                 printErrorMessage = false;
             }else
                 printErrorMessage = true;*/
+            shop.setOpen(!shop.getOpen());
         }else if(inventory.getNTab() == 0 && inventory.getAssign()){
             hud.assignItemInQuickslot(1);
             inventory.setAssign(false);

@@ -4,11 +4,12 @@
 #include "Inventory.h"
 #include "HUD.h"
 #include "Hero.h"
+#include "Shop.h"
 
 class CharacterInputs{
 public:
     //getting Inventory and hud from main game
-    CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero);
+    CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero, Shop &shop);
 
     void updateInputs(sf::Event keyInputs);
 
@@ -22,6 +23,7 @@ private:
     Inventory &inventory;
     HUD &hud;
     Hero &hero;
+    Shop &shop;
     bool isInRange = false;
     bool isInteraction = false;
 };
