@@ -22,10 +22,10 @@ public:
 
     void spawnEntity(RoomElement *roomElement);
     void draw();
-    bool getisClear();
 
 protected:
     std::vector<std::unique_ptr<RoomElement>> roomElementsVector;
+    std::vector<std::unique_ptr<Enemy>> enemyVector;
     std::unique_ptr<Bonfire> bonfire;
     std::string roomFilePath;
     const std::string roomPath1 = "../Textures/Lvl1.png";
@@ -34,7 +34,6 @@ protected:
     sf::Texture roomTexture;
     sf::Sprite roomSprite;
     sf::RenderWindow &window;
-    bool isClear = true; // TODO Default should be false, true for testing
     int level;
 };
 #endif
