@@ -63,10 +63,6 @@ bool GameCharacter::isInteractable(float interactableDistance, GameCharacter &en
         return false;
 }
 
-void GameCharacter::movement(bool isInventoryOpen, bool isInteracting)
-{
-}
-
 void GameCharacter::draw() const
 {
     window.draw(sprite);
