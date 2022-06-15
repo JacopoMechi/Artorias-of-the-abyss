@@ -9,7 +9,7 @@ Enemy1::Enemy1(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int ar
     sprite.setScale(7.5f, 7.5f);
 }
 
-void Enemy::attack()
+void Enemy1::attack()
 {
 }
 
