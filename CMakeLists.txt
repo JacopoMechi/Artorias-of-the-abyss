@@ -62,7 +62,9 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/Inventory.h
                                     Model/Inventory.cpp
                                     Model/CharacterInputs.h
-                                    Model/CharacterInputs.cpp)
+                                    Model/CharacterInputs.cpp
+                                    Model/Shop.h
+                                    Model/Shop.cpp)
 
 if(SFML_FOUND)
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-window sfml-system)
