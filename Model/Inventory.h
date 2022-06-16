@@ -46,7 +46,7 @@ public:
     void setShowDescription(bool showDescription);
 
     //method to display assign sprite system
-    void displayAssignBox();
+    virtual void displayBox();
 
     //method to open/close assign box
     bool getAssign() const;
@@ -82,7 +82,7 @@ protected:
     sf::Sprite descriptionSprite;
 
     //to display assign box for items assign
-    sf::Sprite assignBoxSprite;
+    sf::Sprite boxSprite;
 
     //for tracking item in inventory
     sf::Sprite trackerSprite;

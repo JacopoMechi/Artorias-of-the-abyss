@@ -21,9 +21,9 @@ Inventory::Inventory(sf::RenderWindow &window): window(window){
     trackerSprite.setScale(1.5f, 1.5f);
 
     //setting assign box sprite
-    assignBoxSprite.setTexture(texture);
-    assignBoxSprite.setTextureRect({994, 318, 289, 98});
-    assignBoxSprite.setPosition({994, 418});
+    boxSprite.setTexture(texture);
+    boxSprite.setTextureRect({994, 318, 289, 98});
+    boxSprite.setPosition({994, 418});
 
     //setting text for inventory
     font.loadFromFile("../pixelFont.ttf");
@@ -94,9 +94,9 @@ void Inventory::setShowDescription(bool showDescription){
     this -> showDescription = showDescription;
 }
 
-void Inventory::displayAssignBox(){
+void Inventory::displayBox(){
     if(showDescription && isAssign && nTab == 0){//only displays on first tab
-        window.draw(assignBoxSprite);
+        window.draw(boxSprite);
         drawText(L"In quale slot vuoi assegnare \nil seguente oggetto?\n\n                          [1]  [2]  [3]", {1008, 438}, 13);
     }else if(nTab != 0)//to reset assign when changing tab
         isAssign = false;
@@ -142,7 +142,7 @@ void Inventory::draw(){
         drawDescription(tracker + nPage*4 + nTab*8);
 
         //calling function to display assign item
-        displayAssignBox();
+        displayBox();
     }
 }
 

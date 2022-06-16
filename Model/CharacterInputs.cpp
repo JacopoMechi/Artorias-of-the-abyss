@@ -159,9 +159,11 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     }
 
     //input for changing quickslot items. It opens a dialogue box
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && inventory.getShowDescription() && 
-        inventory.getOpen() && !hud.getInteraction()){
-        inventory.setAssign(!inventory.getAssign());
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U){
+        if(inventory.getShowDescription() && inventory.getOpen() && !hud.getInteraction())
+            inventory.setAssign(!inventory.getAssign());
+        else if(shop.getOpen())
+            shop.setIsBuying(!shop.getIsBuying());
     }
 
     /*//handling inputs for scrolling through items in shop 

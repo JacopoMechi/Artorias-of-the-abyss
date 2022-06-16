@@ -16,8 +16,15 @@ public:
     virtual void nextItem() override;
     virtual void previousItem() override;
 
+    //overriding display box of inventory
+    virtual void displayBox() override;
+
     //getter to know which shop to open
     void setNPCType(int type);
+
+    //getter and setter for displaying box
+    bool getIsBuying();
+    void setIsBuying(bool isBuying);
 
     void purchaseItem();
 
@@ -26,6 +33,9 @@ private:
 
     //setting pos for highlight tracker in shop
     sf::Vector2f trackerShopPos[2] = {{541, 295},{541, 400}};
+
+    //boolean value to open buying box
+    bool isBuying = false;
 
 };
 
