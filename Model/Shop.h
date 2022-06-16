@@ -19,11 +19,14 @@ public:
     //overriding display box of inventory
     virtual void displayBox() override;
 
-    //getter to know which shop to open
+    //getter of tracker for getting item
+    int getNItem() const;
+
+    //getting type of npc and save the value to know which shop to open
     void setNPCType(int type);
 
     //getter and setter for displaying box
-    bool getIsBuying();
+    bool getIsBuying() const;
     void setIsBuying(bool isBuying);
 
     //to purchase items from shop
@@ -36,7 +39,7 @@ private:
     int type = -1;//default value which indicates no NPCs
 
     //setting pos for highlight tracker in shop
-    sf::Vector2f trackerShopPos[2] = {{541, 295},{541, 400}};
+    sf::Vector2f trackerShopPos[2] = {{541, 295}, {541, 400}};
 
     //boolean value to open buying box
     bool isBuying = false;

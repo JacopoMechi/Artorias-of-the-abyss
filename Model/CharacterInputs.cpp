@@ -67,9 +67,9 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1){
         if(isInteraction && !shop.getOpen())
             hud.setIsTalking(!hud.getIsTalking());
-        else if(isInteraction && shop.getIsBuying())
-            shop.purchaseItem(hero, 1, inventory.receiveItem(2));//TODO receive item set to 2 for the moment
-        else if(inventory.getNTab() == 0 && inventory.getAssign()){
+        else if(isInteraction && shop.getIsBuying()){
+            shop.purchaseItem(hero, 1, inventory.receiveItem(shop.getNItem()));//FIXME
+        }else if(inventory.getNTab() == 0 && inventory.getAssign()){
             hud.assignItemInQuickslot(0);
             inventory.setAssign(false);
         }else{
