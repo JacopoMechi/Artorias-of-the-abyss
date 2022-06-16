@@ -19,12 +19,16 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
             hero.setDirY(-1.0f);
         else if(inventory.getOpen() && !hud.getInteraction())//scrolling through items (up)
             inventory.previousItem();
+        else if(hud.getInteraction() && shop.getOpen())
+            shop.previousItem();
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
         if(!inventory.getOpen() && !hud.getInteraction() && hero.getPos().y < 745)
             hero.setDirY(1.0f);
         else if(inventory.getOpen() && !hud.getInteraction())//scrolling through items (down)
             inventory.nextItem();
+        else if(hud.getInteraction() && shop.getOpen())
+            shop.nextItem();
     }
     else
         hero.setDirY(0.0f);

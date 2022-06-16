@@ -35,8 +35,8 @@ public:
     void previousTab();
 
     //to switch between first and previous page
-    void nextItem();
-    void previousItem();
+    virtual void nextItem();
+    virtual void previousItem();
 
     //method to reset nPage, tracker and nTab
     void resetPositions();
