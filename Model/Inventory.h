@@ -22,7 +22,7 @@ public:
 
     //to assign item
     Item* receiveItem() const;
-    Item* receiveItem(int nTime) const;
+    Item* receiveItem(int nItem) const;
 
     //to set item amount when an item is bought//TODO can be useful later
     void setItemAmount(int nItem, int amount);

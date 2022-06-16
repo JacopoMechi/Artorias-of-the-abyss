@@ -25,6 +25,9 @@ void Shop::draw(){
 
         //drawing box to buy item
         displayBox();
+
+        //to display error message in case the character doesn't have enough money to buy an item
+        displayErrorMessage();
     }
 }
 
@@ -55,6 +58,18 @@ void Shop::setIsBuying(bool isBuying){
     this -> isBuying = isBuying;
 }
 
-void Shop::purchaseItem() {
+void Shop::purchaseItem(Hero &hero, int amount, Item *item) {
+    if(hero.getMoneyAmount() <= items[(2+2*type) - 1*type] -> getItemPrice()*amount){//FIXME item selected
+        item -> setItemCount(item -> getItemCount() + amount);
+        hero.setMoneyAmount(hero.getMoneyAmount() - items[(2+2*type) - 1*type] -> getItemPrice()*amount);//FIXME item selected 
+        isError = false;
+    }else
+        isError = true;
+        
+}
 
+void Shop::displayErrorMessage(){
+    if(isError){
+        drawText({L"non hai abbastanza soldi per \nacquistare questo oggetto !"}, {1010, 310}, 13);
+    }
 }

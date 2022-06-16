@@ -26,7 +26,11 @@ public:
     bool getIsBuying();
     void setIsBuying(bool isBuying);
 
-    void purchaseItem();
+    //to purchase items from shop
+    void purchaseItem(Hero &hero, int amount, Item *item);
+
+    //to display error message in case hero cannot buy an item
+    void displayErrorMessage();
 
 private:
     int type = -1;//default value which indicates no NPCs
@@ -36,6 +40,9 @@ private:
 
     //boolean value to open buying box
     bool isBuying = false;
+
+    //boolean value to display error message
+    bool isError = false;
 
 };
 

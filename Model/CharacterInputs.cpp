@@ -64,29 +64,18 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     }    
 
     
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1)
-        if(isInteraction){// && isBuying //for buying items in shop
-            //if isBuying
-            /*if(price <= hero.getMoneyAmount()){
-                hero.setMoneyAmount(hero.getMoneyAmount() - price);
-                if(NPCType == 0)
-                        inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 1);
-                    else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
-                        inventory.setItemAmount(1, inventory.receiveItem(1) -> getItemCount() + 1);
-                    else //second item of elizabeth
-                        inventory.setItemAmount(3, inventory.receiveItem(3) -> getItemCount() + 1);
-
-                printErrorMessage = false;
-            }else
-                printErrorMessage = true;*/
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1){
+        if(isInteraction && !shop.getOpen())
             hud.setIsTalking(!hud.getIsTalking());
-        }else if(inventory.getNTab() == 0 && inventory.getAssign()){
+        else if(isInteraction && shop.getIsBuying())
+            shop.purchaseItem(hero, 1, inventory.receiveItem(2));//TODO receive item set to 2 for the moment
+        else if(inventory.getNTab() == 0 && inventory.getAssign()){
             hud.assignItemInQuickslot(0);
             inventory.setAssign(false);
         }else{
             hud.useItem(0, hero);
         }
-    else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
+    }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
         if(isInteraction){// && isBuying //to open shop
             /*if((5*price) <= hero.getMoneyAmount()){
                 hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
