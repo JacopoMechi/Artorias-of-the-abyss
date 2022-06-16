@@ -20,7 +20,7 @@ void Shop::draw(){
     }
 }
 
-void Shop::getNPCType(int type){
+void Shop::setNPCType(int type){
     this -> type = type;
 }
 

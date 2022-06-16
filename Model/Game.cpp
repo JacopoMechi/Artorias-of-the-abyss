@@ -16,7 +16,7 @@ void Game::gameLoop()
                 window.close();
             inputs.updateInputs(event);
         }
-        inputs.setNPCType(npc.getNPCType());//TODO for the moment
+        shop.setNPCType(npc.getNPCType());//TODO for the moment
         hero.updateDelay(dt);
         hud.gettingDelayTime(dt);
         window.clear(sf::Color::Black);

@@ -13,7 +13,7 @@ public:
     //getter and setter to open shop are in invetory's base class
 
     //getter to know which shop to open
-    void getNPCType(int type);
+    void setNPCType(int type);
 
     void purchaseItem();
 
