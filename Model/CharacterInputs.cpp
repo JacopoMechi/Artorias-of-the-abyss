@@ -96,6 +96,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
                 printErrorMessage = false;
             }else
                 printErrorMessage = true;*/
+            shop.getNPCType(NPCType);
             shop.setOpen(!shop.getOpen());
         }else if(inventory.getNTab() == 0 && inventory.getAssign()){
             hud.assignItemInQuickslot(1);
@@ -185,4 +186,9 @@ void CharacterInputs::setHeroNPCAggro(bool status){
 
 void CharacterInputs::setInteraction(bool interaction){
     isInteraction = interaction;
+}
+
+//TODO for the moment
+void CharacterInputs::setNPCType(int type){
+    this -> NPCType = type;
 }
