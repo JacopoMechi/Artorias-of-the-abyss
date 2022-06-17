@@ -65,58 +65,33 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
 
     
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1){
-        if(isInteraction && !shop.getOpen())
+        if(isInteraction && !shop.getOpen())//to talk with npc
             hud.setIsTalking(!hud.getIsTalking());
-        else if(isInteraction && shop.getIsBuying()){
+        else if(isInteraction && shop.getIsBuying())//to buy 1 of the selected item in shop
             shop.purchaseItem(hero, 1, inventory.receiveItem(shop.getNItem()));//FIXME
-        }else if(inventory.getNTab() == 0 && inventory.getAssign()){
+        else if(inventory.getNTab() == 0 && inventory.getAssign()){//to assign item in first slot of quickslot
             hud.assignItemInQuickslot(0);
             inventory.setAssign(false);
-        }else{
+        }else//to use the first item in quickslot
             hud.useItem(0, hero);
-        }
     }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
-        if(isInteraction){// && isBuying //to open shop
-            /*if((5*price) <= hero.getMoneyAmount()){
-                hero.setMoneyAmount(hero.getMoneyAmount() - (price*5));
-                if(NPCType == 0)
-                        inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 5);
-                    else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
-                        inventory.setItemAmount(1, inventory.receiveItem(1) -> getItemCount() + 5);
-                    else //second item of elizabeth
-                        inventory.setItemAmount(3, inventory.receiveItem(3) -> getItemCount() + 5);
-
-                printErrorMessage = false;
-            }else
-                printErrorMessage = true;*/
+        if(isInteraction && (shop.getNPCType() == 1 || shop.getNPCType() == 0) && !shop.getIsBuying())//to open shop
             shop.setOpen(!shop.getOpen());
-        }else if(inventory.getNTab() == 0 && inventory.getAssign()){
+        else if(isInteraction && shop.getIsBuying())//to buy 5 of the selected item in shop
+            shop.purchaseItem(hero, 5, inventory.receiveItem(shop.getNItem()));
+        else if(inventory.getNTab() == 0 && inventory.getAssign()){//to assign item in second slot of quickslot
             hud.assignItemInQuickslot(1);
             inventory.setAssign(false);
-        }else{
+        }else//to use the second item in quickslot
             hud.useItem(1, hero);
-        }
     }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
-        if(isInteraction){// && isBuying //for buying items in shop
-            //if isBuying
-            /*if((10*price) <= hero.getMoneyAmount()){
-                hero.setMoneyAmount(hero.getMoneyAmount() - (price*10));
-                if(NPCType == 0)
-                        inventory.setItemAmount(2, inventory.receiveItem(2) -> getItemCount() + 10);
-                    else if (shopTrackerPos.x == 773 && shopTrackerPos.y == 340) //first item of elizabeth
-                        inventory.setItemAmount(1, inventory.receiveItem(1) -> getItemCount() + 10);
-                    else //second item of elizabeth
-                        inventory.setItemAmount(3, inventory.receiveItem(3) -> getItemCount() + 10);
-
-                printErrorMessage = false;
-            }else
-                printErrorMessage = true;*/
-        }else if(inventory.getNTab() == 0 && inventory.getAssign()){
+        if(isInteraction && shop.getIsBuying())//to buy 10 of the selected tem in shop
+            shop.purchaseItem(hero, 10, inventory.receiveItem(shop.getNItem()));
+        else if(inventory.getNTab() == 0 && inventory.getAssign()){//to assign item in third slot of quickslot
             hud.assignItemInQuickslot(2);
             inventory.setAssign(false);
-        }else{
+        }else//to use third item in quickslot
             hud.useItem(2, hero);
-        }
     }
     //hero's dash and attack handling
     //for attacking or casting spells

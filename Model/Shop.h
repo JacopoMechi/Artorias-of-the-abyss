@@ -23,6 +23,7 @@ public:
     int getNItem() const;
 
     //getting type of npc and save the value to know which shop to open
+    int getNPCType() const;
     void setNPCType(int type);
 
     //getter and setter for displaying box

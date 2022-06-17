@@ -59,6 +59,10 @@ int Shop::getNItem() const{
     }
 }
 
+int Shop::getNPCType() const{
+    return type;
+}
+
 void Shop::setNPCType(int type){
     this -> type = type;
 }
