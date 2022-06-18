@@ -15,9 +15,6 @@ public:
 
     void setHeroNPCAggro(bool status);
 
-    //setting boolean value to stop the character moving when interactiong
-    void setInteraction(bool interaction);
-
 private:
     //all the stuff needed to handle inputs
     Inventory &inventory;
@@ -25,7 +22,6 @@ private:
     Hero &hero;
     Shop &shop;
     bool isInRange = false;
-    bool isInteraction = false;
 };
 
 #endif

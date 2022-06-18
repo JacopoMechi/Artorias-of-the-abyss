@@ -17,6 +17,8 @@ void Game::gameLoop()
             inputs.updateInputs(event);
         }
         shop.setNPCType(npc.getNPCType());//TODO for the moment
+        hud.setType(npc.getNPCType());
+        hud.setAggro(NPCInteraction);
         hero.updateDelay(dt);
         hud.gettingDelayTime(dt);
         window.clear(sf::Color::Black);
@@ -68,7 +70,6 @@ void Game::gameLoop()
                     }
                 }
                 hud.setTextPool(npc.getTextPool());
-                hud.setNPCType(npc.getNPCType());
                 NPCInteraction = npc.closeToHero(hero);
                 inputs.setHeroNPCAggro(NPCInteraction);
                 hero.movement(false, NPCInteraction);//for the moment

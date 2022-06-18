@@ -5,7 +5,7 @@ CharacterInputs::CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero, Sho
 }
 
 void CharacterInputs::updateInputs(sf::Event keyInput){
-    //to stop the character current animation
+    //to stop character's current animation
     if(inventory.getOpen() || hud.getInteraction()){
         hero.setDirX(0.0f);
         hero.setDirY(0.0f);
@@ -49,7 +49,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         hero.setDirX(0.0f);
 
     //opens inventory
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E){//&& !isInteraction// isInteracting to not open the inventory
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E){// isInteracting to not open the inventory
         if(!hud.getInteraction()){
             inventory.setOpen(!inventory.getOpen());
             inventory.resetPositions();    
@@ -65,19 +65,19 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
 
     
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1){
-        if(isInteraction && !shop.getOpen())//to talk with npc
+        if(hud.getInteraction() && !shop.getOpen())//to talk with npc
             hud.setIsTalking(!hud.getIsTalking());
-        else if(isInteraction && shop.getIsBuying())//to buy 1 of the selected item in shop
-            shop.purchaseItem(hero, 1, inventory.receiveItem(shop.getNItem()));//FIXME
+        else if(hud.getInteraction() && shop.getIsBuying())//to buy 1 of the selected item in shop
+            shop.purchaseItem(hero, 1, inventory.receiveItem(shop.getNItem()));
         else if(inventory.getNTab() == 0 && inventory.getAssign()){//to assign item in first slot of quickslot
             hud.assignItemInQuickslot(0);
             inventory.setAssign(false);
         }else//to use the first item in quickslot
             hud.useItem(0, hero);
     }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
-        if(isInteraction && (shop.getNPCType() == 1 || shop.getNPCType() == 0) && !shop.getIsBuying())//to open shop
+        if(hud.getInteraction() && (shop.getNPCType() == 1 || shop.getNPCType() == 0) && !shop.getIsBuying())//to open shop
             shop.setOpen(!shop.getOpen());
-        else if(isInteraction && shop.getIsBuying())//to buy 5 of the selected item in shop
+        else if(hud.getInteraction() && shop.getIsBuying())//to buy 5 of the selected item in shop
             shop.purchaseItem(hero, 5, inventory.receiveItem(shop.getNItem()));
         else if(inventory.getNTab() == 0 && inventory.getAssign()){//to assign item in second slot of quickslot
             hud.assignItemInQuickslot(1);
@@ -85,7 +85,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         }else//to use the second item in quickslot
             hud.useItem(1, hero);
     }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
-        if(isInteraction && shop.getIsBuying())//to buy 10 of the selected tem in shop
+        if(hud.getInteraction() && shop.getIsBuying())//to buy 10 of the selected tem in shop
             shop.purchaseItem(hero, 10, inventory.receiveItem(shop.getNItem()));
         else if(inventory.getNTab() == 0 && inventory.getAssign()){//to assign item in third slot of quickslot
             hud.assignItemInQuickslot(2);
@@ -113,8 +113,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     //handling inputs for interaction with npc
     if(!inventory.getOpen() && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
         if(isInRange){//TODO npc must be better
-            isInteraction = !isInteraction;//open/close shop
-            //for resetting interaction
+            //to open/close shop
             hud.setInteraction(!hud.getInteraction());
             hud.setIsTalking(false);
             //resetting shop
@@ -129,32 +128,8 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         else if(shop.getOpen())
             shop.setIsBuying(!shop.getIsBuying());
     }
-
-    /*//handling inputs for scrolling through items in shop 
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Up && NPCType == 1)
-        shopTrackerPos = {768, 336};
-    else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Down && NPCType == 1)
-        shopTrackerPos = {768, 441};   
-
-    //opening buying interface
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::U && isShop)
-        isBuying = !isBuying;    
-
-    //select talking option in interaction
-    if (keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num1 && isInteraction && !isShop && !isTalking && !isBuying)
-        isTalking = !isTalking;    
-
-    //selecting shop option in interaction
-    //(only for specifics NPCs)
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2 && !isBuying)
-        isShop = !isShop;
-    }*/
 }
 
 void CharacterInputs::setHeroNPCAggro(bool status){
     isInRange = status;
-}
-
-void CharacterInputs::setInteraction(bool interaction){
-    isInteraction = interaction;
 }

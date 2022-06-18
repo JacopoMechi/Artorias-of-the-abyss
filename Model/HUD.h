@@ -29,11 +29,7 @@ public:
 
     void displayHealthAndEffects(Hero &hero);
 
-    //void updateEvent(sf::Event keyInput);
-
     void assignItemInQuickslot(int slot);
-
-    //void checkNPCAggro(NPC &npc);
 
     //display money counter in hud
     void displayMoneyCounter(Hero &hero);
@@ -46,9 +42,6 @@ public:
 
     //method to display interact box for interactions NPCs
     void drawInteractBox(sf::Vector2f pos);
-
-    //getting type of npc with which the player is interacting
-    void setNPCType(int NPCType);
 
     //drawing tracker for selecting an item to buy
     void drawShopTracker(sf::Vector2f pos);
@@ -66,13 +59,15 @@ public:
     //method to use an item
     void useItem(int nItem, Hero &hero);
 
-    //getter and setter to open shop //TODO for the moment
-    bool getDrawShop();
-    void setDrawShop(bool isShop);
-
-    //TODO for the moment
-    bool getInteraction();
+    //to open/close interaction menu
+    bool getInteraction()const;
     void setInteraction(bool isInteraction);
+
+    //to get npc type
+    void setType(int NPCType);
+
+    //setting aggro to obscure interact button in case hero is not in range
+    void setAggro(bool isAggro);
 
     //getter and setter for talking//TODO for the moment
     bool getIsTalking();
@@ -84,6 +79,8 @@ public:
 protected:
     //for using quickslot items
     Hero &hero;
+    //font for drawing text
+    sf::Font font;
     //for functions of sprites
     sf::RenderWindow &window;
     //texture and sprites for hud
@@ -92,58 +89,35 @@ protected:
     sf::Sprite moneyCounterSprite;
     sf::Sprite quickslotSprite;
     sf::Sprite actionsSprite;
-    sf::Sprite descriptionSprite;
-    sf::Sprite assignSprite;
     //obscure button sprite
     sf::Sprite obscureSprite;
-    //shop sprite declaration
-    sf::Sprite shopSprite;
-    //interactions sprite declaration
-    sf::Sprite interactionBoxSprite;
-    //tracker sprite for shop
-    sf::Sprite shopTrackerSprite;
     //text for interactions
     sf::Text interactText;
     sf::Text text;
     sf::Text healthText;
     sf::Text moneyText;
     sf::Text itemAmountText;
-    //for displaying error message when the character doesn't have enough money
-    sf::Text errorMessage;
-    sf::Font font;
-    //for displaying error message when you dont have enough money to buy an item
-    bool printErrorMessage = false;
+    //sprite for interaction box
+    sf::Sprite boxSprite;
     //getting text pool to display it
     std::vector<std::wstring> textPool;
-    //for setting position of shop tracker sprite
-    sf::Vector2f shopTrackerPos = {773, 340};
-    //for getting NPC type
-    int NPCType = -1; //because from 0 to 3 are NPCs
-
-    //to get NPC aggro in hud for interactions
-    //bool NPCAggro = false;
     //setting spell direction for hero
     int spellDirection; //it can be 1(right) or -1(left)
-    //boolean value to let the character buy from merchant
-    bool wantsTobuy = false;
 
-    //TODO for the moment
-    bool isInteraction = false;
-
-    //switch for shop menu
-    bool isShop = false;
-
+    //boolean value to obscure interact button in case hero is not in range of npc
+    bool isAggro = false;
+    
     //switch for talking
     bool isTalking = false;
+
+    //boolean value to ope/close interaction value
+    bool isInteraction = false;
 
     //for tracking phrase number
     int dialogueTracker = 0;
     
-    //bool value to open buying menu
-    bool isBuying = false;
-
-    //getting price of the item for shop
-    int price = 0;
+    //npc type
+    int NPCType = -1;//-1 as default
 
     //for displaying items in quickslot
     Item* quickSlot[3] = {new NullItem(), new NullItem(), new NullItem()};
