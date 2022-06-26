@@ -115,34 +115,49 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     }
 }
 
+//handling hero's movement
 void CharacterInputs::moveHero(sf::Event keyInput){
     if (!inventory.getOpen() && !hud.getInteraction()){
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && hero.getPos().y > 30)
-        {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && hero.getPos().y > 30){
             hero.setDirY(-1.0f);
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && hero.getPos().y < 745)
-        {
+        }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && hero.getPos().y < 745){
             hero.setDirY(1.0f);
-        }
-        else
+        }else
             hero.setDirY(0);
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && hero.getPos().x > 230)
-        {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && hero.getPos().x > 230){
             hero.setDirX(-1.0f);
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && hero.getPos().x < 1550)
-        {
+        }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && hero.getPos().x < 1550){
             hero.setDirX(1.0f);
-        }
-        else
+        }else
             hero.setDirX(0);
+
+        //handling collisions with npc //TODO maybe we can transform this into a method to use it also on other entities
+        float dist1 = entityCollision -> getPos().x - (hero.getPos().x + hero.getSize().x);
+        float dist2 = (entityCollision -> getPos().x + entityCollision -> getSize().x) - hero.getPos().x;
+        float dist3 = entityCollision -> getPos().y - (hero.getPos().y + hero.getSize().y);
+        float dist4 = (entityCollision -> getPos().y + entityCollision -> getSize().y) - hero.getPos().y;
+        if (dist1 < 0 && dist2 > 0 && dist3 < 0 && dist4 > 0) { //COLLISION DETECTED
+            if(entityCollision != nullptr) {
+                float d1 = std::abs(dist1) < std::abs(dist2) ? dist1 : dist2;
+                float d2 = std::abs(dist3) < std::abs(dist4) ? dist3 : dist4;
+                if (std::abs(d1) < std::abs(d2)) {
+                    hero.setPos(hero.getPos() + sf::Vector2f{d1,0});
+                } else {
+                    hero.setPos(hero.getPos() + sf::Vector2f{0,d2});
+                }
+            }
+        }
     }
 
 }
 
 void CharacterInputs::setHeroNPCAggro(bool status){
     isInRange = status;
+}
+
+
+void CharacterInputs::setEntityCollision(GameCharacter &entityCollision){
+    this -> entityCollision = &entityCollision;
 }

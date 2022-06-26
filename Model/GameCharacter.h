@@ -62,6 +62,7 @@ protected:
     sf::Texture texture;
     sf::IntRect frameRect;
     sf::IntRect defaultRect;//for resetting character in the right position
+    GameCharacter* entityCollision;
     float animationHolding = 0.08f;// for max time cap
     int nFrames;
     int iFrame = 0;

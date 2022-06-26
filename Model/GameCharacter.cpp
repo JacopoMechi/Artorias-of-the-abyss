@@ -82,7 +82,7 @@ void GameCharacter::attack(sf::RenderWindow &window){
 
 bool GameCharacter::isAggro(float aggroDistance, GameCharacter &entity)
 {
-    if (abs(sqrt(((entity.getPos().x - pos.x) * (entity.getPos().x - pos.x)) + ((entity.getPos().y - pos.y) * (entity.getPos().y - pos.y)))) < aggroDistance)
+    if (std::abs(sqrt(((entity.getPos().x - pos.x) * (entity.getPos().x - pos.x)) + ((entity.getPos().y - pos.y) * (entity.getPos().y - pos.y)))) < aggroDistance)
         return true;
     else
         return false;

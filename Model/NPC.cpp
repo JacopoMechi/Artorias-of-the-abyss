@@ -13,30 +13,31 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
     //loading npcs sprites' rectangles
     //chester
     if(type == 0){
-        sprite.setTextureRect({394, 22, 16, 14});
+        defaultRect = {394, 22, 16, 14};
 
         //chester's dialogue
         textPool.resize(sizeof(chesterPool)/sizeof(std::string));
         textPool.insert(textPool.begin(), &chesterPool[0], &chesterPool[sizeof(chesterPool)/sizeof(std::string)]);
     //elizabeth
     }else if(type == 1){  
-        sprite.setTextureRect({393, 40, 22, 25});
-        
+        defaultRect = {393, 40, 22, 25};
+
         //elizabeth's dialogue
         textPool.resize(sizeof(elizabethPool)/sizeof(std::string));
         textPool.insert(textPool.begin(), &elizabethPool[0], &elizabethPool[(sizeof(elizabethPool)/sizeof(std::string))]);
     //dusk    
     }else if(type == 2){
-        sprite.setTextureRect({422, 35, 23, 30});
+        defaultRect = {422, 35, 23, 30};
 
         //dusk's dialogue
         textPool.resize(sizeof(duskPool)/sizeof(std::string));
         textPool.insert(textPool.begin(), &duskPool[0], &duskPool[sizeof(duskPool)/sizeof(std::string)]);
     //sif
     }else if(type == 3){
-        sprite.setTextureRect({452, 38, 25, 27});    
+        defaultRect = {452, 38, 25, 27}; 
     }else
         std::cout << "Error on loading NPC type" << std::endl;
+    sprite.setTextureRect(defaultRect);
 }
 
 void NPC::receiveDamage(int points){
