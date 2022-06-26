@@ -12,6 +12,7 @@
 #include "Inventory.h"
 #include "CharacterInputs.h"
 #include "Shop.h"
+#include "CollisionHandler.h"
 
 class Game
 {
@@ -52,6 +53,7 @@ private:
     NPC npc;
     Inventory inventory;
     Shop shop;
+    CollisionHandler collisionHandler;
     sf::Clock clock;
     sf::Event event;
     CharacterInputs inputs;

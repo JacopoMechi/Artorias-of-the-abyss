@@ -13,40 +13,25 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
 
     //handling inputs
 
-    //handling inputs to move the character
+    //handling inputs to scroll through invetory/shop items
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-        if(!inventory.getOpen() && !hud.getInteraction())// && hero.getPos().y > 30
-            hero.setDirY(-1.0f);
-        else if(inventory.getOpen() && !hud.getInteraction())//scrolling through items (up)
+        if(inventory.getOpen() && !hud.getInteraction())//scrolling through items (up)
             inventory.previousItem();
         else if(hud.getInteraction() && shop.getOpen())
             shop.previousItem();
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-        if(!inventory.getOpen() && !hud.getInteraction())// && hero.getPos().y < 745
-            hero.setDirY(1.0f);
-        else if(inventory.getOpen() && !hud.getInteraction())//scrolling through items (down)
+        if(inventory.getOpen() && !hud.getInteraction())//scrolling through items (down)
             inventory.nextItem();
         else if(hud.getInteraction() && shop.getOpen())
             shop.nextItem();
     }
-    else
-        hero.setDirY(0.0f);
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-        if(!inventory.getOpen() && !hud.getInteraction())// && hero.getPos().x > 230
-            hero.setDirX(-1.0f);
-        else if(inventory.getOpen() && !hud.getInteraction())
-            inventory.previousTab();
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && inventory.getOpen() && !hud.getInteraction()){
+        inventory.previousTab();
+    }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && inventory.getOpen() && !hud.getInteraction()){
+        inventory.nextTab();
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-        if(!inventory.getOpen() && !hud.getInteraction())// && hero.getPos().x < 1550
-            hero.setDirX(1.0f);
-        else if(inventory.getOpen() && !hud.getInteraction())
-            inventory.nextTab();
-    }
-    else
-        hero.setDirX(0.0f);
 
     //opens inventory
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::E){// isInteracting to not open the inventory
@@ -128,6 +113,34 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         else if(shop.getOpen())
             shop.setIsBuying(!shop.getIsBuying());
     }
+}
+
+void CharacterInputs::moveHero(sf::Event keyInput){
+    if (!inventory.getOpen() && !hud.getInteraction()){
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && hero.getPos().y > 30)
+        {
+            hero.setDirY(-1.0f);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && hero.getPos().y < 745)
+        {
+            hero.setDirY(1.0f);
+        }
+        else
+            hero.setDirY(0);
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && hero.getPos().x > 230)
+        {
+            hero.setDirX(-1.0f);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && hero.getPos().x < 1550)
+        {
+            hero.setDirX(1.0f);
+        }
+        else
+            hero.setDirX(0);
+    }
+
 }
 
 void CharacterInputs::setHeroNPCAggro(bool status){

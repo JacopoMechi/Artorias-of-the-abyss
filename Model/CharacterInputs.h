@@ -13,6 +13,8 @@ public:
 
     void updateInputs(sf::Event keyInputs);
 
+    void moveHero(sf::Event keyInput);
+
     void setHeroNPCAggro(bool status);
 
 private:
