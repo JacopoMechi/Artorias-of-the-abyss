@@ -1,6 +1,12 @@
 #include "Shop.h"
 
 Shop::Shop(sf::RenderWindow &window): Inventory(window){
+    //changing error messages for shop class
+    if(!texture.loadFromFile("../Textures/PlayerHUD.png"))
+        std::cout << "Error on loading textures for shop" << std::endl;
+    if(!font.loadFromFile("../pixelFont.ttf"))
+        std::cout << "Error on loading text font for shop" << std::endl;
+
     //we will use invenotrySprite to show shop sprite
     sprite.setTextureRect({89, 355, 352, 313});
     sprite.setPosition({500, 259});

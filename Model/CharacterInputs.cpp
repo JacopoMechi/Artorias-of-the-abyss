@@ -15,7 +15,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
 
     //handling inputs to move the character
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-        if(!inventory.getOpen() && !hud.getInteraction() && hero.getPos().y > 30)
+        if(!inventory.getOpen() && !hud.getInteraction())// && hero.getPos().y > 30
             hero.setDirY(-1.0f);
         else if(inventory.getOpen() && !hud.getInteraction())//scrolling through items (up)
             inventory.previousItem();
@@ -23,7 +23,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
             shop.previousItem();
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-        if(!inventory.getOpen() && !hud.getInteraction() && hero.getPos().y < 745)
+        if(!inventory.getOpen() && !hud.getInteraction())// && hero.getPos().y < 745
             hero.setDirY(1.0f);
         else if(inventory.getOpen() && !hud.getInteraction())//scrolling through items (down)
             inventory.nextItem();
@@ -34,13 +34,13 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         hero.setDirY(0.0f);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-        if(!inventory.getOpen() && !hud.getInteraction() && hero.getPos().x > 230)
+        if(!inventory.getOpen() && !hud.getInteraction())// && hero.getPos().x > 230
             hero.setDirX(-1.0f);
         else if(inventory.getOpen() && !hud.getInteraction())
             inventory.previousTab();
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-        if(!inventory.getOpen() && !hud.getInteraction() && hero.getPos().x < 1550)
+        if(!inventory.getOpen() && !hud.getInteraction())// && hero.getPos().x < 1550
             hero.setDirX(1.0f);
         else if(inventory.getOpen() && !hud.getInteraction())
             inventory.nextTab();

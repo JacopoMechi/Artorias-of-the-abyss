@@ -2,7 +2,8 @@
 
 Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed):
     isKnight(isKnight), GameCharacter(pos, hp, armor, cash, movementSpeed){
-    texture.loadFromFile("../Textures/Textures.png");
+    if(!texture.loadFromFile("../Textures/Textures.png"))
+        std::cout << "Error on loading hero's texture" << std::endl;
     sprite.setTexture(texture);//loading chracter's sprite
     weaponAttack.setTexture(texture);//loading character's weapon
     //setting hero's sprite

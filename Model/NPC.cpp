@@ -3,7 +3,8 @@
 NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed) : 
     window(window), type(type), GameCharacter(pos, hp, armor, cash, movementSpeed){
     //loading NPC's texture
-    texture.loadFromFile("../Textures/Textures.png");
+    if(!texture.loadFromFile("../Textures/Textures.png"))
+        std::cout << "Error on loading npc's texture" << std::endl;
     sprite.setTexture(texture);
     //setting NPC's scale
     sprite.setScale(5.0f, 5.0f);
@@ -35,7 +36,7 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, in
     }else if(type == 3){
         sprite.setTextureRect({452, 38, 25, 27});    
     }else
-        std::cout << "Error on loading the NPC" << std::endl;
+        std::cout << "Error on loading NPC type" << std::endl;
 }
 
 void NPC::receiveDamage(int points){

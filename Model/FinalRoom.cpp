@@ -16,6 +16,7 @@ FinalRoom::FinalRoom(int level, sf::RenderWindow &window): Room(level, window){
             break;    
     }
     leftGate = std::make_unique<Gate>(window);
-    roomTexture.loadFromFile(roomFilePath);
+    if(!roomTexture.loadFromFile(roomFilePath))
+        std::cout << "Error on loading final room's sprite" << std::endl;
     roomSprite.setTexture(roomTexture);
 }

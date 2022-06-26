@@ -1,7 +1,8 @@
 #include "Inventory.h"
 
 Inventory::Inventory(sf::RenderWindow &window): window(window){
-    texture.loadFromFile("../Textures/PlayerHUD.png");
+    if(!texture.loadFromFile("../Textures/PlayerHUD.png"))
+        std::cout << "Error on loading textures for inventory" << std::endl;
 
     //setting inventory sprite
     sprite.setTexture(texture);
@@ -26,7 +27,9 @@ Inventory::Inventory(sf::RenderWindow &window): window(window){
     boxSprite.setPosition({994, 418});
 
     //setting text for inventory
-    font.loadFromFile("../pixelFont.ttf");
+    if(!font.loadFromFile("../pixelFont.ttf"))
+        std::cout << "Error on loading text font for inventory" << std::endl;
+
     text.setFont(font);
     text.setCharacterSize(20);
 
