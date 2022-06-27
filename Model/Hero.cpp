@@ -118,10 +118,6 @@ void Hero::dash()
     }
 }
 
-void Hero::switchZone()
-{ // TODO useful later maybe
-}
-
 void Hero::useBonfire()
 {
 }

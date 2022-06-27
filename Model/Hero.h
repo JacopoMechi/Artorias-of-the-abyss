@@ -53,10 +53,6 @@ public:
     void setMoneyAmount(int moneyCounter);
 
     void dash();
-
-    void addItem();
-    
-    void switchZone();
     
     void useBonfire();
 
