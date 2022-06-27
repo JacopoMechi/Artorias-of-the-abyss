@@ -82,9 +82,9 @@ void Shop::setIsBuying(bool isBuying){
 }
 
 void Shop::purchaseItem(Hero &hero, int amount, Item *item) {
-    if(hero.getMoneyAmount() >= items[getNItem()] -> getItemPrice()*amount){//FIXME item selected
+    if(hero.getMoneyAmount() >= items[getNItem()] -> getItemPrice()*amount){
         item -> setItemCount(item -> getItemCount() + amount);
-        hero.setMoneyAmount(hero.getMoneyAmount() - items[getNItem()] -> getItemPrice()*amount);//FIXME item selected 
+        hero.setMoneyAmount(hero.getMoneyAmount() - items[getNItem()] -> getItemPrice()*amount);
         isBuying = false;
         isError = false;
     }else
