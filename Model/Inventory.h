@@ -24,7 +24,7 @@ public:
     Item* receiveItem() const;
     Item* receiveItem(int nItem) const;
 
-    //to set item amount when an item is bought//TODO can be useful later
+    //to set item amount when an item is bought
     void setItemAmount(int nItem, int amount);
 
     //getter for nTab to assign item only on first tab
