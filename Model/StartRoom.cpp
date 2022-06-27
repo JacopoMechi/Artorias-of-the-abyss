@@ -16,6 +16,7 @@ StartRoom::StartRoom(int level, sf::RenderWindow &window): Room(level, window){
             break;
     }
     rightGate = std::make_unique<Gate>(window, true, true);
+    bonfire = std::unique_ptr<Bonfire>(nullptr);
     if(!roomTexture.loadFromFile(roomFilePath))
         std::cout << "Error on loading starting room's texture" << std::endl;
     roomSprite.setTexture(roomTexture);

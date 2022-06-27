@@ -16,6 +16,7 @@ void Game::gameLoop()
                 window.close();
             inputs.updateInputs(event);
         }
+        inputs.setEntityCollision(room -> getBonfire());
         inputs.moveHero(event);
         shop.setNPCType(npc.getNPCType());//TODO for the moment
         hud.setType(npc.getNPCType());

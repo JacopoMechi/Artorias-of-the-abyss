@@ -6,6 +6,7 @@
 #include "Hero.h"
 #include "Shop.h"
 #include "GameCharacter.h"
+#include "RoomElement.h"
 
 class CharacterInputs{
 public:
@@ -19,6 +20,10 @@ public:
     void setHeroNPCAggro(bool status);
 
     void setEntityCollision(GameCharacter &entityCollision);
+    void setEntityCollision(RoomElement *element);
+
+    void solveNPCCollision();
+    void solveElementCollision();
 
 private:
     //all the stuff needed to handle inputs
@@ -27,6 +32,7 @@ private:
     Hero &hero;
     Shop &shop;
     GameCharacter* entityCollision;
+    RoomElement* element;
     bool isInRange = false;
 };
 

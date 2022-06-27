@@ -22,6 +22,8 @@ public:
     void draw();
     bool getisClear();
 
+    Bonfire* getBonfire();
+
 protected:
     std::vector<std::unique_ptr<RoomElement>> roomElementsVector;
     std::unique_ptr<Bonfire> bonfire;

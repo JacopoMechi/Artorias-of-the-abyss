@@ -30,7 +30,7 @@ public:
     Game(sf::RenderWindow &window);
 
 private:
-    //to manage rooms aand floors
+    //to manage rooms and floors
     std::string roomType[5];//array of room names
     int roomTracker = 0;//for tracking what room needs to be spawned
     int level = 1;//for floors

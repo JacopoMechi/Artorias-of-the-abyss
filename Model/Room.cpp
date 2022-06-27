@@ -26,3 +26,7 @@ void Room::draw()
     if (bonfire != nullptr)
         bonfire->draw();
 }
+
+Bonfire* Room::getBonfire(){
+    return bonfire.get();
+}
