@@ -53,7 +53,7 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero, Inventory &inventory): window(win
     interactText.setCharacterSize(20);
 }
 
-HUD::~HUD(){//FIXME sgmentation fault when closing program. Maybe we don't need this implementation 
+HUD::~HUD(){ 
     //deleting quickslot
     for(int i = 0; i < 3; i++)
         delete quickSlot[i];
