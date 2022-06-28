@@ -49,12 +49,8 @@ add_executable(${EXECUTABLE_NAME}   main.cpp
                                     Model/RoomFactory.cpp
                                     Model/StartRoom.h
                                     Model/StartRoom.cpp
-                                    Model/SecondRoom.h
-                                    Model/SecondRoom.cpp
-                                    Model/ThirdRoom.h
-                                    Model/ThirdRoom.cpp
-                                    Model/FourthRoom.h
-                                    Model/FourthRoom.cpp
+                                    Model/MiddleRoom.h
+                                    Model/MiddleRoom.cpp
                                     Model/FinalRoom.h
                                     Model/FinalRoom.cpp
                                     Model/NullItem.h
