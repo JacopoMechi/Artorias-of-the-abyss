@@ -7,9 +7,7 @@
 
 #include "Room.h"
 #include "StartRoom.h"
-#include "SecondRoom.h"
-#include "ThirdRoom.h"
-#include "FourthRoom.h"
+#include "MiddleRoom.h"
 #include "FinalRoom.h"
 
 

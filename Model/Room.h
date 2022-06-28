@@ -10,6 +10,7 @@
 #include "RoomElement.h"
 #include "Gate.h"
 #include "Bonfire.h"
+#include "NPC.h"
 
 class Room{
 public:
@@ -23,10 +24,12 @@ public:
     bool getisClear();
 
     Bonfire* getBonfire();
+    NPC* getNPC();
 
 protected:
     std::vector<std::unique_ptr<RoomElement>> roomElementsVector;
     std::unique_ptr<Bonfire> bonfire;
+    std::unique_ptr<NPC> npc;
     std::string roomFilePath;
     const std::string roomPath1 = "../Textures/Lvl1.png";
     const std::string roomPath2 = "../Textures/Lvl2.png";

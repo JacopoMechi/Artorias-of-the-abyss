@@ -18,8 +18,12 @@ void Game::gameLoop()
         }
         inputs.setEntityCollision(room -> getBonfire());
         inputs.moveHero(event);
-        shop.setNPCType(npc.getNPCType());//TODO for the moment
-        hud.setType(npc.getNPCType());
+        if(room -> getNPC() != 0){//calling function in case NPC exists
+            shop.setNPCType(room -> getNPC() -> getNPCType());//TODO for the moment
+            hud.setType(room -> getNPC() -> getNPCType());
+            inputs.setEntityCollision(room -> getNPC());
+            NPCInteraction = room -> getNPC() -> closeToHero(hero);
+        }
         hud.setAggro(NPCInteraction);
         hero.updateDelay(dt);
         hud.gettingDelayTime(dt);
@@ -71,14 +75,11 @@ void Game::gameLoop()
                         this -> swapRoom(roomType[roomTracker], level);
                     }
                 }
-                inputs.setEntityCollision(npc);
                 hud.setTextPool(npc.getTextPool());
-                NPCInteraction = npc.closeToHero(hero);
                 inputs.setHeroNPCAggro(NPCInteraction);
                 hero.movement(false, NPCInteraction);//for the moment
                 hero.update(dt);
                 hero.draw(window);
-                npc.draw(window);
                 hud.draw();
                 hud.displayHealthAndEffects(hero);
                 hud.displayMoneyCounter(hero);
@@ -96,7 +97,7 @@ void Game::swapRoom(std::string tracker, int floor){
 }
 
 Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inventory(window), inGameMenu(window, 0), window(window), hero(true, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero, inventory), 
-    room(gameRooms -> makeRoom("startingroom", window, 1)), roomType{std::string("startroom"),std::string("secondroom"), std::string("thirdroom"), std::string("fourthroom"), std::string("finalroom")},
+    room(gameRooms -> makeRoom("startingroom", window, 1)), roomType{std::string("startingroom"),std::string("middleroom"), std::string("room"), std::string("room"), std::string("room")},
     npc(window, 1, {300, 300}), shop(window), inputs(inventory, hud, hero, shop)
 {
     

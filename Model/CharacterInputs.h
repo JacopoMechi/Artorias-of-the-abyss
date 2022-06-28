@@ -19,7 +19,7 @@ public:
 
     void setHeroNPCAggro(bool status);
 
-    void setEntityCollision(GameCharacter &entityCollision);
+    void setEntityCollision(GameCharacter *entityCollision);
     void setEntityCollision(RoomElement *element);
 
     void solveNPCCollision();
@@ -31,8 +31,8 @@ private:
     HUD &hud;
     Hero &hero;
     Shop &shop;
-    GameCharacter* entityCollision;
-    RoomElement* element;
+    GameCharacter* entityCollision = nullptr;
+    RoomElement* element = 0;
     bool isInRange = false;
 };
 

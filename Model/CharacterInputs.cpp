@@ -144,21 +144,21 @@ void CharacterInputs::setHeroNPCAggro(bool status){
 }
 
 
-void CharacterInputs::setEntityCollision(GameCharacter &entityCollision){
-    this -> entityCollision = &entityCollision;
+void CharacterInputs::setEntityCollision(GameCharacter *entityCollision){
+    this -> entityCollision = entityCollision;
 }
 
-void CharacterInputs::setEntityCollision(RoomElement* roomElement){
+void CharacterInputs::setEntityCollision(RoomElement *roomElement){
     this -> element = roomElement;
 }
 
 void CharacterInputs::solveNPCCollision(){
-    float dist1 = entityCollision -> getPos().x - (hero.getPos().x + hero.getSize().x);
-    float dist2 = (entityCollision -> getPos().x + entityCollision -> getSize().x) - hero.getPos().x;
-    float dist3 = entityCollision -> getPos().y - (hero.getPos().y + hero.getSize().y);
-    float dist4 = (entityCollision -> getPos().y + entityCollision -> getSize().y) - hero.getPos().y;
-    if (dist1 < 0 && dist2 > 0 && dist3 < 0 && dist4 > 0) {
-        if(entityCollision != nullptr) {
+    if(entityCollision != nullptr) {
+        float dist1 = entityCollision -> getPos().x - (hero.getPos().x + hero.getSize().x);
+        float dist2 = (entityCollision -> getPos().x + entityCollision -> getSize().x) - hero.getPos().x;
+        float dist3 = entityCollision -> getPos().y - (hero.getPos().y + hero.getSize().y);
+        float dist4 = (entityCollision -> getPos().y + entityCollision -> getSize().y) - hero.getPos().y;
+        if (dist1 < 0 && dist2 > 0 && dist3 < 0 && dist4 > 0) {
             float d1 = std::abs(dist1) < std::abs(dist2) ? dist1 : dist2;
             float d2 = std::abs(dist3) < std::abs(dist4) ? dist3 : dist4;
             if (std::abs(d1) < std::abs(d2)) {
