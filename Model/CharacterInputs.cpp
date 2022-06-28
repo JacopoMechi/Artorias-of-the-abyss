@@ -118,7 +118,6 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
 //handling hero's movement
 void CharacterInputs::moveHero(sf::Event keyInput){
     if (!inventory.getOpen() && !hud.getInteraction()){
-
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && hero.getPos().y > 30){
             hero.setDirY(-1.0f);
         }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && hero.getPos().y < 745){
