@@ -28,6 +28,7 @@ void Game::gameLoop()
         hero.updateDelay(dt);
         hud.gettingDelayTime(dt);
         window.clear(sf::Color::Black);
+        room -> setDelayTime(dt);
         room -> draw();
         if (gameStatus == Game::Status::MainMenu)
         {

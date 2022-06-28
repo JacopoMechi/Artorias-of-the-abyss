@@ -25,6 +25,7 @@ public:
 
     Bonfire* getBonfire();
     NPC* getNPC();
+    void setDelayTime(float dt);
 
 protected:
     std::vector<std::unique_ptr<RoomElement>> roomElementsVector;
@@ -39,5 +40,6 @@ protected:
     sf::RenderWindow &window;
     bool isClear = true; // TODO Default should be false, true for testing
     int level;
+    float dt = 0;//to take delay time for bonfire animation
 };
 #endif

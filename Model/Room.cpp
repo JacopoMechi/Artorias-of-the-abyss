@@ -43,9 +43,10 @@ void Room::draw()
         leftGate->draw();
     if (rightGate != nullptr)
         rightGate->draw();
-    if (bonfire != nullptr)
+    if (bonfire != nullptr){
+        bonfire ->setDelayTime(dt);
         bonfire->draw();
-    if (npc != nullptr)
+    }if (npc != nullptr)
         npc->draw(window);
 }
 
@@ -55,4 +56,8 @@ Bonfire* Room::getBonfire(){
 
 NPC* Room::getNPC(){
     return npc.get();
+}
+
+void Room::setDelayTime(float dt){
+    this -> dt = dt;
 }
