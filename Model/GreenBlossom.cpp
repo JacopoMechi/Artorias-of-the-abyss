@@ -13,11 +13,20 @@ GreenBlossom::~GreenBlossom(){
 void GreenBlossom::use(Hero& hero) {
     if(itemCount > 0){
         itemCount --;
-        int tmp = hero.getCooldown();
-        // for time = timeEffect in seconds
+        oldCD = hero.getCooldown();
         hero.setCooldown(newCooldown);
-        //end time
-        hero.setCooldown(tmp);
+        startConsumable = false;
         startEffect = false;
+    }
+}
+
+void GreenBlossom::consumableEffectTime(float dt, Hero &hero){
+    if(!startConsumable){
+        consumableTimeEffect += dt;
+        if(consumableTimeEffect >= 2.0f){//2.0 is the effect time of the consumable
+            consumableTimeEffect = 0;
+            hero.setCooldown(oldCD);
+            startConsumable = true;
+        }
     }
 }
