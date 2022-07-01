@@ -89,9 +89,20 @@ void Item::displayEffect(sf::Vector2f pos, sf::RenderTarget &window){
 void Item::effectTime(float dt){
     if(!startEffect){
         timeEffect += dt;
-        if(timeEffect >= 2.0f){ //0.2 is holdtime
+        if(timeEffect >= 2.0f){ //2.0 is holdtime
             timeEffect = 0.0f;
             startEffect = true;
         }
     }
+}
+
+//consumable effect time
+void Item::consumableEffectTime(float dt, Hero &hero){
+    /*if(!startConsumable){
+        consumableTimeEffect += dt;
+        if(consumableTimeEffect >= 2.0f){//2.0 is the effect time of the consumable
+            consumableTimeEffect = 0;
+            startConsumable = true;
+        }
+    }*///TODO override in other classes
 }

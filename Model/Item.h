@@ -38,8 +38,11 @@ public:
     //method to display different items' effects
     virtual void displayEffect(sf::Vector2f pos, sf::RenderTarget &window);//pos must be updated by getting the position of the hero
 
-    //implementing time for displaying tiems effect
+    //implementing time for displaying times effect
     void effectTime(float dt);
+
+    //implementing time for consumable's effect
+    virtual void consumableEffectTime(float dt, Hero &hero);
 
 protected:
     sf::Sprite itemEffectSprite;
@@ -49,6 +52,8 @@ protected:
     std::wstring itemName;
     bool startEffect = true; //to start displaying item for a period of time
     float timeEffect = 0.0f; //counter time
+    float startConsumable = true;//to start consumable's effect for a period of time
+    float consumableTimeEffect = 0.0f;
     int itemPrice;
     int itemCount;
     std::wstring itemDescription;
