@@ -25,8 +25,6 @@ void Game::gameLoop()
             NPCInteraction = room -> getNPC() -> closeToHero(hero);
         }
         hud.setAggro(NPCInteraction);
-        hero.updateDelay(dt);
-        hud.gettingDelayTime(dt);
         window.clear(sf::Color::Black);
         room -> setDelayTime(dt);
         room -> draw();
@@ -85,6 +83,8 @@ void Game::gameLoop()
                 hud.displayHealthAndEffects(hero);
                 hud.displayMoneyCounter(hero);
                 shop.draw();
+                hero.updateDelay(dt);
+                hud.gettingDelayTime(dt);
             }
         }
         window.display();
