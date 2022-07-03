@@ -17,9 +17,9 @@ public:
 
     void setItemCount(int itemCount);
 
-    virtual void displayItem(float posX, float posY, sf::RenderTarget &window);
+    virtual void displayItem(float posX, float posY, sf::RenderWindow &window);
 
-    void displayName(sf::RenderTarget &window, float nameX, float nameY);
+    void displayName(sf::RenderWindow &window, float nameX, float nameY);
 
     std::wstring getItemName() const;
 
@@ -30,19 +30,19 @@ public:
     virtual void use(Hero &hero);
 
     //displaying item icon for shop
-    void displayShopItemIcon(sf::Vector2f pos, sf::RenderTarget &window);
+    void displayShopItemIcon(sf::Vector2f pos, sf::RenderWindow &window);
 
     //displaying item name for shop
-    void displayShopItemName(sf::Vector2f pos, sf::RenderTarget &window);
+    void displayShopItemName(sf::Vector2f pos, sf::RenderWindow &window);
 
     //method to display different items' effects
-    virtual void displayEffect(sf::Vector2f pos, sf::RenderTarget &window);//pos must be updated by getting the position of the hero
+    virtual void displayEffect(sf::Vector2f pos, sf::RenderWindow &window);
 
     //implementing time for displaying times effect
     void effectTime(float dt);
 
     //implementing time for consumable's effect
-    virtual void consumableEffectTime(float dt, Hero &hero);
+    virtual void consumableEffectTime(float dt, Hero &hero, sf::RenderWindow &window);
 
 protected:
     sf::Sprite itemEffectSprite;

@@ -10,7 +10,7 @@ NullItem::~NullItem(){
     
 }
 
-void NullItem::displayItem(float posX, float posY, sf::RenderTarget &window){
+void NullItem::displayItem(float posX, float posY, sf::RenderWindow &window){
     //blank because null item
 }
 

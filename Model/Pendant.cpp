@@ -11,7 +11,7 @@ Pendant::~Pendant(){
 
 }
 
-void Pendant::displayEffect(sf::Vector2f pos, sf::RenderTarget &window){
+void Pendant::displayEffect(sf::Vector2f pos, sf::RenderWindow &window){
     if(!startEffect){
         pos.x -= 30;
         itemEffectSprite.setPosition(pos);

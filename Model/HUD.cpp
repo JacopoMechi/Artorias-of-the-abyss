@@ -186,11 +186,11 @@ void HUD::drawShopText(std::wstring text, sf::Vector2f textPos){
 
 void HUD::gettingDelayTime(float dt){
     quickSlot[0] -> effectTime(dt);
-    quickSlot[0] -> consumableEffectTime(dt, hero);
+    quickSlot[0] -> consumableEffectTime(dt, hero, window);
     quickSlot[1] -> effectTime(dt);
-    quickSlot[1] -> consumableEffectTime(dt, hero);
+    quickSlot[1] -> consumableEffectTime(dt, hero, window);
     quickSlot[2] -> effectTime(dt);
-    quickSlot[2] -> consumableEffectTime(dt, hero);
+    quickSlot[2] -> consumableEffectTime(dt, hero, window);
 }
 
 void HUD::useItem(int nItem, Hero &hero){

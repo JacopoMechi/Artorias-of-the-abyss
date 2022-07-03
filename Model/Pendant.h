@@ -9,7 +9,7 @@ public://is it correct the override like this?
                      std::wstring itemDescription = L"Permette la deviazione \ndelle spells", int maxItemCount = 1, int itemCount = 0,
                      sf::IntRect spriteRect = {498, 99, 23, 17}, sf::IntRect effectRect = {525, 191, 25, 26});
     virtual ~Pendant();
-    virtual void displayEffect(sf::Vector2f pos, sf::RenderTarget &window) override;
+    virtual void displayEffect(sf::Vector2f pos, sf::RenderWindow &window) override;
     virtual void use(Hero& hero) override;
 private:
     int immuneTime = 3;

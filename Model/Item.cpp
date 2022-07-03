@@ -31,7 +31,7 @@ void Item::setItemCount(int itemCount)
     this->itemCount = itemCount;
 }
 
-void Item::displayItem(float posX, float posY, sf::RenderTarget &window){
+void Item::displayItem(float posX, float posY, sf::RenderWindow &window){
     sprite.setPosition({posX, posY});
     if(itemCount <= 0)
         //display gray sprite
@@ -41,7 +41,7 @@ void Item::displayItem(float posX, float posY, sf::RenderTarget &window){
     window.draw(sprite);
 }
 
-void Item::displayName(sf::RenderTarget &window, float nameX, float nameY){
+void Item::displayName(sf::RenderWindow &window, float nameX, float nameY){
     if(itemCount > 0){
         name.setPosition(nameX, nameY);
         name.setString(itemName);
@@ -69,17 +69,17 @@ void Item::use(Hero &hero){
     
 }
 
-void Item::displayShopItemIcon(sf::Vector2f pos, sf::RenderTarget &window){
+void Item::displayShopItemIcon(sf::Vector2f pos, sf::RenderWindow &window){
     shopItemSprite.setPosition(pos);
     window.draw(shopItemSprite);
 }
 
-void Item::displayShopItemName(sf::Vector2f pos, sf::RenderTarget &window){
+void Item::displayShopItemName(sf::Vector2f pos, sf::RenderWindow &window){
     shopItemText.setPosition(pos);
     window.draw(shopItemText);
 }
 
-void Item::displayEffect(sf::Vector2f pos, sf::RenderTarget &window){
+void Item::displayEffect(sf::Vector2f pos, sf::RenderWindow &window){
     if(!startEffect){
         itemEffectSprite.setPosition(pos);
         window.draw(itemEffectSprite);
@@ -97,7 +97,7 @@ void Item::effectTime(float dt){
 }
 
 //consumable effect time
-void Item::consumableEffectTime(float dt, Hero &hero){
+void Item::consumableEffectTime(float dt, Hero &hero, sf::RenderWindow &window){
     /*if(!startConsumable){
         consumableTimeEffect += dt;
         if(consumableTimeEffect >= 2.0f){//2.0 is the effect time of the consumable
