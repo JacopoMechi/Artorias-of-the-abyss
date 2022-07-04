@@ -22,10 +22,20 @@ void Pendant::displayEffect(sf::Vector2f pos, sf::RenderWindow &window){
 void Pendant::use(Hero& hero) {//TODO implement hold time
     if(itemCount > 0){
         itemCount --;
-        int tmp = hero.getArmor();
+        oldArmor = hero.getArmor();
         hero.setArmor(100);
-        //wait 3 seconds with immuneTime
-        hero.setArmor(tmp);
         startEffect = false;
+        startConsumable = false;
+    }
+}
+
+void Pendant::consumableEffectTime(float dt, Hero &hero, sf::RenderWindow &window){
+    if(!startConsumable){
+        consumableTimeEffect += dt;
+        if(consumableTimeEffect >= immuneTime){
+            consumableTimeEffect = 0;
+            hero.setArmor(oldArmor);
+            startConsumable = true;
+        }
     }
 }
