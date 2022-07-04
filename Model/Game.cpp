@@ -75,7 +75,7 @@ void Game::gameLoop()
                     }
                 }
                 hud.setTextPool(npc.getTextPool());
-                inputs.setHeroNPCAggro(entityInteraction);
+                inputs.setHeroEntityAggro(entityInteraction);
                 hero.movement(false, entityInteraction);//for the moment
                 hero.update(dt);
                 hero.draw(window);

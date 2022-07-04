@@ -17,7 +17,7 @@ public:
 
     void moveHero(sf::Event keyInput);
 
-    void setHeroNPCAggro(bool status);
+    void setHeroEntityAggro(bool status);
 
     void setEntityCollision(GameCharacter *entityCollision);
     void setEntityCollision(RoomElement *element);

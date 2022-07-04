@@ -139,7 +139,7 @@ void CharacterInputs::moveHero(sf::Event keyInput){
 
 }
 
-void CharacterInputs::setHeroNPCAggro(bool status){
+void CharacterInputs::setHeroEntityAggro(bool status){
     isInRange = status;
 }
 
