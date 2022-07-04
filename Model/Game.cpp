@@ -22,9 +22,9 @@ void Game::gameLoop()
             shop.setNPCType(room -> getNPC() -> getNPCType());//TODO for the moment
             hud.setType(room -> getNPC() -> getNPCType());
             inputs.setEntityCollision(room -> getNPC());
-            NPCInteraction = room -> getNPC() -> closeToHero(hero);
+            entityInteraction = room -> getNPC() -> closeToHero(hero);
         }
-        hud.setAggro(NPCInteraction);
+        hud.setAggro(entityInteraction);
         window.clear(sf::Color::Black);
         room -> setDelayTime(dt);
         room -> draw();
@@ -75,8 +75,8 @@ void Game::gameLoop()
                     }
                 }
                 hud.setTextPool(npc.getTextPool());
-                inputs.setHeroNPCAggro(NPCInteraction);
-                hero.movement(false, NPCInteraction);//for the moment
+                inputs.setHeroNPCAggro(entityInteraction);
+                hero.movement(false, entityInteraction);//for the moment
                 hero.update(dt);
                 hero.draw(window);
                 hud.draw();

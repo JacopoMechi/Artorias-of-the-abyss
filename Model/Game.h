@@ -37,7 +37,7 @@ private:
 
     int levelReached = 0;
     float dt = 0.0f;
-    bool NPCInteraction = false;//to block character when is interacting with an NPC
+    bool entityInteraction = false;//to block character when is interacting with an NPC or a bonfire
 
     //for room factory creation
     std::unique_ptr<RoomFactory> gameRooms;
