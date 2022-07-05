@@ -11,6 +11,7 @@
 #include "Gate.h"
 #include "Bonfire.h"
 #include "GameCharacters/Enemies/Enemy.h"
+#include "NPC.h"
 
 class Room
 {
@@ -23,10 +24,15 @@ public:
     void spawnEntity(RoomElement *roomElement);
     void draw();
 
+    Bonfire *getBonfire();
+    NPC *getNPC();
+    void setDelayTime(float dt);
+
 protected:
     std::vector<std::unique_ptr<RoomElement>> roomElementsVector;
     std::vector<std::unique_ptr<Enemy>> enemyVector;
     std::unique_ptr<Bonfire> bonfire;
+    std::unique_ptr<NPC> npc;
     std::string roomFilePath;
     const std::string roomPath1 = "../Textures/Lvl1.png";
     const std::string roomPath2 = "../Textures/Lvl2.png";
@@ -35,5 +41,6 @@ protected:
     sf::Sprite roomSprite;
     sf::RenderWindow &window;
     int level;
+    float dt = 0; // to take delay time for bonfire animation
 };
 #endif

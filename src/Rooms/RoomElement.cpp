@@ -2,16 +2,13 @@
 
 void RoomElement::draw()
 {
-    roomElementSprite.setTextureRect(RoomElement::spriteFrames[frame]);
-    window.draw(roomElementSprite);
-    if (spriteFrames.size() > 1)
-    {
-        if (frame < spriteFrames.size() - 1)
-            frame++;
-        else
-            frame = 0;
+    animationTime += dt;
+    if(animationTime >= animationHolding){
+        frame = (++frame) % spriteFrames.size();
+        animationTime = 0;
     }
 
+    roomElementSprite.setTextureRect(RoomElement::spriteFrames[frame]);
     window.draw(roomElementSprite);
 }
 
@@ -28,6 +25,10 @@ void RoomElement::setPos(sf::Vector2f &newPos)
 sf::Vector2f RoomElement::getSize() const
 {
     return {this->roomElementSprite.getScale().x * spriteFrames[frame].width, this->roomElementSprite.getScale().y * spriteFrames[frame].height};
+}
+
+void RoomElement::setDelayTime(float dt){
+    this -> dt = dt;
 }
 
 RoomElement::RoomElement(sf::RenderWindow &window, const std::string &roomElementFilePath) : window(window)

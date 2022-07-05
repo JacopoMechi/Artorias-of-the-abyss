@@ -12,7 +12,8 @@ find_package(SFML 2 COMPONENTS network audio graphics window system REQUIRED)
 
 include_directories(src)
 
-add_executable(${EXECUTABLE_NAME} main.cpp
+add_executable(${EXECUTABLE_NAME}
+    main.cpp
     src/Game.h
     src/Game.cpp
 

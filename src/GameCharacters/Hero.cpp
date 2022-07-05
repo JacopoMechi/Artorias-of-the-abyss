@@ -47,6 +47,17 @@ void Hero::setDash(int dashCount)
 {
     this->dashCount = dashCount;
 }
+
+void Hero::setDirX(float value)
+{
+    dir.x = value;
+}
+
+void Hero::setDirY(float value)
+{
+    dir.y = value;
+}
+
 int Hero::getCooldown() const
 {
     return dashTimeHolding;
@@ -118,9 +129,6 @@ void Hero::dash()
         pos += dashing;
     }
 }
-void Hero::switchZone()
-{ // TODO useful later maybe
-}
 void Hero::useBonfire()
 {
 }
@@ -186,7 +194,7 @@ void Hero::attack()
 }
 
 // handling character action inputs like attack, roll, interact
-void Hero::updateDelayAndInputs(sf::Event keyInput, float dt)
+void Hero::updateDelay(float dt)
 {
     // updating delay time
     delayTime = dt;

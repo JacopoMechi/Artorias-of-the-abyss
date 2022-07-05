@@ -14,11 +14,22 @@ void Game::gameLoop()
             inGameMenu.updateEvent(event);
             if (event.type == sf::Event::Closed)
                 window.close();
-            hud.updateEvent(event);
+            inputs.updateInputs(event);
         }
-        hero.updateDelayAndInputs(event, dt);
+        inputs.setEntityCollision(room->getBonfire());
+        inputs.moveHero(event);
+        if (room->getNPC() != 0)
+        {                                                  // calling function in case NPC exists
+            shop.setNPCType(room->getNPC()->getNPCType()); // TODO for the moment
+            hud.setType(room->getNPC()->getNPCType());
+            inputs.setEntityCollision(room->getNPC());
+            NPCInteraction = room->getNPC()->closeToHero(hero);
+        }
+        hud.setAggro(NPCInteraction);
+        hero.updateDelay(dt);
         hud.gettingDelayTime(dt);
         window.clear(sf::Color::Black);
+        room->setDelayTime(dt);
         room->draw();
         if (gameStatus == Game::Status::MainMenu) // Main Menu Status
         {
@@ -38,18 +49,15 @@ void Game::gameLoop()
                 gameStatus = Game::Status::InGameMenu;
             else
             {
-                changeRoom();
                 hud.setTextPool(npc.getTextPool());
-                hud.setNPCType(npc.getNPCType());
-                NPCInteraction = hud.getIsInteraction();
-                hero.movement(hud.getInvIsOpen(), NPCInteraction);
+                inputs.setHeroNPCAggro(NPCInteraction);
+                hero.movement(false, NPCInteraction); // for the moment
                 hero.update(dt);
-                hero.draw();
-                npc.draw();
-                hud.checkNPCAggro(npc);
+                hero.draw(window);
                 hud.draw();
                 hud.displayHealthAndEffects(hero);
                 hud.displayMoneyCounter(hero);
+                shop.draw();
             }
         }
         window.display();
@@ -90,7 +98,7 @@ void Game::changeRoom()
     }
 }
 
-Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inGameMenu(window, 0), window(window), hero(window, {500.0f, 500.0f}, 1, 20, 0, 500.0f, true), hud(window, hero),
-                                       room(roomsFactory->createRoom(window, level)), npc(window, 1, {300, 300})
+Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inventory(window), inGameMenu(window, 0), window(window), hero(window, {500.0f, 500.0f}, 1, 20, 0, 500.0f, true), hud(window, hero, inventory),
+                                       room(roomsFactory->createRoom(window, level)), npc(window, 1, {300, 300}), shop(window), inputs(inventory, hud, hero, shop)
 {
 }

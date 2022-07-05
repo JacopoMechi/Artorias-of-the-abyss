@@ -22,8 +22,11 @@ public:
 
     // disabling inherited methods
     virtual void receiveDamage(int points) override; // to be unkillable
-    virtual void attack() override;
+    virtual void attack(sf::RenderWindow &window) override;
     virtual void movement(bool isInventoryOpen, bool isInteracting) override;
+
+    // to know if hero is close to npcs
+    bool closeToHero(Hero &hero);
 
     // method to let HUD get text pool
     std::vector<std::wstring> getTextPool() const;
@@ -32,6 +35,9 @@ public:
     int getNPCType() const;
 
 private:
+    // getting window from main
+    sf::RenderWindow &window;
+
     // loading hud textures
     sf::Texture hudTexture;
 

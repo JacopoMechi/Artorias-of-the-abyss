@@ -9,6 +9,9 @@
 #include "HUD.h"
 #include "Rooms/RoomFactory.h"
 #include "GameCharacters/NPC.h"
+#include "Inventory.h"
+#include "CharacterInputs.h"
+#include "Shop.h"
 
 class Game
 {
@@ -45,8 +48,11 @@ private:
     Hero hero;
     HUD hud;
     NPC npc;
+    Inventory inventory;
+    Shop shop;
     sf::Clock clock;
     sf::Event event;
+    CharacterInputs inputs;
 };
 
 #endif //_GAME_H
