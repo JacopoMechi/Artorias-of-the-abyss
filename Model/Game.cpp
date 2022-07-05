@@ -18,14 +18,14 @@ void Game::gameLoop()
         }
         inputs.setEntityCollision(room -> getBonfire());
         inputs.moveHero(event);
-        if(room -> getNPC() != 0 ){//calling function in case NPC exists  //&& room -> getBonfire() != 0
-            shop.setNPCType(room -> getNPC() -> getNPCType());//TODO for the moment
+        if(room -> getNPC() != 0 ){//calling function in case NPC doesn't exists
+            shop.setNPCType(room -> getNPC() -> getNPCType());
             hud.setType(room -> getNPC() -> getNPCType());
             inputs.setEntityCollision(room -> getNPC());
             NPCInteraction = room -> getNPC() -> closeToHero(hero);
             hud.setTextPool(room -> getNPC() -> getTextPool());
         }
-        if(room -> getBonfire() != 0 ){
+        if(room -> getBonfire() != 0 ){//calling function in case bonfire doesn't exists
             entityInteraction = room -> getBonfire() -> closeToHero(hero.getPos());
             inputs.setEntityCollision(room -> getBonfire());
         }
