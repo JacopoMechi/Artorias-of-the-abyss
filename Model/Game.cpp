@@ -79,7 +79,8 @@ void Game::gameLoop()
                         swapRoom(roomType[roomTracker], level);
                     }
                 }
-                if(inventory.receiveItem(2) -> getIsRespawn()){
+                //teleporting hero at respawn point in case he's dead or he used an homeward bone
+                if(inventory.receiveItem(2) -> getIsRespawn() || hero.getHp() == 0){
                     if(hero.getSpawnPoint().x == 500.0f){//which means if spawn spoint is set to starting room
                         roomTracker = 0;
                         swapRoom(roomType[roomTracker], level);
@@ -88,6 +89,8 @@ void Game::gameLoop()
                         swapRoom(roomType[roomTracker], level);
                     }
                     hero.setPos(hero.getSpawnPoint());
+                    hero.setHp(100);//reset hero's hp
+                    inventory.receiveItem(0) -> setItemCount(5 -  inventory.receiveItem(0) -> getItemCount());//reset estus flask amount
                     inventory.receiveItem(2) -> setIsRespawn(false);
                 }
                 inputs.setHeroEntityAggro(NPCInteraction, entityInteraction);
