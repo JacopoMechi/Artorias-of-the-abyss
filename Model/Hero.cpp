@@ -203,8 +203,12 @@ void Hero::movement(bool isInventoryOpen, bool isInteracting){
 
 }
 
-void Hero::respawn(float posX, float posY){
-    // finish hero
+void Hero::setSpawnPoint(sf::Vector2f pos){
+    respawnPos = pos;
+}
+
+sf::Vector2f Hero::getSpawnPoint() const{
+    return respawnPos;
 }
 
 //setting spell direction

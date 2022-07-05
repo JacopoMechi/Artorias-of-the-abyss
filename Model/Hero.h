@@ -61,7 +61,9 @@ public:
     
     virtual void movement(bool isInventoryOpen, bool isInteracting) override;
     
-    void respawn(float posX, float posY);
+    //getter and setter for respawn point for hero
+    void setSpawnPoint(sf::Vector2f pos);
+    sf::Vector2f getSpawnPoint() const;
 
     void setSpellDirection();
 
@@ -107,7 +109,8 @@ protected:
     float attackTimeHolding = 3.0f;
     float attackTime = 0.0f;
 
-    int amount;
+    //setting respawn position
+    sf::Vector2f respawnPos = {500.0f, 500.0f};
 
     //for setting weapon pos when character is moving
     float weaponPosX;
