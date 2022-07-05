@@ -11,7 +11,7 @@
 #include "Gate.h"
 #include "Bonfire.h"
 #include "GameCharacters/Enemies/Enemy.h"
-#include "NPC.h"
+#include "GameCharacters/NPC.h"
 
 class Room
 {

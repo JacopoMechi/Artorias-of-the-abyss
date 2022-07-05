@@ -76,7 +76,7 @@ void HUD::draw()
     if (hero.getCharacterType())
     {
         if (hero.getStartAnimation())
-            hero.attack(window);
+            hero.attack();
         if (!hero.getCanAttack())
             this->obscureButton({1750, 375});
     }
@@ -84,11 +84,11 @@ void HUD::draw()
     {
         // obscure and starting spell attack
         if (hero.getStartAnimation()) // for showing the mage's staff
-            hero.attack(window);
+            hero.attack();
         if (hero.getStartingSpell())
         { // displaying spell and obscuring attack icon
             this->obscureButton({1750, 375});
-            hero.castSpell(window);
+            hero.castSpell();
         }
     }
     // obscure dash button when dashes uses reaches 0
@@ -97,7 +97,7 @@ void HUD::draw()
     // handling aura shield active time and obscuring aura shield sprite
     if (!hero.getAuraReady())
     {
-        hero.blockDamage(window);
+        hero.blockDamage();
         this->obscureButton({1750, 508});
         // obscuring aura shield button if is Mage
     }

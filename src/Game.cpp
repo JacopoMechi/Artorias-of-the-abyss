@@ -53,7 +53,7 @@ void Game::gameLoop()
                 inputs.setHeroNPCAggro(NPCInteraction);
                 hero.movement(false, NPCInteraction); // for the moment
                 hero.update(dt);
-                hero.draw(window);
+                hero.draw();
                 hud.draw();
                 hud.displayHealthAndEffects(hero);
                 hud.displayMoneyCounter(hero);

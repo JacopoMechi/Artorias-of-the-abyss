@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GameCharacter.h"
+#include "GameCharacters/GameCharacter.h"
 #include "Inventory.h"
 #include "Item.h"
 #include "EstusFlask.h"
@@ -11,7 +11,7 @@
 #include "HomewardBone.h"
 #include "Pendant.h"
 #include "NullItem.h"
-#include "NPC.h"
+#include "GameCharacters/NPC.h"
 
 class HUD
 {

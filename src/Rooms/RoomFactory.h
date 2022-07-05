@@ -7,7 +7,9 @@
 
 #include "Room.h"
 #include "StartRoom.h"
-#include "MiddleRoom.h"
+#include "SecondRoom.h"
+#include "ThirdRoom.h"
+#include "FourthRoom.h"
 #include "FinalRoom.h"
 
 class RoomFactory

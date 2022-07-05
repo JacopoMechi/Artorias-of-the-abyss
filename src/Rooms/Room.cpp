@@ -24,7 +24,7 @@ void Room::draw()
         bonfire->draw();
     }
     if (npc != nullptr)
-        npc->draw(window);
+        npc->draw();
 }
 
 Bonfire *Room::getBonfire()

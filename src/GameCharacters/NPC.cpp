@@ -1,6 +1,6 @@
 #include "NPC.h"
 
-NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed) : window(window), type(type), GameCharacter(pos, hp, armor, cash, movementSpeed)
+NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed) : window(window), type(type), GameCharacter(window, pos, hp, armor, cash, movementSpeed)
 {
     // loading NPC's texture
     if (!texture.loadFromFile("../Textures/Textures.png"))
@@ -53,7 +53,7 @@ void NPC::receiveDamage(int points)
     std::cout << "Error: cannot use receiveDamage function in NPC class" << std::endl;
 }
 
-void NPC::attack(sf::RenderWindow &window)
+void NPC::attack()
 {
     std::cout << "Error: cannot use attack function in NPC class" << std::endl;
 }
@@ -65,7 +65,7 @@ void NPC::movement(bool isInvetoryOpen, bool isInteracting)
 
 bool NPC::closeToHero(Hero &hero)
 {
-    if (isAggro(190, hero))
+    if (isInteractable(190, hero))
         return true;
     else
         return false;

@@ -3,14 +3,15 @@
 
 #include "Inventory.h"
 #include "HUD.h"
-#include "Hero.h"
+#include "GameCharacters/Hero.h"
 #include "Shop.h"
-#include "GameCharacter.h"
-#include "RoomElement.h"
+#include "GameCharacters/GameCharacter.h"
+#include "Rooms/RoomElement.h"
 
-class CharacterInputs{
+class CharacterInputs
+{
 public:
-    //getting Inventory and hud from main game
+    // getting Inventory and hud from main game
     CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero, Shop &shop);
 
     void updateInputs(sf::Event keyInputs);
@@ -26,13 +27,13 @@ public:
     void solveElementCollision();
 
 private:
-    //all the stuff needed to handle inputs
+    // all the stuff needed to handle inputs
     Inventory &inventory;
     HUD &hud;
     Hero &hero;
     Shop &shop;
-    GameCharacter* entityCollision = nullptr;
-    RoomElement* element = 0;
+    GameCharacter *entityCollision = nullptr;
+    RoomElement *element = 0;
     bool isInRange = false;
 };
 

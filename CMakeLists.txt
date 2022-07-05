@@ -84,7 +84,13 @@ add_executable(${EXECUTABLE_NAME}
     src/Pendant.h
     src/Pendant.cpp
     src/NullItem.h
-    src/NullItem.cpp)
+    src/NullItem.cpp
+    src/CharacterInputs.h
+    src/CharacterInputs.cpp
+    src/Shop.h
+    src/Shop.cpp
+    src/Inventory.h
+    src/Inventory.cpp)
 
 if(SFML_FOUND)
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-window sfml-system)
