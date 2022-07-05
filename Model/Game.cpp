@@ -99,6 +99,9 @@ void Game::gameLoop()
 
 void Game::swapRoom(std::string tracker, int floor){
     room = gameRooms -> makeRoom(tracker, window, floor);
+    //setting spawn point for hero in case it changes level and he's in the first room
+    if(roomType[roomTracker] == "startingRoom")
+        hero.setSpawnPoint({500.0f, 500.f});
 }
 
 Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inventory(window), inGameMenu(window, 0), window(window), hero(true, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero, inventory), 

@@ -106,6 +106,8 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         }else if(entityInRange){
             hero.setHp(100);
             inventory.setItemAmount(0, 10 - inventory.receiveItem(0) -> getItemCount());
+            //changing spawn point of hero close to bonfire
+            hero.setSpawnPoint({(element -> getPos().x + element -> getSize().x), (element -> getPos().y + element -> getSize().y)});
         }
     }
 
