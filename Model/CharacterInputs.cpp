@@ -97,7 +97,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     
     //handling inputs for interaction with npc
     if(!inventory.getOpen() && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
-        if(NPCInRange){//TODO npc must be better
+        if(NPCInRange){
             //to open/close shop
             hud.setInteraction(!hud.getInteraction());
             hud.setIsTalking(false);
