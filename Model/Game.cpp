@@ -62,7 +62,7 @@ void Game::gameLoop()
 
                         //switching to next room
                         roomTracker++;
-                        this -> swapRoom(roomType[roomTracker], level);
+                        swapRoom(roomType[roomTracker], level);
                     }
                 }
                 if (room->leftGate != nullptr)
@@ -76,8 +76,19 @@ void Game::gameLoop()
                         
                         //switching to previous room
                         roomTracker--;
-                        this -> swapRoom(roomType[roomTracker], level);
+                        swapRoom(roomType[roomTracker], level);
                     }
+                }
+                if(inventory.receiveItem(2) -> getIsRespawn()){
+                    if(hero.getSpawnPoint().x == 500.0f){//which means if spawn spoint is set to starting room
+                        roomTracker = 0;
+                        swapRoom(roomType[roomTracker], level);
+                    }else{//if hero interacted with a bonfire
+                        roomTracker = 1;//for the moment because middleroom must be in the middle of the level
+                        swapRoom(roomType[roomTracker], level);
+                    }
+                    hero.setPos(hero.getSpawnPoint());
+                    inventory.receiveItem(2) -> setIsRespawn(false);
                 }
                 inputs.setHeroEntityAggro(NPCInteraction, entityInteraction);
                 hero.movement(false, entityInteraction);//for the moment

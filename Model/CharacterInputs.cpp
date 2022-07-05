@@ -97,7 +97,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     
     //handling inputs for interaction with npc
     if(!inventory.getOpen() && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
-        if(NPCInRange){//TODO npc must be better//priority on interacting 
+        if(NPCInRange){//TODO npc must be better
             //to open/close shop
             hud.setInteraction(!hud.getInteraction());
             hud.setIsTalking(false);
@@ -105,9 +105,9 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
             shop.setOpen(false);
         }else if(entityInRange){
             hero.setHp(100);
-            inventory.setItemAmount(0, 10 - inventory.receiveItem(0) -> getItemCount());
+            inventory.setItemAmount(0, 5 - inventory.receiveItem(0) -> getItemCount());
             //changing spawn point of hero close to bonfire
-            hero.setSpawnPoint({(element -> getPos().x + element -> getSize().x), (element -> getPos().y + element -> getSize().y)});
+            hero.setSpawnPoint({element -> getPos().x + element -> getSize().x, element -> getPos().y});
         }
     }
 

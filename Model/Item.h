@@ -44,7 +44,13 @@ public:
     //implementing time for consumable's effect
     virtual void consumableEffectTime(float dt, Hero &hero, sf::RenderWindow &window);
 
+    //for homeward bone to respawn hero next to bonfire or at the starting room
+    bool getIsRespawn() const;
+    void setIsRespawn(bool isRespawn);
+
 protected:
+    //for homeward bone
+    bool isRespawn = false;
     sf::Sprite itemEffectSprite;
     sf::Text shopItemText; //to display item name in shop
     sf::Sprite shopItemSprite; //to display the item in shop

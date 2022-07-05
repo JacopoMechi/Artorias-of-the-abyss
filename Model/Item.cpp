@@ -98,11 +98,13 @@ void Item::effectTime(float dt){
 
 //consumable effect time
 void Item::consumableEffectTime(float dt, Hero &hero, sf::RenderWindow &window){
-    /*if(!startConsumable){
-        consumableTimeEffect += dt;
-        if(consumableTimeEffect >= 2.0f){//2.0 is the effect time of the consumable
-            consumableTimeEffect = 0;
-            startConsumable = true;
-        }
-    }*///TODO override in other classes
+    //overrided in other classes
+}
+
+bool Item::getIsRespawn() const{
+    return isRespawn;
+}
+
+void Item::setIsRespawn(bool isRespawn){
+    this -> isRespawn = isRespawn;
 }
