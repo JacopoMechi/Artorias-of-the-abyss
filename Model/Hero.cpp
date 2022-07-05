@@ -118,10 +118,6 @@ void Hero::dash()
     }
 }
 
-void Hero::useBonfire()
-{
-}
-
 void Hero::blockDamage(sf::RenderWindow &window)
 {
     auraShield.setPosition((pos.x - 10), (pos.y - 3)); //(pos.x+3), (pos.y+3)

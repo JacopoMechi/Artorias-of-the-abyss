@@ -126,7 +126,7 @@ void HUD::draw() {
             this -> drawShopText(L"[1] Parla       [Q] Esci",{825, 325});
     }
     
-    if(isTalking){//TODO hud must acquire npc's text pool
+    if(isTalking){
         //showing npc's dialogue box
         this -> drawInteractBox({800, 303});
         //showing dialouge
@@ -209,11 +209,13 @@ void HUD::setType(int NPCType){
     this -> NPCType = NPCType;
 }
 
-void HUD::setAggro(bool isAggro){
-    this -> isAggro = isAggro;
+void HUD::setAggro(bool entityInRange,bool NPCInRange){
+    if(entityInRange || NPCInRange)
+        isAggro = true;
+    else
+        isAggro = false;
 }
 
-//TODO for the moment
 bool HUD::getIsTalking(){
     return isTalking;
 }
@@ -222,7 +224,6 @@ void HUD::setIsTalking(bool isTalking){
     this -> isTalking = isTalking;
 }
 
-//TODO for the moment
 void HUD::nextPhrase(){//TODO LATER adjust dialogue depending on situations (like changing chester's text pool when Artorias is killed)
     dialogueTracker = (dialogueTracker+1)%(textPool.size()/2);//FIXME why /2?
 }

@@ -18,13 +18,18 @@ void Game::gameLoop()
         }
         inputs.setEntityCollision(room -> getBonfire());
         inputs.moveHero(event);
-        if(room -> getNPC() != 0){//calling function in case NPC exists
+        if(room -> getNPC() != 0 ){//calling function in case NPC exists  //&& room -> getBonfire() != 0
             shop.setNPCType(room -> getNPC() -> getNPCType());//TODO for the moment
             hud.setType(room -> getNPC() -> getNPCType());
             inputs.setEntityCollision(room -> getNPC());
-            entityInteraction = room -> getNPC() -> closeToHero(hero);
+            NPCInteraction = room -> getNPC() -> closeToHero(hero);
+            hud.setTextPool(room -> getNPC() -> getTextPool());
         }
-        hud.setAggro(entityInteraction);
+        if(room -> getBonfire() != 0 ){
+            entityInteraction = room -> getBonfire() -> closeToHero(hero.getPos());
+            inputs.setEntityCollision(room -> getBonfire());
+        }
+        hud.setAggro(entityInteraction, NPCInteraction);
         window.clear(sf::Color::Black);
         room -> setDelayTime(dt);
         room -> draw();
@@ -74,8 +79,7 @@ void Game::gameLoop()
                         this -> swapRoom(roomType[roomTracker], level);
                     }
                 }
-                hud.setTextPool(npc.getTextPool());
-                inputs.setHeroEntityAggro(entityInteraction);
+                inputs.setHeroEntityAggro(NPCInteraction, entityInteraction);
                 hero.movement(false, entityInteraction);//for the moment
                 hero.update(dt);
                 hero.draw(window);
@@ -99,7 +103,7 @@ void Game::swapRoom(std::string tracker, int floor){
 
 Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inventory(window), inGameMenu(window, 0), window(window), hero(true, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero, inventory), 
     room(gameRooms -> makeRoom("startingroom", window, 1)), roomType{std::string("startingroom"),std::string("middleroom"), std::string("room"), std::string("room"), std::string("room")},
-    npc(window, 1, {300, 300}), shop(window), inputs(inventory, hud, hero, shop)
+    shop(window), inputs(inventory, hud, hero, shop)
 {
     
 }

@@ -7,7 +7,6 @@
 
 #include <SFML/Graphics.hpp>
 #include "GameCharacter.h"
-#include "Bonfire.h"
 
 
 
@@ -53,8 +52,6 @@ public:
     void setMoneyAmount(int moneyCounter);
 
     void dash();
-    
-    void useBonfire();
 
     void blockDamage(sf::RenderWindow &window);
     
@@ -110,8 +107,6 @@ protected:
     float attackTimeHolding = 3.0f;
     float attackTime = 0.0f;
 
-    //int cooldown = 5;
-    Bonfire* bonfire ;
     int amount;
 
     //for setting weapon pos when character is moving

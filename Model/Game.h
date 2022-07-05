@@ -37,7 +37,8 @@ private:
 
     int levelReached = 0;
     float dt = 0.0f;
-    bool entityInteraction = false;//to block character when is interacting with an NPC or a bonfire
+    bool entityInteraction = false;//to block character when is interacting with a bonfire
+    bool NPCInteraction = false;//to block character when is interacting with an NPC
 
     //for room factory creation
     std::unique_ptr<RoomFactory> gameRooms;
@@ -49,7 +50,6 @@ private:
     sf::RenderWindow &window;
     Hero hero;
     HUD hud;
-    NPC npc;
     Inventory inventory;
     Shop shop;
     sf::Clock clock;

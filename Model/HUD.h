@@ -67,13 +67,13 @@ public:
     void setType(int NPCType);
 
     //setting aggro to obscure interact button in case hero is not in range
-    void setAggro(bool isAggro);
+    void setAggro(bool entityInRange, bool NPCInRange);
 
-    //getter and setter for talking//TODO for the moment
+    //getter and setter for talking
     bool getIsTalking();
     void setIsTalking(bool isTalking);
 
-    //method to go through npc's phrases//TODO must be revisited
+    //method to go through npc's phrases
     void nextPhrase();
 
 protected:

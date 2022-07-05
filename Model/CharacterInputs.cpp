@@ -97,12 +97,15 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     
     //handling inputs for interaction with npc
     if(!inventory.getOpen() && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q){
-        if(isInRange){//TODO npc must be better
+        if(NPCInRange){//TODO npc must be better//priority on interacting 
             //to open/close shop
             hud.setInteraction(!hud.getInteraction());
             hud.setIsTalking(false);
             //resetting shop
             shop.setOpen(false);
+        }else if(entityInRange){
+            hero.setHp(100);
+            inventory.setItemAmount(0, 10 - inventory.receiveItem(0) -> getItemCount());
         }
     }
 
@@ -139,8 +142,9 @@ void CharacterInputs::moveHero(sf::Event keyInput){
 
 }
 
-void CharacterInputs::setHeroEntityAggro(bool status){
-    isInRange = status;
+void CharacterInputs::setHeroEntityAggro(bool NPCStatus, bool entityStatus){
+    entityInRange = entityStatus;
+    NPCInRange = NPCStatus;
 }
 
 
