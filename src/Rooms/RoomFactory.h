@@ -7,16 +7,16 @@
 
 #include "Room.h"
 #include "StartRoom.h"
-#include "SecondRoom.h"
-#include "ThirdRoom.h"
-#include "FourthRoom.h"
+#include "MiddleRoom.h"
 #include "FinalRoom.h"
 
-class RoomFactory
-{
-public:
-    RoomFactory() {}
 
-    std::unique_ptr<Room> createRoom(sf::RenderWindow &window, int roomLevel) const;
+class RoomFactory{
+public:
+    RoomFactory(){}
+
+    std::unique_ptr<Room> makeRoom(std::string type, sf::RenderWindow &window, int roomLevel) const;
+
+    std::unique_ptr<Room> createRoom(std::string type, sf::RenderWindow &window, int roomLevel) const;
 };
 #endif

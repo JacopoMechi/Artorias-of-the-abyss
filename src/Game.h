@@ -26,19 +26,22 @@ public:
     };
     void setStatus(Game::Status gameStatus);
     void gameLoop();
-    void changeRoom();
+    void swapRoom(std::string tracker, int floor);
     Game(sf::RenderWindow &window);
 
 private:
-    // to manage rooms and levels
-    int level = 1; // current level
-    int levelReached = 10;
+    //to manage rooms and floors
+    std::string roomType[5];//array of room names
+    int roomTracker = 0;//for tracking what room needs to be spawned
+    int level = 1;//for floors
 
+    int levelReached = 0;
     float dt = 0.0f;
-    bool NPCInteraction = false; // to block character when is interacting with an NPC
+    bool entityInteraction = false;//to block character when is interacting with a bonfire
+    bool NPCInteraction = false;//to block character when is interacting with an NPC
 
-    // for room factory creation
-    std::unique_ptr<RoomFactory> roomsFactory;
+    //for room factory creation
+    std::unique_ptr<RoomFactory> gameRooms;
     std::unique_ptr<Room> room;
 
     Status gameStatus = Game::Status::MainMenu;
@@ -47,7 +50,6 @@ private:
     sf::RenderWindow &window;
     Hero hero;
     HUD hud;
-    NPC npc;
     Inventory inventory;
     Shop shop;
     sf::Clock clock;

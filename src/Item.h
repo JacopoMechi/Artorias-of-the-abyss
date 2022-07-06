@@ -17,9 +17,9 @@ public:
 
     void setItemCount(int itemCount);
 
-    virtual void displayItem(float posX, float posY, sf::RenderTarget &window);
+    virtual void displayItem(float posX, float posY, sf::RenderWindow &window);
 
-    void displayName(sf::RenderTarget &window, float nameX, float nameY);
+    void displayName(sf::RenderWindow &window, float nameX, float nameY);
 
     std::wstring getItemName() const;
 
@@ -29,26 +29,37 @@ public:
 
     virtual void use(Hero &hero);
 
-    // displaying item icon for shop
-    void displayShopItemIcon(sf::Vector2f pos, sf::RenderTarget &window);
+    //displaying item icon for shop
+    void displayShopItemIcon(sf::Vector2f pos, sf::RenderWindow &window);
 
-    // displaying item name for shop
-    void displayShopItemName(sf::Vector2f pos, sf::RenderTarget &window);
+    //displaying item name for shop
+    void displayShopItemName(sf::Vector2f pos, sf::RenderWindow &window);
 
-    // method to display different items' effects
-    virtual void displayEffect(sf::Vector2f pos, sf::RenderTarget &window); // pos must be updated by getting the position of the hero
+    //method to display different items' effects
+    virtual void displayEffect(sf::Vector2f pos, sf::RenderWindow &window);
 
-    // implementing time for displaying tiems effect
+    //implementing time for displaying times effect
     void effectTime(float dt);
 
+    //implementing time for consumable's effect
+    virtual void consumableEffectTime(float dt, Hero &hero, sf::RenderWindow &window);
+
+    //for homeward bone to respawn hero next to bonfire or at the starting room
+    bool getIsRespawn() const;
+    void setIsRespawn(bool isRespawn);
+
 protected:
+    //for homeward bone
+    bool isRespawn = false;
     sf::Sprite itemEffectSprite;
     sf::Text shopItemText;     // to display item name in shop
     sf::Sprite shopItemSprite; // to display the item in shop
     sf::IntRect coloredSprite;
     std::wstring itemName;
-    bool startEffect = true; // to start displaying item for a period of time
-    float timeEffect = 0.0f; // counter time
+    bool startEffect = true; //to start displaying item for a period of time
+    float timeEffect = 0.0f; //counter time
+    float startConsumable = true;//to start consumable's effect for a period of time
+    float consumableTimeEffect = 0.0f;
     int itemPrice;
     int itemCount;
     std::wstring itemDescription;

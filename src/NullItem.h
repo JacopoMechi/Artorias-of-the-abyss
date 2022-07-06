@@ -9,7 +9,7 @@ public:
             int maxItemCount = 0, int itemCount = 0, sf::IntRect spriteRect = {0, 0, 0, 0}, sf::IntRect effectRect = {0, 0, 0, 0});
     virtual ~NullItem();
 
-    virtual void displayItem(float posX, float posY, sf::RenderTarget &window) override;
+    virtual void displayItem(float posX, float posY, sf::RenderWindow &window) override;
 
     virtual void use(Hero &hero) override;
 };

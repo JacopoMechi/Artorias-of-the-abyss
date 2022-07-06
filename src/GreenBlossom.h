@@ -11,9 +11,11 @@ public:
                           int itemCount = 0, sf::IntRect spriteRect = {453, 2, 20, 20}, sf::IntRect effectRect = {530, 124, 17, 22});
     virtual ~GreenBlossom();
     virtual void use(Hero &hero) override;
+    virtual void consumableEffectTime(float dt, Hero &hero, sf::RenderWindow &window) override;
 private:
-    float newCooldown = 0.8f;// TODO needs to be balanced
-    int timeEffect = 60;
+    float newCooldown = 1.0f;// TODO needs to be balanced
+    float oldCD = 0.0f;//tracking old cooldown value
+    sf::Sprite arrowUp;//to display a visual effect that shows the effects of the item
 };
 
 #endif //_GREENBLOSSOM_H

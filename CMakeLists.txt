@@ -10,7 +10,7 @@ set(EXECUTABLE_NAME ArtoriasOfTheAbyss)
 
 find_package(SFML 2 COMPONENTS network audio graphics window system REQUIRED)
 
-include_directories(src)
+include_directories(src)#, GameCharacters, Rooms
 
 add_executable(${EXECUTABLE_NAME}
     main.cpp
@@ -51,12 +51,8 @@ add_executable(${EXECUTABLE_NAME}
     src/Rooms/Room.cpp
     src/Rooms/StartRoom.h
     src/Rooms/StartRoom.cpp
-    src/Rooms/SecondRoom.h
-    src/Rooms/SecondRoom.cpp
-    src/Rooms/ThirdRoom.h
-    src/Rooms/ThirdRoom.cpp
-    src/Rooms/FourthRoom.h
-    src/Rooms/FourthRoom.cpp
+    src/Rooms/MiddleRoom.h
+    src/Rooms/MiddleRoom.cpp
     src/Rooms/FinalRoom.h
     src/Rooms/FinalRoom.cpp
 

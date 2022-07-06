@@ -10,27 +10,25 @@
 #include "RoomElement.h"
 #include "Gate.h"
 #include "Bonfire.h"
-#include "GameCharacters/Enemies/Enemy.h"
 #include "GameCharacters/NPC.h"
 
-class Room
-{
+class Room{
 public:
     Room(int level, sf::RenderWindow &window);
 
     std::unique_ptr<Gate> leftGate;
     std::unique_ptr<Gate> rightGate;
-
+    
     void spawnEntity(RoomElement *roomElement);
     void draw();
+    bool getisClear();
 
-    Bonfire *getBonfire();
-    NPC *getNPC();
+    Bonfire* getBonfire();
+    NPC* getNPC();
     void setDelayTime(float dt);
 
 protected:
     std::vector<std::unique_ptr<RoomElement>> roomElementsVector;
-    std::vector<std::unique_ptr<Enemy>> enemyVector;
     std::unique_ptr<Bonfire> bonfire;
     std::unique_ptr<NPC> npc;
     std::string roomFilePath;
@@ -40,7 +38,8 @@ protected:
     sf::Texture roomTexture;
     sf::Sprite roomSprite;
     sf::RenderWindow &window;
+    bool isClear = true; // TODO Default should be false, true for testing
     int level;
-    float dt = 0; // to take delay time for bonfire animation
+    float dt = 0;//to take delay time for bonfire animation
 };
 #endif

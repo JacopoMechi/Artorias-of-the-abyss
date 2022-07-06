@@ -18,7 +18,7 @@ public:
 
     void moveHero(sf::Event keyInput);
 
-    void setHeroNPCAggro(bool status);
+    void setHeroEntityAggro(bool NPCStatus, bool entityStatus);
 
     void setEntityCollision(GameCharacter *entityCollision);
     void setEntityCollision(RoomElement *element);
@@ -32,9 +32,10 @@ private:
     HUD &hud;
     Hero &hero;
     Shop &shop;
-    GameCharacter *entityCollision = nullptr;
-    RoomElement *element = 0;
-    bool isInRange = false;
+    GameCharacter* entityCollision = nullptr;
+    RoomElement* element = 0;
+    bool entityInRange = false;
+    bool NPCInRange = false;
 };
 
 #endif

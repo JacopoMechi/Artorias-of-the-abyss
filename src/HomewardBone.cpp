@@ -10,10 +10,9 @@ HomewardBone::~HomewardBone(){
 
 }
 
-void HomewardBone::use(Hero& hero) {//, MapElements& bonfire//TODO
+void HomewardBone::use(Hero& hero) {
    if(itemCount > 0){ 
        itemCount--;
-        //if interaction
-        //hero.respawn(bonfire.getPosX()-2, bonfire.getPosY());
+        isRespawn = true;
    }
 }
