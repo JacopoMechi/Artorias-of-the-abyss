@@ -32,7 +32,6 @@ public:
     void setMovementSpeed(int speed);
 
     Weapon *getWeapon();
-    void setWeapon(Weapon *weapon);
 
     virtual void receiveDamage(int points);
 
@@ -49,13 +48,13 @@ public:
     sf::Vector2f getSize() const;
 
 protected:
+    std::unique_ptr<Weapon> weapon;
     int HP;
     int armor;
     int cash;
     float movementSpeed;
     float aggroDistance;
     bool actionStarting = false;
-    Weapon *weapon;
     sf::Vector2f pos;
     sf::Vector2f vel = {0.0f, 0.0f};
     sf::Sprite sprite;

@@ -57,14 +57,9 @@ void GameCharacter::setMovementSpeed(int movementSpeed)
     this->movementSpeed = movementSpeed;
 }
 
-Weapon *GameCharacter::getWeapon()
+Weapon* GameCharacter::getWeapon()
 {
-    return weapon;
-}
-
-void GameCharacter::setWeapon(Weapon *weapon)
-{
-    this->weapon = weapon;
+    return weapon.get();
 }
 
 void GameCharacter::receiveDamage(int points)
