@@ -6,6 +6,7 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         std::cout << "Error on loading hero's texture" << std::endl;
     sprite.setTexture(texture);//loading chracter's sprite
     weaponAttack.setTexture(texture);//loading character's weapon
+    //assigning weapon to hero
     //setting hero's sprite
     //this will be a default position with which the player will spawn
     if(isKnight){
@@ -18,6 +19,7 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         nWeaponFrames = 5;//for attack animation
         canAttack = true;
         startSpell = true;
+        //weapon = std::make_unique<Catalyst>();//mage's weapon assign
     }else{
         defaultRect = {0, 83, 15, 21};
         weaponRect = {2, 332, 38, 36};
@@ -31,10 +33,12 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         spellPos = {pos.x+150, pos.y+40};//because the caracter starts facing right side
         spellSprite.setPosition(spellPos);
         canAttack = false;
+        //weapon = std::make_unique<Sword>();//knight's weapon assign
     }
     weaponAttack.setTextureRect(weaponRect);
     frameRect = defaultRect; 
     sprite.setScale(7.5f, 7.5f);
+
 }
 
 int Hero::getDash() const{

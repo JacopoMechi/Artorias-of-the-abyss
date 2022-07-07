@@ -73,7 +73,6 @@ protected:
 
     int dialogueTracker = 0;
     bool isInventoryOpen;
-    Weapon* leftWeapon;
     bool isKnight;
     float delayTime;
     int moneyCounter = 10000;
