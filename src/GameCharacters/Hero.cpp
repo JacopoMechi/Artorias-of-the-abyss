@@ -112,6 +112,17 @@ void Hero::attack(sf::RenderWindow &window) {
     }
 }
 
+void Hero::dealDamage(GameCharacter &entity){
+    int damage = 0;
+    if(isKnight){
+        if(sword -> getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds()))
+            entity.receiveDamage(sword -> getDamage());
+    }else{
+        if(catalyst -> getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds()))
+            entity.receiveDamage(catalyst -> getDamage());
+    }
+}
+
 // handling character action inputs like attack, roll, interact
 void Hero::updateDelay(float dt){
     // updating delay time

@@ -50,7 +50,9 @@ public:
 
     void blockDamage(sf::RenderWindow &window);
 
-    void attack(sf::RenderWindow &window);
+    virtual void attack(sf::RenderWindow &window) override;
+
+    virtual void dealDamage(GameCharacter& entity) override;
 
     void updateDelay(float dt);
     

@@ -41,6 +41,8 @@ public:
     
     virtual void attack(sf::RenderWindow& window);
 
+    virtual void dealDamage(GameCharacter& entity);
+
     bool isAggro(float aggroDistance, GameCharacter &entity);
 
     void draw(sf::RenderWindow &window) const;
@@ -48,6 +50,8 @@ public:
     void update(float dt);
 
     sf::Vector2f getSize() const;
+
+    sf::Sprite getSprite() const;
 
 protected:
     std::unique_ptr<Weapon> weapon;

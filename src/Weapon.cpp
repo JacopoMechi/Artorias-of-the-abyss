@@ -16,6 +16,10 @@ void Weapon::setStartAnimation(bool startAnimation){
     this -> startAnimation = startAnimation;
 }
 
+sf::Sprite Weapon::getSprite() const{
+    return weaponSprite;
+}
+
 void Weapon::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f entityPos, float dt){
     
 }
