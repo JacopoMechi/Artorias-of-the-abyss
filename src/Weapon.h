@@ -16,7 +16,7 @@ public:
 
     virtual void use(sf::RenderWindow &window);
 
-    //~Weapon();
+    virtual ~Weapon() = default;
 
 protected:
     int damage;
