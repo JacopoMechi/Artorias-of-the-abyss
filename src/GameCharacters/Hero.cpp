@@ -113,7 +113,6 @@ void Hero::attack(sf::RenderWindow &window) {
 }
 
 void Hero::dealDamage(GameCharacter &entity){
-    int damage = 0;
     if(isKnight){
         if(sword -> getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds()))
             entity.receiveDamage(sword -> getDamage());

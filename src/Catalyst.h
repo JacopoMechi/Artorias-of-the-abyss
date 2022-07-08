@@ -19,12 +19,12 @@ public:
     virtual ~Catalyst() = default;
 
 protected:
+    //rect for catalyst and spell
+    std::vector<sf::IntRect> spellStage;
     //for spell casting
-    sf::Sprite spellSprite;
     sf::Vector2f spellPos;
     float spellSpeed = 500;
     //to swap spell in the direction that is casted
-    sf::IntRect spellRect;
     sf::IntRect currentSpellRect;
     int spellDirection = 1;//1 because the hero starts from the right
     //to cast the spell

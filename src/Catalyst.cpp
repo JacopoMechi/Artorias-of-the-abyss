@@ -13,7 +13,7 @@ void Catalyst::setLevel(int level) //TODO Choose damage for every level
 
 void Catalyst::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f entityPos, float dt){
     if(startAnimation){
-        window.draw(spellSprite);
+        //window.draw(spellSprite);
         //setting position and rectangles of the weapon
         if(entityRect.width > 0){
             currentRect = weaponRect;
@@ -33,6 +33,9 @@ void Catalyst::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2
             if(iWeaponFrame == 0){
                 startAnimation = false;
                 startSpell = true;
+                weaponSprite.setTextureRect(spellStage[1]);
+                weaponSprite.setTextureRect(currentSpellRect);
+                weaponSprite.setPosition(spellPos);
             }
         }
 
@@ -49,12 +52,13 @@ void Catalyst::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2
 
             //to move the spell horizzontaly
             spellPos.x += spellSpeed*dt*spellDirection; 
-            spellSprite.setPosition(spellPos);
+            weaponSprite.setPosition(spellPos);
             
             //printing on screen
-            window.draw(spellSprite);
-        }else
+            window.draw(weaponSprite);
+        }else{
             startSpell = false;
+        }
     }
 }
 
@@ -62,15 +66,13 @@ void Catalyst::setSpellDirection(sf::Vector2f heroPos, sf::IntRect heroRect){
     if(heroRect.width > 0){
         spellDirection = 1; //right
         spellPos.x = heroPos.x + 150;
-        currentSpellRect = spellRect;
+        currentSpellRect = spellStage[1];
     }if(heroRect.width < 0){
         spellDirection = -1; //left
         spellPos.x = heroPos.x - 150;
-        currentSpellRect = {spellRect.width, spellRect.top, -spellRect.width, spellRect.height};
+        currentSpellRect = {spellStage[1].width, spellStage[1].top, -spellStage[1].width, spellStage[1].height};
     }
     spellPos.y = heroPos.y +40;
-    spellSprite.setTextureRect(currentSpellRect);
-    spellSprite.setPosition(spellPos);
 }
 
 bool Catalyst::getStartSpell() const{
@@ -79,11 +81,9 @@ bool Catalyst::getStartSpell() const{
 
 Catalyst::Catalyst(sf::IntRect weaponRect, sf::Vector2f weaponScale, int nFrames, int level) : 
     Weapon(weaponRect, weaponScale, nFrames, level) {
-    spellSprite.setTexture(texture);
-    spellRect = {3,299, 33, 20};
-    currentSpellRect = spellRect;
-    spellSprite.setTextureRect(currentSpellRect);
-    spellSprite.setScale(3.5f, 3.5f);
+    spellStage.push_back({2, 332, 38, 36});
+    spellStage.push_back({3, 299, 33, 20});
+    currentSpellRect = spellStage[0];
     spellPos = {650, 540};//the hero spawn facing to the right and at the position 500, 500
-    spellSprite.setPosition(spellPos);
+    weaponSprite.setPosition(spellPos);
 }
