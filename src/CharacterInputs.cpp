@@ -80,13 +80,13 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     }
     //hero's dash and attack handling
     //for attacking or casting spells
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && (hero.getCanAttack() || !hero.getStartingSpell())){
-        hero.setStartAnimation(true);
-        if(!hero.getCharacterType()){//when hero is a mage
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && (hero.getCanAttack())){//|| !hero.getStartingSpell() for the moment
+        hero.getWeapon() -> setStartAnimation(true);
+        hero.setCanAttack(false);
+        /*if(!hero.getCharacterType()){//when hero is a mage
             hero.setSpellDirection();
             hero.setStartingSpell(true);
-        }else//when hero is a knight
-            hero.setCanAttack(false);
+        }else//when hero is a knight*/
     }
     //for dashes
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)
