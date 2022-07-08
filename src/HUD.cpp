@@ -70,11 +70,8 @@ void HUD::draw() {
     //displaying inventory
     inventory.draw();
     //obscure and starting sword attack
-    if(hero.getCharacterType()){
-        if(hero.getStartAnimation())
-            hero.attack(window);
-        if(!hero.getCanAttack())
-            this -> obscureButton({1750, 375});
+    if(hero.getCharacterType() && !hero.getCanAttack()){
+        this -> obscureButton({1750, 375});
     }else{
         //obscure and starting spell attack
         if(hero.getStartAnimation())//for showing the mage's staff
