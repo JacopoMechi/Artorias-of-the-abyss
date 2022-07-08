@@ -97,6 +97,7 @@ void Game::gameLoop()
                 hero.movement(false, entityInteraction);//for the moment
                 hero.update(dt);
                 hero.draw(window);
+                hero.attack(window);
                 hud.draw();
                 hud.displayHealthAndEffects(hero);
                 hud.displayMoneyCounter(hero);
