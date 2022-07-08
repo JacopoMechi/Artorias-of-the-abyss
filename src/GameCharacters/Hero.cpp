@@ -33,7 +33,7 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         spellPos = {pos.x+150, pos.y+40};//because the caracter starts facing right side
         spellSprite.setPosition(spellPos);
         canAttack = false;
-        //weapon = std::make_unique<Catalyst>();//mage's weapon assign
+        catalyst = std::make_unique<Catalyst>();//mage's weapon assign
     }
     weaponAttack.setTextureRect(weaponRect);
     frameRect = defaultRect; 
@@ -91,7 +91,7 @@ bool Hero::getStartingSpell() const{
 }
 
 void Hero::setStartingSpell(bool startSpell){
-    this -> startSpell = startSpell;
+    //this -> startSpell = startSpell;
 }
 
 bool Hero::getAuraReady() const{
@@ -131,8 +131,13 @@ void Hero::blockDamage(sf::RenderWindow &window)
 
 void Hero::attack(sf::RenderWindow &window) {
     if(isKnight)
-        sword -> use(window, frameRect, getPos(), delayTime);
-    //else...
+        sword -> use(window, frameRect, pos, delayTime);
+    else{
+        startSpell = catalyst -> getStartSpell();
+        if(!startSpell)
+            catalyst -> setSpellDirection(pos, frameRect);
+        catalyst -> use(window, frameRect, pos, delayTime);
+    }
 
 
     /*window.draw(spellSprite);
@@ -221,15 +226,15 @@ sf::Vector2f Hero::getSpawnPoint() const{
 }
 
 Weapon* Hero::getWeapon(){
-    //if(isKnight)
+    if(isKnight)
         return sword.get();
-    //else
-    //    return catalyst.get();
+    else
+        return catalyst.get();
 }
 
 //setting spell direction
 void Hero::setSpellDirection(){
-    if(frameRect.width > 0){
+    /*if(frameRect.width > 0){
         spellDirection = 1; //right
         spellPos.x = pos.x + 150;
         currentSpellRect = spellRect;
@@ -240,11 +245,11 @@ void Hero::setSpellDirection(){
     }
     spellPos.y = pos.y +40;
     spellSprite.setTextureRect(currentSpellRect);
-    spellSprite.setPosition(spellPos);
+    spellSprite.setPosition(spellPos);*/
 }
 
 void Hero::castSpell(sf::RenderWindow &window){// boolean value to know when is active or not
-    if(startSpell){
+    /*if(startSpell){
         if(0 < spellPos.x && spellPos.x < 1920){ //to set the range of the spell       
 
             //to move the spell horizzontaly
@@ -255,5 +260,5 @@ void Hero::castSpell(sf::RenderWindow &window){// boolean value to know when is 
             window.draw(spellSprite);
         }else
             startSpell = false;
-    }
+    }*/
 }

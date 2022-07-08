@@ -76,7 +76,7 @@ protected:
 
     //hero's weapons
     std::unique_ptr<Sword> sword;
-    //std::unique_ptr<Catalyst> catalyst; not implemented
+    std::unique_ptr<Catalyst> catalyst;
 
     int dialogueTracker = 0;
     bool isInventoryOpen;
