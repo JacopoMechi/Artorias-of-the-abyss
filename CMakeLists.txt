@@ -65,8 +65,12 @@ add_executable(${EXECUTABLE_NAME}
     src/Menu.h
     src/Menu.cpp
 
-    # #src/Weapon.h
-    # #src/Weapon.cpp
+    src/Weapon.h
+    src/Weapon.cpp
+    src/Sword.h
+    src/Sword.cpp
+    src/Catalyst.h
+    src/Catalyst.cpp
     src/Item.cpp
     src/Item.h
     src/HUD.h
