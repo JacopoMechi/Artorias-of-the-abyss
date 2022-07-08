@@ -65,11 +65,18 @@ public:
     void setSpawnPoint(sf::Vector2f pos);
     sf::Vector2f getSpawnPoint() const;
 
+    //overriding getter for weapon
+    virtual Weapon* getWeapon() override;
+
     void setSpellDirection();
 
     void castSpell(sf::RenderWindow &window);
 
 protected: 
+
+    //hero's weapons
+    std::unique_ptr<Sword> sword;
+    //std::unique_ptr<Catalyst> catalyst; not implemented
 
     int dialogueTracker = 0;
     bool isInventoryOpen;

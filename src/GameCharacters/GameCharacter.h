@@ -8,6 +8,8 @@
 #include <SFML/Graphics.hpp>
 #include "Rooms/RoomElement.h"
 #include "Weapon.h"
+#include "Sword.h"
+#include "Catalyst.h"
 
 class GameCharacter
 {
@@ -31,7 +33,7 @@ public:
     int getMovementSpeed() const;
     void setMovementSpeed(int speed);
 
-    Weapon *getWeapon();
+    virtual Weapon *getWeapon();
 
     virtual void receiveDamage(int points);
 

@@ -19,7 +19,7 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         nWeaponFrames = 5;//for attack animation
         canAttack = true;
         startSpell = true;
-        //weapon = std::make_unique<Catalyst>();//mage's weapon assign
+        sword = std::make_unique<Sword>();//knight's weapon assign
     }else{
         defaultRect = {0, 83, 15, 21};
         weaponRect = {2, 332, 38, 36};
@@ -33,7 +33,7 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         spellPos = {pos.x+150, pos.y+40};//because the caracter starts facing right side
         spellSprite.setPosition(spellPos);
         canAttack = false;
-        //weapon = std::make_unique<Sword>();//knight's weapon assign
+        //weapon = std::make_unique<Catalyst>();//mage's weapon assign
     }
     weaponAttack.setTextureRect(weaponRect);
     frameRect = defaultRect; 
@@ -130,7 +130,12 @@ void Hero::blockDamage(sf::RenderWindow &window)
 
 
 void Hero::attack(sf::RenderWindow &window) {
-    window.draw(spellSprite);
+    if(isKnight)
+        sword -> use(window, frameRect, getPos(), delayTime);
+    //else...
+
+
+    /*window.draw(spellSprite);
     if(startAnimation){
         //setting position and rectangles of the weapon
         if(frameRect.width > 0){
@@ -168,7 +173,7 @@ void Hero::attack(sf::RenderWindow &window) {
             weaponAttack.setTextureRect({currentRect.left + iWeaponFrame*abs(currentRect.width), currentRect.top, currentRect.width, currentRect.height});
             window.draw(weaponAttack);
         }
-    }
+    }*/
 }
 
 // handling character action inputs like attack, roll, interact
@@ -213,6 +218,13 @@ void Hero::setSpawnPoint(sf::Vector2f pos){
 
 sf::Vector2f Hero::getSpawnPoint() const{
     return respawnPos;
+}
+
+Weapon* Hero::getWeapon(){
+    //if(isKnight)
+        return sword.get();
+    //else
+    //    return catalyst.get();
 }
 
 //setting spell direction
