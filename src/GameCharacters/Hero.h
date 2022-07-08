@@ -35,17 +35,12 @@ public:
     bool getCanAttack() const;
     void setCanAttack(bool canAttack);
 
-    //for starting naimation from hud
-    bool getStartAnimation() const;
-    void setStartAnimation(bool startAnimation);
-
     //getter and setter for aura 
     bool getAuraReady() const;
     void setAuraReady(bool auraReady);
 
     //getter and setter for spell starting animation
     bool getStartingSpell() const;
-    void setStartingSpell(bool startSpell);
 
     //getter and setter for changing the amount of money the character has
     int getMoneyAmount() const;
@@ -54,8 +49,8 @@ public:
     void dash();
 
     void blockDamage(sf::RenderWindow &window);
-    
-    virtual void attack(sf::RenderWindow& window) override;
+
+    void attack(sf::RenderWindow &window);
 
     void updateDelay(float dt);
     
@@ -67,10 +62,6 @@ public:
 
     //overriding getter for weapon
     virtual Weapon* getWeapon() override;
-
-    void setSpellDirection();
-
-    void castSpell(sf::RenderWindow &window);
 
 protected: 
 
@@ -87,17 +78,8 @@ protected:
     //shield aura sprite
     sf::Sprite auraShield;
 
-    //sword swing sprite
-    sf::Sprite weaponAttack;
-
-    //spell system creation (after the use of the staff)
-    sf::Sprite spellSprite;
-    sf::Vector2f spellPos;
-    float spellSpeed = 500; //for spell's speed
-    //for right and left swap of the sprite
-    sf::IntRect spellRect;
-    sf::IntRect currentSpellRect; 
-    int spellDirection = 1; //to set direction in cast method //1 because characters starts from the right
+    //tracking if spell is still active
+    bool startSpell = false;
 
     //handling shield aura time
     bool auraReady = true;
@@ -117,27 +99,6 @@ protected:
 
     //setting respawn position
     sf::Vector2f respawnPos = {500.0f, 500.0f};
-
-    //for setting weapon pos when character is moving
-    float weaponPosX;
-
-    //declaring weapon's position (to flip it when character flips from right to left or from left to right)
-    sf::IntRect weaponRect;
-    sf::IntRect currentRect;
-    //to set position of the weapon if it is a sword or a staff
-    int xVariation;
-    int yVariation;
-    //to start spell animation
-    bool startSpell;
-
-    //boolean variable to start the animation
-    bool startAnimation;
-
-    //creating weapon's animation
-    float weaponAnimationTime = 0.0f;
-    float weaponAnimationHolding = 0.13f;
-    int iWeaponFrame = 0;
-    int nWeaponFrames;
 
     sf::Vector2f dashing;
     float dashDistance = 100.0f;

@@ -83,10 +83,6 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && (hero.getCanAttack() || !hero.getStartingSpell())){
         hero.getWeapon() -> setStartAnimation(true);
         hero.setCanAttack(false);
-        /*if(!hero.getCharacterType()){//when hero is a mage
-            hero.setSpellDirection();
-            hero.setStartingSpell(true);
-        }else//when hero is a knight*/
     }
     //for dashes
     if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Space)

@@ -5,7 +5,6 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
     if(!texture.loadFromFile("../Textures/Textures.png"))
         std::cout << "Error on loading hero's texture" << std::endl;
     sprite.setTexture(texture);//loading chracter's sprite
-    weaponAttack.setTexture(texture);//loading character's weapon
     //assigning weapon to hero
     //setting hero's sprite
     //this will be a default position with which the player will spawn
@@ -14,28 +13,13 @@ Hero::Hero(bool isKnight, const sf::Vector2f& pos, int hp, int armor, int cash, 
         auraShield.setTexture(texture);//the aura shield is an exclusive of hero
         auraShield.setTextureRect({501, 124, 20, 26});
         auraShield.setScale(7.0f, 7.0f);
-        weaponRect = {0, 162, 21, 40};//weapon's sprite
-        weaponAttack.setScale(7.5f, 7.5f);
-        nWeaponFrames = 5;//for attack animation
         canAttack = true;
-        startSpell = true;
         sword = std::make_unique<Sword>();//knight's weapon assign
     }else{
         defaultRect = {0, 83, 15, 21};
-        weaponRect = {2, 332, 38, 36};
-        weaponAttack.setScale(3.5f, 3.5f);
-        nWeaponFrames = 1;
-        spellSprite.setTexture(texture);
-        spellRect = {3, 299, 33, 20};
-        currentSpellRect = spellRect;
-        spellSprite.setTextureRect(currentSpellRect);
-        spellSprite.setScale(3.5f, 3.5f);
-        spellPos = {pos.x+150, pos.y+40};//because the caracter starts facing right side
-        spellSprite.setPosition(spellPos);
         canAttack = false;
         catalyst = std::make_unique<Catalyst>();//mage's weapon assign
     }
-    weaponAttack.setTextureRect(weaponRect);
     frameRect = defaultRect; 
     sprite.setScale(7.5f, 7.5f);
 
@@ -78,20 +62,8 @@ void Hero::setCanAttack(bool canAttack){
     this -> canAttack = canAttack;
 }
 
-bool Hero::getStartAnimation() const{
-    return startAnimation;
-}
-
-void Hero::setStartAnimation(bool startAnimation){
-    this -> startAnimation = startAnimation;
-}
-
 bool Hero::getStartingSpell() const{
     return startSpell;
-}
-
-void Hero::setStartingSpell(bool startSpell){
-    //this -> startSpell = startSpell;
 }
 
 bool Hero::getAuraReady() const{
@@ -138,47 +110,6 @@ void Hero::attack(sf::RenderWindow &window) {
             catalyst -> setSpellDirection(pos, frameRect);
         catalyst -> use(window, frameRect, pos, delayTime);
     }
-
-
-    /*window.draw(spellSprite);
-    if(startAnimation){
-        //setting position and rectangles of the weapon
-        if(frameRect.width > 0){
-            currentRect = weaponRect;
-            if(isKnight){
-                xVariation = 100;
-                yVariation = -50;
-            }else{
-                xVariation = 10;
-                yVariation = 40;
-            }
-        }else if(frameRect.width < 0){
-            currentRect = {weaponRect.width, weaponRect.top, -weaponRect.width, weaponRect.height};
-            if(isKnight){
-                xVariation = -120;
-                yVariation = -50;
-            }else{
-                xVariation = -20;
-                yVariation = 40;
-            }
-        }
-
-        //updating iFrames for weapon
-        weaponAnimationTime += delayTime;
-        if(weaponAnimationTime >= weaponAnimationHolding){
-            iWeaponFrame = (++iWeaponFrame) % nWeaponFrames;
-            weaponAnimationTime = 0.0f;
-            if(iWeaponFrame == 0)
-                startAnimation = false;
-        }
-
-        //drawing animation
-        if(startAnimation){
-            weaponAttack.setPosition(pos.x+xVariation, pos.y+yVariation);
-            weaponAttack.setTextureRect({currentRect.left + iWeaponFrame*abs(currentRect.width), currentRect.top, currentRect.width, currentRect.height});
-            window.draw(weaponAttack);
-        }
-    }*/
 }
 
 // handling character action inputs like attack, roll, interact
@@ -230,35 +161,4 @@ Weapon* Hero::getWeapon(){
         return sword.get();
     else
         return catalyst.get();
-}
-
-//setting spell direction
-void Hero::setSpellDirection(){
-    /*if(frameRect.width > 0){
-        spellDirection = 1; //right
-        spellPos.x = pos.x + 150;
-        currentSpellRect = spellRect;
-    }if(frameRect.width < 0){
-        spellDirection = -1; //left
-        spellPos.x = pos.x - 150;
-        currentSpellRect = {spellRect.width, spellRect.top, -spellRect.width, spellRect.height};
-    }
-    spellPos.y = pos.y +40;
-    spellSprite.setTextureRect(currentSpellRect);
-    spellSprite.setPosition(spellPos);*/
-}
-
-void Hero::castSpell(sf::RenderWindow &window){// boolean value to know when is active or not
-    /*if(startSpell){
-        if(0 < spellPos.x && spellPos.x < 1920){ //to set the range of the spell       
-
-            //to move the spell horizzontaly
-            spellPos.x += spellSpeed*delayTime*spellDirection; 
-            spellSprite.setPosition(spellPos);
-            
-            //printing on screen
-            window.draw(spellSprite);
-        }else
-            startSpell = false;
-    }*/
 }
