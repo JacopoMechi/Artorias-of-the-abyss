@@ -5,12 +5,15 @@
 class Sword : public Weapon
 {
 public:
+
     virtual void setLevel(int level) override;
 
-protected:
-    Sword(int level = 1);
+    virtual void use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f entityPos, float dt) override;
 
-    ~Sword();
+    explicit Sword(sf::IntRect weaponRect = {0, 162, 21, 40}, sf::Vector2f weaponScale = {7.5f, 7.5f}, int nFrames = 5, int level = 1);
+
+    virtual ~Sword() = default;
+protected:
 };
 
 #endif //_SWORD_H
