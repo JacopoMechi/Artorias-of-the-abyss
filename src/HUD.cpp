@@ -72,15 +72,8 @@ void HUD::draw() {
     //obscure and starting sword attack
     if(hero.getCharacterType() && !hero.getCanAttack()){
         this -> obscureButton({1750, 375});
-    }else{
-        //obscure and starting spell attack
-        if(hero.getStartAnimation())//for showing the mage's staff
-            hero.attack(window);
-        if(hero.getStartingSpell()){//displaying spell and obscuring attack icon
-            this -> obscureButton({1750, 375}); 
-            hero.castSpell(window);
-        }
-    }
+    }else if(!hero.getCharacterType() && hero.getStartingSpell())
+        this -> obscureButton({1750, 375}); 
     //obscure dash button when dashes uses reaches 0
     if(hero.getDash() == 0)
         this -> obscureButton({1750, 445});
