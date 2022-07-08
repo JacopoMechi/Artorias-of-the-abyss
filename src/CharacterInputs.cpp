@@ -80,7 +80,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
     }
     //hero's dash and attack handling
     //for attacking or casting spells
-    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && (hero.getCanAttack())){//|| !hero.getStartingSpell() for the moment
+    if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::F && (hero.getCanAttack() || !hero.getStartingSpell())){
         hero.getWeapon() -> setStartAnimation(true);
         hero.setCanAttack(false);
         /*if(!hero.getCharacterType()){//when hero is a mage

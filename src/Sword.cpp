@@ -12,7 +12,6 @@ void Sword::setLevel(int level) //TODO Choose damage for every level
 }
 
 void Sword::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f entityPos, float dt){
-    //std::cout << startAnimation << std::endl;
     if(startAnimation){
         //setting position and rectangles of the weapon
         if(entityRect.width > 0){
