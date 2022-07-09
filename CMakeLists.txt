@@ -10,7 +10,7 @@ set(EXECUTABLE_NAME ArtoriasOfTheAbyss)
 
 find_package(SFML 2 COMPONENTS network audio graphics window system REQUIRED)
 
-include_directories(src)#, GameCharacters, Rooms
+include_directories(src)
 
 add_executable(${EXECUTABLE_NAME}
     main.cpp

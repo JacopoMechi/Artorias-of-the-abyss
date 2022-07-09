@@ -19,7 +19,7 @@ void Pendant::displayEffect(sf::Vector2f pos, sf::RenderWindow &window){
     }
 }
 
-void Pendant::use(Hero& hero) {//TODO implement hold time
+void Pendant::use(Hero& hero) {
     if(itemCount > 0){
         itemCount --;
         oldArmor = hero.getArmor();
