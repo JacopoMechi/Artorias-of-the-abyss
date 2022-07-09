@@ -3,7 +3,7 @@
 HUD::HUD(sf::RenderWindow &window, Hero& hero, Inventory &inventory): window(window), hero(hero), inventory(inventory){
 
     //setting font and size of health text
-    if(!font.loadFromFile("../pixelFont.ttf"))
+    if(!font.loadFromFile("Fonts/pixelFont.ttf"))
         std::cout << "Error on loading font for hud" << std::endl;
     healthText.setFont(font);
     healthText.setCharacterSize(20);
@@ -17,7 +17,7 @@ HUD::HUD(sf::RenderWindow &window, Hero& hero, Inventory &inventory): window(win
     itemAmountText.setCharacterSize(10);
 
     //adding texture for the hud
-    if(!hudTexture.loadFromFile("../Textures/PlayerHUD.png"))
+    if(!hudTexture.loadFromFile("Textures/PlayerHUD.png"))
         std::cout << "Erorr on loading texture for hud" << std::endl;
     //health
     healthSprite.setTexture(hudTexture);

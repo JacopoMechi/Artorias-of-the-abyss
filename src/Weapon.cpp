@@ -25,7 +25,7 @@ void Weapon::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f 
 }
 
 Weapon::Weapon(sf::IntRect weaponRect, sf::Vector2f weaponScale, int nFrames, int level) : weaponRect(weaponRect), currentRect(weaponRect), nFrames(nFrames), level(level) {
-    if(!texture.loadFromFile("../Textures/Textures.png"))
+    if(!texture.loadFromFile("Textures/Textures.png"))
         std::cout << "Error on loading weapon's texture" << std::endl;
     weaponSprite.setTexture(texture);
     weaponSprite.setTextureRect(weaponRect);

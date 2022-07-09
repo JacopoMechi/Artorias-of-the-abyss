@@ -2,9 +2,9 @@
 
 Shop::Shop(sf::RenderWindow &window): Inventory(window){
     //changing error messages for shop class
-    if(!texture.loadFromFile("../Textures/PlayerHUD.png"))
+    if(!texture.loadFromFile("Textures/PlayerHUD.png"))
         std::cout << "Error on loading textures for shop" << std::endl;
-    if(!font.loadFromFile("../pixelFont.ttf"))
+    if(!font.loadFromFile("Fonts/pixelFont.ttf"))
         std::cout << "Error on loading text font for shop" << std::endl;
 
     //we will use invenotrySprite to show shop sprite

@@ -14,7 +14,7 @@ public:
 
     void updateEvent(sf::Event keyInput);
 
-    Menu(sf::RenderWindow &window, bool mainMenu, const std::string &buttonEffectsFilePath = "../Textures/Textures.png");
+    Menu(sf::RenderWindow &window, bool mainMenu, const std::string &buttonEffectsFilePath = "Textures/Textures.png");
     ~Menu();
 
 protected:

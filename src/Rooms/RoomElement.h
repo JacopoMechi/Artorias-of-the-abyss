@@ -14,9 +14,9 @@ public:
     void setPos(sf::Vector2f &newPos);
     sf::Vector2f getSize() const;
     void setDelayTime(float dt);
-    RoomElement(sf::RenderWindow &window, const std::string &roomElementFilePath = "../Textures/Textures.png");
+    RoomElement(sf::RenderWindow &window, const std::string &roomElementFilePath = "Textures/Textures.png");
     RoomElement(sf::RenderWindow &window, const sf::Vector2f &position, const std::vector<sf::IntRect> &spriteFrames,
-                const std::string &roomElementFilePath = "../Textures/Textures.png");
+                const std::string &roomElementFilePath = "Textures/Textures.png");
     virtual ~RoomElement();
 
 protected:

@@ -12,6 +12,8 @@ find_package(SFML 2 COMPONENTS network audio graphics window system REQUIRED)
 
 include_directories(src)
 
+file(COPY src/Textures src/Fonts DESTINATION ${CMAKE_BINARY_DIR})
+
 add_executable(${EXECUTABLE_NAME}
     main.cpp
     src/Game.h

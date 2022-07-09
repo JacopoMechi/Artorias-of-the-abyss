@@ -32,9 +32,9 @@ protected:
     std::unique_ptr<Bonfire> bonfire;
     std::unique_ptr<NPC> npc;
     std::string roomFilePath;
-    const std::string roomPath1 = "../Textures/Lvl1.png";
-    const std::string roomPath2 = "../Textures/Lvl2.png";
-    const std::string roomPath3 = "../Textures/Lvl3.png";
+    const std::string roomPath1 = "Textures/Lvl1.png";
+    const std::string roomPath2 = "Textures/Lvl2.png";
+    const std::string roomPath3 = "Textures/Lvl3.png";
     sf::Texture roomTexture;
     sf::Sprite roomSprite;
     sf::RenderWindow &window;

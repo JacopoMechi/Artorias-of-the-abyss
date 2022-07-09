@@ -3,7 +3,7 @@
 NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f& pos, int hp, int armor, int cash, float movementSpeed) : 
     window(window), type(type), GameCharacter(pos, hp, armor, cash, movementSpeed){
     //loading NPC's texture
-    if(!texture.loadFromFile("../Textures/Textures.png"))
+    if(!texture.loadFromFile("Textures/Textures.png"))
         std::cout << "Error on loading npc's texture" << std::endl;
     sprite.setTexture(texture);
     //setting NPC's scale

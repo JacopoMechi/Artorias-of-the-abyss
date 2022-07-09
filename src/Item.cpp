@@ -3,7 +3,7 @@
 Item::Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, int maxItemCount, int itemCount, sf::IntRect spriteRect, sf::IntRect effectRect) : 
     itemName(itemName), itemPrice(itemPrice), itemDescription(itemDescription), maxItemCount(maxItemCount), itemCount(itemCount), 
     coloredSprite(spriteRect){
-        if(!texture.loadFromFile("../Textures/Textures.png"))
+        if(!texture.loadFromFile("Textures/Textures.png"))
             std::cout << "Error on loading texture for the item" << std::endl;
         sprite.setTexture(texture);
         sprite.setTextureRect(coloredSprite);
@@ -11,7 +11,7 @@ Item::Item(std::wstring itemName, int itemPrice, std::wstring itemDescription, i
         shopItemSprite.setTexture(texture);
         shopItemSprite.setTextureRect(coloredSprite);
         shopItemSprite.setScale(2.5f, 2.5f);
-        if(!font.loadFromFile("../pixelFont.ttf"))
+        if(!font.loadFromFile("Fonts/pixelFont.ttf"))
             std::cout << "Error on loading font for the item" << std::endl;
         name.setFont(font);
         shopItemText.setFont(font);

@@ -63,14 +63,14 @@ Menu::Menu(sf::RenderWindow &window, bool mainMenu, const std::string &buttonEff
 {
     if (mainMenu)
     {
-        if (!menuTexture.loadFromFile("../Textures/mainMenu.png"))
+        if (!menuTexture.loadFromFile("Textures/mainMenu.png"))
             std::cout << "Error while setting menu texture" << std::endl;
         menuSprite.setTexture(this->menuTexture);
         menuSprite.setTextureRect(sf::IntRect(0, 0, 1920, 1080));
     }
     else
     {
-        if (!menuTexture.loadFromFile("../Textures/Menu.png"))
+        if (!menuTexture.loadFromFile("Textures/Menu.png"))
             std::cout << "Error while setting menu texture" << std::endl;
         menuSprite.setTexture(this->menuTexture);
         menuSprite.setTextureRect(sf::IntRect(0, 0, 1920, 1080));
