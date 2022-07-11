@@ -100,7 +100,7 @@ void Game::gameLoop()
     }
 }
 
-Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inventory(window), inGameMenu(window, 0), window(window), hero(false, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero, inventory),
+Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inventory(window), inGameMenu(window, 0), window(window), hero(window, false, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero, inventory),
                                        shop(window), inputs(inventory, hud, hero, shop)
 {
     this->levels.emplace_back(new Room({}, Room::Type::StartRoom, window));

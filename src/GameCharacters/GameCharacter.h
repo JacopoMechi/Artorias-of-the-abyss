@@ -15,7 +15,7 @@ class GameCharacter
 {
 
 public:
-    GameCharacter(const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed);
+    GameCharacter(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed);
     virtual ~GameCharacter() = default;
 
     int getHp() const;
@@ -38,10 +38,10 @@ public:
     virtual void receiveDamage(int points);
 
     virtual void movement(bool isInventoryOpen, bool isInteracting) = 0;
-    
-    virtual void attack(sf::RenderWindow& window);
 
-    virtual void dealDamage(GameCharacter& entity);
+    virtual void attack(sf::RenderWindow &window);
+
+    virtual void dealDamage(GameCharacter &entity);
 
     bool isAggro(float aggroDistance, GameCharacter &entity);
 
@@ -63,12 +63,14 @@ protected:
     bool actionStarting = false;
     sf::Vector2f pos;
     sf::Vector2f vel = {0.0f, 0.0f};
+    const std::string texturePath = "Textures/Textures.png";
     sf::Sprite sprite;
     sf::Texture texture;
     sf::IntRect frameRect;
-    sf::IntRect defaultRect;//for resetting character in the right position
-    GameCharacter* entityCollision;
-    float animationHolding = 0.08f;// for max time cap
+    sf::IntRect defaultRect; // for resetting character in the right position
+    sf::RenderWindow &window;
+    GameCharacter *entityCollision;
+    float animationHolding = 0.08f; // for max time cap
     int nFrames;
     int iFrame = 0;
     float animationTime = 0.0f;

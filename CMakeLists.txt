@@ -27,24 +27,24 @@ add_executable(${EXECUTABLE_NAME}
     src/GameCharacters/NPC.h
     src/GameCharacters/NPC.cpp
 
-    # src/GameCharacters/Enemies/EnemyFactory.h
-    # src/GameCharacters/Enemies/EnemyFactory.cpp
-    # src/GameCharacters/Enemies/Enemy.h
-    # src/GameCharacters/Enemies/Enemy.cpp
-    # src/GameCharacters/Enemies/Boss1.h
-    # src/GameCharacters/Enemies/Boss1.cpp
-    # src/GameCharacters/Enemies/Boss2.h
-    # src/GameCharacters/Enemies/Boss2.cpp
-    # src/GameCharacters/Enemies/Boss3.h
-    # src/GameCharacters/Enemies/Boss3.cpp
-    # src/GameCharacters/Enemies/Enemy1.h
-    # src/GameCharacters/Enemies/Enemy1.cpp
-    # src/GameCharacters/Enemies/Enemy2.h
-    # src/GameCharacters/Enemies/Enemy2.cpp
-    # src/GameCharacters/Enemies/Enemy3.h
-    # src/GameCharacters/Enemies/Enemy3.cpp
-    # src/GameCharacters/Enemies/Enemy4.h
-    # src/GameCharacters/Enemies/Enemy4.cpp
+    src/GameCharacters/Enemies/EnemyFactory.h
+    src/GameCharacters/Enemies/EnemyFactory.cpp
+    src/GameCharacters/Enemies/Enemy.h
+    src/GameCharacters/Enemies/Enemy.cpp
+    src/GameCharacters/Enemies/Boss1.h
+    src/GameCharacters/Enemies/Boss1.cpp
+    src/GameCharacters/Enemies/Boss2.h
+    src/GameCharacters/Enemies/Boss2.cpp
+    src/GameCharacters/Enemies/Boss3.h
+    src/GameCharacters/Enemies/Boss3.cpp
+    src/GameCharacters/Enemies/Enemy1.h
+    src/GameCharacters/Enemies/Enemy1.cpp
+    src/GameCharacters/Enemies/Enemy2.h
+    src/GameCharacters/Enemies/Enemy2.cpp
+    src/GameCharacters/Enemies/Enemy3.h
+    src/GameCharacters/Enemies/Enemy3.cpp
+    src/GameCharacters/Enemies/Enemy4.h
+    src/GameCharacters/Enemies/Enemy4.cpp
 
     # Rooms
     src/Rooms/Room.h
