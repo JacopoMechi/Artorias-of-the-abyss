@@ -1,28 +1,44 @@
-
 #include "Room.h"
 
-Room::Room(int level, sf::RenderWindow &window): level(level), window(window){
-    switch(level){
-        case 1:
-            roomFilePath = roomPath1;
-            //TODO draw enemies
-            break;
-        case 2:
-            roomFilePath = roomPath2;
-            //TODO draw enemies
-            break;
-        case 3:
-            roomFilePath = roomPath3;
-            //TODO draw enemies
-            break;
+Room::Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType, sf::RenderWindow &window) : window(window)
+{
+    switch (roomType)
+    {
+    case Type::StartRoom:
+        roomFilePath = this->roomPath1;
+        this->rightGate = std::make_unique<Gate>(window, true, false);
+        break;
+    case Type::FirstLevel:
+        roomFilePath = this->roomPath1;
+        this->leftGate = std::make_unique<Gate>(window);
+        this->rightGate = std::make_unique<Gate>(window, true, false);
+        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {500.0f, 500.0f}));
+        break;
+    case Type::SecondLevel:
+        roomFilePath = this->roomPath2;
+        this->leftGate = std::make_unique<Gate>(window);
+        this->rightGate = std::make_unique<Gate>(window, true, false);
+        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {500.0f, 500.0f}));
+        break;
+    case Type::ThirdLevel:
+        roomFilePath = this->roomPath3;
+        this->leftGate = std::make_unique<Gate>(window);
+        this->rightGate = std::make_unique<Gate>(window, true, false);
+        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {500.0f, 500.0f}));
+        break;
+    case Type::FinalBoss:
+        roomFilePath = this->roomPath3;
+        this->leftGate = std::make_unique<Gate>(window);
+        break;
     }
-    npc = std::unique_ptr<NPC>(nullptr);
-    leftGate = std::make_unique<Gate>(window);
-    rightGate = std::make_unique<Gate>(window, true, false);
-    bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {500.0f, 500.0f}));
-    if(!roomTexture.loadFromFile(roomFilePath))
-        std::cout << "Error on loading second room's texture" << std::endl;
-    roomSprite.setTexture(roomTexture);
+
+    if (!roomTexture.loadFromFile(roomFilePath))
+        std::cout << "Error while setting room texture" << std::endl;
+
+    roomSprite.setTexture(this->roomTexture);
+
+    for (int i = 0; i < roomElementsVector.size(); i++)
+        this->roomElementsVector.emplace_back(roomElementsVector[i]);
 }
 
 void Room::spawnEntity(RoomElement *roomElement)
@@ -43,21 +59,26 @@ void Room::draw()
         leftGate->draw();
     if (rightGate != nullptr)
         rightGate->draw();
-    if (bonfire != nullptr){
-        bonfire ->setDelayTime(dt);
+    if (bonfire != nullptr)
+    {
+        bonfire->setDelayTime(dt);
         bonfire->draw();
-    }if (npc != nullptr)
+    }
+    if (npc != nullptr)
         npc->draw(window);
 }
 
-Bonfire* Room::getBonfire(){
+Bonfire *Room::getBonfire()
+{
     return bonfire.get();
 }
 
-NPC* Room::getNPC(){
+NPC *Room::getNPC()
+{
     return npc.get();
 }
 
-void Room::setDelayTime(float dt){
-    this -> dt = dt;
+void Room::setDelayTime(float dt)
+{
+    this->dt = dt;
 }

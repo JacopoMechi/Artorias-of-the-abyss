@@ -12,19 +12,29 @@
 #include "Bonfire.h"
 #include "GameCharacters/NPC.h"
 
-class Room{
+class Room
+{
 public:
-    Room(int level, sf::RenderWindow &window);
+    enum class Type
+    {
+        StartRoom,
+        FirstLevel,
+        SecondLevel,
+        ThirdLevel,
+        FinalBoss
+    };
+
+    Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType, sf::RenderWindow &window);
 
     std::unique_ptr<Gate> leftGate;
     std::unique_ptr<Gate> rightGate;
-    
+
     void spawnEntity(RoomElement *roomElement);
     void draw();
     bool getisClear();
 
-    Bonfire* getBonfire();
-    NPC* getNPC();
+    Bonfire *getBonfire();
+    NPC *getNPC();
     void setDelayTime(float dt);
 
 protected:
@@ -40,6 +50,6 @@ protected:
     sf::RenderWindow &window;
     bool isClear = true; // TODO Default should be false, true for testing
     int level;
-    float dt = 0;//to take delay time for bonfire animation
+    float dt = 0; // to take delay time for bonfire animation
 };
 #endif

@@ -47,23 +47,15 @@ add_executable(${EXECUTABLE_NAME}
     # src/GameCharacters/Enemies/Enemy4.cpp
 
     # Rooms
-    src/Rooms/RoomFactory.h
-    src/Rooms/RoomFactory.cpp
     src/Rooms/Room.h
     src/Rooms/Room.cpp
-    src/Rooms/StartRoom.h
-    src/Rooms/StartRoom.cpp
-    src/Rooms/MiddleRoom.h
-    src/Rooms/MiddleRoom.cpp
-    src/Rooms/FinalRoom.h
-    src/Rooms/FinalRoom.cpp
-
     src/Bonfire.h
     src/Bonfire.cpp
     src/Gate.h
     src/Gate.cpp
     src/Rooms/RoomElement.h
     src/Rooms/RoomElement.cpp
+
     src/Menu.h
     src/Menu.cpp
 
