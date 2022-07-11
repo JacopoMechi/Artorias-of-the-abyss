@@ -16,6 +16,7 @@ void Game::gameLoop()
                 window.close();
             inputs.updateInputs(event);
         }
+        inputs.moveHero(event);
         hud.setAggro(entityInteraction, NPCInteraction);
         window.clear(sf::Color::Black);
         levels[level]->draw();
