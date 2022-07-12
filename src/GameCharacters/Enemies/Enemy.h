@@ -15,7 +15,11 @@ public:
 
     virtual void attack(std::unique_ptr<Hero> hero) = 0;
 
+    virtual void update(float dt) override;
+
 protected:
+    std::vector<sf::IntRect> frameRects;//to set enemies frame rects
+    int defaultFrames;//TODO to be set in constructor of inherited emeney classes
     bool isRanged;
     bool aggro;
 };

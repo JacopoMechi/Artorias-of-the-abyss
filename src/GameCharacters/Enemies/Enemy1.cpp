@@ -4,8 +4,16 @@ Enemy1::Enemy1(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int ar
 {
     texture.loadFromFile(texturePath);
     sprite.setTexture(texture);
-    defaultRect = {138, 4, 23, 30};
-    frameRect = defaultRect;
+    frameRects.push_back({138, 4, 23, 31});
+    frameRects.push_back({169, 3, 22, 30});
+    frameRects.push_back({202, 3, 22, 31});
+    frameRects.push_back({232, 6, 26, 28});
+    frameRects.push_back({265, 4, 22, 30});
+    frameRects.push_back({297, 1, 22, 33});
+    frameRects.push_back({329, 0, 22, 34});
+    frameRects.push_back({361, 6, 23, 28});
+    defaultFrames = 8;
+    frameRect = frameRects[0];
     sprite.setScale(7.5f, 7.5f);
 }
 
