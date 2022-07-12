@@ -93,6 +93,7 @@ void Game::gameLoop()
                 shop.draw();
                 hero.updateDelay(dt);
                 hud.gettingDelayTime(dt);
+                levels[level]->setDelayTime(dt);
             }
         }
         window.display();
@@ -104,12 +105,12 @@ void Game::gameLoop()
 Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inventory(window), inGameMenu(window, 0), window(window), hero(window, false, {500.0f, 500.0f}, 1, 20, 0, 500.0f), hud(window, hero, inventory),
                                        shop(window), inputs(inventory, hud, hero, shop)
 {
-    this->levels.emplace_back(new Room({}, Room::Type::StartRoom, window));
+    this->levels.emplace_back(new Room(hero, {}, Room::Type::StartRoom, window));
     for (int i = 0; i <= 3; i++)
-        this->levels.emplace_back(new Room({}, Room::Type::FirstLevel, window));
+        this->levels.emplace_back(new Room(hero, {}, Room::Type::FirstLevel, window));
     for (int i = 0; i <= 3; i++)
-        this->levels.emplace_back(new Room({}, Room::Type::SecondLevel, window));
+        this->levels.emplace_back(new Room(hero, {}, Room::Type::SecondLevel, window));
     for (int i = 0; i <= 2; i++)
-        this->levels.emplace_back(new Room({}, Room::Type::ThirdLevel, window));
-    this->levels.emplace_back(new Room({}, Room::Type::FinalBoss, window));
+        this->levels.emplace_back(new Room(hero, {}, Room::Type::ThirdLevel, window));
+    this->levels.emplace_back(new Room(hero, {}, Room::Type::FinalBoss, window));
 }

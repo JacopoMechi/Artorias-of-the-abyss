@@ -1,12 +1,13 @@
 #include "Room.h"
 
-Room::Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType, sf::RenderWindow &window) : window(window)
+Room::Room(Hero &hero, const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType, sf::RenderWindow &window) : window(window), hero(hero)
 {
     switch (roomType)
     {
     case Type::StartRoom:
         roomFilePath = this->roomPath1;
         this->rightGate = std::make_unique<Gate>(window, true, false);
+        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {500.0f, 500.0f}, 10, 10, 10, 1000.0f));
         break;
     case Type::FirstLevel:
         roomFilePath = this->roomPath1;
@@ -66,6 +67,9 @@ void Room::draw()
     }
     if (npc != nullptr)
         npc->draw(window);
+    enemyVector[0]->draw(window);
+    enemyVector[0]->attack(hero);
+    enemyVector[0]->update(dt);
 }
 
 Bonfire *Room::getBonfire()

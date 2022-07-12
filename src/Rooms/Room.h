@@ -11,6 +11,8 @@
 #include "Gate.h"
 #include "Bonfire.h"
 #include "GameCharacters/NPC.h"
+#include "GameCharacters/Enemies/Enemy.h"
+#include "GameCharacters/Enemies/EnemyFactory.h"
 
 class Room
 {
@@ -24,7 +26,7 @@ public:
         FinalBoss
     };
 
-    Room(const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType, sf::RenderWindow &window);
+    Room(Hero &hero, const std::vector<RoomElement *> &roomElementsVector, const Room::Type roomType, sf::RenderWindow &window);
 
     std::unique_ptr<Gate> leftGate;
     std::unique_ptr<Gate> rightGate;
@@ -39,8 +41,11 @@ public:
 
 protected:
     std::vector<std::unique_ptr<RoomElement>> roomElementsVector;
+    std::vector<std::unique_ptr<Enemy>> enemyVector;
+    EnemyFactory enemyFactory;
     std::unique_ptr<Bonfire> bonfire;
     std::unique_ptr<NPC> npc;
+    Hero &hero;
     std::string roomFilePath;
     const std::string roomPath1 = "Textures/Lvl1.png";
     const std::string roomPath2 = "Textures/Lvl2.png";

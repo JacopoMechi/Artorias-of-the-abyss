@@ -13,7 +13,7 @@ public:
 
     void setAggro(bool aggro);
 
-    virtual void attack(std::unique_ptr<Hero> hero) = 0;
+    virtual void attack(Hero &hero) = 0;
 
 protected:
     bool isRanged;
