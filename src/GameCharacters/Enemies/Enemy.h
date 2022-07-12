@@ -13,15 +13,17 @@ public:
 
     void setAggro(bool aggro);
 
-    virtual void attack(Hero &hero) = 0;
+    virtual void attack(Hero &hero, float dt) = 0;
 
     virtual void update(float dt) override;
 
 protected:
-    std::vector<sf::IntRect> frameRects;//to set enemies frame rects
-    int defaultFrames;//TODO to be set in constructor of inherited emeney classes
+    std::vector<sf::IntRect> frameRects; // to set enemies frame rects
+    int defaultFrames;                   // TODO to be set in constructor of inherited emeney classes
     bool isRanged;
     bool aggro;
+    const float attackHoldTime = 1.0f;
+    float resetAttack = 0.0f;
 };
 
 #endif

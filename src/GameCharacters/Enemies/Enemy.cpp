@@ -18,7 +18,8 @@ void Enemy::setAggro(bool aggro)
     this->aggro = aggro;
 }
 
-void Enemy::update(float dt){
+void Enemy::update(float dt)
+{
     vel = dir * movementSpeed;
     pos += vel * dt;
 
@@ -29,7 +30,7 @@ void Enemy::update(float dt){
     }
     else if (dir.x < 0.0f)
     {
-        frameRect = {frameRects[iFrame].width, frameRects[iFrame].top, -frameRects[iFrame].width, frameRects[iFrame].height}; // flipped sprite
+        frameRect = {frameRects[iFrame].width + frameRects[iFrame].left, frameRects[iFrame].top, -frameRects[iFrame].width, frameRects[iFrame].height}; // flipped sprite
     }
     else if (dir.y == 0)
     {
@@ -44,6 +45,6 @@ void Enemy::update(float dt){
         animationTime = 0.0f;
     }
 
-    sprite.setTextureRect({frameRect.left + iFrame * std::abs(frameRect.width), frameRect.top, frameRect.width, frameRect.height});
+    sprite.setTextureRect(frameRect);
     sprite.setPosition(pos);
 }

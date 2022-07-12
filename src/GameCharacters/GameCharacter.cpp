@@ -126,7 +126,7 @@ void GameCharacter::update(float dt)
 
 sf::Vector2f GameCharacter::getSize() const
 {
-    return {this->sprite.getScale().x * defaultRect.width, this->sprite.getScale().y * defaultRect.height};
+    return {this->sprite.getScale().x * abs(frameRect.width), this->sprite.getScale().y * frameRect.height};
 }
 
 sf::Sprite GameCharacter::getSprite() const

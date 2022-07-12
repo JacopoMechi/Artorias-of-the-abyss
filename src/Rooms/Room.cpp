@@ -68,7 +68,7 @@ void Room::draw()
     if (npc != nullptr)
         npc->draw(window);
     enemyVector[0]->draw(window);
-    enemyVector[0]->attack(hero);
+    enemyVector[0]->attack(hero, dt);
     enemyVector[0]->update(dt);
 }
 

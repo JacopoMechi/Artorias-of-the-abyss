@@ -12,14 +12,23 @@ Enemy1::Enemy1(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int ar
     frameRects.push_back({297, 1, 22, 33});
     frameRects.push_back({329, 0, 22, 34});
     frameRects.push_back({361, 6, 23, 28});
-    defaultFrames = 8;
+    defaultFrames = 7;
     frameRect = frameRects[0];
     sprite.setScale(7.5f, 7.5f);
 }
 
-void Enemy1::attack(Hero &hero)
+void Enemy1::attack(Hero &hero, float dt)
 {
-    if (dir.y == 0 && dir.x == 0 && pos.y < hero.getPos().y + hero.getSize().y / 2 && hero.getPos().y + hero.getSize().y / 2 < pos.y + getSize().y)
+    if (!aggro)
+        resetAttack += dt;
+
+    if (resetAttack >= attackHoldTime)
+    {
+        resetAttack = 0.0f;
+        aggro = true;
+    }
+
+    if (aggro && dir.y == 0 && dir.x == 0 && pos.y < hero.getPos().y + hero.getSize().y / 2 && hero.getPos().y + hero.getSize().y / 2 < pos.y + getSize().y)
     {
         if (hero.getPos().x > pos.x)
             dir.x = 1;
@@ -29,7 +38,7 @@ void Enemy1::attack(Hero &hero)
     if ((pos.x >= 1550 && dir.x == 1) || (pos.x <= 230 && dir.x == -1))
         dir.x = 0;
 
-    if (dir.x == 0 && dir.y == 0 && pos.x < hero.getPos().x + hero.getSize().x / 2 && hero.getPos().x + hero.getSize().x / 2 < pos.x + getSize().x)
+    if (aggro && dir.x == 0 && dir.y == 0 && pos.x < hero.getPos().x + hero.getSize().x / 2 && hero.getPos().x + hero.getSize().x / 2 < pos.x + getSize().x)
     {
         if (hero.getPos().y > pos.y)
             dir.y = 1;
@@ -39,6 +48,9 @@ void Enemy1::attack(Hero &hero)
 
     if ((pos.y >= 745 && dir.y == 1) || (pos.y <= 30 && dir.y == -1))
         dir.y = 0;
+
+    if (dir.x == 0 && dir.y == 0)
+        aggro = false;
 }
 
 void Enemy1::movement(bool isInventoryOpen, bool isInteracting) {}

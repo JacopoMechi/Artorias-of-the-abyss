@@ -8,7 +8,7 @@ class Enemy1 : public Enemy
 public:
     Enemy1(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed);
 
-    void attack(Hero &hero) override;
+    void attack(Hero &hero, float dt) override;
 
     void movement(bool isInventoryOpen, bool isInteracting) override;
 };
