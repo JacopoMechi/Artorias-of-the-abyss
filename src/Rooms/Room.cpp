@@ -67,9 +67,15 @@ void Room::draw()
     }
     if (npc != nullptr)
         npc->draw(window);
-    enemyVector[0]->draw(window);
-    enemyVector[0]->attack(hero, dt);
-    enemyVector[0]->update(dt);
+    if (enemyVector[0]->getHp() <= 0)
+        enemyVector.erase(enemyVector.begin());
+    else
+    {
+        enemyVector[0]->draw(window);
+        enemyVector[0]->attack(hero, dt);
+        enemyVector[0]->update(dt);
+        hero.dealDamage(*enemyVector[0].get());
+    }
 }
 
 Bonfire *Room::getBonfire()
