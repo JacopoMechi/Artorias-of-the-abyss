@@ -7,7 +7,7 @@ Room::Room(Hero &hero, const std::vector<RoomElement *> &roomElementsVector, con
     case Type::StartRoom:
         roomFilePath = this->roomPath1;
         this->rightGate = std::make_unique<Gate>(window, true, false);
-        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {500.0f, 500.0f}, 10, 10, 10, 1000.0f));
+        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 10, 10, 1000.0f));
         break;
     case Type::FirstLevel:
         roomFilePath = this->roomPath1;
@@ -67,14 +67,17 @@ void Room::draw()
     }
     if (npc != nullptr)
         npc->draw(window);
-    if (enemyVector[0]->getHp() <= 0)
-        enemyVector.erase(enemyVector.begin());
-    else
-    {
-        enemyVector[0]->draw(window);
-        enemyVector[0]->attack(hero, dt);
-        enemyVector[0]->update(dt);
-        hero.dealDamage(*enemyVector[0].get());
+    //TODO adjust enemy management
+    if(enemyVector.size() != 0){
+        if (enemyVector[0]->getHp() <= 0)
+            enemyVector.erase(enemyVector.begin());
+        else
+        {
+            enemyVector[0]->draw(window);
+            enemyVector[0]->attack(hero, dt);
+            enemyVector[0]->update(dt);
+            hero.dealDamage(*enemyVector[0].get());
+        }
     }
 }
 

@@ -43,4 +43,6 @@ void Sword::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f e
 }
 
 Sword::Sword(sf::IntRect weaponRect, sf::Vector2f weaponScale, int nFrames, int level) : 
-    Weapon(weaponRect, weaponScale, nFrames, level) { }
+    Weapon(weaponRect, weaponScale, nFrames, level) { 
+        damage = 5;
+    }

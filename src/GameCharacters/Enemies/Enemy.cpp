@@ -23,7 +23,7 @@ void Enemy::update(float dt)
     vel = dir * movementSpeed;
     pos += vel * dt;
 
-    nFrames = defaultFrames;
+    nFrames = frameRects.size() - 1;
     if (dir.x > 0.0f)
     {
         frameRect = frameRects[iFrame];

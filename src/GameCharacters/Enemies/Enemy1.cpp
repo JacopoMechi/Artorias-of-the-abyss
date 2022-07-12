@@ -12,7 +12,6 @@ Enemy1::Enemy1(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int ar
     frameRects.push_back({297, 1, 22, 33});
     frameRects.push_back({329, 0, 22, 34});
     frameRects.push_back({361, 6, 23, 28});
-    defaultFrames = 7;
     frameRect = frameRects[0];
     sprite.setScale(7.5f, 7.5f);
 }

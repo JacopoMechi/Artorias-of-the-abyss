@@ -134,7 +134,7 @@ void Hero::dealDamage(GameCharacter &entity)
             entity.receiveDamage(sword->getDamage());
     }
     else
-    {
+    {//FIXME damage hit enemy multiple times
         if (catalyst->getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds()))
             entity.receiveDamage(catalyst->getDamage());
     }

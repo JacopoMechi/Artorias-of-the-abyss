@@ -30,5 +30,4 @@ Weapon::Weapon(sf::IntRect weaponRect, sf::Vector2f weaponScale, int nFrames, in
     weaponSprite.setTexture(texture);
     weaponSprite.setTextureRect(weaponRect);
     weaponSprite.setScale(weaponScale);
-    setLevel(level);
 }

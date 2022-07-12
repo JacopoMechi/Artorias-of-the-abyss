@@ -19,7 +19,6 @@ public:
 
 protected:
     std::vector<sf::IntRect> frameRects; // to set enemies frame rects
-    int defaultFrames;                   // TODO to be set in constructor of inherited emeney classes
     bool isRanged;
     bool aggro;
     const float attackHoldTime = 1.0f;

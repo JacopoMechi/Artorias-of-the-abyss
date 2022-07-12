@@ -86,4 +86,5 @@ Catalyst::Catalyst(sf::IntRect weaponRect, sf::Vector2f weaponScale, int nFrames
     currentSpellRect = spellStage[0];
     spellPos = {650, 540};//the hero spawn facing to the right and at the position 500, 500
     weaponSprite.setPosition(spellPos);
+    damage = 5;
 }
