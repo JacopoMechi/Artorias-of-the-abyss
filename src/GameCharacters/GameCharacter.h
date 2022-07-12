@@ -47,7 +47,7 @@ public:
 
     void draw(sf::RenderWindow &window) const;
 
-    void update(float dt);
+    virtual void update(float dt);
 
     sf::Vector2f getSize() const;
 
