@@ -69,6 +69,7 @@ bool Hero::getCanAttack() const
 void Hero::setCanAttack(bool canAttack)
 {
     this->canAttack = canAttack;
+    isHitted = false;// setting isHitted to false to check if the enemy got hit
 }
 
 bool Hero::getStartingSpell() const
@@ -130,13 +131,17 @@ void Hero::dealDamage(GameCharacter &entity)
 {
     if (isKnight)
     {
-        if (sword->getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds()))
+        if (!isHitted && sword->getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds())){
             entity.receiveDamage(sword->getDamage());
+            isHitted = true;
+        }
     }
     else
-    {//FIXME damage hit enemy multiple times
-        if (catalyst->getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds()))
+    {
+        if (!isHitted && catalyst->getSprite().getGlobalBounds().intersects(entity.getSprite().getGlobalBounds())){
             entity.receiveDamage(catalyst->getDamage());
+            isHitted = true;
+        }
     }
 }
 
