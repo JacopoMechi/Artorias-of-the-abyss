@@ -17,6 +17,10 @@ public:
 
     sf::Sprite getSprite() const;
 
+    //getters for unit testing
+    int getNFrames() const;
+    int getIFrame() const;
+
     virtual void use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f entityPos, float dt);
 
     Weapon(sf::IntRect weaponRect, sf::Vector2f weaponScale, int nFrames, int level = 1);

@@ -20,6 +20,14 @@ sf::Sprite Weapon::getSprite() const{
     return weaponSprite;
 }
 
+int Weapon::getNFrames() const{
+    return nFrames;
+}
+
+int Weapon::getIFrame() const{
+    return iWeaponFrame;
+}
+
 void Weapon::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f entityPos, float dt){
     
 }
