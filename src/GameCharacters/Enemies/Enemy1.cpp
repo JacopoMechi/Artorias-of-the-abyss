@@ -50,6 +50,11 @@ void Enemy1::attack(Hero &hero, float dt)
 
     if (dir.x == 0 && dir.y == 0)
         aggro = false;
+
+    if (getSprite().getGlobalBounds().intersects(hero.getSprite().getGlobalBounds())) // TODO add aura protection
+    {
+        hero.receiveDamage(1);
+    }
 }
 
 void Enemy1::movement(bool isInventoryOpen, bool isInteracting) {}

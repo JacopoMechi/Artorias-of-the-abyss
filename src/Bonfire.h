@@ -7,15 +7,12 @@
 #include <math.h>
 
 #include "Rooms/RoomElement.h"
+#include "GameCharacters/Hero.h"
 
 class Bonfire : public RoomElement
 {
 public:
     void resetHp(); // TODO to be implemented
-
-    void setSpawnPoint(); // TODO to be implemented
-
-    void respawnEnemies(); // TODO to be implemented
 
     bool closeToHero(sf::Vector2f heroPos);
 
