@@ -23,6 +23,9 @@ public:
     void setEntityCollision(GameCharacter *entityCollision);
     void setEntityCollision(RoomElement *element);
 
+    void deleteEntity();
+    void deleteNPC();
+
     void solveNPCCollision();
     void solveElementCollision();
 
@@ -33,7 +36,7 @@ private:
     Hero &hero;
     Shop &shop;
     GameCharacter* entityCollision = nullptr;
-    RoomElement* element = 0;
+    RoomElement* element = nullptr;
     bool entityInRange = false;
     bool NPCInRange = false;
 };
