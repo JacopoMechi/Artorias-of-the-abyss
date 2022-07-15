@@ -104,9 +104,9 @@ void Hero::setMoneyAmount(int moneyCounter)
 void Hero::changeLevel(int level){
     if(isKnight){
         if(level == 1)
-            defaultRect = {0, 28, 16, 22};
+            defaultRect = {0, 25, 16, 24};
         else if(level == 2)
-            defaultRect = {0, 57, 16, 22};
+            defaultRect = {0, 54, 16, 24};
         else
             std::cout << "Error on setting knight's level" << std::endl;
         sword -> setLevel(level + 1);
