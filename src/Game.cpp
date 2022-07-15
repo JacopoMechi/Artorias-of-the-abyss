@@ -46,7 +46,9 @@ void Game::gameLoop()
                         hero.getPos().y + hero.getSize().y / 2 < levels[level]->rightGate->getPos().y + levels[level]->rightGate->getSize().y)
                     {
                         hero.setPos(Gate::leftPosition + sf::Vector2f{hero.getSize().x, 0});
-
+                        //clearing pointers of npc and bonfire
+                        inputs.deleteEntity();
+                        inputs.deleteNPC();
                         // switching to next room
                         level++;
                         levelReached++;
@@ -60,7 +62,9 @@ void Game::gameLoop()
                         hero.getPos().y + hero.getSize().y / 2 < levels[level]->leftGate->getPos().y + levels[level]->leftGate->getSize().y)
                     {
                         hero.setPos(Gate::rightPosition - sf::Vector2f{hero.getSize().x, 0});
-
+                        //clearing pointers of npc and bonfire
+                        inputs.deleteEntity();
+                        inputs.deleteNPC();
                         // switching to previous room
                         level--;
                     }
@@ -81,8 +85,22 @@ void Game::gameLoop()
                     inventory.receiveItem(0)->setItemCount(5 - inventory.receiveItem(0)->getItemCount()); // reset estus flask amount
                     inventory.receiveItem(2)->setIsRespawn(false);
                 }
+                if(levels[level] -> getBonfire() != nullptr){
+                    entityInteraction = levels[level] -> getBonfire() -> closeToHero(hero.getPos());
+                    inputs.setEntityCollision(levels[level] -> getBonfire());
+                }else
+                    entityInteraction = false;
 
-                inputs.setHeroEntityAggro(NPCInteraction, entityInteraction);
+                if(levels[level] -> getNPC() != nullptr){
+                    shop.setNPCType(levels[level] -> getNPC() -> getNPCType());
+                    hud.setType(levels[level] -> getNPC() -> getNPCType());
+                    hud.setTextPool(levels[level] -> getNPC() -> getTextPool());
+                    NPCInteraction = levels[level] -> getNPC() -> closeToHero(hero);
+                    inputs.setEntityCollision(levels[level] -> getNPC());
+                }else
+                    NPCInteraction = false;
+                inputs.setHeroEntityAggro(NPCInteraction, entityInteraction); //for buttons interactions
+                hud.setAggro(entityInteraction, NPCInteraction); //to obscure interact button
                 hero.movement(false, entityInteraction); // for the moment
                 hero.update(dt);
                 hero.draw(window);
