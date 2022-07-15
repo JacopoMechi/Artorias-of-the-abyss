@@ -44,6 +44,9 @@ public:
     int getMoneyAmount() const;
     void setMoneyAmount(int moneyCounter);
 
+    //method to change armor and stats
+    void changeLevel(int level);
+
     void dash();
 
     void blockDamage(sf::RenderWindow &window);
