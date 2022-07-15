@@ -2,13 +2,24 @@
 
 void Catalyst::setLevel(int level)
 {
+    /*spellStage.push_back({2, 332, 38, 36});
+    spellStage.push_back({3, 299, 33, 20});*/
     this->level = level;
     if (level == 1)
         damage = 15;
-    else if (level == 2)
+    else if (level == 2){
+        spellStage.clear();
+        spellStage.push_back({46, 332, 38, 36});
+        spellStage.push_back({46, 299, 33, 20});
+        weaponRect = spellStage[0];
         damage = 20;
-    else if (level == 3)
+    }else if (level == 3){
+        spellStage.clear();
+        spellStage.push_back({90, 332, 38, 36});
+        spellStage.push_back({90, 299, 33, 20});
+        weaponRect = spellStage[0];
         damage = 25;
+    }
 }
 
 void Catalyst::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f entityPos, float dt){
@@ -20,7 +31,7 @@ void Catalyst::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2
             xVariation = 10;
             yVariation = 40;
         }else if(entityRect.width < 0){
-            currentRect = {weaponRect.width, weaponRect.top, -weaponRect.width, weaponRect.height};
+            currentRect = {weaponRect.left + weaponRect.width, weaponRect.top, -weaponRect.width, weaponRect.height};
             xVariation = -20;
             yVariation = 40;
         }
@@ -70,7 +81,7 @@ void Catalyst::setSpellDirection(sf::Vector2f heroPos, sf::IntRect heroRect){
     }if(heroRect.width < 0){
         spellDirection = -1; //left
         spellPos.x = heroPos.x - 150;
-        currentSpellRect = {spellStage[1].width, spellStage[1].top, -spellStage[1].width, spellStage[1].height};
+        currentSpellRect = {spellStage[1].left + spellStage[1].width, spellStage[1].top, -spellStage[1].width, spellStage[1].height};
     }
     spellPos.y = heroPos.y +40;
 }
