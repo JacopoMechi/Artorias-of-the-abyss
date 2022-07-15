@@ -105,12 +105,18 @@ void Game::gameLoop()
 Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inventory(window), inGameMenu(window, 0), window(window), hero(window, true, {500.0f, 500.0f}, 100, 20, 0, 500.0f), hud(window, hero, inventory),
                                        shop(window), inputs(inventory, hud, hero, shop)
 {
-    this->levels.emplace_back(new Room(hero, {}, Room::Type::StartRoom, window));
-    for (int i = 0; i <= 3; i++)
-        this->levels.emplace_back(new Room(hero, {}, Room::Type::FirstLevel, window));
-    for (int i = 0; i <= 3; i++)
-        this->levels.emplace_back(new Room(hero, {}, Room::Type::SecondLevel, window));
-    for (int i = 0; i <= 2; i++)
-        this->levels.emplace_back(new Room(hero, {}, Room::Type::ThirdLevel, window));
+    this->levels.emplace_back(new Room(hero, {}, Room::Type::StartFirst, window));
+    for (int i = 0; i < 3; i++)
+        this->levels.emplace_back(new Room(hero, {}, Room::Type::FirstFloor, window));
+
+    this->levels.emplace_back(new Room(hero, {}, Room::Type::StartSecond, window));
+    for (int i = 0; i < 3; i++)
+        this->levels.emplace_back(new Room(hero, {}, Room::Type::SecondFloor, window));
+
+    this->levels.emplace_back(new Room(hero, {}, Room::Type::StartThird, window));
+    for (int i = 0; i < 2; i++)
+        this->levels.emplace_back(new Room(hero, {}, Room::Type::ThirdFloor, window));
+    this->levels.emplace_back(new Room(hero, {}, Room::Type::LastLevel, window));
+
     this->levels.emplace_back(new Room(hero, {}, Room::Type::FinalBoss, window));
 }

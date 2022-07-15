@@ -4,35 +4,58 @@ Room::Room(Hero &hero, const std::vector<RoomElement *> &roomElementsVector, con
 {
     switch (roomType)
     {
-    case Type::StartRoom:
+    case Type::StartFirst:
         roomFilePath = this->roomPath1;
         this->rightGate = std::make_unique<Gate>(window, true, true);
+        this->npc = std::unique_ptr<NPC>(new NPC(window, 1, {322.0f, 224.0f}));
         break;
-    case Type::FirstLevel:
+    case Type::FirstFloor:
         roomFilePath = this->roomPath1;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
         this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
         enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 10, 10, 1000.0f));
         break;
-    case Type::SecondLevel:
+    case Type::StartSecond:
+        roomFilePath = this->roomPath2;
+        this->leftGate = std::make_unique<Gate>(window);
+        this->rightGate = std::make_unique<Gate>(window, true, false);
+        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
+        this->npc = std::unique_ptr<NPC>(new NPC(window, 0, {322.0f, 224.0f}));
+        break;
+    case Type::SecondFloor:
         roomFilePath = this->roomPath2;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
         this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
         enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 10, 10, 1000.0f));
         break;
-    case Type::ThirdLevel:
+    case Type::StartThird:
+        roomFilePath = this->roomPath3;
+        this->leftGate = std::make_unique<Gate>(window);
+        this->rightGate = std::make_unique<Gate>(window, true, false);
+        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
+        break;
+    case Type::ThirdFloor:
         roomFilePath = this->roomPath3;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
         this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
         enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 10, 10, 1000.0f));
         break;
+    case Type::LastLevel:
+        roomFilePath = this->roomPath3;
+        this->leftGate = std::make_unique<Gate>(window);
+        this->rightGate = std::make_unique<Gate>(window, true, false);
+        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
+        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 10, 10, 1000.0f));
+        this->npc = std::unique_ptr<NPC>(new NPC(window, 3, {322.0f, 224.0f}));
+        break;
     case Type::FinalBoss:
         roomFilePath = this->roomPath3;
         this->leftGate = std::make_unique<Gate>(window);
         enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 10, 10, 1000.0f));
+        this->npc = std::unique_ptr<NPC>(new NPC(window, 2, {322.0f, 224.0f}));
         break;
     }
 
@@ -63,9 +86,6 @@ void Room::draw()
         leftGate->draw();
     if (rightGate != nullptr)
         rightGate->draw();
-    if (npc != nullptr)
-        npc->draw(window);
-    // TODO adjust enemy management
     if (enemyVector.size() != 0)
     {
         if (enemyVector[0]->getHp() <= 0)
@@ -89,6 +109,8 @@ void Room::draw()
             bonfire->setDelayTime(dt);
             bonfire->draw();
         }
+        if (npc != nullptr)
+            npc->draw(window);
     }
 }
 

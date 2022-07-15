@@ -19,10 +19,13 @@ class Room
 public:
     enum class Type
     {
-        StartRoom,
-        FirstLevel,
-        SecondLevel,
-        ThirdLevel,
+        StartFirst,
+        FirstFloor,
+        StartSecond,
+        SecondFloor,
+        StartThird,
+        ThirdFloor,
+        LastLevel,
         FinalBoss
     };
 
@@ -54,7 +57,6 @@ protected:
     sf::Sprite roomSprite;
     sf::RenderWindow &window;
     bool isClear = true; // TODO Default should be false, true for testing
-    int level;
-    float dt = 0; // to take delay time for bonfire animation
+    float dt = 0;        // to take delay time for bonfire animation
 };
 #endif
