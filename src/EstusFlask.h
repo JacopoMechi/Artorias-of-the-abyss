@@ -10,9 +10,8 @@ public:
                         sf::IntRect spriteRect = {412, 2, 20, 21}, sf::IntRect effectRect = {530, 157, 17, 22});
     virtual ~EstusFlask();
     virtual void use(Hero& hero) override;
-    //TODO LATER reset usage in Bonfire
 private:
-    int healthRestored = 30;// TODO blance healh restored
+    int healthRestored = 30;
 };
 
 #endif //_ESTUSFLASK_H
