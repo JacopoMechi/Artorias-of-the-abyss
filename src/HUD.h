@@ -101,8 +101,6 @@ protected:
     sf::Sprite boxSprite;
     //getting text pool to display it
     std::vector<std::wstring> textPool;
-    //setting spell direction for hero
-    int spellDirection; //it can be 1(right) or -1(left)
 
     //boolean value to obscure interact button in case hero is not in range of npc
     bool isAggro = false;
