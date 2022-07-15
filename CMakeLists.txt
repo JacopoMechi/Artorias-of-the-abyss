@@ -86,10 +86,12 @@ set(SOURCE_FILES
                     src/Inventory.h
                     src/Inventory.cpp)
 
-add_executable(${EXECUTABLE_NAME} main.cpp)
+add_executable(${EXECUTABLE_NAME} main.cpp ${SOURCE_FILES})
 
-add_library(core ${SOURCE_FILES})
-target_link_libraries(${EXECUTABLE_NAME} core)
+IF(LINUX)
+    add_library(core ${SOURCE_FILES})
+    target_link_libraries(${EXECUTABLE_NAME} core)
+endif()
 
 
 if(SFML_FOUND)
