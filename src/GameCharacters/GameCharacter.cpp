@@ -64,8 +64,7 @@ Weapon *GameCharacter::getWeapon()
 
 void GameCharacter::receiveDamage(int points)
 {
-    // points = points * armor / 100;
-    HP -= points; // TODO
+    HP -= (points*(1 - armor/100));
 }
 
 void GameCharacter::movement(bool isInventoryOpen, bool isInteracting)
