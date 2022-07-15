@@ -14,17 +14,26 @@ void Game::gameLoop()
             inGameMenu.updateEvent(event);
             if (event.type == sf::Event::Closed)
                 window.close();
-            inputs.updateInputs(event);
+            if (inputs != nullptr)
+                inputs->updateInputs(event);
         }
-        inputs.moveHero(event);
-        hud.setAggro(entityInteraction, NPCInteraction);
+        if (inputs != nullptr)
+            inputs->moveHero(event);
+        if (hud != nullptr)
+            hud->setAggro(entityInteraction, NPCInteraction);
         window.clear(sf::Color::Black);
         levels[level]->draw();
         if (gameStatus == Game::Status::MainMenu)
         {
             mainMenu.launch();
             if (mainMenu.getStartGame())
+            {
                 gameStatus = Game::Status::Playing;
+                hero = std::unique_ptr<Hero>(new Hero(window, mainMenu.getIsKnight(), {500.0f, 500.0f}, 100, 20, 0, 500.0f));
+                hud = std::unique_ptr<HUD>(new HUD(window, *hero.get(), inventory));
+                inputs = std::unique_ptr<CharacterInputs>(new CharacterInputs(inventory, *hud.get(), *hero.get(), shop));
+                inGameMenu.setStartGame(true);
+            }
         }
         else if (gameStatus == Game::Status::InGameMenu)
         {
@@ -41,11 +50,11 @@ void Game::gameLoop()
                 if (levels[level]->rightGate != nullptr)
                 {
                     if (levels[level]->rightGate->getisOpen() &&
-                        hero.getPos().x + hero.getSize().x > levels[level]->rightGate->getPos().x &&
-                        hero.getPos().y + hero.getSize().y / 2 > levels[level]->rightGate->getPos().y &&
-                        hero.getPos().y + hero.getSize().y / 2 < levels[level]->rightGate->getPos().y + levels[level]->rightGate->getSize().y)
+                        hero->getPos().x + hero->getSize().x > levels[level]->rightGate->getPos().x &&
+                        hero->getPos().y + hero->getSize().y / 2 > levels[level]->rightGate->getPos().y &&
+                        hero->getPos().y + hero->getSize().y / 2 < levels[level]->rightGate->getPos().y + levels[level]->rightGate->getSize().y)
                     {
-                        hero.setPos(Gate::leftPosition + sf::Vector2f{hero.getSize().x, 0});
+                        hero->setPos(Gate::leftPosition + sf::Vector2f{hero->getSize().x, 0});
 
                         // switching to next room
                         level++;
@@ -55,20 +64,20 @@ void Game::gameLoop()
                 if (levels[level]->leftGate != nullptr)
                 {
                     if (levels[level]->leftGate->getisOpen() &&
-                        hero.getPos().x < levels[level]->leftGate->getPos().x + levels[level]->leftGate->getSize().x &&
-                        hero.getPos().y + hero.getSize().y / 2 > levels[level]->leftGate->getPos().y &&
-                        hero.getPos().y + hero.getSize().y / 2 < levels[level]->leftGate->getPos().y + levels[level]->leftGate->getSize().y)
+                        hero->getPos().x < levels[level]->leftGate->getPos().x + levels[level]->leftGate->getSize().x &&
+                        hero->getPos().y + hero->getSize().y / 2 > levels[level]->leftGate->getPos().y &&
+                        hero->getPos().y + hero->getSize().y / 2 < levels[level]->leftGate->getPos().y + levels[level]->leftGate->getSize().y)
                     {
-                        hero.setPos(Gate::rightPosition - sf::Vector2f{hero.getSize().x, 0});
+                        hero->setPos(Gate::rightPosition - sf::Vector2f{hero->getSize().x, 0});
 
                         // switching to previous room
                         level--;
                     }
                 }
                 // teleporting hero at respawn point in case he's dead or he used an homeward bone
-                if (inventory.receiveItem(2)->getIsRespawn() || hero.getHp() == 0)
+                if (inventory.receiveItem(2)->getIsRespawn() || hero->getHp() == 0)
                 {
-                    if (hero.getSpawnPoint().x == 500.0f)
+                    if (hero->getSpawnPoint().x == 500.0f)
                     { // which means if spawn spoint is set to starting room
                         level = 0;
                     }
@@ -76,23 +85,23 @@ void Game::gameLoop()
                     {              // if hero interacted with a bonfire
                         level = 1; // for the moment because middleroom must be in the middle of the level
                     }
-                    hero.setPos(hero.getSpawnPoint());
-                    hero.setHp(100);                                                                      // reset hero's hp
+                    hero->setPos(hero->getSpawnPoint());
+                    hero->setHp(100);                                                                     // reset hero's hp
                     inventory.receiveItem(0)->setItemCount(5 - inventory.receiveItem(0)->getItemCount()); // reset estus flask amount
                     inventory.receiveItem(2)->setIsRespawn(false);
                 }
 
-                inputs.setHeroEntityAggro(NPCInteraction, entityInteraction);
-                hero.movement(false, entityInteraction); // for the moment
-                hero.update(dt);
-                hero.draw(window);
-                hero.attack(window);
-                hud.draw();
-                hud.displayHealthAndEffects(hero);
-                hud.displayMoneyCounter(hero);
+                inputs->setHeroEntityAggro(NPCInteraction, entityInteraction);
+                hero->movement(false, entityInteraction); // for the moment
+                hero->update(dt);
+                hero->draw(window);
+                hero->attack(window);
+                hud->draw();
+                hud->displayHealthAndEffects(*hero.get());
+                hud->displayMoneyCounter(*hero.get());
                 shop.draw();
-                hero.updateDelay(dt);
-                hud.gettingDelayTime(dt);
+                hero->updateDelay(dt);
+                hud->gettingDelayTime(dt);
                 levels[level]->setDelayTime(dt);
             }
         }
@@ -102,21 +111,20 @@ void Game::gameLoop()
     }
 }
 
-Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inventory(window), inGameMenu(window, 0), window(window), hero(window, true, {500.0f, 500.0f}, 100, 20, 0, 500.0f), hud(window, hero, inventory),
-                                       shop(window), inputs(inventory, hud, hero, shop)
+Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inventory(window), inGameMenu(window, 0), window(window), shop(window)
 {
-    this->levels.emplace_back(new Room(hero, {}, Room::Type::StartFirst, window));
+    this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartFirst, window));
     for (int i = 0; i < 3; i++)
-        this->levels.emplace_back(new Room(hero, {}, Room::Type::FirstFloor, window));
+        this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::FirstFloor, window));
 
-    this->levels.emplace_back(new Room(hero, {}, Room::Type::StartSecond, window));
+    this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartSecond, window));
     for (int i = 0; i < 3; i++)
-        this->levels.emplace_back(new Room(hero, {}, Room::Type::SecondFloor, window));
+        this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::SecondFloor, window));
 
-    this->levels.emplace_back(new Room(hero, {}, Room::Type::StartThird, window));
+    this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartThird, window));
     for (int i = 0; i < 2; i++)
-        this->levels.emplace_back(new Room(hero, {}, Room::Type::ThirdFloor, window));
-    this->levels.emplace_back(new Room(hero, {}, Room::Type::LastLevel, window));
+        this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::ThirdFloor, window));
+    this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::LastLevel, window));
 
-    this->levels.emplace_back(new Room(hero, {}, Room::Type::FinalBoss, window));
+    this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::FinalBoss, window));
 }

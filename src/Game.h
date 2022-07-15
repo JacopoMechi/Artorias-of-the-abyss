@@ -42,13 +42,13 @@ private:
     Menu mainMenu;
     Menu inGameMenu;
     sf::RenderWindow &window;
-    Hero hero;
-    HUD hud;
+    std::unique_ptr<Hero> hero;
+    std::unique_ptr<HUD> hud;
     Inventory inventory;
     Shop shop;
     sf::Clock clock;
     sf::Event event;
-    CharacterInputs inputs;
+    std::unique_ptr<CharacterInputs> inputs;
 };
 
 #endif //_GAME_H

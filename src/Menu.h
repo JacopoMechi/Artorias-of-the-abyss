@@ -11,6 +11,9 @@ public:
     void launch();
 
     bool getStartGame();
+    void setStartGame(bool state);
+
+    bool getIsKnight();
 
     void updateEvent(sf::Event keyInput);
 
@@ -25,6 +28,10 @@ protected:
     sf::Sprite shadowSprite;
     sf::Texture higlightTexture;
     sf::Sprite higlightSprite;
+    sf::Font font;
+    sf::Text knightText;
+    sf::Text mageText;
+    bool isKnight = true;
     bool mainMenu;
     bool startGame = false;
 };
