@@ -12,7 +12,10 @@ int GameCharacter::getHp() const
 
 void GameCharacter::setHp(int hp)
 {
-    this->HP = hp;
+    if(hp > 100)
+        this->HP = 100;
+    else
+        this->HP = hp;
 }
 
 sf::Vector2f GameCharacter::getPos() const
