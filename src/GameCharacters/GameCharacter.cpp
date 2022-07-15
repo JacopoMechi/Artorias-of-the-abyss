@@ -12,8 +12,6 @@ int GameCharacter::getHp() const
 
 void GameCharacter::setHp(int hp)
 {
-    if (hp < 0)
-        hp = 0;
     this->HP = hp;
 }
 
