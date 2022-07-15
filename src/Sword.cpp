@@ -5,10 +5,13 @@ void Sword::setLevel(int level)
     this->level = level;
     if (level == 1)
         damage = 5;
-    else if (level == 2)
+    else if (level == 2){
+        weaponRect = {0, 205, 21, 40};
         damage = 10;
-    else if (level == 3)
+    }else if (level == 3){
+        weaponRect = {0, 254, 21, 40};
         damage = 15;
+    }
 }
 
 void Sword::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f entityPos, float dt){
