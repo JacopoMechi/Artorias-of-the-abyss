@@ -1,6 +1,6 @@
 #include "Hero.h"
 
-Hero::Hero(sf::RenderWindow &window, bool isKnight, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed) : isKnight(isKnight), GameCharacter(window, pos, hp, armor, cash, movementSpeed)
+Hero::Hero(sf::RenderWindow &window, bool isKnight, const sf::Vector2f &pos, int hp, int cash, float movementSpeed) : isKnight(isKnight), GameCharacter(window, pos, hp, armor, cash, movementSpeed)
 {
     if (!texture.loadFromFile(texturePath))
         std::cout << "Error on loading hero's texture" << std::endl;
@@ -16,13 +16,16 @@ Hero::Hero(sf::RenderWindow &window, bool isKnight, const sf::Vector2f &pos, int
         auraShield.setScale(7.0f, 7.0f);
         canAttack = true;
         sword = std::make_unique<Sword>(); // knight's weapon assign
+        baseArmor = 60;
     }
     else
     {
         defaultRect = {0, 83, 15, 21};
         canAttack = false;
         catalyst = std::make_unique<Catalyst>(); // mage's weapon assign
+        baseArmor = 20;
     }
+    armor = baseArmor;
     frameRect = defaultRect;
     sprite.setScale(7.5f, 7.5f);
 }
@@ -85,6 +88,7 @@ bool Hero::getAuraReady() const
 void Hero::setAuraReady(bool auraReady)
 {
     this->auraReady = auraReady;
+    armor = 100;//hero will not take damage
 }
 
 int Hero::getMoneyAmount() const
@@ -167,9 +171,10 @@ void Hero::updateDelay(float dt)
     {
         auraTime += delayTime;
         if (auraTime >= auraTimeHolding)
-        { // TODO or when character got hit
+        {
             auraTime = 0;
             auraReady = true;
+            armor = baseArmor;
         }
     }
 
