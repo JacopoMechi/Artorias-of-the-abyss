@@ -12,8 +12,6 @@
 class Bonfire : public RoomElement
 {
 public:
-    void resetHp(); // TODO to be implemented
-
     bool closeToHero(sf::Vector2f heroPos);
 
     Bonfire(sf::RenderWindow &window, const sf::Vector2f &position,
