@@ -13,34 +13,29 @@ Room::Room(Hero &hero, const std::vector<RoomElement *> &roomElementsVector, con
         roomFilePath = this->roomPath1;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
-        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
         enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 10, 10, 1000.0f));
         break;
     case Type::StartSecond:
         roomFilePath = this->roomPath2;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
-        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
         this->npc = std::unique_ptr<NPC>(new NPC(window, 0, {322.0f, 224.0f}));
         break;
     case Type::SecondFloor:
         roomFilePath = this->roomPath2;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
-        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
         enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 10, 10, 1000.0f));
         break;
     case Type::StartThird:
         roomFilePath = this->roomPath3;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
-        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
         break;
     case Type::ThirdFloor:
         roomFilePath = this->roomPath3;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
-        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
         enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 10, 10, 1000.0f));
         break;
     case Type::LastLevel:
@@ -88,9 +83,10 @@ void Room::draw()
         rightGate->draw();
     if (enemyVector.size() != 0)
     {
-        if (enemyVector[0]->getHp() <= 0)
+        if (enemyVector[0]->getHp() <= 0){
             enemyVector.erase(enemyVector.begin());
-        else
+            this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
+        }else
         {
             enemyVector[0]->draw(window);
             enemyVector[0]->attack(hero, dt);
