@@ -1,6 +1,6 @@
 #include "Sword.h"
 
-void Sword::setLevel(int level) //TODO Choose damage for every level
+void Sword::setLevel(int level)
 {
     this->level = level;
     if (level == 1)
