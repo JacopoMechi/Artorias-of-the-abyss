@@ -12,7 +12,7 @@ class Hero : public GameCharacter
 {
     // TODO add a method to switch hero's armor and weapon when a boss is killed
 public:
-    Hero(sf::RenderWindow &window, bool isKnight, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed);
+    Hero(sf::RenderWindow &window, bool isKnight, const sf::Vector2f &pos, int hp, int cash, float movementSpeed);
     virtual ~Hero() = default;
 
     int getDash() const;
@@ -101,6 +101,9 @@ protected:
 
     sf::Vector2f dashing;
     float dashDistance = 100.0f;
+
+    //to track hero's armor
+    int baseArmor;
 };
 
 #endif //_HERO_H

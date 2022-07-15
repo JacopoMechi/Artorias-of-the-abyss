@@ -1,14 +1,14 @@
 #include "Catalyst.h"
 
-void Catalyst::setLevel(int level) //TODO Choose damage for every level
+void Catalyst::setLevel(int level)
 {
     this->level = level;
     if (level == 1)
-        damage = 5;
-    else if (level == 2)
-        damage = 10;
-    else if (level == 3)
         damage = 15;
+    else if (level == 2)
+        damage = 20;
+    else if (level == 3)
+        damage = 25;
 }
 
 void Catalyst::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f entityPos, float dt){
@@ -86,5 +86,5 @@ Catalyst::Catalyst(sf::IntRect weaponRect, sf::Vector2f weaponScale, int nFrames
     currentSpellRect = spellStage[0];
     spellPos = {650, 540};//the hero spawn facing to the right and at the position 500, 500
     weaponSprite.setPosition(spellPos);
-    damage = 5;
+    damage = 15;
 }
