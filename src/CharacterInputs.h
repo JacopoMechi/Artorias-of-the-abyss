@@ -15,6 +15,7 @@ public:
     CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero, Shop &shop);
 
     void updateInputs(sf::Event keyInputs);
+    int updateBonefireInputs(sf::Event keyInputs, int level);
 
     void moveHero(sf::Event keyInput);
 
@@ -35,8 +36,9 @@ private:
     HUD &hud;
     Hero &hero;
     Shop &shop;
-    GameCharacter* entityCollision = nullptr;
-    RoomElement* element = nullptr;
+    GameCharacter *entityCollision = nullptr;
+    RoomElement *element = nullptr;
+    int respawnLevel = 0;
     bool entityInRange = false;
     bool NPCInRange = false;
 };

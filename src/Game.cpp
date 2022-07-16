@@ -15,7 +15,10 @@ void Game::gameLoop()
             if (event.type == sf::Event::Closed)
                 window.close();
             if (inputs != nullptr)
+            {
                 inputs->updateInputs(event);
+                respawnLevel = inputs->updateBonefireInputs(event, level);
+            }
         }
         if (inputs != nullptr)
             inputs->moveHero(event);

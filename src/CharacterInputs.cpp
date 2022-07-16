@@ -123,14 +123,6 @@ void CharacterInputs::updateInputs(sf::Event keyInput)
             // resetting shop
             shop.setOpen(false);
         }
-        else if (entityInRange)
-        {
-            hero.setHp(100);
-            inventory.setItemAmount(0, 5 - inventory.receiveItem(0)->getItemCount());
-            // changing spawn point of hero close to bonfire
-            hero.setSpawnPoint({element->getPos().x + element->getSize().x, element->getPos().y});
-            // TODO find a way to set spawn point level
-        }
     }
 
     // input for changing quickslot items. It opens a dialogue box
@@ -141,6 +133,20 @@ void CharacterInputs::updateInputs(sf::Event keyInput)
         else if (shop.getOpen())
             shop.setIsBuying(!shop.getIsBuying());
     }
+}
+
+int CharacterInputs::updateBonefireInputs(sf::Event keyInput, int level)
+{
+    if (entityInRange && !inventory.getOpen() && keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Q)
+    {
+
+        hero.setHp(100);
+        inventory.setItemAmount(0, 5 - inventory.receiveItem(0)->getItemCount());
+        // changing spawn point of hero close to bonfire
+        hero.setSpawnPoint({element->getPos().x + element->getSize().x, element->getPos().y});
+        respawnLevel = level;
+    }
+    return respawnLevel;
 }
 
 // handling hero's movement
