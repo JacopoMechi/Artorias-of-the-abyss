@@ -86,6 +86,10 @@ void Room::draw()
         if (enemyVector[0]->getHp() <= 0){
             enemyVector.erase(enemyVector.begin());
             this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
+            if (leftGate != nullptr)
+                leftGate->setisOpen(true);
+            if (rightGate != nullptr)
+                rightGate->setisOpen(true);
         }else
         {
             enemyVector[0]->draw(window);
@@ -96,10 +100,6 @@ void Room::draw()
     }
     else
     {
-        if (leftGate != nullptr)
-            leftGate->setisOpen(true);
-        if (rightGate != nullptr)
-            rightGate->setisOpen(true);
         if (bonfire != nullptr)
         {
             bonfire->setDelayTime(dt);
