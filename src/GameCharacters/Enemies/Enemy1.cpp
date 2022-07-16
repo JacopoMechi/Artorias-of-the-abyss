@@ -2,8 +2,6 @@
 
 Enemy1::Enemy1(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed) : Enemy(window, pos, hp, armor, cash, movementSpeed)
 {
-    texture.loadFromFile(texturePath);
-    sprite.setTexture(texture);
     frameRects.push_back({138, 4, 23, 31});
     frameRects.push_back({169, 3, 22, 30});
     frameRects.push_back({202, 3, 22, 31});
@@ -13,7 +11,7 @@ Enemy1::Enemy1(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int ar
     frameRects.push_back({329, 0, 22, 34});
     frameRects.push_back({361, 6, 23, 28});
     frameRect = frameRects[0];
-    sprite.setScale(7.5f, 7.5f);
+    sprite.setTextureRect(frameRect);
 }
 
 void Enemy1::attack(Hero &hero, float dt)

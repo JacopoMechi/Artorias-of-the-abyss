@@ -22,7 +22,8 @@ void Game::gameLoop()
         if (hud != nullptr)
             hud->setAggro(entityInteraction, NPCInteraction);
         window.clear(sf::Color::Black);
-        levels[level]->draw();
+        if (levels.size() != 0)
+            levels[level]->draw();
         if (gameStatus == Game::Status::MainMenu)
         {
             mainMenu.launch();
@@ -32,6 +33,20 @@ void Game::gameLoop()
                 hero = std::unique_ptr<Hero>(new Hero(window, mainMenu.getIsKnight(), {500.0f, 500.0f}, 100, 0, 500.0f));
                 hud = std::unique_ptr<HUD>(new HUD(window, *hero.get(), inventory));
                 inputs = std::unique_ptr<CharacterInputs>(new CharacterInputs(inventory, *hud.get(), *hero.get(), shop));
+                this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartFirst, window));
+                for (int i = 0; i < 3; i++)
+                    this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::FirstFloor, window));
+
+                this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartSecond, window));
+                for (int i = 0; i < 3; i++)
+                    this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::SecondFloor, window));
+
+                this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartThird, window));
+                for (int i = 0; i < 2; i++)
+                    this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::ThirdFloor, window));
+                this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::LastLevel, window));
+
+                this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::FinalBoss, window));
                 inGameMenu.setStartGame(true);
             }
         }
@@ -135,18 +150,4 @@ void Game::gameLoop()
 
 Game::Game(sf::RenderWindow &window) : mainMenu(window, 1), inventory(window), inGameMenu(window, 0), window(window), shop(window)
 {
-    this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartFirst, window));
-    for (int i = 0; i < 3; i++)
-        this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::FirstFloor, window));
-
-    this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartSecond, window));
-    for (int i = 0; i < 3; i++)
-        this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::SecondFloor, window));
-
-    this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartThird, window));
-    for (int i = 0; i < 2; i++)
-        this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::ThirdFloor, window));
-    this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::LastLevel, window));
-
-    this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::FinalBoss, window));
 }
