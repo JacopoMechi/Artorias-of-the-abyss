@@ -76,7 +76,7 @@ set(SOURCE_FILES
 
 add_executable(${EXECUTABLE_NAME} main.cpp ${SOURCE_FILES})
 
-IF(LINUX)
+IF(UNIX AND NOT APPLE)
     add_library(core ${SOURCE_FILES})
     target_link_libraries(${EXECUTABLE_NAME} core)
 endif()
