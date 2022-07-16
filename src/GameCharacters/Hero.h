@@ -39,10 +39,6 @@ public:
     // getter and setter for spell starting animation
     bool getStartingSpell() const;
 
-    // getter and setter for changing the amount of money the character has
-    int getMoneyAmount() const;
-    void setMoneyAmount(int moneyCounter);
-
     //method to change armor and stats
     void changeLevel(int level);
 

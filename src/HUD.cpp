@@ -146,7 +146,7 @@ void HUD::assignItemInQuickslot(int slot){
 
 void HUD::displayMoneyCounter(Hero &hero){
     window.draw(moneyCounterSprite);
-    std::string counter = std::string("Monete: ") + std::to_string(hero.getMoneyAmount());
+    std::string counter = std::string("Monete: ") + std::to_string(hero.getCash());
     moneyText.setString(counter);
     moneyText.setPosition(90, 1035);
     window.draw(moneyText);

@@ -91,16 +91,6 @@ void Hero::setAuraReady(bool auraReady)
     armor = 100;//hero will not take damage
 }
 
-int Hero::getMoneyAmount() const
-{
-    return moneyCounter;
-}
-
-void Hero::setMoneyAmount(int moneyCounter)
-{
-    this->moneyCounter = moneyCounter;
-}
-
 void Hero::changeLevel(int level){
     if(isKnight){
         if(level == 1)
