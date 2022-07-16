@@ -13,7 +13,7 @@ public:
     virtual void use(Hero &hero) override;
     virtual void consumableEffectTime(float dt, Hero &hero, sf::RenderWindow &window) override;
 private:
-    float newCooldown = 1.0f;// TODO needs to be balanced
+    float newCooldown = 1.0f;
     float oldCD = 0.0f;//tracking old cooldown value
     sf::Sprite arrowUp;//to display a visual effect that shows the effects of the item
 };

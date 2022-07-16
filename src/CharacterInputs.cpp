@@ -57,7 +57,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         else if(inventory.getNTab() == 0 && inventory.getAssign()){//to assign item in first slot of quickslot
             hud.assignItemInQuickslot(0);
             inventory.setAssign(false);
-        }else//to use the first item in quickslot
+        }else if(!inventory.getOpen() && !hud.getInteraction())//to use the first item in quickslot
             hud.useItem(0, hero);
     }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num2){
         if(hud.getInteraction() && (shop.getNPCType() == 1 || shop.getNPCType() == 0) && !shop.getIsBuying())//to open shop
@@ -67,7 +67,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         else if(inventory.getNTab() == 0 && inventory.getAssign()){//to assign item in second slot of quickslot
             hud.assignItemInQuickslot(1);
             inventory.setAssign(false);
-        }else//to use the second item in quickslot
+        }else if(!inventory.getOpen() && !hud.getInteraction())//to use the second item in quickslot
             hud.useItem(1, hero);
     }else if(keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3){
         if(hud.getInteraction() && shop.getIsBuying())//to buy 10 of the selected tem in shop
@@ -75,7 +75,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput){
         else if(inventory.getNTab() == 0 && inventory.getAssign()){//to assign item in third slot of quickslot
             hud.assignItemInQuickslot(2);
             inventory.setAssign(false);
-        }else//to use third item in quickslot
+        }else if(!inventory.getOpen() && !hud.getInteraction())//to use third item in quickslot
             hud.useItem(2, hero);
     }
     //hero's dash and attack handling
@@ -152,6 +152,16 @@ void CharacterInputs::setEntityCollision(GameCharacter *entityCollision){
 
 void CharacterInputs::setEntityCollision(RoomElement *roomElement){
     this -> element = roomElement;
+}
+
+void CharacterInputs::deleteEntity(){
+    if(element != nullptr)
+        element = nullptr;
+}
+
+void CharacterInputs::deleteNPC(){
+    if(entityCollision != nullptr)
+        entityCollision = nullptr;
 }
 
 void CharacterInputs::solveNPCCollision(){

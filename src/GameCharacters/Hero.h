@@ -10,7 +10,6 @@
 
 class Hero : public GameCharacter
 {
-    // TODO add a method to switch hero's armor and weapon when a boss is killed
 public:
     Hero(sf::RenderWindow &window, bool isKnight, const sf::Vector2f &pos, int hp, int cash, float movementSpeed);
     virtual ~Hero() = default;
@@ -43,6 +42,9 @@ public:
     // getter and setter for changing the amount of money the character has
     int getMoneyAmount() const;
     void setMoneyAmount(int moneyCounter);
+
+    //method to change armor and stats
+    void changeLevel(int level);
 
     void dash();
 

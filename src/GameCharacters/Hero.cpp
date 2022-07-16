@@ -101,6 +101,26 @@ void Hero::setMoneyAmount(int moneyCounter)
     this->moneyCounter = moneyCounter;
 }
 
+void Hero::changeLevel(int level){
+    if(isKnight){
+        if(level == 1)
+            defaultRect = {0, 25, 16, 24};
+        else if(level == 2)
+            defaultRect = {0, 54, 16, 24};
+        else
+            std::cout << "Error on setting knight's level" << std::endl;
+        sword -> setLevel(level + 1);
+    }else{
+        if(level == 1)
+            defaultRect = {0, 106, 15, 21};
+        else if(level == 2)
+            defaultRect = {0, 131, 15, 21};
+        else
+            std::cout << "Error on setting mage's level" << std::endl;
+        catalyst -> setLevel(level + 1);
+    }
+}
+
 void Hero::dash()
 {
     // for dashing, we just need to move the character position farther only in the moment that we press Space key
