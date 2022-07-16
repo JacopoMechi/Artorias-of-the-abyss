@@ -94,16 +94,9 @@ void Game::gameLoop()
                     }
                 }
                 // teleporting hero at respawn point in case he's dead or he used an homeward bone
-                if (inventory.receiveItem(2)->getIsRespawn() || hero->getHp() == 0)
+                if (inventory.receiveItem(2)->getIsRespawn() || hero->getHp() <= 0)
                 {
-                    if (hero->getSpawnPoint().x == 500.0f)
-                    { // which means if spawn spoint is set to starting room
-                        level = 0;
-                    }
-                    else
-                    {              // if hero interacted with a bonfire
-                        level = 1; // for the moment because middleroom must be in the middle of the level
-                    }
+                    level = respawnLevel;
                     hero->setPos(hero->getSpawnPoint());
                     hero->setHp(100);                                                                     // reset hero's hp
                     inventory.receiveItem(0)->setItemCount(5 - inventory.receiveItem(0)->getItemCount()); // reset estus flask amount

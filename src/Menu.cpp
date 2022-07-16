@@ -109,6 +109,15 @@ Menu::Menu(sf::RenderWindow &window, bool mainMenu, const std::string &buttonEff
             std::cout << "Error while setting menu texture" << std::endl;
         menuSprite.setTexture(this->menuTexture);
         menuSprite.setTextureRect(sf::IntRect(0, 0, 1920, 1080));
+        knightText.setFont(font);
+        mageText.setFont(font);
+        knightText.setCharacterSize(30);
+        mageText.setCharacterSize(30);
+        knightText.setPosition(805.f, 543.f);
+        mageText.setPosition(1015.f, 543.f);
+        knightText.setString("Knight");
+        mageText.setString("Mage");
+        knightText.setColor(sf::Color::Red);
     }
     else
     {
@@ -130,15 +139,6 @@ Menu::Menu(sf::RenderWindow &window, bool mainMenu, const std::string &buttonEff
 
     if (!font.loadFromFile("Fonts/pixelFont.ttf"))
         std::cout << "Error on loading font for the item" << std::endl;
-    knightText.setFont(font);
-    mageText.setFont(font);
-    knightText.setCharacterSize(30);
-    mageText.setCharacterSize(30);
-    knightText.setPosition(805.f, 543.f);
-    mageText.setPosition(1015.f, 543.f);
-    knightText.setString("Knight");
-    mageText.setString("Mage");
-    knightText.setColor(sf::Color::Red);
 }
 
 Menu::~Menu() {}
