@@ -2,8 +2,6 @@
 
 void Catalyst::setLevel(int level)
 {
-    /*spellStage.push_back({2, 332, 38, 36});
-    spellStage.push_back({3, 299, 33, 20});*/
     this->level = level;
     if (level == 1)
         damage = 15;
