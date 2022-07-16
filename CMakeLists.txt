@@ -16,75 +16,63 @@ file(COPY src/Textures src/Fonts DESTINATION ${CMAKE_BINARY_DIR})
 
 add_subdirectory(test)
 set(SOURCE_FILES
-                    src/Game.h
-                    src/Game.cpp
+    src/Game.h
+    src/Game.cpp
 
-                    # GameCharacters
-                    src/GameCharacters/GameCharacter.h
-                    src/GameCharacters/GameCharacter.cpp
-                    src/GameCharacters/Hero.h
-                    src/GameCharacters/Hero.cpp
-                    src/GameCharacters/NPC.h
-                    src/GameCharacters/NPC.cpp
+    # GameCharacters
+    src/GameCharacters/GameCharacter.h
+    src/GameCharacters/GameCharacter.cpp
+    src/GameCharacters/Hero.h
+    src/GameCharacters/Hero.cpp
+    src/GameCharacters/NPC.h
+    src/GameCharacters/NPC.cpp
 
-                    src/GameCharacters/Enemies/EnemyFactory.h
-                    src/GameCharacters/Enemies/EnemyFactory.cpp
-                    src/GameCharacters/Enemies/Enemy.h
-                    src/GameCharacters/Enemies/Enemy.cpp
-                    src/GameCharacters/Enemies/Boss1.h
-                    src/GameCharacters/Enemies/Boss1.cpp
-                    src/GameCharacters/Enemies/Boss2.h
-                    src/GameCharacters/Enemies/Boss2.cpp
-                    src/GameCharacters/Enemies/Boss3.h
-                    src/GameCharacters/Enemies/Boss3.cpp
-                    src/GameCharacters/Enemies/Enemy1.h
-                    src/GameCharacters/Enemies/Enemy1.cpp
-                    src/GameCharacters/Enemies/Enemy2.h
-                    src/GameCharacters/Enemies/Enemy2.cpp
-                    src/GameCharacters/Enemies/Enemy3.h
-                    src/GameCharacters/Enemies/Enemy3.cpp
-                    src/GameCharacters/Enemies/Enemy4.h
-                    src/GameCharacters/Enemies/Enemy4.cpp
+    src/GameCharacters/Enemies/EnemyFactory.h
+    src/GameCharacters/Enemies/EnemyFactory.cpp
+    src/GameCharacters/Enemies/Enemy.h
+    src/GameCharacters/Enemies/Enemy.cpp
+    src/GameCharacters/Enemies/Enemy1.h
+    src/GameCharacters/Enemies/Enemy1.cpp
 
-                    # Rooms
-                    src/Rooms/Room.h
-                    src/Rooms/Room.cpp
-                    src/Bonfire.h
-                    src/Bonfire.cpp
-                    src/Gate.h
-                    src/Gate.cpp
-                    src/Rooms/RoomElement.h
-                    src/Rooms/RoomElement.cpp
+    # Rooms
+    src/Rooms/Room.h
+    src/Rooms/Room.cpp
+    src/Bonfire.h
+    src/Bonfire.cpp
+    src/Gate.h
+    src/Gate.cpp
+    src/Rooms/RoomElement.h
+    src/Rooms/RoomElement.cpp
 
-                    src/Menu.h
-                    src/Menu.cpp
+    src/Menu.h
+    src/Menu.cpp
 
-                    src/Weapon.h
-                    src/Weapon.cpp
-                    src/Sword.h
-                    src/Sword.cpp
-                    src/Catalyst.h
-                    src/Catalyst.cpp
-                    src/Item.cpp
-                    src/Item.h
-                    src/HUD.h
-                    src/HUD.cpp
-                    src/EstusFlask.h
-                    src/EstusFlask.cpp
-                    src/GreenBlossom.h
-                    src/GreenBlossom.cpp
-                    src/HomewardBone.h
-                    src/HomewardBone.cpp
-                    src/Pendant.h
-                    src/Pendant.cpp
-                    src/NullItem.h
-                    src/NullItem.cpp
-                    src/CharacterInputs.h
-                    src/CharacterInputs.cpp
-                    src/Shop.h
-                    src/Shop.cpp
-                    src/Inventory.h
-                    src/Inventory.cpp)
+    src/Weapon.h
+    src/Weapon.cpp
+    src/Sword.h
+    src/Sword.cpp
+    src/Catalyst.h
+    src/Catalyst.cpp
+    src/Item.cpp
+    src/Item.h
+    src/HUD.h
+    src/HUD.cpp
+    src/EstusFlask.h
+    src/EstusFlask.cpp
+    src/GreenBlossom.h
+    src/GreenBlossom.cpp
+    src/HomewardBone.h
+    src/HomewardBone.cpp
+    src/Pendant.h
+    src/Pendant.cpp
+    src/NullItem.h
+    src/NullItem.cpp
+    src/CharacterInputs.h
+    src/CharacterInputs.cpp
+    src/Shop.h
+    src/Shop.cpp
+    src/Inventory.h
+    src/Inventory.cpp)
 
 add_executable(${EXECUTABLE_NAME} main.cpp ${SOURCE_FILES})
 
@@ -92,7 +80,6 @@ IF(LINUX)
     add_library(core ${SOURCE_FILES})
     target_link_libraries(${EXECUTABLE_NAME} core)
 endif()
-
 
 if(SFML_FOUND)
     target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-window sfml-system)
