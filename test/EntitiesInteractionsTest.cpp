@@ -6,8 +6,8 @@
 
 TEST(Hero, TestAttack){
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "testing attack");
-    Hero h(window, true, {500, 500},1 , 100, 0, 100);
-    Enemy1 e(window, {730, 266}, 1, 100, 0, 100);
+    Hero h(window, true, {500, 500}, 1 , 100, 0);
+    Enemy1 e(window, {730, 266}, 1, 0, 0, 100);
     h.getWeapon() -> setStartAnimation(true);
     h.setCanAttack(false);
     h.updateDelay(0.016725f);
