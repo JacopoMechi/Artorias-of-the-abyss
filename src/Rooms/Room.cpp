@@ -17,8 +17,8 @@ Room::Room(Hero &hero, const std::vector<RoomElement *> &roomElementsVector, con
         break;
     case Type::StartSecond:
         roomFilePath = this->roomPath2;
-        this->leftGate = std::make_unique<Gate>(window);
-        this->rightGate = std::make_unique<Gate>(window, true, false);
+        this->leftGate = std::make_unique<Gate>(window, false, true);
+        this->rightGate = std::make_unique<Gate>(window, true, true);
         this->npc = std::unique_ptr<NPC>(new NPC(window, 0, {322.0f, 224.0f}));
         break;
     case Type::SecondFloor:
@@ -29,8 +29,8 @@ Room::Room(Hero &hero, const std::vector<RoomElement *> &roomElementsVector, con
         break;
     case Type::StartThird:
         roomFilePath = this->roomPath3;
-        this->leftGate = std::make_unique<Gate>(window);
-        this->rightGate = std::make_unique<Gate>(window, true, false);
+        this->leftGate = std::make_unique<Gate>(window, false, true);
+        this->rightGate = std::make_unique<Gate>(window, true, true);
         break;
     case Type::ThirdFloor:
         roomFilePath = this->roomPath3;
@@ -83,22 +83,24 @@ void Room::draw()
         rightGate->draw();
     if (enemyVector.size() != 0)
     {
-        if (enemyVector[0]->getHp() <= 0){
-            //drop money and give to hero
-            hero.setCash(hero.getCash() + enemyVector[0] -> getCash());
+        if (enemyVector[0]->getHp() <= 0)
+        {
+            // drop money and give to hero
+            hero.setCash(hero.getCash() + enemyVector[0]->getCash());
 
-            //removing enemy
+            // removing enemy
             enemyVector.erase(enemyVector.begin());
 
-            //spawing bonfire because fight is over
+            // spawing bonfire because fight is over
             this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
 
-            //open gates because the fight is over
+            // open gates because the fight is over
             if (leftGate != nullptr)
                 leftGate->setisOpen(true);
             if (rightGate != nullptr)
                 rightGate->setisOpen(true);
-        }else
+        }
+        else
         {
             enemyVector[0]->draw(window);
             enemyVector[0]->attack(hero, dt);
