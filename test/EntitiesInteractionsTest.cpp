@@ -55,10 +55,9 @@ TEST(Mage, TestAttack){
 TEST(Enemy, TestAttack){
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "testing attack");
     Hero h(window, true, {500, 500}, 1 , 0, 0);
-    Enemy1 e(window, {800, 500}, 1, 0, 0, 100);
-    h.getWeapon() -> setStartAnimation(true);
-    h.setCanAttack(false);
-    h.updateDelay(0.016725f);
+    Enemy1 e(window, {1000, 500}, 1, 0, 0, 100);    
+    h.update(0.016725f);
+    e.update(0.016725f); 
     while(!e.getSprite().getGlobalBounds().intersects(h.getSprite().getGlobalBounds())){
         window.clear();
         //for testing the attack we set delayTime of hero to 0.016725 (we suppose to get the time to execute all the functions)  
@@ -109,5 +108,4 @@ TEST(Hero, homewardBone){
     ASSERT_EQ(0, b.getItemCount ());//checking bone item count
     ASSERT_EQ(false, b.getIsRespawn());//check warp switch status of homeward bone
     ASSERT_EQ(5, e.getItemCount ());//checking estus flask item count reset
-
 }
