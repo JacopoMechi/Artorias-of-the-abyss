@@ -28,6 +28,10 @@ int Weapon::getIFrame() const{
     return iWeaponFrame;
 }
 
+void Weapon::setStopAnimation(bool stopAnimation){
+    this -> stopAnimation = stopAnimation;
+}
+
 void Weapon::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f entityPos, float dt){
     
 }

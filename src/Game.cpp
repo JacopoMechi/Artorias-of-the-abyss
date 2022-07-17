@@ -69,6 +69,7 @@ void Game::gameLoop()
                     levels[level]->rightGate->getisOpen() &&
                     levels[level]->rightGate->getSprite().getGlobalBounds().intersects(hero->getSprite().getGlobalBounds()))
                 {
+                    hero -> getWeapon() -> setStopAnimation(true);
                     hero->setPos(Gate::leftPosition + sf::Vector2f{hero->getSize().x, 0});
                     // clearing pointers of npc and bonfire
                     inputs->deleteEntity();
@@ -81,6 +82,7 @@ void Game::gameLoop()
                     levels[level]->leftGate->getisOpen() &&
                     levels[level]->leftGate->getSprite().getGlobalBounds().intersects(hero->getSprite().getGlobalBounds()))
                 {
+                    hero -> getWeapon() -> setStopAnimation(true);
                     hero->setPos(Gate::rightPosition - sf::Vector2f{hero->getSize().x, 0});
                     //  clearing pointers of npc and bonfire
                     inputs->deleteEntity();

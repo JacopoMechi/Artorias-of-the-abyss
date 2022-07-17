@@ -57,7 +57,7 @@ void Catalyst::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2
     }
 
     if(startSpell){
-        if(0 < spellPos.x && spellPos.x < 1920){ //to set the range of the spell       
+        if(!stopAnimation && 0 < spellPos.x && spellPos.x < 1920){ //to set the range of the spell       
 
             //to move the spell horizzontaly
             spellPos.x += spellSpeed*dt*spellDirection; 
@@ -67,6 +67,7 @@ void Catalyst::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2
             window.draw(weaponSprite);
         }else{
             startSpell = false;
+            stopAnimation = false;
         }
     }
 }

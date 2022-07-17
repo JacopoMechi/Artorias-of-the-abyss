@@ -21,6 +21,9 @@ public:
     int getNFrames() const;
     int getIFrame() const;
 
+    //to stop spell casting
+    void setStopAnimation(bool stopAnimation);
+
     virtual void use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f entityPos, float dt);
 
     Weapon(sf::IntRect weaponRect, sf::Vector2f weaponScale, int nFrames, int level = 1);
@@ -43,6 +46,8 @@ protected:
     float weaponAnimationTime = 0.0f;
     float weaponAnimationHolding = 0.13f;
     int iWeaponFrame = 0;
+    //to stop spell casting
+    bool stopAnimation = false;
 
     int damage;
     int level;
