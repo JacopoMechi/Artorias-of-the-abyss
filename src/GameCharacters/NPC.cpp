@@ -45,6 +45,7 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f &pos, int hp, in
     }
     else
         std::cout << "Error on loading NPC type" << std::endl;
+    frameRect = defaultRect;
     sprite.setTextureRect(defaultRect);
 }
 
