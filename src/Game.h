@@ -31,7 +31,6 @@ public:
 private:
     // to manage rooms and floors
     int level = 0;
-    int levelReached = 0;
     int respawnLevel = 0;
     std::vector<std::unique_ptr<Room>> levels;
 

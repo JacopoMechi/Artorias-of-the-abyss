@@ -65,37 +65,35 @@ void Game::gameLoop()
                 gameStatus = Game::Status::InGameMenu;
             else
             {
-                if (levels[level]->rightGate != nullptr)
+                std::cout << "Actual  2: " << level << std::endl;
+                std::cout << hero->getSprite().getGlobalBounds().left << std::endl;
+                std::cout << hero->getSprite().getGlobalBounds().top << std::endl;
+                std::cout << hero->getSprite().getGlobalBounds().width << std::endl;
+                std::cout << hero->getSprite().getGlobalBounds().height << std::endl;
+                if (levels[level]->rightGate != nullptr &&
+                    levels[level]->rightGate->getisOpen() &&
+                    levels[level]->rightGate->getSprite().getGlobalBounds().intersects(hero->getSprite().getGlobalBounds()))
                 {
-                    if (levels[level]->rightGate->getisOpen() &&
-                        hero->getPos().x + hero->getSize().x > levels[level]->rightGate->getPos().x &&
-                        hero->getPos().y + hero->getSize().y / 2 > levels[level]->rightGate->getPos().y &&
-                        hero->getPos().y + hero->getSize().y / 2 < levels[level]->rightGate->getPos().y + levels[level]->rightGate->getSize().y)
-                    {
-                        hero->setPos(Gate::leftPosition + sf::Vector2f{hero->getSize().x, 0});
-                        // clearing pointers of npc and bonfire
-                        inputs->deleteEntity();
-                        inputs->deleteNPC();
-                        // switching to next room
-                        level++;
-                        levelReached++;
-                    }
+                    hero->setPos(Gate::leftPosition + sf::Vector2f{hero->getSize().x, 0});
+                    // clearing pointers of npc and bonfire
+                    inputs->deleteEntity();
+                    inputs->deleteNPC();
+                    // switching to next room
+                    level++;
                 }
-                if (levels[level]->leftGate != nullptr)
+
+                if (levels[level]->leftGate != nullptr &&
+                    levels[level]->leftGate->getisOpen() &&
+                    levels[level]->leftGate->getSprite().getGlobalBounds().intersects(hero->getSprite().getGlobalBounds()))
                 {
-                    if (levels[level]->leftGate->getisOpen() &&
-                        hero->getPos().x < levels[level]->leftGate->getPos().x + levels[level]->leftGate->getSize().x &&
-                        hero->getPos().y + hero->getSize().y / 2 > levels[level]->leftGate->getPos().y &&
-                        hero->getPos().y + hero->getSize().y / 2 < levels[level]->leftGate->getPos().y + levels[level]->leftGate->getSize().y)
-                    {
-                        hero->setPos(Gate::rightPosition - sf::Vector2f{hero->getSize().x, 0});
-                        // clearing pointers of npc and bonfire
-                        inputs->deleteEntity();
-                        inputs->deleteNPC();
-                        // switching to previous room
-                        level--;
-                    }
+                    hero->setPos(Gate::rightPosition - sf::Vector2f{hero->getSize().x, 0});
+                    //  clearing pointers of npc and bonfire
+                    inputs->deleteEntity();
+                    inputs->deleteNPC();
+                    // switching to previous room
+                    level--;
                 }
+                std::cout << "Actual 3: " << level << std::endl;
                 // teleporting hero at respawn point in case he's dead or he used an homeward bone
                 if (inventory.receiveItem(2)->getIsRespawn() || hero->getHp() <= 0)
                 {

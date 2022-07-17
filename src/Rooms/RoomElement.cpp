@@ -3,7 +3,8 @@
 void RoomElement::draw()
 {
     animationTime += dt;
-    if(animationTime >= animationHolding){
+    if (animationTime >= animationHolding)
+    {
         frame = (++frame) % spriteFrames.size();
         animationTime = 0;
     }
@@ -27,8 +28,14 @@ sf::Vector2f RoomElement::getSize() const
     return {this->roomElementSprite.getScale().x * spriteFrames[frame].width, this->roomElementSprite.getScale().y * spriteFrames[frame].height};
 }
 
-void RoomElement::setDelayTime(float dt){
-    this -> dt = dt;
+void RoomElement::setDelayTime(float dt)
+{
+    this->dt = dt;
+}
+
+sf::Sprite RoomElement::getSprite() const
+{
+    return roomElementSprite;
 }
 
 RoomElement::RoomElement(sf::RenderWindow &window, const std::string &roomElementFilePath) : window(window)
