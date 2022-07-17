@@ -7,9 +7,9 @@
 
 #include <SFML/Graphics.hpp>
 #include "Rooms/RoomElement.h"
-#include "Weapon.h"
-#include "Sword.h"
-#include "Catalyst.h"
+#include "Weapones/Weapon.h"
+#include "Weapones/Sword.h"
+#include "Weapones/Catalyst.h"
 
 class GameCharacter
 {
@@ -75,7 +75,7 @@ protected:
     int iFrame = 0;
     float animationTime = 0.0f;
     sf::Vector2f dir = {0.0f, 0.0f};
-    //boolean value to deal damage only one time
+    // boolean value to deal damage only one time
     bool isHitted = false;
 };
 

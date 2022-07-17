@@ -4,13 +4,13 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Rooms/Room.h"
-#include "Menu.h"
+#include "GUI/Menu.h"
 #include "GameCharacters/Hero.h"
-#include "HUD.h"
+#include "GUI/HUD.h"
 #include "GameCharacters/NPC.h"
-#include "Inventory.h"
+#include "GUI/Inventory.h"
 #include "CharacterInputs.h"
-#include "Shop.h"
+#include "GUI/Shop.h"
 
 class Game
 {

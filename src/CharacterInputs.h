@@ -1,10 +1,10 @@
 #ifndef _CHARACTERINPUTS_H
 #define _CHARACTERINPUTS_H
 
-#include "Inventory.h"
-#include "HUD.h"
+#include "GUI/Inventory.h"
+#include "GUI/HUD.h"
 #include "GameCharacters/Hero.h"
-#include "Shop.h"
+#include "GUI/Shop.h"
 #include "GameCharacters/GameCharacter.h"
 #include "Rooms/RoomElement.h"
 

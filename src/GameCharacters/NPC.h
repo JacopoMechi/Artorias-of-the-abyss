@@ -7,11 +7,11 @@
 #include <memory>
 
 #include "GameCharacters/GameCharacter.h"
-#include "Item.h"
+#include "Items/Item.h"
 #include "GameCharacters/Hero.h"
-#include "HomewardBone.h"
-#include "Pendant.h"
-#include "GreenBlossom.h"
+#include "Items/HomewardBone.h"
+#include "Items/Pendant.h"
+#include "Items/GreenBlossom.h"
 
 class NPC : public GameCharacter
 {

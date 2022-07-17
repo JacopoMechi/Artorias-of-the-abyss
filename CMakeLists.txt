@@ -19,6 +19,9 @@ set(SOURCE_FILES
     src/Game.h
     src/Game.cpp
 
+    src/CharacterInputs.h
+    src/CharacterInputs.cpp
+
     # GameCharacters
     src/GameCharacters/GameCharacter.h
     src/GameCharacters/GameCharacter.cpp
@@ -37,42 +40,42 @@ set(SOURCE_FILES
     # Rooms
     src/Rooms/Room.h
     src/Rooms/Room.cpp
-    src/Bonfire.h
-    src/Bonfire.cpp
-    src/Gate.h
-    src/Gate.cpp
     src/Rooms/RoomElement.h
     src/Rooms/RoomElement.cpp
+    src/Rooms/Bonfire.h
+    src/Rooms/Bonfire.cpp
+    src/Rooms/Gate.h
+    src/Rooms/Gate.cpp
+    
+    src/GUI/Menu.h
+    src/GUI/Menu.cpp
+    src/GUI/HUD.h
+    src/GUI/HUD.cpp
+    src/GUI/Shop.h
+    src/GUI/Shop.cpp
+    src/GUI/Inventory.h
+    src/GUI/Inventory.cpp
 
-    src/Menu.h
-    src/Menu.cpp
+    src/Weapones/Weapon.h
+    src/Weapones/Weapon.cpp
+    src/Weapones/Sword.h
+    src/Weapones/Sword.cpp
+    src/Weapones/Catalyst.h
+    src/Weapones/Catalyst.cpp
 
-    src/Weapon.h
-    src/Weapon.cpp
-    src/Sword.h
-    src/Sword.cpp
-    src/Catalyst.h
-    src/Catalyst.cpp
-    src/Item.cpp
-    src/Item.h
-    src/HUD.h
-    src/HUD.cpp
-    src/EstusFlask.h
-    src/EstusFlask.cpp
-    src/GreenBlossom.h
-    src/GreenBlossom.cpp
-    src/HomewardBone.h
-    src/HomewardBone.cpp
-    src/Pendant.h
-    src/Pendant.cpp
-    src/NullItem.h
-    src/NullItem.cpp
-    src/CharacterInputs.h
-    src/CharacterInputs.cpp
-    src/Shop.h
-    src/Shop.cpp
-    src/Inventory.h
-    src/Inventory.cpp)
+    src/Items/Item.cpp
+    src/Items/Item.h
+    src/Items/EstusFlask.h
+    src/Items/EstusFlask.cpp
+    src/Items/GreenBlossom.h
+    src/Items/GreenBlossom.cpp
+    src/Items/HomewardBone.h
+    src/Items/HomewardBone.cpp
+    src/Items/Pendant.h
+    src/Items/Pendant.cpp
+    src/Items/NullItem.h
+    src/Items/NullItem.cpp
+    )
 
 add_executable(${EXECUTABLE_NAME} main.cpp ${SOURCE_FILES})
 
