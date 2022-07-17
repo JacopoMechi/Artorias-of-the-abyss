@@ -2,6 +2,7 @@
 #include "../src/GameCharacters/Hero.h"
 #include "../src/GameCharacters/Enemies/Enemy1.h"
 #include "../src/Game.h"
+#include "../src/Item.h"
 #include <SFML/Graphics.hpp>
 
 //testing if knight deals damage to enemy
@@ -78,4 +79,35 @@ TEST(Hero, heal){
     EstusFlask e;
     e.use(h);
     ASSERT_EQ(31, h.getHp());//checking if hero healed successfuly
+    ASSERT_EQ(4, e.getItemCount ());//checking if estus flask's counter decreased successfuly
+}
+
+//testing if homeward bone teleports hero at the starting point (because character will not interact with a bonfire)
+TEST(Hero, homewardBone){
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "testing attack");
+    Hero h(window, true, {1000, 1000}, 1 , 100, 0);
+    HomewardBone b;
+    b.setItemCount (1);
+    b.use(h);
+
+    EstusFlask e;
+    e.setItemCount(0);
+    //code part where the hero can warp
+    //different from original for testing purpose
+    if (b.getIsRespawn())
+    {
+        h.setPos(h.getSpawnPoint());
+        h.setHp(100);// reset hero's hp
+        e.setItemCount(5 - e.getItemCount()); // reset estus flask amount
+        b.setIsRespawn(false);
+    }
+    //checking if hero teleported Correctly
+    ASSERT_EQ(500, h.getPos().x);
+    ASSERT_EQ(500, h.getPos().y);
+
+    ASSERT_EQ(100, h.getHp());//checking if hero reset his hp successfuly when teleported
+    ASSERT_EQ(0, b.getItemCount ());//checking bone item count
+    ASSERT_EQ(false, b.getIsRespawn());//check warp switch status of homeward bone
+    ASSERT_EQ(5, e.getItemCount ());//checking estus flask item count reset
+
 }
