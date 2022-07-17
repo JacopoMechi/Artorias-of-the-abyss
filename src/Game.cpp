@@ -65,11 +65,6 @@ void Game::gameLoop()
                 gameStatus = Game::Status::InGameMenu;
             else
             {
-                std::cout << "Actual  2: " << level << std::endl;
-                std::cout << hero->getSprite().getGlobalBounds().left << std::endl;
-                std::cout << hero->getSprite().getGlobalBounds().top << std::endl;
-                std::cout << hero->getSprite().getGlobalBounds().width << std::endl;
-                std::cout << hero->getSprite().getGlobalBounds().height << std::endl;
                 if (levels[level]->rightGate != nullptr &&
                     levels[level]->rightGate->getisOpen() &&
                     levels[level]->rightGate->getSprite().getGlobalBounds().intersects(hero->getSprite().getGlobalBounds()))
@@ -93,7 +88,6 @@ void Game::gameLoop()
                     // switching to previous room
                     level--;
                 }
-                std::cout << "Actual 3: " << level << std::endl;
                 // teleporting hero at respawn point in case he's dead or he used an homeward bone
                 if (inventory.receiveItem(2)->getIsRespawn() || hero->getHp() <= 0)
                 {
