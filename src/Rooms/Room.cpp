@@ -68,12 +68,7 @@ void Room::spawnEntity(RoomElement *roomElement)
     roomElementsVector.emplace_back(roomElement);
 }
 
-bool Room::getisClear()
-{
-    return isClear;
-}
-
-void Room::draw()
+void Room::draw(int level)
 {
     roomSprite.setTextureRect({0, 0, 1920, 1080});
     window.draw(roomSprite);
@@ -117,6 +112,10 @@ void Room::draw()
         }
         if (npc != nullptr)
             npc->draw(window);
+        if (level == 3)
+            hero.changeLevel(1);
+        else if (level == 7)
+            hero.changeLevel(2);
     }
 }
 

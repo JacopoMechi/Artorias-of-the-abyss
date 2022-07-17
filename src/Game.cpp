@@ -26,7 +26,7 @@ void Game::gameLoop()
             hud->setAggro(entityInteraction, NPCInteraction);
         window.clear(sf::Color::Black);
         if (levels.size() != 0)
-            levels[level]->draw();
+            levels[level]->draw(level);
         if (gameStatus == Game::Status::MainMenu)
         {
             mainMenu.launch();

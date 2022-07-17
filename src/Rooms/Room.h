@@ -35,8 +35,7 @@ public:
     std::unique_ptr<Gate> rightGate;
 
     void spawnEntity(RoomElement *roomElement);
-    void draw();
-    bool getisClear();
+    void draw(int level);
 
     Bonfire *getBonfire();
     NPC *getNPC();
@@ -56,7 +55,6 @@ protected:
     sf::Texture roomTexture;
     sf::Sprite roomSprite;
     sf::RenderWindow &window;
-    bool isClear = true; // TODO Default should be false, true for testing
-    float dt = 0;        // to take delay time for bonfire animation
+    float dt = 0; // to take delay time for bonfire animation
 };
 #endif
