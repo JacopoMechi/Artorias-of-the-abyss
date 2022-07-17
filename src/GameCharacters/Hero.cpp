@@ -15,6 +15,7 @@ Hero::Hero(sf::RenderWindow &window, bool isKnight, const sf::Vector2f &pos, int
         auraShield.setTextureRect({501, 124, 20, 26});
         auraShield.setScale(7.0f, 7.0f);
         canAttack = true;
+        startSpell = true;
         sword = std::make_unique<Sword>(); // knight's weapon assign
         baseArmor = 60;
     }
