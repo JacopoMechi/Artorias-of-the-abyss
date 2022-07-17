@@ -2,7 +2,7 @@
 #include "../src/GameCharacters/Hero.h"
 #include "../src/GameCharacters/Enemies/Enemy1.h"
 #include "../src/Game.h"
-#include "../src/Item.h"
+#include "../src/Items/Item.h"
 #include <SFML/Graphics.hpp>
 
 //testing if knight deals damage to enemy
