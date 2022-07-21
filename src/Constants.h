@@ -212,12 +212,38 @@ const float itemEffectScale = 7.0f;
 //setting time effect holdtime
 const float itemHoldTimeAmount = 2.0f;
 
-//setting homeward bone rect
+
+//setting homeward bone's rect
 const int boneX = 497;
 const int boneY = 71;
 const int boneWidth = 23;
 const int boneHeight = 22;
-//setting homeward bone scale
+//setting homeward bone's scale
 const float boneScale = 2.2f;
 
+
+//setting green blossom's rect
+const int blossomX = 453;
+const int blossomY = 2;
+const int blossomWidth = 20;
+const int blossomHeight = 20;
+//setting green blossom effect's rect
+const int blossomEffectX = 530;
+const int blossomEffectY = 124;
+const int blossomEffectWidth = 17;
+const int blossomEffectHeight = 22;
+//setting green blossom cooldown
+const float blossomCooldown = 1.0f;
+//setting effect time of blossom
+const float blossomEffectTime = 5.0f;
+//setting green blossom's arrow up hud effect rect
+const int arrowUpX = 554;
+const int arrowUpY = 0;
+const int arrowUpWidth = 43;
+const int arrowUpHeight = 63;
+//setting green blossom's arrow up hud effect pos
+const int arrowUpPosX = 1700;
+const int arrowUpPosY = 445;
+//setting green blossom's arrow up hud effect scale
+const float arrowUpScale = 0.8f;
 #endif
