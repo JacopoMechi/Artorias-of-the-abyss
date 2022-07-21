@@ -75,6 +75,9 @@ set(SOURCE_FILES
     src/Items/Pendant.cpp
     src/Items/NullItem.h
     src/Items/NullItem.cpp
+
+    #for constant values
+    src/Constants.h
     )
 
 add_executable(${EXECUTABLE_NAME} main.cpp ${SOURCE_FILES})
