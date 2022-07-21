@@ -20,4 +20,7 @@ const int bottomLimit = 30;
 const int topLimit = 745;
 const int leftLimit = 230;
 const int rightLimit = 1550;
+
+//setting weapon animation holding as constant
+const float weaponAnimationHoldingTime = 0.13f;
 #endif
