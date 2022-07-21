@@ -154,4 +154,7 @@ const int thirdBonfireY = 521;
 const int thirdBonfireWidth = 176;
 const int thirdBonfireHeight = 293;
 
+//animation holding time for room element class
+const float roomElementHoldTime = 0.01f;
+
 #endif
