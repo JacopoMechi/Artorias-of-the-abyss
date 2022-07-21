@@ -211,4 +211,13 @@ const float itemScale = 2.5f;
 const float itemEffectScale = 7.0f;
 //setting time effect holdtime
 const float itemHoldTimeAmount = 2.0f;
+
+//setting homeward bone rect
+const int boneX = 497;
+const int boneY = 71;
+const int boneWidth = 23;
+const int boneHeight = 22;
+//setting homeward bone scale
+const float boneScale = 2.2f;
+
 #endif
