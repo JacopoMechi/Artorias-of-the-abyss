@@ -61,4 +61,72 @@ const float swordScale = 7.5f;
 
 //for sword n frames
 const int maxSwordFrames = 5;
+
+//rect for first catalyst
+const int firstCatalystX = 2;
+const int firstCatalystY = 332;
+const int firstCatalystWidth = 38;
+const int firstCatalystHeight = 36;
+//rect for first spell
+const int firstSpellX = 3;
+const int firstSpellY = 299;
+const int firstSpellWidth = 33;
+const int firstSpellHeight = 20;
+//for level 1 catalyst damage
+const int firstCatalystDamage = 15;
+
+//rect for second catalyst
+const int secondCatalystX = 46;
+const int secondCatalystY = 332;
+const int secondCatalystWidth = 38;
+const int secondCatalystHeight = 36;
+//rect for second spell
+const int secondSpellX = 46;
+const int secondSpellY = 299;
+const int secondSpellWidth = 33;
+const int secondSpellHeight = 20;
+//for level 2 catalyst damage
+const int secondCatalystDamage = 20;
+
+//rect for third catalyst
+const int thirdCatalystX = 90;
+const int thirdCatalystY = 332;
+const int thirdCatalystWidth = 38;
+const int thirdCatalystHeight = 36;
+//rect for third spell
+const int thirdSpellX = 90;
+const int thirdSpellY = 299;
+const int thirdSpellWidth = 33;
+const int thirdSpellHeight = 20;
+//for level 3 catalyst damage
+const int thirdCatalystDamage = 25;
+
+//for catalyst's spawn pos when launching game
+const int catalystSpawnPosX = 650;
+const int catalystSpawnPosY = 540;
+
+//to set spell's position in the right way
+const int ySpellVariation = 40;
+//right facing position
+const int xRightSpellVariation = 150;
+//left facing position
+const int xLeftSpellVariation = -150;
+
+//to set catalyst's position in the right way
+//right facing position
+const int xRightCatalystVariation = 10;
+const int yRightCatalystVariation = 40;
+//left facing position
+const int xLeftCatalystVariation = -20;
+const int yLeftCatalystVariation = 40;
+
+//to set spell's bound
+const int spellLeftLimit = 0;
+const int spellRightLimit = 1920;
+
+//for catalyst scale
+const float catalystScale = 3.5f;
+
+//for cataltst n frames
+const int maxCatalystFrames = 1;
 #endif

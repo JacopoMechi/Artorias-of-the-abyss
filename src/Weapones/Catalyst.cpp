@@ -4,19 +4,19 @@ void Catalyst::setLevel(int level)
 {
     this->level = level;
     if (level == 1)
-        damage = 15;
+        damage = firstCatalystDamage;
     else if (level == 2){
         spellStage.clear();
-        spellStage.push_back({46, 332, 38, 36});
-        spellStage.push_back({46, 299, 33, 20});
+        spellStage.push_back({secondCatalystX, secondCatalystY, secondCatalystWidth, secondCatalystHeight});
+        spellStage.push_back({secondSpellX, secondSpellY, secondSpellWidth, secondSpellHeight});
         weaponRect = spellStage[0];
-        damage = 20;
+        damage = secondCatalystDamage;
     }else if (level == 3){
         spellStage.clear();
-        spellStage.push_back({90, 332, 38, 36});
-        spellStage.push_back({90, 299, 33, 20});
+        spellStage.push_back({thirdCatalystX, thirdCatalystY, thirdCatalystWidth, thirdCatalystHeight});
+        spellStage.push_back({thirdSpellX, thirdSpellY, thirdSpellWidth, thirdSpellHeight});
         weaponRect = spellStage[0];
-        damage = 25;
+        damage = thirdCatalystDamage;
     }
 }
 
@@ -26,12 +26,12 @@ void Catalyst::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2
         //setting position and rectangles of the weapon
         if(entityRect.width > 0){
             currentRect = weaponRect;
-            xVariation = 10;
-            yVariation = 40;
+            xVariation = xRightCatalystVariation;
+            yVariation = yRightCatalystVariation;
         }else if(entityRect.width < 0){
             currentRect = {weaponRect.left + weaponRect.width, weaponRect.top, -weaponRect.width, weaponRect.height};
-            xVariation = -20;
-            yVariation = 40;
+            xVariation = xLeftCatalystVariation;
+            yVariation = yLeftCatalystVariation;
         }
 
         //updating iFrames for weapon
@@ -57,7 +57,7 @@ void Catalyst::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2
     }
 
     if(startSpell){
-        if(!stopAnimation && 0 < spellPos.x && spellPos.x < 1920){ //to set the range of the spell       
+        if(!stopAnimation && spellLeftLimit < spellPos.x && spellPos.x < spellRightLimit){ //to set the range of the spell       
 
             //to move the spell horizzontaly
             spellPos.x += spellSpeed*dt*spellDirection; 
@@ -75,14 +75,14 @@ void Catalyst::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2
 void Catalyst::setSpellDirection(sf::Vector2f heroPos, sf::IntRect heroRect){
     if(heroRect.width > 0){
         spellDirection = 1; //right
-        spellPos.x = heroPos.x + 150;
+        spellPos.x = heroPos.x + xRightSpellVariation;
         currentSpellRect = spellStage[1];
     }if(heroRect.width < 0){
         spellDirection = -1; //left
-        spellPos.x = heroPos.x - 150;
+        spellPos.x = heroPos.x + xLeftSpellVariation;
         currentSpellRect = {spellStage[1].left + spellStage[1].width, spellStage[1].top, -spellStage[1].width, spellStage[1].height};
     }
-    spellPos.y = heroPos.y +40;
+    spellPos.y = heroPos.y + ySpellVariation;
 }
 
 bool Catalyst::getStartSpell() const{
@@ -91,10 +91,10 @@ bool Catalyst::getStartSpell() const{
 
 Catalyst::Catalyst(sf::IntRect weaponRect, sf::Vector2f weaponScale, int nFrames, int level) : 
     Weapon(weaponRect, weaponScale, nFrames, level) {
-    spellStage.push_back({2, 332, 38, 36});
-    spellStage.push_back({3, 299, 33, 20});
+    spellStage.push_back(weaponRect);
+    spellStage.push_back({firstSpellX, firstSpellY, firstSpellWidth, firstSpellHeight});
     currentSpellRect = spellStage[0];
-    spellPos = {650, 540};//the hero spawn facing to the right and at the position 500, 500
+    spellPos = {catalystSpawnPosX, catalystSpawnPosY};//the hero spawn facing to the right and at the position 500, 500
     weaponSprite.setPosition(spellPos);
-    damage = 15;
+    damage = firstCatalystDamage;
 }
