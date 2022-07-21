@@ -23,4 +23,26 @@ const int rightLimit = 1550;
 
 //setting weapon animation holding as constant
 const float weaponAnimationHoldingTime = 0.13f;
+
+//for sword initial rect
+const int firstSwordX = 0;
+const int firstSwordY = 162;
+const int firstSwordWidth = 21;
+const int firstSwordHeight = 40;
+//for sword initial damage
+const int firstSwordDamage = 5;
+
+//rect for level 2 sword
+const int secondSwordX = 0;
+const int secondSwordY = 205;
+const int secondSwordWidth = 21;
+const int secondSwordHeight = 40;
+//for level 2 sword damage
+const int secondSwordDamage = 10;
+
+//for sword scale
+const float swordScale = 7.5f;
+
+//for sword n frames
+const int maxSwordFrames = 5;
 #endif
