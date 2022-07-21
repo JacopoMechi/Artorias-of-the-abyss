@@ -15,7 +15,7 @@ public:
     bool closeToHero(sf::Vector2f heroPos);
 
     Bonfire(sf::RenderWindow &window, const sf::Vector2f &position,
-            const std::vector<sf::IntRect> &spriteFrames = {{1, 520, 184, 297}, {191, 540, 203, 277}, {405, 521, 176, 293}},
+            const std::vector<sf::IntRect> &spriteFrames = {{firstBonfireX, firstBonfireY, firstBonfireWidth, firstBonfireHeight}, {secondBonfireX, secondBonfireY, secondBonfireWidth, secondBonfireHeight}, {thirdBonfireX, thirdBonfireY, thirdBonfireWidth, thirdBonfireHeight}},
             const std::string &roomElementFilePath = "Textures/Textures.png");
 
     ~Bonfire();

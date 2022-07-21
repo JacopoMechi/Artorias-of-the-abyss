@@ -129,4 +129,29 @@ const float catalystScale = 3.5f;
 
 //for cataltst n frames
 const int maxCatalystFrames = 1;
+
+//min distance between hero and bonfire to interact
+const int minBonfireDist = 190;
+
+//setting bonfire scale
+const float bonfireScale = 0.7f;
+
+//first bonfire rect
+const int firstBonfireX = 1;
+const int firstBonfireY = 520;
+const int firstBonfireWidth = 184;
+const int firstBonfireHeight = 297;
+
+//second bonfire rect
+const int secondBonfireX = 191;
+const int secondBonfireY = 540;
+const int secondBonfireWidth = 203;
+const int secondBonfireHeight = 277;
+
+//third bonfire rect
+const int thirdBonfireX = 405;
+const int thirdBonfireY = 521;
+const int thirdBonfireWidth = 176;
+const int thirdBonfireHeight = 293;
+
 #endif
