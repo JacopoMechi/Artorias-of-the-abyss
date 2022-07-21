@@ -40,6 +40,22 @@ const int secondSwordHeight = 40;
 //for level 2 sword damage
 const int secondSwordDamage = 10;
 
+//rect for level 3 sword
+const int thirdSwordX = 0;
+const int thirdSwordY = 254;
+const int thirdSwordWidth = 21;
+const int thirdSwordHeight = 40;
+//for level 3 sword damage
+const int thirdSwordDamage = 15;
+
+//to set the sword in right position
+const int swordRightPosX = 100;
+const int swordRightPosY = -50;
+
+//to set the sword in left position
+const int swordLeftPosX = -120;
+const int swordLeftPosY = -50;
+
 //for sword scale
 const float swordScale = 7.5f;
 
