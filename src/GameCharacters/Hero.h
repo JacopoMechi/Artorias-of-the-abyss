@@ -70,7 +70,6 @@ protected:
     bool isInventoryOpen;
     bool isKnight;
     float delayTime;
-    int moneyCounter = 10000;
 
     // shield aura sprite
     sf::Sprite auraShield;
