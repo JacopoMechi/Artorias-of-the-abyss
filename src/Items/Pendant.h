@@ -14,7 +14,7 @@ public: // is it correct the override like this?
     virtual void use(Hero& hero) override;
     virtual void consumableEffectTime(float dt, Hero &hero, sf::RenderWindow &window) override;
 private:
-    float immuneTime = 3.0f;
+    float immuneTime = pendantImmuneTimeAmount;
     int oldArmor = 0;// to track old armor
 };
 

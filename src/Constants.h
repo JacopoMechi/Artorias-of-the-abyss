@@ -194,4 +194,13 @@ const float leftGateX = 158.0f;
 //right case
 const float rightGateX = 1626.0f;
 
+
+//setting pendant immune time
+const float pendantImmuneTimeAmount = 3.0f;
+//setting pendant scale
+const float pendantScale = 2.1f;
+//setting pendant visual effect scale
+const float pendantEffectScale = 6.5f;
+//setting pendant effect display distance from hero pos
+const int xPendantEffectVariation = 30;
 #endif
