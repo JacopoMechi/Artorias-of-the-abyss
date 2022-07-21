@@ -1,4 +1,4 @@
-#include "Enemy1.h"
+#include "Monster.h"
 
 Enemy1::Enemy1(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed) : Enemy(window, pos, hp, armor, cash, movementSpeed)
 {

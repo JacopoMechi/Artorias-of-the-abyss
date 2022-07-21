@@ -34,8 +34,8 @@ set(SOURCE_FILES
     src/GameCharacters/Enemies/EnemyFactory.cpp
     src/GameCharacters/Enemies/Enemy.h
     src/GameCharacters/Enemies/Enemy.cpp
-    src/GameCharacters/Enemies/Enemy1.h
-    src/GameCharacters/Enemies/Enemy1.cpp
+    src/GameCharacters/Enemies/Monster.h
+    src/GameCharacters/Enemies/Monster.cpp
 
     # Rooms
     src/Rooms/Room.h

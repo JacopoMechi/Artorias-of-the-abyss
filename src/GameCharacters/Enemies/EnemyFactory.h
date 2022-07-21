@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "Enemy.h"
-#include "Enemy1.h"
+#include "Monster.h"
 
 class EnemyFactory
 {
