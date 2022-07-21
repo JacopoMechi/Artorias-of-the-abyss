@@ -203,6 +203,16 @@ const float pendantScale = 2.1f;
 const float pendantEffectScale = 6.5f;
 //setting pendant effect display distance from hero pos
 const int xPendantEffectVariation = 30;
+//setting pendant's rect
+const int pendantX = 498;
+const int pendantY = 99;
+const int pendantWidth = 23;
+const int pendantHeight = 17;
+//setting pendant's effect rect
+const int pendantEffectX = 525;
+const int pendantEffectY = 191;
+const int pendantEffectWidth = 25;
+const int pendantEffectHeight = 26;
 
 
 //setting item's scale
