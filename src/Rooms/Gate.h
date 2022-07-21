@@ -26,7 +26,7 @@ protected:
     bool isMirrored;
 
 private:
-    std::vector<sf::IntRect> SpriteFrames = {{140, 308, 120, 195}};
+    std::vector<sf::IntRect> SpriteFrames = {{doorX, doorY, doorWidth, doorHeight}};
 };
 
 #endif //_GATE_H

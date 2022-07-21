@@ -180,4 +180,18 @@ const int roomY = 0;
 const int roomWidth = 1920;
 const int roomHeight = 1080;
 
+
+//sprite rect for open door
+const int doorX = 140;
+const int doorY = 308;
+const int doorWidth = 120;
+const int doorHeight = 195;
+
+//position for right ad left gate
+const float gateY = 425.0f;
+//left case
+const float leftGateX = 158.0f;
+//right case
+const float rightGateX = 1626.0f;
+
 #endif
