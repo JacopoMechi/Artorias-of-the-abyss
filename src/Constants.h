@@ -203,4 +203,12 @@ const float pendantScale = 2.1f;
 const float pendantEffectScale = 6.5f;
 //setting pendant effect display distance from hero pos
 const int xPendantEffectVariation = 30;
+
+
+//setting item's scale
+const float itemScale = 2.5f;
+//setting item effect's scale
+const float itemEffectScale = 7.0f;
+//setting time effect holdtime
+const float itemHoldTimeAmount = 2.0f;
 #endif
