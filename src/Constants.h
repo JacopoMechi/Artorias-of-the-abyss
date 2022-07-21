@@ -157,4 +157,27 @@ const int thirdBonfireHeight = 293;
 //animation holding time for room element class
 const float roomElementHoldTime = 0.01f;
 
+
+//for setting npc spawning position
+const float npcSpawnX = 322.0f;
+const float npcSpawnY = 224.0f;
+
+//for setting enemy spawning position
+const float enemySpawnX = 900.0f;
+const float enemySpawnY = 200.0f;
+
+//for setting bonfire spawning poisition
+const float bonfireSpawnX = 900.0f;
+const float bonfireSpawnY = 400.0f;
+
+//to change hero level by setting level floors
+const int secondFloor = 3;
+const int thirdFloor = 7;
+
+//room sprite rect
+const int roomX = 0;
+const int roomY = 0;
+const int roomWidth = 1920;
+const int roomHeight = 1080;
+
 #endif

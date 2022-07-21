@@ -13,6 +13,7 @@
 #include "GameCharacters/NPC.h"
 #include "GameCharacters/Enemies/Enemy.h"
 #include "GameCharacters/Enemies/EnemyFactory.h"
+#include "Constants.h"
 
 class Room
 {
