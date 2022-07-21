@@ -11,6 +11,7 @@
 #include "GUI/Inventory.h"
 #include "CharacterInputs.h"
 #include "GUI/Shop.h"
+#include "Constants.h"
 
 class Game
 {
