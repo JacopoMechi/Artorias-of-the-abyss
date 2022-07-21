@@ -7,6 +7,7 @@
 #include "GUI/Shop.h"
 #include "GameCharacters/GameCharacter.h"
 #include "Rooms/RoomElement.h"
+#include "Constants.h"
 
 class CharacterInputs
 {
