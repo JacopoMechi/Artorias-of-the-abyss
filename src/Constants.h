@@ -298,4 +298,70 @@ const int buyingTextY = 275;
 //position of error message text when buying items
 const int errorMessX = 1010;
 const int errorMessY = 310;
+
+
+//start button click bounds for menu
+const int rightStartBound = 1139;
+const int leftStartBound = 780;
+const int topStartBound = 454;
+const int bottomStartBound = 383;
+//start/boscure button highlight pos
+const float colorStartX = 764.0f;
+const float colorStartY = 375.0f;
+//hero buttons click bounds for menu
+const int topHeroChooseBound = 584; 
+const int bottomHeroChooseBound = 495;
+//knight button click bounds for menu
+const int rightKnightChooseBound = 957;
+const int leftKnightChooseBound = 760;
+//mage button click bounds for menu
+const int rightMageChooseBound = 1155;
+const int leftMageChooseBound = 959;
+//quit button click bounds for menu
+const int rightQuitBound = 1139;
+const int leftQuitBound = 780;
+const int topQuitBound = 694;
+const int bottomQuitBound = 623; 
+//to change color of quit button
+const float coloredQuitX = 764.0f;
+//highlight case
+const float highlightQuitY = 615.0f;
+//obscure case
+const float obscureQuitY = 375.0f;
+//bounds for in-game reseume/quit game menu button
+const int rightIGMenuBound = 1161;
+const int leftIGMenuBound = 771;
+//resume case
+const int topResumeBound = 543;
+const int bottomResumeBound = 453;
+//in-game quit case
+const int topIGQuitBound = 657;
+const int bottomIGQuitBound = 569;
+//obscure/highlight resume button position
+const float resumeColorPosX = 771.0f;
+const float resumeColorPosY = 453.0f;
+//obscure/highlight in-game quit button position
+const float igQuitColorPosX = 771.0f;
+const float igQuitColorPosY = 570.0f;
+//for menu sprite rect
+const int menuX = 0;
+const int menuY = 0;
+const int menuWidth = 1920;
+const int menuHeight = 1080;
+//setting position of knight text 
+const float knightTextPosX = 805.0f;
+const float knightTextPosY = 543.0f;
+//setting position of mage text
+const float mageTextPosX = 1015.0f;
+const float mageTextPosY = 543.0f;
+//setting shadow sprite rect
+const int shadowX = 8;
+const int shadowY = 825;
+const int shadowWidth = 390;
+const int shadowHeight = 92;
+//setting highlight sprite rect
+const int highlightX = 401;
+const int highlightY = 827;
+const int highlightWidth = 390;
+const int highlightHeight = 92;
 #endif
