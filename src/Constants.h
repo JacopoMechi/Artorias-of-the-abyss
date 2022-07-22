@@ -256,4 +256,16 @@ const int arrowUpPosX = 1700;
 const int arrowUpPosY = 445;
 //setting green blossom's arrow up hud effect scale
 const float arrowUpScale = 0.8f;
+
+
+//setting flask rect
+const int flaskX = 412;
+const int flaskY = 2;
+const int flaskWidth = 20;
+const int flaskHeight = 21;
+//setting flask effect rect
+const int flaskEffectX = 530;
+const int flaskEffectY = 157;
+const int flaskEffectWidth = 17;
+const int flaskEffectHeight = 22;
 #endif
