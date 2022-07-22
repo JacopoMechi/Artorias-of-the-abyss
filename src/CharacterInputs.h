@@ -7,12 +7,13 @@
 #include "GUI/Shop.h"
 #include "GameCharacters/GameCharacter.h"
 #include "Rooms/RoomElement.h"
+#include "achivementsObserver.h"
 
 class CharacterInputs
 {
 public:
     // getting Inventory and hud from main game
-    CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero, Shop &shop);
+    CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero, Shop &shop, AchivementsObserver &achivementsObserver);
 
     void updateInputs(sf::Event keyInputs);
     int updateBonefireInputs(sf::Event keyInputs, int level);
@@ -41,6 +42,7 @@ private:
     int respawnLevel = 0;
     bool entityInRange = false;
     bool NPCInRange = false;
+    AchivementsObserver &achivementObserver;
 };
 
 #endif

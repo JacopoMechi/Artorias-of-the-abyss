@@ -22,6 +22,9 @@ set(SOURCE_FILES
     src/CharacterInputs.h
     src/CharacterInputs.cpp
 
+    src/achivementsObserver.h
+    src/achivementsObserver.cpp
+
     # GameCharacters
     src/GameCharacters/GameCharacter.h
     src/GameCharacters/GameCharacter.cpp

@@ -1,6 +1,6 @@
 #include "CharacterInputs.h"
 
-CharacterInputs::CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero, Shop &shop) : inventory(inventory), hud(hud), hero(hero), shop(shop)
+CharacterInputs::CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero, Shop &shop, AchivementsObserver &achivementsObserver) : inventory(inventory), hud(hud), hero(hero), shop(shop), achivementObserver(achivementObserver)
 {
 }
 
@@ -145,6 +145,7 @@ int CharacterInputs::updateBonefireInputs(sf::Event keyInput, int level)
         // changing spawn point of hero close to bonfire
         hero.setSpawnPoint({element->getPos().x + element->getSize().x, element->getPos().y});
         respawnLevel = level;
+        achivementObserver.update("Bonefire");
     }
     return respawnLevel;
 }
