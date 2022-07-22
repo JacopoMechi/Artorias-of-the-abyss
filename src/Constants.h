@@ -155,7 +155,7 @@ const int thirdBonfireWidth = 176;
 const int thirdBonfireHeight = 293;
 
 //animation holding time for room element class
-const float roomElementHoldTime = 0.01f;
+const float roomElementHoldTime = 0.1f;
 
 
 //for setting npc spawning position
@@ -364,4 +364,118 @@ const int highlightX = 401;
 const int highlightY = 827;
 const int highlightWidth = 390;
 const int highlightHeight = 92;
+
+
+//setting items' tracker positions inside inventory class
+const int invTrackerPosX = 130;
+const int firstTrackerPosY = 440;
+const int secondTrackerPosY = 505;
+const int thirdTrackerPosY = 650;
+const int fourthTrackerPosY = 755;
+
+//settings collecibles rects in inventory
+//guardian soul
+const int guardianSoulX = 396;
+const int guardianSoulY = 73;
+const int guardianSoulWidth = 18;
+const int guardianSoulHeight = 22;
+//artorias' soul
+const int artoriasX = 440;
+const int artoriasY = 73;
+const int artoriasWidth = 18;
+const int artoriasHeight = 22;
+//manus' soul
+const int manusX = 396;
+const int manusY = 99;
+const int manusWidth = 18;
+const int manusHeight = 22;
+//oolacile's resident
+const int residentX = 440;
+const int residentY = 96;
+const int residentWidth = 27;
+const int residentHeight = 26;
+//oolacile's sorcerer
+const int sorcererX = 497;
+const int sorcererY = 47;
+const int sorcererWidth = 27;
+const int sorcererHeight = 21;
+//arotrias' shield
+const int aShieldX = 419;
+const int aShieldY = 143;
+const int aShieldWidth = 22;
+const int aShieldHeight =  21;
+//stone guardian
+const int stoneGuardX = 497;
+const int stoneGuardY = 24;
+const int stoneGuardWidth = 21;
+const int stoneGuardHeight = 21;
+//humanity
+const int humanityX = 497;
+const int humanityY = 0;
+const int humanityWidth = 22;
+const int humanityHeight = 20;
+//for invetory rect
+const int invX = 89;
+const int invY = 259;
+const int invWidth = 352;
+const int invHeight = 450;
+//for inventory position
+const int invPosX = 89;
+const int invPosY = 259;
+//for inventory scale
+const float invScale = 1.5f;
+//for description box rect of inventory
+const int descrX = 528;
+const int descrY = 293;
+const int descrWidth = 430;
+const int descrHeight = 233;
+//for description box position of inventory
+const int descrPosX = 700;
+const int descrPosY = 315;
+//for description box scale of inventory
+const float descrScale = 1.3f;
+//for tracker sprite rect of inventory
+const int trackerX = 116;
+const int trackerY = 736;
+const int trackerWidth = 266;
+const int trackerHeight = 56;
+//for tracker sprite scale of inventory
+const float trackerScale = 1.5f;
+//for assign box sprite rect of inventory
+const int boxX = 994;
+const int boxY = 318;
+const int boxWidth = 289;
+const int boxHeight = 98;
+//for assign box sprite position of inventory
+const int boxPosX = 994;
+const int boxPosY = 418;
+//for assign box text position in inventory
+const int assignTextPosX = 1008;
+const int assignTextPosY = 438;
+//for tabname text position in invetory
+const int tabNamePosX = 245;
+const int tabNamePosY = 330;
+//to display items and their names in the right position in inventory
+const int firstItemPosX = 148;
+const int firstItemPosY = 455;
+const int firstItemDescrPosX = 235;
+const int firstItemDescrPosY = 470;
+const int secondItemPosX = 148;
+const int secondItemPosY = 560;
+const int secondItemDescrPosX = 235;
+const int secondItemDescrPosY = 577;
+const int thirdItemPosX = 148;
+const int thirdItemPosY = 670;
+const int thirdItemDescrPosX = 235;
+const int thirdItemDescrPosY = 680;
+const int fourthItemPosX = 142;
+const int fourthItemPosY = 780;
+const int fourthItemDescrPosX = 235;
+const int fourthItemDescrPosY = 785;
+//to draw item in description box
+const int itemInDescrPosX = 800;
+const int itemInDescrPosY = 460;
+//to draw item description text in description box
+const int itemDescrPosX = 950;
+const int itemDescrPosY = 415;
 #endif

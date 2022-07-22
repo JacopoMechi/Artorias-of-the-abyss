@@ -88,7 +88,7 @@ protected:
     // for tracking item in inventory
     sf::Sprite trackerSprite;
     int tracker = 0; // for tracking positions
-    sf::Vector2f trackerPos[4] = {{130, 440}, {130, 440 + 105}, {130, 440 + 105 * 2}, {130, 440 + 105 * 3}};
+    sf::Vector2f trackerPos[4] = {{invTrackerPosX, firstTrackerPosY}, {invTrackerPosX, secondTrackerPosY}, {invTrackerPosX, thirdTrackerPosY}, {invTrackerPosX, fourthTrackerPosY}};
 
     // boolean value to let the hud know when we want to open/close inventory
     bool isOpen = false;
@@ -127,40 +127,40 @@ protected:
         // collectibles
         // guardiano
         new Item(L"Anima del Guardiano", 0, L"Anima del leone alato bianco, \nprotettore del Santuario, che \ntemeva la diffusione dell'Abisso.",
-                 1, 1, {396, 73, 18, 22}, {0, 0, 0, 0}),
+                 1, 1, {guardianSoulX, guardianSoulY, guardianSoulWidth, guardianSoulHeight}, {0, 0, 0, 0}),
         // Artorias
         new Item(L"Anima di Artorias", 0, L"Anima di un cavaliere valoroso, che \nè stato consumato dall'Abiosso. "
                                           L"La \nLeggenda narra che Artorias ha \nsconfitto l'Abisso, ma è solo una \nstoria raccontata a metà; "
                                           L"sembra \nche sia stato sconfitto e il suo onore \npreservato da un eroe non \ncelebrato, "
                                           L"il quale ha veramente \nsconfitto l'Abisso.",
-                 1, 1, {440, 73, 18, 22}, {0, 0, 0, 0}),
+                 1, 1, {artoriasX, artoriasY, artoriasWidth, artoriasHeight}, {0, 0, 0, 0}),
         // Manus
         new Item(L"Anima di Manus", 0, L"Anima di manus, Padre dell'Abisso. \nChiaramente, una volta era un \nessere umano che, a causa della"
                                        L" \nperdita di un oggetto a lui caro, un \npendente, che lo portò alla follia, \ndivenne Padre dell'Abisso.",
                  1, 1,
-                 {396, 99, 18, 22}, {0, 0, 0, 0}),
+                 {manusX, manusY, manusWidth, manusHeight}, {0, 0, 0, 0}),
         // cittadino di oolacile
         new Item(L"Testa Cittadino \ndi Oolacile", 0, L"Creature umanoidi "
                                                       L"corrotte \ndall'Abisso. Sono caratterizzati da \nun busto di cavallo e una folta \nbarba, con occhi di colore rosso.",
-                 1, 1, {440, 96, 23, 26}, {0, 0, 0, 0}),
+                 1, 1, {residentX, residentY, residentWidth, residentHeight}, {0, 0, 0, 0}),
         // stregone di oolacile
         new Item(L"Testa Stregone \ndi Oolacile", 0, L"Creature che somigliano "
                                                      L"ai cittadini \ndi Oolacile, ma possiedono un aspetto \nfemminile.",
-                 1, 1, {497, 47, 27, 21}, {0, 0, 0, 0}),
+                 1, 1, {sorcererX, sorcererY, sorcererWidth, sorcererHeight}, {0, 0, 0, 0}),
         // scudo di Artorias (scudo grande purificatore)
         new Item(L"Scudo Grande \nPurificatore", 0, L"Scudo usato da Artorias, cavaliere \nche ha affrontato l'Abisso. Artorias, \nprofondamente spaventato \n"
                                                     L"dall'Abisso, usò questo scudo per \nproteggere il suo fedele compagno \nSif dalle Disumanità. Purtroppo, \nrisulta uno scudo troppo "
                                                     L"pesante \nper essere equipaggiato.",
-                 1, 1, {419, 143, 22, 21}, {0, 0, 0, 0}),
+                 1, 1, {aShieldX, aShieldY, aShieldWidth, aShieldHeight}, {0, 0, 0, 0}),
         // guardiano di pietra
         new Item(L"Testa guardiano \ndi Pietra", 0, L"Testa dei Guardiani di Pietra. In \nrealtà, questi nemici sono un corpo di \npietra "
                                                     L"animato, armati di un'ascia di \npietra, ma senza uno scudo.",
-                 1, 1, {497, 24, 21, 21}, {0, 0, 0, 0}),
+                 1, 1, {stoneGuardX, stoneGuardY, stoneGuardWidth, stoneGuardHeight}, {0, 0, 0, 0}),
         // disumanita'
         new Item(L"Disumanità", 0, L"Queste creature sono una \n"
                                    L"rappresentazione dell'umanità come \nun'entità non ancora formatasi. A \ndifferenza degli altri nemici, non \nhanno alcun attacco e "
                                    L"danneggiano \nsolo attraverso il contatto fisico.",
-                 1, 1, {497, 0, 22, 20}, {0, 0, 0, 0})};
+                 1, 1, {humanityX, humanityY, humanityWidth, humanityHeight}, {0, 0, 0, 0})};
 };
 
 #endif

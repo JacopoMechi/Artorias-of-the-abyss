@@ -6,25 +6,25 @@ Inventory::Inventory(sf::RenderWindow &window): window(window){
 
     //setting inventory sprite
     sprite.setTexture(texture);
-    sprite.setTextureRect({89, 259, 352, 450});
-    sprite.setPosition(89, 259);
-    sprite.setScale(1.5f, 1.5f);
+    sprite.setTextureRect({invX, invY, invWidth, invHeight});
+    sprite.setPosition(invPosX, invPosY);
+    sprite.setScale(invScale, invScale);
 
     //setting box sprite for items' descriptions
     descriptionSprite.setTexture(texture);
-    descriptionSprite.setTextureRect({528, 293, 430, 233});
-    descriptionSprite.setPosition({700, 315});
-    descriptionSprite.setScale(1.3f, 1.3f);
+    descriptionSprite.setTextureRect({descrX, descrY, descrWidth, descrHeight});
+    descriptionSprite.setPosition({descrPosX, descrPosY});
+    descriptionSprite.setScale(descrScale, descrScale);
 
     //setting tracker sprite for scrolling through items
     trackerSprite.setTexture(texture);
-    trackerSprite.setTextureRect({116, 736, 266, 56});
-    trackerSprite.setScale(1.5f, 1.5f);
+    trackerSprite.setTextureRect({trackerX, trackerY, trackerWidth, trackerHeight});
+    trackerSprite.setScale(trackerScale, trackerScale);
 
     //setting assign box sprite
     boxSprite.setTexture(texture);
-    boxSprite.setTextureRect({994, 318, 289, 98});
-    boxSprite.setPosition({994, 418});
+    boxSprite.setTextureRect({boxX, boxY, boxWidth, boxHeight});
+    boxSprite.setPosition({boxPosX, boxPosY});
 
     //setting text for inventory
     if(!font.loadFromFile("Fonts/pixelFont.ttf"))
@@ -100,7 +100,7 @@ void Inventory::setShowDescription(bool showDescription){
 void Inventory::displayBox(){
     if(showDescription && isAssign && nTab == 0){//only displays on first tab
         window.draw(boxSprite);
-        drawText(L"In quale slot vuoi assegnare \nil seguente oggetto?\n\n                          [1]  [2]  [3]", {1008, 438}, 13);
+        drawText(L"In quale slot vuoi assegnare \nil seguente oggetto?\n\n                          [1]  [2]  [3]", {assignTextPosX, assignTextPosY}, 13);
     }else if(nTab != 0)//to reset assign when changing tab
         isAssign = false;
 }
@@ -125,21 +125,21 @@ void Inventory::draw(){
         window.draw(sprite);
 
         //drawing the name of the tab
-        drawText(tabName[nTab], {245, 330}, 20);
+        drawText(tabName[nTab], {tabNamePosX, tabNamePosY}, 20);
 
         //displaying tracker for items
         trackerSprite.setPosition(trackerPos[tracker]);
         window.draw(trackerSprite);
 
         //drawing items of the inventory
-        items[0+4*nPage+nTab*8] -> displayItem(148, 455, window);//first slot
-        items[0+4*nPage+nTab*8] -> displayName(window, 235, 470);
-        items[1+4*nPage+nTab*8] -> displayItem(148, 560, window);//second slot
-        items[1+4*nPage+nTab*8] -> displayName(window, 235, 577);
-        items[2+4*nPage+nTab*8] -> displayItem(148, 670, window);//third slot
-        items[2+4*nPage+nTab*8] -> displayName(window, 235, 680);
-        items[3+4*nPage+nTab*8] -> displayItem(142, 780, window);//fourth slot
-        items[3+4*nPage+nTab*8] -> displayName(window, 235, 785);
+        items[0+4*nPage+nTab*8] -> displayItem(firstItemPosX, firstItemPosY, window);//first slot
+        items[0+4*nPage+nTab*8] -> displayName(window, firstItemDescrPosX, firstItemDescrPosY);
+        items[1+4*nPage+nTab*8] -> displayItem(secondItemPosX, secondItemPosY, window);//second slot
+        items[1+4*nPage+nTab*8] -> displayName(window, secondItemDescrPosX, secondItemDescrPosY);
+        items[2+4*nPage+nTab*8] -> displayItem(thirdItemPosX, thirdItemPosY, window);//third slot
+        items[2+4*nPage+nTab*8] -> displayName(window, thirdItemDescrPosX, thirdItemDescrPosY);
+        items[3+4*nPage+nTab*8] -> displayItem(fourthItemPosX, fourthItemPosY, window);//fourth slot
+        items[3+4*nPage+nTab*8] -> displayName(window, fourthItemDescrPosX, fourthItemDescrPosY);
 
         //calling function to display item's description in case we want the read the item's description
         drawDescription(tracker + nPage*4 + nTab*8);
@@ -153,9 +153,9 @@ void Inventory::drawDescription(int nItem){
     if(showDescription){
         window.draw(descriptionSprite);
         //drawing sprite inside the the description sprite
-        items[nItem] -> displayItem(800, 460, window);
+        items[nItem] -> displayItem(itemInDescrPosX, itemInDescrPosY, window);
         //drawing description of the item
-        drawText(items[nItem] -> getItemDescription(), {950, 415}, 13);
+        drawText(items[nItem] -> getItemDescription(), {itemDescrPosX, itemDescrPosY}, 13);
     }else
         isAssign = false;//to remove assign box when description is not displaying
 }
