@@ -94,7 +94,7 @@ protected:
     float attackTime = 0.0f;
 
     // setting respawn position
-    sf::Vector2f respawnPos = {500.0f, 500.0f};
+    sf::Vector2f respawnPos = {heroInitPosX, heroInitPosY};
 
     sf::Vector2f dashing;
     float dashDistance = 100.0f;

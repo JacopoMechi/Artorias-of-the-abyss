@@ -10,6 +10,7 @@
 #include "Weapones/Weapon.h"
 #include "Weapones/Sword.h"
 #include "Weapones/Catalyst.h"
+#include "Constants.h"
 
 class GameCharacter
 {
