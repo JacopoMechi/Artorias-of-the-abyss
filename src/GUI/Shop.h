@@ -40,7 +40,7 @@ private:
     int type = -1;//default value which indicates no NPCs
 
     //setting pos for highlight tracker in shop
-    sf::Vector2f trackerShopPos[2] = {{541, 295}, {541, 400}};
+    sf::Vector2f trackerShopPos[2] = {{trackedItemX, firstTrackedItemY}, {trackedItemX, secondTrackedItemY}};
 
     //boolean value to open buying box
     bool isBuying = false;

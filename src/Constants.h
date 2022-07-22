@@ -268,4 +268,34 @@ const int flaskEffectX = 530;
 const int flaskEffectY = 157;
 const int flaskEffectWidth = 17;
 const int flaskEffectHeight = 22;
+
+
+//positions for tracker in shop
+const int trackedItemX = 541;
+const int firstTrackedItemY = 295;
+const int secondTrackedItemY = 400;
+//rect for shop sprite
+const int shopX = 89;
+const int shopY = 355;
+const int shopWidth = 352;
+const int shopHeight = 313;
+//position of shop sprite
+const int shopPosX = 500;
+const int shopPosY = 259;
+//setting position for shop's box sprite (to buy items)
+const int shopBoxPosX = 1000;
+const int shopBoxPosY = 259;
+//position of first and second item displayed in shop and their description
+const int shopItemX = 559;
+const int shopDescriptionX = 646;
+const int firstShopItemY = 310;
+const int firstShopDescriptionY = 330;
+const int secondShopItemY = 420;
+const int secondShopDescriptionY = 437;
+//position of "Quanti ne vuoi acquistare..." in buying box
+const int buyingTextX = 1010;
+const int buyingTextY = 275;
+//position of error message text when buying items
+const int errorMessX = 1010;
+const int errorMessY = 310;
 #endif

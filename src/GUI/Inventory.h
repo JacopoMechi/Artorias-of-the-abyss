@@ -9,6 +9,7 @@
 #include "Items/HomewardBone.h"
 #include "Items/Pendant.h"
 #include "Items/NullItem.h"
+#include "Constants.h"
 
 class Inventory
 {
