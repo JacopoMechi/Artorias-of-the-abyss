@@ -8,6 +8,7 @@
 #include "GameCharacters/GameCharacter.h"
 #include "Rooms/RoomElement.h"
 #include "achivementsObserver.h"
+#include "Constants.h"
 
 class CharacterInputs
 {

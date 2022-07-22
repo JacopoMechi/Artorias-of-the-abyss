@@ -14,6 +14,7 @@
 #include "GameCharacters/Enemies/Enemy.h"
 #include "GameCharacters/Enemies/EnemyFactory.h"
 #include "achivementsObserver.h"
+#include "Constants.h"
 
 class Room
 {

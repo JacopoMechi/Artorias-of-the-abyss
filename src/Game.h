@@ -12,6 +12,7 @@
 #include "CharacterInputs.h"
 #include "GUI/Shop.h"
 #include "achivementsObserver.h"
+#include "Constants.h"
 
 class Game
 {

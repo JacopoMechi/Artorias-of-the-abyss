@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "GameCharacters/Hero.h"
+#include "Constants.h"
 
 class Item
 {

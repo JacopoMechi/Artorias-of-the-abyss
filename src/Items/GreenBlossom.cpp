@@ -4,9 +4,9 @@ GreenBlossom::GreenBlossom(std::wstring itemName, int itemPrice, std::wstring it
                            sf::IntRect spriteRect, sf::IntRect effectRect): Item(itemName, itemPrice, itemDescription, 
                            maxItemCount, itemCount, spriteRect, effectRect){
     arrowUp.setTexture(texture);
-    arrowUp.setTextureRect({554, 0, 43, 63});
-    arrowUp.setPosition({1700, 445});
-    arrowUp.setScale(0.8f, 0.8f);
+    arrowUp.setTextureRect({arrowUpX, arrowUpY, arrowUpWidth, arrowUpHeight});
+    arrowUp.setPosition({arrowUpPosX, arrowUpPosY});
+    arrowUp.setScale(arrowUpScale, arrowUpScale);
 }
 
 GreenBlossom::~GreenBlossom(){
@@ -17,7 +17,7 @@ void GreenBlossom::use(Hero& hero) {
     if(itemCount > 0){
         itemCount --;
         oldCD = hero.getCooldown();
-        hero.setCooldown(newCooldown);
+        hero.setCooldown(blossomCooldown);
         startConsumable = false;
         startEffect = false;
     }
@@ -27,7 +27,7 @@ void GreenBlossom::consumableEffectTime(float dt, Hero &hero, sf::RenderWindow &
     if(!startConsumable){
         window.draw(arrowUp);
         consumableTimeEffect += dt;
-        if(consumableTimeEffect >= 5.0f){//5.0 is the effect time of the consumable
+        if(consumableTimeEffect >= blossomEffectTime){
             consumableTimeEffect = 0;
             hero.setCooldown(oldCD);
             startConsumable = true;

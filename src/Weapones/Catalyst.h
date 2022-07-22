@@ -14,7 +14,7 @@ public:
 
     bool getStartSpell() const;
 
-    explicit Catalyst(sf::IntRect weaponRect = {2, 332, 38, 36}, sf::Vector2f weaponScale = {3.5f, 3.5f}, int nFrames = 1, int level = 1);
+    explicit Catalyst(sf::IntRect weaponRect = {firstCatalystX, firstCatalystY, firstCatalystWidth, firstCatalystHeight}, sf::Vector2f weaponScale = {catalystScale, catalystScale}, int nFrames = maxCatalystFrames, int level = 1);
 
     virtual ~Catalyst() = default;
 

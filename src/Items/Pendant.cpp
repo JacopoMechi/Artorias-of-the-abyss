@@ -3,8 +3,8 @@
 Pendant::Pendant(std::wstring itemName, int itemPrice, std::wstring itemDescription, int maxItemCount, int itemCount,
                  sf::IntRect spriteRect, sf::IntRect effectRect): Item(itemName, itemPrice, itemDescription, maxItemCount, itemCount, 
                  spriteRect, effectRect){
-    sprite.setScale(2.1f, 2.1f);
-    itemEffectSprite.setScale(6.5f, 6.5f);
+    sprite.setScale(pendantScale, pendantScale);
+    itemEffectSprite.setScale(pendantEffectScale, pendantEffectScale);
 }
 
 Pendant::~Pendant(){
@@ -13,7 +13,7 @@ Pendant::~Pendant(){
 
 void Pendant::displayEffect(sf::Vector2f pos, sf::RenderWindow &window){
     if(!startEffect){
-        pos.x -= 30;
+        pos.x -= xPendantEffectVariation;
         itemEffectSprite.setPosition(pos);
         window.draw(itemEffectSprite);
     }

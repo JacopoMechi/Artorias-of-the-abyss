@@ -4,13 +4,13 @@ void Sword::setLevel(int level)
 {
     this->level = level;
     if (level == 1)
-        damage = 5;
+        damage = firstSwordDamage;
     else if (level == 2){
-        weaponRect = {0, 205, 21, 40};
-        damage = 10;
+        weaponRect = {secondSwordX, secondSwordY, secondSwordWidth, secondSwordHeight};
+        damage = secondSwordDamage;
     }else if (level == 3){
-        weaponRect = {0, 254, 21, 40};
-        damage = 15;
+        weaponRect = {thirdSwordX, thirdSwordY, thirdSwordWidth, thirdSwordHeight};
+        damage = thirdSwordDamage;
     }
 }
 
@@ -19,12 +19,12 @@ void Sword::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f e
         //setting position and rectangles of the weapon
         if(entityRect.width > 0){
             currentRect = weaponRect;
-            xVariation = 100;
-            yVariation = -50;
+            xVariation = swordRightPosX;
+            yVariation = swordRightPosY;
         }else if(entityRect.width < 0){
             currentRect = {weaponRect.width, weaponRect.top, -weaponRect.width, weaponRect.height};
-            xVariation = -120;
-            yVariation = -50;
+            xVariation = swordLeftPosX;
+            yVariation = swordLeftPosY;
         }
 
         //updating iFrames for weapon
@@ -47,5 +47,5 @@ void Sword::use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f e
 
 Sword::Sword(sf::IntRect weaponRect, sf::Vector2f weaponScale, int nFrames, int level) : 
     Weapon(weaponRect, weaponScale, nFrames, level) { 
-        damage = 5;
+        damage = firstSwordDamage;
     }

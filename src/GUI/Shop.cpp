@@ -8,11 +8,11 @@ Shop::Shop(sf::RenderWindow &window): Inventory(window){
         std::cout << "Error on loading text font for shop" << std::endl;
 
     //we will use invenotrySprite to show shop sprite
-    sprite.setTextureRect({89, 355, 352, 313});
-    sprite.setPosition({500, 259});
+    sprite.setTextureRect({shopX, shopY, shopWidth, shopHeight});
+    sprite.setPosition({shopPosX, shopPosY});
 
     //change position of box
-    boxSprite.setPosition({1000, 259});
+    boxSprite.setPosition({shopBoxPosX, shopBoxPosY});
 }
 
 void Shop::draw(){
@@ -24,10 +24,10 @@ void Shop::draw(){
         window.draw(trackerSprite);
 
         //displaying homeward bone and null item, or green blossom and pendant
-        items[2 - 1*type] -> displayShopItemIcon({559, 310}, window);//the index can be 1 or 2. Item[1] is green blossom, item[2] is  homeward bone
-        items[2 - 1*type] -> displayShopItemName({646, 330}, window);
-        items[4 - 1*type] -> displayShopItemIcon({559, 420}, window);//the index can be 4 or 3. item[4] is nullItem, item[3] is pendant
-        items[4 - 1*type] -> displayShopItemName({646, 437}, window);
+        items[2 - 1*type] -> displayShopItemIcon({shopItemX, firstShopItemY}, window);//the index can be 1 or 2. Item[1] is green blossom, item[2] is  homeward bone
+        items[2 - 1*type] -> displayShopItemName({shopDescriptionX, firstShopDescriptionY}, window);
+        items[4 - 1*type] -> displayShopItemIcon({shopItemX, secondShopItemY}, window);//the index can be 4 or 3. item[4] is nullItem, item[3] is pendant
+        items[4 - 1*type] -> displayShopItemName({shopDescriptionX, secondShopDescriptionY}, window);
 
         //drawing box to buy item
         displayBox();
@@ -48,7 +48,7 @@ void Shop::previousItem(){
 void Shop::displayBox(){
     if(isBuying){
         window.draw(boxSprite);
-        drawText(L"Quanti  ne vuoi acquistare? \n[1] 1     [2] 5     [3]10", {1010, 275}, 13);
+        drawText(L"Quanti  ne vuoi acquistare? \n[1] 1     [2] 5     [3]10", {buyingTextX, buyingTextY}, 13);
     }
 }
 
@@ -94,6 +94,6 @@ void Shop::purchaseItem(Hero &hero, int amount, Item *item) {
 
 void Shop::displayErrorMessage(){
     if(isError){
-        drawText(L"non hai abbastanza soldi per \nacquistare questo oggetto !", {1010, 310}, 13);
+        drawText(L"non hai abbastanza soldi per \nacquistare questo oggetto !", {errorMessX, errorMessY}, 13);
     }
 }

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "Constants.h"
 
 class Weapon
 {
@@ -24,7 +25,7 @@ public:
     //to stop spell casting
     void setStopAnimation(bool stopAnimation);
 
-    virtual void use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f entityPos, float dt);
+    virtual void use(sf::RenderWindow &window, sf::IntRect entityRect, sf::Vector2f entityPos, float dt) = 0;
 
     Weapon(sf::IntRect weaponRect, sf::Vector2f weaponScale, int nFrames, int level = 1);
 
@@ -44,7 +45,7 @@ protected:
     int yVariation;
     //creating weapon's animation
     float weaponAnimationTime = 0.0f;
-    float weaponAnimationHolding = 0.13f;
+    float weaponAnimationHolding = weaponAnimationHoldingTime;
     int iWeaponFrame = 0;
     //to stop spell casting
     bool stopAnimation = false;

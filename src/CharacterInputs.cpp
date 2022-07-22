@@ -63,7 +63,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput)
         if (hud.getInteraction() && !shop.getOpen()) // to talk with npc
             hud.setIsTalking(!hud.getIsTalking());
         else if (hud.getInteraction() && shop.getIsBuying()) // to buy 1 of the selected item in shop
-            shop.purchaseItem(hero, 1, inventory.receiveItem(shop.getNItem()));
+            shop.purchaseItem(hero, firstAmount, inventory.receiveItem(shop.getNItem()));
         else if (inventory.getNTab() == 0 && inventory.getAssign())
         { // to assign item in first slot of quickslot
             hud.assignItemInQuickslot(0);
@@ -77,7 +77,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput)
         if (hud.getInteraction() && (shop.getNPCType() == 1 || shop.getNPCType() == 0) && !shop.getIsBuying()) // to open shop
             shop.setOpen(!shop.getOpen());
         else if (hud.getInteraction() && shop.getIsBuying()) // to buy 5 of the selected item in shop
-            shop.purchaseItem(hero, 5, inventory.receiveItem(shop.getNItem()));
+            shop.purchaseItem(hero, secondAmount, inventory.receiveItem(shop.getNItem()));
         else if (inventory.getNTab() == 0 && inventory.getAssign())
         { // to assign item in second slot of quickslot
             hud.assignItemInQuickslot(1);
@@ -89,7 +89,7 @@ void CharacterInputs::updateInputs(sf::Event keyInput)
     else if (keyInput.type == sf::Event::KeyPressed && keyInput.key.code == sf::Keyboard::Num3)
     {
         if (hud.getInteraction() && shop.getIsBuying()) // to buy 10 of the selected tem in shop
-            shop.purchaseItem(hero, 10, inventory.receiveItem(shop.getNItem()));
+            shop.purchaseItem(hero, thirdAmount, inventory.receiveItem(shop.getNItem()));
         else if (inventory.getNTab() == 0 && inventory.getAssign())
         { // to assign item in third slot of quickslot
             hud.assignItemInQuickslot(2);
@@ -141,7 +141,7 @@ int CharacterInputs::updateBonefireInputs(sf::Event keyInput, int level)
     {
 
         hero.setHp(100);
-        inventory.setItemAmount(0, 5 - inventory.receiveItem(0)->getItemCount());
+        inventory.setItemAmount(0, maxHomewardBoneAmount - inventory.receiveItem(0)->getItemCount());
         // changing spawn point of hero close to bonfire
         hero.setSpawnPoint({element->getPos().x + element->getSize().x, element->getPos().y});
         respawnLevel = level;
@@ -156,22 +156,22 @@ void CharacterInputs::moveHero(sf::Event keyInput)
 {
     if (!inventory.getOpen() && !hud.getInteraction())
     {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && hero.getPos().y > 30)
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && hero.getPos().y > bottomLimit)
         {
             hero.setDirY(-1.0f);
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && hero.getPos().y < 745)
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && hero.getPos().y < topLimit)
         {
             hero.setDirY(1.0f);
         }
         else
             hero.setDirY(0);
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && hero.getPos().x > 230)
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && hero.getPos().x > leftLimit)
         {
             hero.setDirX(-1.0f);
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && hero.getPos().x < 1550)
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && hero.getPos().x < rightLimit)
         {
             hero.setDirX(1.0f);
         }

@@ -33,7 +33,7 @@ void Game::gameLoop()
             if (mainMenu.getStartGame())
             {
                 gameStatus = Game::Status::Playing;
-                hero = std::unique_ptr<Hero>(new Hero(window, mainMenu.getIsKnight(), {500.0f, 500.0f}, 100, 0, 500.0f));
+                hero = std::unique_ptr<Hero>(new Hero(window, mainMenu.getIsKnight(), {heroInitPosX, heroInitPosY}, 100, 0, 500.0f));
                 hud = std::unique_ptr<HUD>(new HUD(window, *hero.get(), inventory));
                 achivementsObserver = std::unique_ptr<AchivementsObserver>(new AchivementsObserver(*hud.get()));
                 inputs = std::unique_ptr<CharacterInputs>(new CharacterInputs(inventory, *hud.get(), *hero.get(), shop));

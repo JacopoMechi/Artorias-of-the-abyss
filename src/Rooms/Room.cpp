@@ -7,25 +7,25 @@ Room::Room(Hero &hero, const std::vector<RoomElement *> &roomElementsVector, con
     case Type::StartFirst:
         roomFilePath = this->roomPath1;
         this->rightGate = std::make_unique<Gate>(window, true, true);
-        this->npc = std::unique_ptr<NPC>(new NPC(window, 1, {322.0f, 224.0f}));
+        this->npc = std::unique_ptr<NPC>(new NPC(window, 1, {npcSpawnX, npcSpawnY}));
         break;
     case Type::FirstFloor:
         roomFilePath = this->roomPath1;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
-        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 0, 1000, 1000.0f));
+        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {enemySpawnX, enemySpawnY}, 10, 0, 1000, 1000.0f));
         break;
     case Type::StartSecond:
         roomFilePath = this->roomPath2;
         this->leftGate = std::make_unique<Gate>(window, false, true);
         this->rightGate = std::make_unique<Gate>(window, true, true);
-        this->npc = std::unique_ptr<NPC>(new NPC(window, 0, {322.0f, 224.0f}));
+        this->npc = std::unique_ptr<NPC>(new NPC(window, 0, {npcSpawnX, npcSpawnY}));
         break;
     case Type::SecondFloor:
         roomFilePath = this->roomPath2;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
-        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 0, 1000, 1000.0f));
+        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {enemySpawnX, enemySpawnY}, 10, 0, 1000, 1000.0f));
         break;
     case Type::StartThird:
         roomFilePath = this->roomPath3;
@@ -36,21 +36,21 @@ Room::Room(Hero &hero, const std::vector<RoomElement *> &roomElementsVector, con
         roomFilePath = this->roomPath3;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
-        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 0, 1000, 1000.0f));
+        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {enemySpawnX, enemySpawnY}, 10, 0, 1000, 1000.0f));
         break;
     case Type::LastLevel:
         roomFilePath = this->roomPath3;
         this->leftGate = std::make_unique<Gate>(window);
         this->rightGate = std::make_unique<Gate>(window, true, false);
-        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
-        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 0, 1000, 1000.0f));
-        this->npc = std::unique_ptr<NPC>(new NPC(window, 3, {322.0f, 224.0f}));
+        this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {bonfireSpawnX, bonfireSpawnY}));
+        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {enemySpawnX, enemySpawnY}, 10, 0, 1000, 1000.0f));
+        this->npc = std::unique_ptr<NPC>(new NPC(window, 3, {npcSpawnX, npcSpawnY}));
         break;
     case Type::FinalBoss:
         roomFilePath = this->roomPath3;
         this->leftGate = std::make_unique<Gate>(window);
-        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {900.0f, 200.0f}, 10, 0, 1000, 1000.0f));
-        this->npc = std::unique_ptr<NPC>(new NPC(window, 2, {322.0f, 224.0f}));
+        enemyVector.emplace_back(enemyFactory.createEnemy(1, window, {enemySpawnX, enemySpawnY}, 10, 0, 1000, 1000.0f));
+        this->npc = std::unique_ptr<NPC>(new NPC(window, 2, {npcSpawnX, npcSpawnY}));
         break;
     }
 
@@ -70,7 +70,7 @@ void Room::spawnEntity(RoomElement *roomElement)
 
 void Room::draw(int level)
 {
-    roomSprite.setTextureRect({0, 0, 1920, 1080});
+    roomSprite.setTextureRect({roomX, roomY, roomWidth, roomHeight});
     window.draw(roomSprite);
     if (leftGate != nullptr)
         leftGate->draw();
@@ -87,7 +87,7 @@ void Room::draw(int level)
             enemyVector.erase(enemyVector.begin());
 
             // spawing bonfire because fight is over
-            this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {900.0f, 400.0f}));
+            this->bonfire = std::unique_ptr<Bonfire>(new Bonfire(window, {bonfireSpawnX, bonfireSpawnY}));
 
             // open gates because the fight is over
             if (leftGate != nullptr)
@@ -112,9 +112,9 @@ void Room::draw(int level)
         }
         if (npc != nullptr)
             npc->draw(window);
-        if (level == 3)
+        if (level == secondFloor)
             hero.changeLevel(1);
-        else if (level == 7)
+        else if (level == thirdFloor)
             hero.changeLevel(2);
         if (achivementObserver != nullptr)
             achivementObserver->update("Defeated Enemy");

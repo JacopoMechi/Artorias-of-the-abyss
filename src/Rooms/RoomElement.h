@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include "Constants.h"
 
 class RoomElement
 {
@@ -28,6 +29,6 @@ protected:
     int frame = 0;
     float dt = 0;
     float animationTime = 0.0f;
-    float animationHolding = 0.1f;
+    float animationHolding = roomElementHoldTime;
 };
 #endif

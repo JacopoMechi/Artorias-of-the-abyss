@@ -3,8 +3,8 @@
 
 #include "Gate.h"
 
-const sf::Vector2f Gate::leftPosition = {158.0f, 425.0f};
-const sf::Vector2f Gate::rightPosition = {1626.0f, 425.0f};
+const sf::Vector2f Gate::leftPosition = {leftGateX, gateY};
+const sf::Vector2f Gate::rightPosition = {rightGateX, gateY};
 
 bool Gate::getisOpen() const
 {
