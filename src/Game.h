@@ -11,6 +11,7 @@
 #include "GUI/Inventory.h"
 #include "CharacterInputs.h"
 #include "GUI/Shop.h"
+#include "achivementsObserver.h"
 #include "Constants.h"
 
 class Game
@@ -45,6 +46,7 @@ private:
     sf::RenderWindow &window;
     std::unique_ptr<Hero> hero;
     std::unique_ptr<HUD> hud;
+    std::unique_ptr<AchivementsObserver> achivementsObserver;
     Inventory inventory;
     Shop shop;
     sf::Clock clock;

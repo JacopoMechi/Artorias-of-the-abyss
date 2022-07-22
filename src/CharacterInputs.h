@@ -7,6 +7,7 @@
 #include "GUI/Shop.h"
 #include "GameCharacters/GameCharacter.h"
 #include "Rooms/RoomElement.h"
+#include "achivementsObserver.h"
 #include "Constants.h"
 
 class CharacterInputs
@@ -25,6 +26,8 @@ public:
     void setEntityCollision(GameCharacter *entityCollision);
     void setEntityCollision(RoomElement *element);
 
+    void attach(AchivementsObserver &achivementsObserver);
+
     void deleteEntity();
     void deleteNPC();
 
@@ -42,6 +45,7 @@ private:
     int respawnLevel = 0;
     bool entityInRange = false;
     bool NPCInRange = false;
+    std::unique_ptr<AchivementsObserver> achivementObserver;
 };
 
 #endif

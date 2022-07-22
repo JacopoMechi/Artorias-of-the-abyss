@@ -13,6 +13,7 @@
 #include "GameCharacters/NPC.h"
 #include "GameCharacters/Enemies/Enemy.h"
 #include "GameCharacters/Enemies/EnemyFactory.h"
+#include "achivementsObserver.h"
 #include "Constants.h"
 
 class Room
@@ -38,6 +39,8 @@ public:
     void spawnEntity(RoomElement *roomElement);
     void draw(int level);
 
+    void attach(AchivementsObserver &achivementsObserver);
+
     Bonfire *getBonfire();
     NPC *getNPC();
     void setDelayTime(float dt);
@@ -56,6 +59,7 @@ protected:
     sf::Texture roomTexture;
     sf::Sprite roomSprite;
     sf::RenderWindow &window;
+    std::unique_ptr<AchivementsObserver> achivementObserver;
     float dt = 0; // to take delay time for bonfire animation
 };
 #endif

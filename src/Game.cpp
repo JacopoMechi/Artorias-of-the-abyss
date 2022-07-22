@@ -35,10 +35,14 @@ void Game::gameLoop()
                 gameStatus = Game::Status::Playing;
                 hero = std::unique_ptr<Hero>(new Hero(window, mainMenu.getIsKnight(), {heroInitPosX, heroInitPosY}, 100, 0, 500.0f));
                 hud = std::unique_ptr<HUD>(new HUD(window, *hero.get(), inventory));
+                achivementsObserver = std::unique_ptr<AchivementsObserver>(new AchivementsObserver(*hud.get()));
                 inputs = std::unique_ptr<CharacterInputs>(new CharacterInputs(inventory, *hud.get(), *hero.get(), shop));
+                inputs->attach(*achivementsObserver.get());
                 this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartFirst, window));
+
                 for (int i = 0; i < 3; i++)
                     this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::FirstFloor, window));
+                this->levels[1]->attach(*achivementsObserver.get());
 
                 this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartSecond, window));
                 for (int i = 0; i < 3; i++)
@@ -69,7 +73,7 @@ void Game::gameLoop()
                     levels[level]->rightGate->getisOpen() &&
                     levels[level]->rightGate->getSprite().getGlobalBounds().intersects(hero->getSprite().getGlobalBounds()))
                 {
-                    hero -> getWeapon() -> setStopAnimation(true);
+                    hero->getWeapon()->setStopAnimation(true);
                     hero->setPos(Gate::leftPosition + sf::Vector2f{hero->getSize().x, 0});
                     // clearing pointers of npc and bonfire
                     inputs->deleteEntity();
@@ -82,7 +86,7 @@ void Game::gameLoop()
                     levels[level]->leftGate->getisOpen() &&
                     levels[level]->leftGate->getSprite().getGlobalBounds().intersects(hero->getSprite().getGlobalBounds()))
                 {
-                    hero -> getWeapon() -> setStopAnimation(true);
+                    hero->getWeapon()->setStopAnimation(true);
                     hero->setPos(Gate::rightPosition - sf::Vector2f{hero->getSize().x, 0});
                     //  clearing pointers of npc and bonfire
                     inputs->deleteEntity();
