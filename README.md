@@ -1,13 +1,16 @@
 # Artorias of the Abyss
-## TRAMA:
-La storia di “Artorias of the Abyss” prende spunto dal videogioco Dark Souls. Il protagonista si troverà catapultato nel passato di Oolacile, una città colpita dalla corruzione dell’Abisso, e dovrà salvare la principessa Dusk, rapita da Manus, padre dell’Abisso, facendo sì che la leggenda di Artorias si avveri.
-## MECCANICHE DI GIOCO:
-Il giocatore può muoversi, dashare (il giocatore potà effettuare una serie di dash, i quali avranno un cooldown), castare spell/attaccare (in base alla classe, anch'essi con un cooldown dopo ogni colpo/cast di spell | i colpi alla schiena faranno più danno), parare i colpi, interagire con gli NPC, avere un inventario, interagire con dei consumabili. Possiede una barra della vita e un counter delle monete.
-Se il giocatore morirà durante la run, potrà respawnare a uno dei falò distribuiti all’interno della mappa, ma perderà tutte le monete. Se si interagisce con i falò, inoltre, si resettano gli hp del giocatore e gli utilizzi delle cure, e imposterà un nuovo spawn point. Una volta che viene sconfitto un boss, si acquisirà un'arma migliore e non sarà possibile cambiarla.
-Il giocatore potrà equipaggiare uno scudo e una spada/un catalizzatore e delle spell (in base alla classe), dei consumabili tra cui le fiaschette di cura. Tramite l’inventario, potrà avere a portata di mano due tipologie di consumabili nel quick slot, che possono essere alternati in-game tramite apposito tasto sulla tastiera.
-Il giocatore avrà anche un sistema di collezionabili che gli serviranno per comprendere la trama del gioco. Esempi di collezionabili sono i drop dei nemici o le anime dei boss. Ogni volta che il giocatore otterrà un collezionabile, apparirà nell’hud un messaggio con scritto “hai scoperto un nuovo Collezionabile. Permi TASTO_RANDOM per leggerlo!”.
-Il nemico può muoversi, castare spells/attaccare, droppare item. Alcuni avranno un atteggiamento più difensivo, altri più offensivo. Solo i nemici, ogni volta che il giocatore interagirà con i falò, respawneranno. Alla loro morte, dropperanno delle monete e hanno la probabilità di droppare un item (verrà droppato una sola volta), che descriverà meglio la trama del gioco e sarà considerato un collezionabile.
-I boss avranno la stessa meccanica dei nemici, solo che avranno più HP e interagiranno col giocatore tramite testo prima dell’inizio della bossfight.
-Le aree saranno caratterizzate da una serie di nemici, dei falò e degli NPC.
-Gli NPC non potranno muoversi dalle loro posizioni e non sarà possibile attaccarli. Sarà possibile interagirvi, ma solo alcuni avranno uno shop da cui acquistare items.
-Gli items saranno utilizzabili solo dal giocatore. Potranno essere acquistati e alcune tipologie saranno disponibili in quantità infinita, altri no.
+
+ Artorias of the Abyss è un gioco sviluppato da due studenti dell' universitá degli studi di Firenze, nel corso di Programmazione di Ingegneria Informatica.
+
+## Struttura del gioco
+
+Il gioco si sviluppa su 13 stanze divise su 3 livelli.
+![first screen](https://github.com/JacopoMechi/Artorias-of-the-abyss/blob/main/docs/Screen1.png)
+Ognuna delle quali può contenere un faló, un nemico o un npc.
+È possibile muoversi tra le varie stanze, interagire con gli npc e combattere con i nemici.
+Il faló ci restituirá vita mentre gli npc potranno raccontarci la loro storia o permetterci di comprare oggetti utili nello shop, con le monete droppate alla morte di ogni nemico.
+![first gif](https://github.com/JacopoMechi/Artorias-of-the-abyss/blob/main/docs/Gif1.gif)
+Quando saliranno di livello le stanze saliranno di livello anche il nostro equipaggiamento e la nosta armatura permettendo di attutire meglio il danno subito ed infliggerne di piú.
+![second screen](https://github.com/JacopoMechi/Artorias-of-the-abyss/blob/main/docs/Screen2.png)
+
+BUON DIVERTIMENTO!!
