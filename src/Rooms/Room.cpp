@@ -116,7 +116,14 @@ void Room::draw(int level)
             hero.changeLevel(1);
         else if (level == 7)
             hero.changeLevel(2);
+        if (achivementObserver != nullptr)
+            achivementObserver->update("Defeated Enemy");
     }
+}
+
+void Room::attach(AchivementsObserver &achivementsObserver)
+{
+    this->achivementObserver = std::unique_ptr<AchivementsObserver>(&achivementsObserver);
 }
 
 Bonfire *Room::getBonfire()

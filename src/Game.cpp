@@ -39,8 +39,10 @@ void Game::gameLoop()
                 inputs = std::unique_ptr<CharacterInputs>(new CharacterInputs(inventory, *hud.get(), *hero.get(), shop));
                 inputs->attach(*achivementsObserver.get());
                 this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartFirst, window));
+
                 for (int i = 0; i < 3; i++)
                     this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::FirstFloor, window));
+                this->levels[1]->attach(*achivementsObserver.get());
 
                 this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartSecond, window));
                 for (int i = 0; i < 3; i++)

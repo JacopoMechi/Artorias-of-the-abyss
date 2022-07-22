@@ -51,7 +51,6 @@ HUD::HUD(sf::RenderWindow &window, Hero &hero, Inventory &inventory) : window(wi
 
     achivementNotify.setTexture(hudTexture); // TODO remove magic numbers
     achivementNotify.setTextureRect({994, 318, 289, 98});
-    achivementNotify.setPosition(816, 40);
 
     achivementText.setFont(font);
     achivementText.setCharacterSize(20);
@@ -213,6 +212,8 @@ void HUD::drawAchivement(const std::string &achivement)
     achivementShowTime = 0.f;
     unlockedAchivement = true;
     achivementText.setString("Your first " + achivement);
+    achivementNotify.setScale((achivementText.getGlobalBounds().width + 40) / achivementNotify.getTextureRect().width, 1);
+    achivementNotify.setPosition(1920 / 2 - achivementNotify.getGlobalBounds().width / 2, 40);
     achivementText.setPosition(achivementNotify.getGlobalBounds().left + achivementNotify.getGlobalBounds().width / 2 - achivementText.getGlobalBounds().width / 2, achivementNotify.getGlobalBounds().top + achivementNotify.getGlobalBounds().height / 2 - achivementText.getGlobalBounds().height / 2);
 }
 
