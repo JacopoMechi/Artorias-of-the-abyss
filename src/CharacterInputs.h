@@ -13,7 +13,7 @@ class CharacterInputs
 {
 public:
     // getting Inventory and hud from main game
-    CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero, Shop &shop, AchivementsObserver &achivementsObserver);
+    CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero, Shop &shop);
 
     void updateInputs(sf::Event keyInputs);
     int updateBonefireInputs(sf::Event keyInputs, int level);
@@ -24,6 +24,8 @@ public:
 
     void setEntityCollision(GameCharacter *entityCollision);
     void setEntityCollision(RoomElement *element);
+
+    void attach(AchivementsObserver &achivementsObserver);
 
     void deleteEntity();
     void deleteNPC();
@@ -42,7 +44,7 @@ private:
     int respawnLevel = 0;
     bool entityInRange = false;
     bool NPCInRange = false;
-    AchivementsObserver &achivementObserver;
+    std::unique_ptr<AchivementsObserver> achivementObserver;
 };
 
 #endif

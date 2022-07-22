@@ -1,6 +1,6 @@
 #include "CharacterInputs.h"
 
-CharacterInputs::CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero, Shop &shop, AchivementsObserver &achivementsObserver) : inventory(inventory), hud(hud), hero(hero), shop(shop), achivementObserver(achivementObserver)
+CharacterInputs::CharacterInputs(Inventory &inventory, HUD &hud, Hero &hero, Shop &shop) : inventory(inventory), hud(hud), hero(hero), shop(shop)
 {
 }
 
@@ -145,7 +145,8 @@ int CharacterInputs::updateBonefireInputs(sf::Event keyInput, int level)
         // changing spawn point of hero close to bonfire
         hero.setSpawnPoint({element->getPos().x + element->getSize().x, element->getPos().y});
         respawnLevel = level;
-        achivementObserver.update("Bonefire");
+        if (achivementObserver != nullptr)
+            achivementObserver->update("Bonefire");
     }
     return respawnLevel;
 }
@@ -192,6 +193,11 @@ void CharacterInputs::setHeroEntityAggro(bool NPCStatus, bool entityStatus)
 void CharacterInputs::setEntityCollision(GameCharacter *entityCollision)
 {
     this->entityCollision = entityCollision;
+}
+
+void CharacterInputs::attach(AchivementsObserver &achivementsObserver)
+{
+    this->achivementObserver = std::unique_ptr<AchivementsObserver>(&achivementsObserver);
 }
 
 void CharacterInputs::setEntityCollision(RoomElement *roomElement)

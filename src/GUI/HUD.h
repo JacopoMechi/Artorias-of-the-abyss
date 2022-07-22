@@ -51,6 +51,8 @@ public:
     void drawShop(Item *item1, Item *item2);
     void drawShop(Item *item1);
 
+    void drawAchivement(const std::string &achivement);
+
     // getting delay time to display item effects
     void gettingDelayTime(float dt);
 
@@ -87,6 +89,7 @@ protected:
     sf::Sprite moneyCounterSprite;
     sf::Sprite quickslotSprite;
     sf::Sprite actionsSprite;
+    sf::Sprite achivementNotify;
     // obscure button sprite
     sf::Sprite obscureSprite;
     // text for interactions
@@ -95,6 +98,7 @@ protected:
     sf::Text healthText;
     sf::Text moneyText;
     sf::Text itemAmountText;
+    sf::Text achivementText;
     // sprite for interaction box
     sf::Sprite boxSprite;
     // getting text pool to display it
@@ -105,6 +109,11 @@ protected:
 
     // switch for talking
     bool isTalking = false;
+
+    bool unlockedAchivement = false;
+    float achivementShowTime = 0.f;
+    const float achivementShowingTime = 3.f; // TODO remove magic number
+    float dt;
 
     // boolean value to ope/close interaction value
     bool isInteraction = false;

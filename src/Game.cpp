@@ -36,7 +36,8 @@ void Game::gameLoop()
                 hero = std::unique_ptr<Hero>(new Hero(window, mainMenu.getIsKnight(), {500.0f, 500.0f}, 100, 0, 500.0f));
                 hud = std::unique_ptr<HUD>(new HUD(window, *hero.get(), inventory));
                 achivementsObserver = std::unique_ptr<AchivementsObserver>(new AchivementsObserver(*hud.get()));
-                inputs = std::unique_ptr<CharacterInputs>(new CharacterInputs(inventory, *hud.get(), *hero.get(), shop, *achivementsObserver.get()));
+                inputs = std::unique_ptr<CharacterInputs>(new CharacterInputs(inventory, *hud.get(), *hero.get(), shop));
+                inputs->attach(*achivementsObserver.get());
                 this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::StartFirst, window));
                 for (int i = 0; i < 3; i++)
                     this->levels.emplace_back(new Room(*hero.get(), {}, Room::Type::FirstFloor, window));
