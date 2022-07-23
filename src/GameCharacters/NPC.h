@@ -38,9 +38,6 @@ private:
     // loading hud textures
     sf::Texture hudTexture;
 
-    // initial tracker pos
-    sf::Vector2f trackerPos = {773, 340};
-
     // for tracking character type
     int type;
 

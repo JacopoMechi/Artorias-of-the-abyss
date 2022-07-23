@@ -591,4 +591,30 @@ const int achivementScaleVariation = 40;
 const int achivementPosVariation = 40;
 //to set achivements in the middle of the screen
 const int middleScreen = 960;
+
+
+//to set npc scale
+const float npcScale = 5.0f;
+//chester sprite rect
+const int chesterX = 394;
+const int chesterY = 22;
+const int chesterWidth = 16;
+const int chesterHeight = 14;
+//elizabeth sprite rect
+const int elizabethX = 393;
+const int elizabethY = 40;
+const int elizabethWidth = 22;
+const int elizabethHeight = 25;
+//dusk sprite rect
+const int duskX = 422;
+const int duskY = 35;
+const int duskWidth = 23;
+const int duskHeight = 30;
+//sif sprite rect
+const int sifX = 452;
+const int sifY = 38;
+const int sifWidth = 25;
+const int sifHeight = 27;
+
+
 #endif
