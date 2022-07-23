@@ -3,10 +3,6 @@
 
 //defining constant values for classes
 
-//for hero's initial position and respawn point
-const float heroInitPosX = 500.0f;
-const float heroInitPosY = 500.0f;
-
 //to change item amount when buying items
 const int firstAmount = 1;
 const int secondAmount = 5;
@@ -617,4 +613,61 @@ const int sifWidth = 25;
 const int sifHeight = 27;
 
 
+//for hero's initial position and respawn point
+const float heroInitPosX = 500.0f;
+const float heroInitPosY = 500.0f;
+//for aura time holding in hero
+const float auraHoldingAmount = 1.0f;
+//for dash time holding in hero
+const float dashHoldingAmount = 2.0f;
+//for attack time holding in hero
+const float attackHoldingAmount = 3.0f;
+//for dash distance in hero
+const float dashDistanceAmount = 100.0f;
+//first level knight's rect
+const int knightX = 0;
+const int knightY = 0;
+const int knightWidth = 16;
+const int knightHeight = 22;
+//aura shield rect
+const int auraX = 501;
+const int auraY = 124;
+const int auraWidth = 20;
+const int auraHeight = 26;
+//aura shield scale
+const float auraScale = 7.0f;
+//aura variation pos from hero's pos
+const int auraVariationX = 10;
+const int auraVariationY = 3;
+//knight's armor amount
+const int knightAmor = 60;
+//mage's rect
+const int mageX = 0;
+const int mageY = 83;
+const int mageWidth = 15;
+const int mageHeight = 21;
+//mage's armor amount
+const int mageArmor = 20;
+//hero scale
+const float heroScale = 7.0f;
+//second level knight's armor
+const int secondKngihtX = 0;
+const int secondKnightY = 25;
+const int secondKnightWidth = 16;
+const int secondKnightHeight = 24;
+//third level knight's armor
+const int thirdKnightX = 0;
+const int thirdKnightY = 54;
+const int thirdKnightWidth = 16;
+const int thirdKnightHeight = 24;
+//second level mage's armor
+const int secondMageX = 0;
+const int secondMageY = 106;
+const int secondMageWidth = 15;
+const int secondMageHeight = 21;
+//third level mage's armor
+const int thirdMageX = 0;
+const int thirdMageY = 131;
+const int thirdMageWidth = 15;
+const int thirdMageHeight = 21;
 #endif

@@ -79,25 +79,25 @@ protected:
 
     // handling shield aura time
     bool auraReady = true;
-    float auraTimeHolding = 1.0f;
+    float auraTimeHolding = auraHoldingAmount;
     float auraTime = 0.0f;
 
     // handling dashes
     int dashCount = 3;
     int maxDashes = 3;
-    float dashTimeHolding = 2.0f;
+    float dashTimeHolding = dashHoldingAmount;
     float dashTime = 0.0f;
 
     // handling sword attack cooldown
     bool canAttack;
-    float attackTimeHolding = 3.0f;
+    float attackTimeHolding = attackHoldingAmount;
     float attackTime = 0.0f;
 
     // setting respawn position
     sf::Vector2f respawnPos = {heroInitPosX, heroInitPosY};
 
     sf::Vector2f dashing;
-    float dashDistance = 100.0f;
+    float dashDistance = dashDistanceAmount;
 
     //to track hero's armor
     int baseArmor;

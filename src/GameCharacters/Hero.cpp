@@ -10,10 +10,10 @@ Hero::Hero(sf::RenderWindow &window, bool isKnight, const sf::Vector2f &pos, int
     // this will be a default position with which the player will spawn
     if (isKnight)
     {
-        defaultRect = {0, 0, 16, 22};   // for hero's sprite
+        defaultRect = {knightX, knightY, knightWidth, knightHeight};   // for hero's sprite
         auraShield.setTexture(texture); // the aura shield is an exclusive of hero
-        auraShield.setTextureRect({501, 124, 20, 26});
-        auraShield.setScale(7.0f, 7.0f);
+        auraShield.setTextureRect({auraX, auraY, auraWidth, auraHeight});
+        auraShield.setScale(auraScale, auraScale);
         canAttack = true;
         startSpell = true;
         sword = std::make_unique<Sword>(); // knight's weapon assign
@@ -21,14 +21,14 @@ Hero::Hero(sf::RenderWindow &window, bool isKnight, const sf::Vector2f &pos, int
     }
     else
     {
-        defaultRect = {0, 83, 15, 21};
+        defaultRect = {mageX, mageY, mageWidth, mageHeight};
         canAttack = false;
         catalyst = std::make_unique<Catalyst>(); // mage's weapon assign
-        baseArmor = 20;
+        baseArmor = mageArmor;
     }
     armor = baseArmor;
     frameRect = defaultRect;
-    sprite.setScale(7.5f, 7.5f);
+    sprite.setScale(heroScale, heroScale);
     sprite.setTextureRect(frameRect);
 }
 
@@ -98,9 +98,9 @@ void Hero::changeLevel(int level)
     if (isKnight)
     {
         if (level == 1)
-            defaultRect = {0, 25, 16, 24};
+            defaultRect = {secondKngihtX, secondKnightY, secondKnightWidth, secondKnightHeight};
         else if (level == 2)
-            defaultRect = {0, 54, 16, 24};
+            defaultRect = {thirdKnightX, thirdKnightY, thirdKnightWidth, thirdKnightHeight};
         else
             std::cout << "Error on setting knight's level" << std::endl;
         sword->setLevel(level + 1);
@@ -108,9 +108,9 @@ void Hero::changeLevel(int level)
     else
     {
         if (level == 1)
-            defaultRect = {0, 106, 15, 21};
+            defaultRect = {secondMageX, secondMageY, secondMageWidth, secondMageHeight};
         else if (level == 2)
-            defaultRect = {0, 131, 15, 21};
+            defaultRect = {thirdMageX, thirdMageY, thirdMageWidth, thirdMageHeight};
         else
             std::cout << "Error on setting mage's level" << std::endl;
         catalyst->setLevel(level + 1);
@@ -130,7 +130,7 @@ void Hero::dash()
 
 void Hero::blockDamage(sf::RenderWindow &window)
 {
-    auraShield.setPosition((pos.x - 10), (pos.y - 3)); //(pos.x+3), (pos.y+3)
+    auraShield.setPosition((pos.x - auraVariationX), (pos.y - auraVariationY));
     window.draw(auraShield);
 }
 
