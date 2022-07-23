@@ -22,35 +22,34 @@ HUD::HUD(sf::RenderWindow &window, Hero &hero, Inventory &inventory) : window(wi
         std::cout << "Erorr on loading texture for hud" << std::endl;
     // health
     healthSprite.setTexture(hudTexture);
-    healthSprite.setTextureRect({1531, 0, 389, 95});
-    healthSprite.setPosition(1610, 0);
-    healthSprite.setScale(0.8f, 0.8f);
+    healthSprite.setTextureRect({healthX, healthY, healthWidth, healthHeight});
+    healthSprite.setPosition(healthPosX, healthPosY);
+    healthSprite.setScale(healthScale, healthScale);
     // money counter
     moneyCounterSprite.setTexture(hudTexture);
-    moneyCounterSprite.setTextureRect({0, 986, 389, 95});
-    moneyCounterSprite.setPosition(0, 1000);
-    moneyCounterSprite.setScale(0.8f, 0.8f);
+    moneyCounterSprite.setTextureRect({moneyX, moneyY, moneyWidth, moneyHeight});
+    moneyCounterSprite.setPosition(moneyPosX, moneyPosY);
+    moneyCounterSprite.setScale(moneyScale, moneyScale);
     // quickslot
     quickslotSprite.setTexture(hudTexture);
-    quickslotSprite.setTextureRect({810, 960, 300, 77});
-    quickslotSprite.setPosition(810, 960);
-    quickslotSprite.setScale(1.0f, 1.0f);
+    quickslotSprite.setTextureRect({qsX, qsY, qsWidth, qsHeight});
+    quickslotSprite.setPosition(qsPosX, qsPosY);
     // actions
     actionsSprite.setTexture(hudTexture);
-    actionsSprite.setTextureRect({1743, 363, 85, 351});
-    actionsSprite.setPosition(1743, 363);
-    actionsSprite.setScale(0.8f, 0.8f);
+    actionsSprite.setTextureRect({actionX, actionY, actionWidth, actionHeight});
+    actionsSprite.setPosition(actionPosX, actionPosY);
+    actionsSprite.setScale(actionScale, actionScale);
     // setting obscure button sprite
     obscureSprite.setTexture(hudTexture);
-    obscureSprite.setTextureRect({1756, 733, 63, 63});
-    obscureSprite.setScale(0.9f, 0.9f);
+    obscureSprite.setTextureRect({obscureX, obscureY, obscureWidth, obscureHeight});
+    obscureSprite.setScale(obscureScale, obscureScale);
     // setting interact box sprite
     boxSprite.setTexture(hudTexture);
-    boxSprite.setTextureRect({994, 318, 289, 98});
-    boxSprite.setScale(1.7f, 1.7f);
+    boxSprite.setTextureRect({interactX, interactY, interactWidth, interactHeight});
+    boxSprite.setScale(interactScale, interactScale);
 
-    achivementNotify.setTexture(hudTexture); // TODO remove magic numbers
-    achivementNotify.setTextureRect({994, 318, 289, 98});
+    achivementNotify.setTexture(hudTexture);
+    achivementNotify.setTextureRect({achivementX, achivementY, achivementWidth, achivementHeight});
 
     achivementText.setFont(font);
     achivementText.setCharacterSize(20);
@@ -78,67 +77,67 @@ void HUD::draw()
     window.draw(actionsSprite);
     // displaying inventory
     inventory.draw();
-    // obscure and starting sword attack
+    // obscure sword attack
     if (hero.getCharacterType() && !hero.getCanAttack())
     {
-        this->obscureButton({1750, 375});
+        this->obscureButton({attackObsPosX, attackObsPosY});
     }
     else if (!hero.getCharacterType() && hero.getStartingSpell())
-        this->obscureButton({1750, 375});
+        this->obscureButton({attackObsPosX, attackObsPosY});
     // obscure dash button when dashes uses reaches 0
     if (hero.getDash() == 0)
-        this->obscureButton({1750, 445});
+        this->obscureButton({dashObsPosX, dashObsPosY});
     // handling aura shield active time and obscuring aura shield sprite
     if (!hero.getAuraReady())
     {
         hero.blockDamage(window);
-        this->obscureButton({1750, 508});
+        this->obscureButton({auraObsPosX, auraObsPosY});
         // obscuring aura shield button if is Mage
     }
     else if (!hero.getCharacterType())
-        this->obscureButton({1750, 508});
+        this->obscureButton({auraObsPosX, auraObsPosY});
     // obscure interact button when you are not close to an NPC
     if (!isAggro)
-        this->obscureButton({1750, 575});
+        this->obscureButton({interactObsPosX, interactObsPosY});
     // drawing quickslots items
-    quickSlot[0]->displayItem(850, 975, window);
-    quickSlot[1]->displayItem(935, 975, window);
-    quickSlot[2]->displayItem(1020, 975, window);
+    quickSlot[0]->displayItem(firstQsPosX, qsItemPosY, window);
+    quickSlot[1]->displayItem(secondQsPosX, qsItemPosY, window);
+    quickSlot[2]->displayItem(thirdQsPosX, qsItemPosY, window);
     // obscuring quickslot items when they are 0
     if (quickSlot[0]->getItemCount() == 0)
-        this->obscureButton({847, 971});
+        this->obscureButton({firstObsQsPosX, firstObsQsPosY});
     if (quickSlot[1]->getItemCount() == 0)
-        this->obscureButton({932, 971});
+        this->obscureButton({secondObsQsPosX, secondObsQsPosY});
     if (quickSlot[2]->getItemCount() == 0)
-        this->obscureButton({1015, 970});
+        this->obscureButton({thirdObsQsPosX, thirdObsQsPosY});
 
     // displaying item counts
-    this->displayItemCount(quickSlot[0], {890, 980});
-    this->displayItemCount(quickSlot[1], {975, 980});
-    this->displayItemCount(quickSlot[2], {1060, 980});
+    this->displayItemCount(quickSlot[0], {firstItemCountPosX, itemCountPosY});
+    this->displayItemCount(quickSlot[1], {secondItemCountPosX, itemCountPosY});
+    this->displayItemCount(quickSlot[2], {thirdItemCountPosX, itemCountPosY});
 
     // drawing npc interaction menu
     if (isInteraction)
     {
         // displaying interaction box
-        this->drawInteractBox({805, 295});
+        this->drawInteractBox({interactNpcPosX, interactNpcPosY});
 
         // diplaying text for interaction box
         if (NPCType == 0 || NPCType == 1) // for chester and elizabeth
-            this->drawShopText(L"[1] Parla       [2] Acquista\n[Q] Esci", {825, 325});
+            this->drawShopText(L"[1] Parla       [2] Acquista\n[Q] Esci", {phrasePosX, phrasePosY});
         else // for the other npcs
-            this->drawShopText(L"[1] Parla       [Q] Esci", {825, 325});
+            this->drawShopText(L"[1] Parla       [Q] Esci", {phrasePosX, phrasePosY});
     }
 
     if (isTalking)
     {
         // showing npc's dialogue box
-        this->drawInteractBox({800, 303});
+        this->drawInteractBox({dialogueBoxPosX, dialogueBoxPosY});
         // showing dialouge
         if (NPCType == 3) // only Sif has one line of dialogue
-            this->drawShopText(L"(Ulula)", {820, 333});
+            this->drawShopText(L"(Ulula)", {dialogueTextPosX, dialogueTextPosY});
         else
-            this->drawShopText(textPool[dialogueTracker], {820, 333});
+            this->drawShopText(textPool[dialogueTracker], {dialogueTextPosX, dialogueTextPosY});
     }
     if (unlockedAchivement)
     {
@@ -162,7 +161,7 @@ void HUD::displayHealthAndEffects(Hero &hero)
     // drawing health
     window.draw(healthSprite);
     std::string bar = std::string("HP: ") + std::to_string(hero.getHp()) + std::string("/100");
-    healthText.setPosition(1700, 40);
+    healthText.setPosition(healthTextPosX, healthTextPosY);
     healthText.setString(bar);
     window.draw(healthText);
 }
@@ -177,7 +176,7 @@ void HUD::displayMoneyCounter(Hero &hero)
     window.draw(moneyCounterSprite);
     std::string counter = std::string("Monete: ") + std::to_string(hero.getCash());
     moneyText.setString(counter);
-    moneyText.setPosition(90, 1035);
+    moneyText.setPosition(moneyTextPosX, moneyTextPosY);
     window.draw(moneyText);
 }
 
@@ -209,11 +208,11 @@ void HUD::drawShopText(std::wstring text, sf::Vector2f textPos)
 
 void HUD::drawAchivement(const std::string &achivement)
 {
-    achivementShowTime = 0.f;
+    achivementShowTime = 0.0f;
     unlockedAchivement = true;
     achivementText.setString("Your first " + achivement);
-    achivementNotify.setScale((achivementText.getGlobalBounds().width + 40) / achivementNotify.getTextureRect().width, 1);
-    achivementNotify.setPosition(1920 / 2 - achivementNotify.getGlobalBounds().width / 2, 40);
+    achivementNotify.setScale((achivementText.getGlobalBounds().width + achivementScaleVariation) / achivementNotify.getTextureRect().width, 1);
+    achivementNotify.setPosition(middleScreen - achivementNotify.getGlobalBounds().width / 2, achivementPosVariation);
     achivementText.setPosition(achivementNotify.getGlobalBounds().left + achivementNotify.getGlobalBounds().width / 2 - achivementText.getGlobalBounds().width / 2, achivementNotify.getGlobalBounds().top + achivementNotify.getGlobalBounds().height / 2 - achivementText.getGlobalBounds().height / 2);
 }
 
@@ -267,6 +266,6 @@ void HUD::setIsTalking(bool isTalking)
 }
 
 void HUD::nextPhrase()
-{                                                                    // TODO LATER adjust dialogue depending on situations (like changing chester's text pool when Artorias is killed)
-    dialogueTracker = (dialogueTracker + 1) % (textPool.size() / 2); // FIXME why /2?
+{                                                                    
+    dialogueTracker = (dialogueTracker + 1) % (textPool.size() / 2);
 }

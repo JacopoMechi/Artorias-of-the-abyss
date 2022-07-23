@@ -478,4 +478,117 @@ const int itemInDescrPosY = 460;
 //to draw item description text in description box
 const int itemDescrPosX = 950;
 const int itemDescrPosY = 415;
+
+
+//achievement showing time amount for hud
+const float achievementShowTimeAmount = 3.0f;
+//health sprite rect for hud
+const int healthX = 1531;
+const int healthY = 0;
+const int healthWidth = 389;
+const int healthHeight = 95;
+//health sprite position for hud
+const int healthPosX = 1610;
+const int healthPosY = 0;
+//health sprite scale for hud
+const float healthScale = 0.8f;
+//health text pos for hud
+const int healthTextPosX = 1700;
+const int healthTextPosY = 40;
+//money counter sprite rect for hud
+const int moneyX = 0;
+const int moneyY = 986;
+const int moneyWidth = 389;
+const int moneyHeight = 95;
+//money counter sprite position for hud
+const int moneyPosX = 0;
+const int moneyPosY = 1000;
+//money text position for hud
+const int moneyTextPosX = 90;
+const int moneyTextPosY = 1035;
+//money counter sprite scale for hud
+const float moneyScale = 0.8f;
+//quickslot sprite rect for hud
+const int qsX = 810;
+const int qsY = 960;
+const int qsWidth = 300;
+const int qsHeight = 77;
+//quickslot sprite pos for hud
+const int qsPosX = 810;
+const int qsPosY = 960;
+//action sprite rect for hud
+const int actionX = 1743;
+const int actionY = 363;
+const int actionWidth = 85;
+const int actionHeight = 351;
+//action sprite pos or hud
+const int actionPosX = 1743;
+const int actionPosY = 363;
+//action sprite scale for hud
+const float actionScale = 0.8f;
+//obscure sprite rect for hud
+const int obscureX = 1756;
+const int obscureY = 733;
+const int obscureWidth = 63;
+const int obscureHeight = 63;
+//obscure sprite scale for hud
+const float obscureScale = 0.9f;
+//intercat box sprite rect for hud
+const int interactX = 994;
+const int interactY = 318;
+const int interactWidth = 289;
+const int interactHeight = 98;
+//interact box sprite scale for hud
+const float interactScale = 1.7f;
+//achivement notify sprite rect for hud
+const int achivementX = 994;
+const int achivementY = 318;
+const int achivementWidth = 289;
+const int achivementHeight = 98;
+//obscure attack pos
+const int attackObsPosX = 1750;
+const int attackObsPosY = 375;
+//obscure dash pos
+const int dashObsPosX = 1750;
+const int dashObsPosY = 445;
+//obscure aura shield pos
+const int auraObsPosX = 1750;
+const int auraObsPosY = 508;
+//obscure interact pos
+const int interactObsPosX = 1750;
+const int interactObsPosY = 575;
+//drawing quickslot items pos
+const int qsItemPosY = 975;
+const int firstQsPosX = 850;
+const int secondQsPosX = 935;
+const int thirdQsPosX = 1020;
+//obscuring quickslot items pos
+const int firstObsQsPosX = 847;
+const int firstObsQsPosY = 971;
+const int secondObsQsPosX = 932;
+const int secondObsQsPosY = 971;
+const int thirdObsQsPosX = 1015;
+const int thirdObsQsPosY = 970;
+//displaying item counts pos
+const int firstItemCountPosX = 890;
+const int secondItemCountPosX = 975;
+const int thirdItemCountPosX = 1060;
+const int itemCountPosY = 980;
+//interact box pos for interactions with npcs
+const int interactNpcPosX = 805;
+const int interactNpcPosY = 295;
+//interact dialogues pos for interactions with npcs
+const int phrasePosX = 825;
+const int phrasePosY = 325;
+//dialogue box pos for npcs interactions
+const int dialogueBoxPosX = 800;
+const int dialogueBoxPosY = 303;
+//setting dialogue text in dialogue box for npcs interactions
+const int dialogueTextPosX = 820;
+const int dialogueTextPosY = 333;
+//achivement distance variation
+const int achivementScaleVariation = 40;
+const int achivementPosVariation = 40;
+//to set achivements in the middle of the screen
+const int middleScreen = 960;
 #endif

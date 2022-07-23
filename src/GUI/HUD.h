@@ -12,6 +12,7 @@
 #include "Items/Pendant.h"
 #include "Items/NullItem.h"
 #include "GameCharacters/NPC.h"
+#include "Constants.h"
 
 class HUD
 {
@@ -112,7 +113,7 @@ protected:
 
     bool unlockedAchivement = false;
     float achivementShowTime = 0.f;
-    const float achivementShowingTime = 3.f; // TODO remove magic number
+    const float achivementShowingTime = achievementShowTimeAmount;
     float dt;
 
     // boolean value to ope/close interaction value
