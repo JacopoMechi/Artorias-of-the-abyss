@@ -5,7 +5,7 @@ Enemy::Enemy(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int armo
     if (!texture.loadFromFile(texturePath))
         std::cout << "Error on loading hero's texture" << std::endl;
     sprite.setTexture(texture);
-    sprite.setScale(7.5f, 7.5f);
+    sprite.setScale(enemyScale, enemyScale);
 }
 
 bool Enemy::getAggro()

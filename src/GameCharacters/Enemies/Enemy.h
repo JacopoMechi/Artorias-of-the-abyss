@@ -21,7 +21,7 @@ protected:
     std::vector<sf::IntRect> frameRects; // to set enemies frame rects
     bool isRanged;
     bool aggro;
-    const float attackHoldTime = 1.0f;
+    const float attackHoldTime = enemyAttHoldTimeAmount;
     float resetAttack = 0.0f;
 };
 

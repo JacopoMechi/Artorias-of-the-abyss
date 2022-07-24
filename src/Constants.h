@@ -710,4 +710,10 @@ const int leftMonsterBound = 230;
 const int rightMonsterbound = 1550;
 const int topMonsterBound = 745;
 const int bottomMonsterBound = 30;
+
+
+//for enemy attack hold time in enemy class
+const float enemyAttHoldTimeAmount = 1.0f;
+//for enemy scale in enemy class
+const float enemyScale = 7.5f;
 #endif
