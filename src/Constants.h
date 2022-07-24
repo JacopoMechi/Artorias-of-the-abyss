@@ -670,4 +670,44 @@ const int thirdMageX = 0;
 const int thirdMageY = 131;
 const int thirdMageWidth = 15;
 const int thirdMageHeight = 21;
+
+
+//monster rect for monster class
+const int firstMonsterRectX = 138;
+const int firstMonsterRectY = 4;
+const int firstMonsterRectWidth = 23;
+const int firstMonsterREctHeight = 31;
+const int secondMonsterRectX = 169;
+const int secondMonsterRectY = 3;
+const int secondMonsterRectWidth = 22;
+const int secondMonsterRectHeight = 30;
+const int thirdMonsterRectX = 202;
+const int thirdMonsterRectY = 3;
+const int thirdMonsterRectWidth = 22;
+const int thirdMonsterRectHeight = 31;
+const int fourthMonsterRectX = 232;
+const int fourthMonsterRectY = 6;
+const int fourthMonsterRectWidth = 26;
+const int fourthMonsterRectHeight = 28;
+const int fifthMonsterRectX = 265;
+const int fifthMonsterRectY = 4;
+const int fifthMonsterRectWidth = 22;
+const int fifthMonsterRectHeight = 30;
+const int sixthMonsterRectX = 297;
+const int sixthMonsterRectY = 1;
+const int sixthMonsterRectWidth = 22;
+const int sixthMonsterRectHeight = 33;
+const int seventhMonsterRectX = 329;
+const int seventhMonsterRectY = 0;
+const int seventhMonsterRectWidth = 22;
+const int seventhMonsterRectHeight = 34;
+const int eighthMonsterRectX = 361;
+const int eighthMonsterRectY = 6;
+const int eighthMonsterRectWidth = 23;
+const int eighthMonsterRectHeight = 28;
+//for monster movements bounds
+const int leftMonsterBound = 230;
+const int rightMonsterbound = 1550;
+const int topMonsterBound = 745;
+const int bottomMonsterBound = 30;
 #endif

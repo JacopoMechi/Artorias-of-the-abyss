@@ -2,14 +2,14 @@
 
 Enemy1::Enemy1(sf::RenderWindow &window, const sf::Vector2f &pos, int hp, int armor, int cash, float movementSpeed) : Enemy(window, pos, hp, armor, cash, movementSpeed)
 {
-    frameRects.push_back({138, 4, 23, 31});
-    frameRects.push_back({169, 3, 22, 30});
-    frameRects.push_back({202, 3, 22, 31});
-    frameRects.push_back({232, 6, 26, 28});
-    frameRects.push_back({265, 4, 22, 30});
-    frameRects.push_back({297, 1, 22, 33});
-    frameRects.push_back({329, 0, 22, 34});
-    frameRects.push_back({361, 6, 23, 28});
+    frameRects.push_back({firstMonsterRectX, firstMonsterRectY, firstMonsterRectWidth, firstMonsterREctHeight});
+    frameRects.push_back({secondMonsterRectX, secondMonsterRectY, secondMonsterRectWidth, secondMonsterRectHeight});
+    frameRects.push_back({thirdMonsterRectX, thirdMonsterRectY, thirdMonsterRectWidth, thirdMonsterRectHeight});
+    frameRects.push_back({fourthMonsterRectX, fourthMonsterRectY, fourthMonsterRectWidth, fourthMonsterRectHeight});
+    frameRects.push_back({fifthMonsterRectX, fifthMonsterRectY, fifthMonsterRectWidth, fifthMonsterRectHeight});
+    frameRects.push_back({sixthMonsterRectX, sixthMonsterRectY, sixthMonsterRectWidth, sixthMonsterRectHeight});
+    frameRects.push_back({seventhMonsterRectX, seventhMonsterRectY, seventhMonsterRectWidth, seventhMonsterRectHeight});
+    frameRects.push_back({eighthMonsterRectX, eighthMonsterRectY, eighthMonsterRectWidth, eighthMonsterRectHeight});
     frameRect = frameRects[0];
     sprite.setTextureRect(frameRect);
 }
@@ -32,7 +32,7 @@ void Enemy1::attack(Hero &hero, float dt)
         else if (hero.getPos().x < pos.x)
             dir.x = -1;
     }
-    if ((pos.x >= 1550 && dir.x == 1) || (pos.x <= 230 && dir.x == -1))
+    if ((pos.x >= rightMonsterbound && dir.x == 1) || (pos.x <= leftMonsterBound && dir.x == -1))
         dir.x = 0;
 
     if (aggro && dir.x == 0 && dir.y == 0 && pos.x < hero.getPos().x + hero.getSize().x / 2 && hero.getPos().x + hero.getSize().x / 2 < pos.x + getSize().x)
@@ -43,7 +43,7 @@ void Enemy1::attack(Hero &hero, float dt)
             dir.y = -1;
     }
 
-    if ((pos.y >= 745 && dir.y == 1) || (pos.y <= 30 && dir.y == -1))
+    if ((pos.y >= topMonsterBound && dir.y == 1) || (pos.y <= bottomMonsterBound && dir.y == -1))
         dir.y = 0;
 
     if (dir.x == 0 && dir.y == 0)
