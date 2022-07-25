@@ -12,7 +12,7 @@ find_package(SFML 2 COMPONENTS network audio graphics window system REQUIRED)
 
 include_directories(src)
 
-file(COPY src/Textures src/Fonts DESTINATION ${CMAKE_BINARY_DIR})
+file(COPY src/Textures src/Fonts ${CMAKE_CURRENT_SOURCE_DIR}/src/GameCharacters/npcDialogues.txt DESTINATION ${CMAKE_BINARY_DIR})
 
 add_subdirectory(test)
 set(SOURCE_FILES
