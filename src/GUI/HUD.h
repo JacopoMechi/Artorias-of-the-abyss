@@ -46,7 +46,7 @@ public:
     void drawShopTracker(sf::Vector2f pos);
 
     // drawing text for all menus
-    void drawShopText(std::wstring text, sf::Vector2f textPos);
+    void drawText(std::wstring text, sf::Vector2f textPos);
 
     // drawing shop box
     void drawShop(Item *item1, Item *item2);

@@ -10,6 +10,8 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f &pos, int hp, in
     sprite.setScale(npcScale, npcScale);
     // setting NPC's position
     sprite.setPosition(pos);
+    //opening text file for dialogue pools
+    poolPhrases.open("npcDialogues.txt", std::ios::in);
     // loading npcs sprites' rectangles
     // chester
     if (type == 0)
@@ -17,8 +19,12 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f &pos, int hp, in
         defaultRect = {chesterX, chesterY, chesterWidth, chesterHeight};
 
         // chester's dialogue
-        textPool.resize(sizeof(chesterPool) / sizeof(std::string));
-        textPool.insert(textPool.begin(), &chesterPool[0], &chesterPool[sizeof(chesterPool) / sizeof(std::string)]);
+        if(poolPhrases.is_open()){
+            for(int line = 0; std::getline(poolPhrases, string) && line <= chesterPoolEnd; line++){
+                if(line >= chesterPoolBegin)
+                    textPool.push_back(string);
+            }
+        }
         // elizabeth
     }
     else if (type == 1)
@@ -26,8 +32,13 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f &pos, int hp, in
         defaultRect = {elizabethX, elizabethY, elizabethWidth, elizabethHeight};
 
         // elizabeth's dialogue
-        textPool.resize(sizeof(elizabethPool) / sizeof(std::string));
-        textPool.insert(textPool.begin(), &elizabethPool[0], &elizabethPool[(sizeof(elizabethPool) / sizeof(std::string))]);
+        if(poolPhrases.is_open()){
+            for(int line = 0; std::getline(poolPhrases, string) && line <= elizabethPoolEnd; line ++){
+                if(line >= elizabethPoolBegin)
+                    textPool.push_back(string);
+            }
+            poolPhrases.close();
+        }
         // dusk
     }
     else if (type == 2)
@@ -35,8 +46,12 @@ NPC::NPC(sf::RenderWindow &window, int type, const sf::Vector2f &pos, int hp, in
         defaultRect = {duskX, duskY, duskWidth, duskHeight};
 
         // dusk's dialogue
-        textPool.resize(sizeof(duskPool) / sizeof(std::string));
-        textPool.insert(textPool.begin(), &duskPool[0], &duskPool[sizeof(duskPool) / sizeof(std::string)]);
+        if(poolPhrases.is_open()){
+            for(int line = 0; std::getline(poolPhrases, string) && line <= duskPoolEnd; line ++){
+                if(line >= duskPoolBegin)
+                    textPool.push_back(string);
+            }
+        }
         // sif
     }
     else if (type == 3)
@@ -66,7 +81,7 @@ void NPC::movement(bool isInvetoryOpen, bool isInteracting)
 
 bool NPC::closeToHero(Hero &hero)
 {
-    if (isAggro(190, hero))
+    if (isAggro(heroNpcDistance, hero))
         return true;
     else
         return false;

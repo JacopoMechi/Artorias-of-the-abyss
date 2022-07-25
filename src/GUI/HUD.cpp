@@ -124,9 +124,9 @@ void HUD::draw()
 
         // diplaying text for interaction box
         if (NPCType == 0 || NPCType == 1) // for chester and elizabeth
-            this->drawShopText(L"[1] Parla       [2] Acquista\n[Q] Esci", {phrasePosX, phrasePosY});
+            this->drawText(L"[1] Parla       [2] Acquista\n[Q] Esci", {phrasePosX, phrasePosY});
         else // for the other npcs
-            this->drawShopText(L"[1] Parla       [Q] Esci", {phrasePosX, phrasePosY});
+            this->drawText(L"[1] Parla       [Q] Esci", {phrasePosX, phrasePosY});
     }
 
     if (isTalking)
@@ -135,9 +135,13 @@ void HUD::draw()
         this->drawInteractBox({dialogueBoxPosX, dialogueBoxPosY});
         // showing dialouge
         if (NPCType == 3) // only Sif has one line of dialogue
-            this->drawShopText(L"(Ulula)", {dialogueTextPosX, dialogueTextPosY});
-        else
-            this->drawShopText(textPool[dialogueTracker], {dialogueTextPosX, dialogueTextPosY});
+            this->drawText(L"(Ulula)", {dialogueTextPosX, dialogueTextPosY});
+        else{
+            this->drawText(textPool[dialogueTracker], {dialogueTextPosX, dialogueTextPosY});
+            this->drawText(textPool[dialogueTracker+secondPhrase],{dialogueTextPosX, dialogueTextPosY + secondPhraseDist});
+            this->drawText(textPool[dialogueTracker+thirdPhrase],{dialogueTextPosX, dialogueTextPosY + thirdPhraseDist});
+            this->drawText(textPool[dialogueTracker+fourthPhrase],{dialogueTextPosX, dialogueTextPosY + fourthPhraseDist});
+        }
     }
     if (unlockedAchivement)
     {
@@ -199,7 +203,7 @@ void HUD::drawInteractBox(sf::Vector2f pos)
     window.draw(boxSprite);
 }
 
-void HUD::drawShopText(std::wstring text, sf::Vector2f textPos)
+void HUD::drawText(std::wstring text, sf::Vector2f textPos)
 {
     interactText.setPosition(textPos);
     interactText.setString(text);
@@ -262,10 +266,11 @@ bool HUD::getIsTalking()
 
 void HUD::setIsTalking(bool isTalking)
 {
+    dialogueTracker = 0;
     this->isTalking = isTalking;
 }
 
 void HUD::nextPhrase()
 {                                                                    
-    dialogueTracker = (dialogueTracker + 1) % (textPool.size() / 2);
+    dialogueTracker = (dialogueTracker + 4) % (textPool.size());
 }
