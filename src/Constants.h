@@ -591,6 +591,25 @@ const int middleScreen = 960;
 
 //to set npc scale
 const float npcScale = 5.0f;
+//to space phrases
+const int secondPhrase = 1;
+const int secondPhraseDist = 25;
+const int thirdPhrase = 2;
+const int thirdPhraseDist = 50;
+const int fourthPhrase = 3;
+const int fourthPhraseDist = 75;
+//distance between npc and hero
+const int heroNpcDistance = 190;
+//size of npcs' pools
+//chester
+const int chesterPoolBegin = 29;
+const int chesterPoolEnd = 52;
+//elizabeth
+const int elizabethPoolBegin = 1;
+const int elizabethPoolEnd = 28;
+//dusk
+const int duskPoolBegin = 53;
+const int duskPoolEnd = 85;
 //chester sprite rect
 const int chesterX = 394;
 const int chesterY = 22;
